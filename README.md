@@ -1,6 +1,6 @@
-# Job Atlas Job Scrapers
+# jobatlas
 
-[Website](https://jobatlas.dev/) · [Job Atlas on Apify](https://apify.com/job-atlas) · [Release evidence](docs/job-atlas.md)
+[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/job-atlas) · [Release evidence](docs/job-atlas.md)
 
 Open schemas, integration recipes, and agent skills for Job Atlas job-search
 Actors. The Actor implementations may be hosted services; this repository
@@ -118,7 +118,7 @@ Codex instructions and per-Actor compatibility gates.
 | 1 | [n8n](integrations/n8n/README.md) | Daily alerts, normalized-job trackers, or a scored-shortlist Sheet | LinkedIn selector `latest`; EURAXESS and fit scorer selector `latest` |
 | 2 | [Make](integrations/make/README.md) | Completed Actor run -> validated Google Sheets upsert | Task-owned complete inputs; exact scraper and fit-scorer builds required |
 | 3 | [Airtable](integrations/airtable/README.md) | Import 32 fields and upsert on stable `jobKey` | Shared flat destination preset with `linkedin` and `euraxess` source choices |
-| 4 | [MCP](integrations/mcp/README.md) | ChatGPT, Claude, Cursor, Codex, or another MCP client | Exact-build generic calls and Actor-specific output contracts for all three products |
+| 4 | [MCP](integrations/mcp/README.md) | ChatGPT, Claude, Cursor, Codex, or another MCP client | Exact-build generic calls and Actor-specific output contracts for the maintained MCP examples |
 | 5 | [API/webhook](integrations/api/README.md) | Custom job board, database, or internal application | Exact-build REST recipes; the scorer client is settlement-aware and validates legacy v3 plus current v4 result-policy and billing receipts |
 | 6 | [Zapier](integrations/zapier/README.md) | Scheduled scored-job Sheet | Editor specification using scorer `latest`; not a published Zap or destination proof |
 | 7 | [Python parsers](.agents/skills) | Validate canonical JSON or create a destination projection | Source-specific validators plus the fit-row adapter |

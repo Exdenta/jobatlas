@@ -5,7 +5,7 @@
   "createdAt": "2026-08-15T00:00:00Z",
   "systems": {
     "linkedin": {
-      "actorId": "nomad-agent/linkedin-enrich-translate-normalize-scraper",
+      "actorId": "job-atlas/linkedin-enrich-translate-normalize-scraper",
       "buildNumber": "0.0.0",
       "buildId": "synthetic",
       "accuracyMode": "silver",
@@ -14,7 +14,7 @@
       "inputSha256": null
     },
     "euraxess": {
-      "actorId": "nomad-agent/euraxess-enrich-translate-normalize-scraper",
+      "actorId": "job-atlas/euraxess-enrich-translate-normalize-scraper",
       "buildNumber": "0.0.0",
       "buildId": "synthetic",
       "accuracyMode": "silver",

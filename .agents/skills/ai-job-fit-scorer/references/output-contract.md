@@ -1,7 +1,7 @@
 # Output contract: `nomad-ai-job-fit-v1`
 
 Every dataset row is a closed object with exactly these 26 keys. A real row is
-in [`docs/examples/ai-job-fit-scorer/fit-row.example.json`](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/docs/examples/ai-job-fit-scorer/fit-row.example.json).
+in [`docs/examples/ai-job-fit-scorer/fit-row.example.json`](https://github.com/Exdenta/jobatlas/blob/main/docs/examples/ai-job-fit-scorer/fit-row.example.json).
 
 | Key | Type | Meaning |
 | --- | --- | --- |

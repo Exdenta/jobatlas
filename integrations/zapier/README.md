@@ -1,6 +1,6 @@
 # Zapier editor recipe
 
-Current starters target Job Atlas. [Migration steps and evidence limits](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/docs/job-atlas.md): recreate saved Tasks for Job Atlas; historical destination proofs remain tied to their original organization.
+Current starters target Job Atlas. [Migration steps and evidence limits](https://github.com/Exdenta/jobatlas/blob/main/docs/job-atlas.md): recreate saved Tasks for Job Atlas; historical destination proofs remain tied to their original organization.
 
 Zapier has no portable workflow-import format for this template. Build the Zap
 from [`ai-job-fit-scorer-template-spec.json`](ai-job-fit-scorer-template-spec.json) and preserve these controls.

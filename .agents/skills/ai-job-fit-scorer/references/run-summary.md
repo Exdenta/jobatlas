@@ -2,9 +2,9 @@
 
 A completed run writes `RUN-SUMMARY` to its default key-value store. It
 contains candidate hashes and counts, never résumé text. A real record is in
-[`docs/examples/ai-job-fit-scorer/run-summary.example.json`](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/docs/examples/ai-job-fit-scorer/run-summary.example.json);
+[`docs/examples/ai-job-fit-scorer/run-summary.example.json`](https://github.com/Exdenta/jobatlas/blob/main/docs/examples/ai-job-fit-scorer/run-summary.example.json);
 the JSON Schema is
-[`integrations/shared/nomad-ai-job-fit-run-summary-v4.schema.json`](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/integrations/shared/nomad-ai-job-fit-run-summary-v4.schema.json).
+[`integrations/shared/nomad-ai-job-fit-run-summary-v4.schema.json`](https://github.com/Exdenta/jobatlas/blob/main/integrations/shared/nomad-ai-job-fit-run-summary-v4.schema.json).
 
 ## Blocks
 

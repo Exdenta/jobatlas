@@ -1,6 +1,6 @@
 # Job Atlas releases
 
-[Job Atlas on Apify](https://apify.com/job-atlas) is the current customer-facing home for these four Actors. The website uses [jobatlas.dev](https://jobatlas.dev/) and this repository keeps its existing GitHub address.
+[Job Atlas on Apify](https://apify.com/job-atlas) is the current customer-facing home for these four Actors. The website uses [jobatlas.dev](https://jobatlas.dev/), and the interoperability repository is [Exdenta/jobatlas](https://github.com/Exdenta/jobatlas).
 
 | Actor | Store | Website guide |
 | --- | --- | --- |
