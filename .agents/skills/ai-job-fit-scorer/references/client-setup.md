@@ -50,5 +50,5 @@ a destination write.
 Start a run with
 `POST /v2/actors/job-atlas~ai-job-fit-scorer/runs?build=latest&maxItems=5&maxTotalChargeUsd=0.10`,
 poll `GET /v2/actor-runs/{runId}`, then fetch only that run's storages.
-The [REST client](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/integrations/api/ai-job-fit-scorer-run-and-fetch.mjs)
+The [REST client](https://github.com/Exdenta/jobatlas/blob/main/integrations/api/ai-job-fit-scorer-run-and-fetch.mjs)
 performs exact-run settlement checks. It does not configure a destination.

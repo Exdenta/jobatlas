@@ -142,6 +142,18 @@ class SearchPerformanceTests(unittest.TestCase):
         self.assertEqual(public_report["brandTotals"], report["brandTotals"])
         self.assertEqual(public_report["nonBrandTotals"], report["nonBrandTotals"])
 
+    def test_brand_query_aliases_cover_current_and_legacy_names(self) -> None:
+        for query in (
+            "jobatlas",
+            "job atlas api",
+            "Nomad Agent jobs",
+            "nomadagent",
+            "nomad-agent scraper",
+        ):
+            with self.subTest(query=query):
+                self.assertTrue(search_performance._is_brand_query(query))
+        self.assertFalse(search_performance._is_brand_query("job data api"))
+
     def test_write_report_is_deterministic_and_creates_parent(self) -> None:
         report = {"generatedAt": "2026-09-03T12:00:00Z", "totals": {"clicks": 0}}
         with TemporaryDirectory() as directory:

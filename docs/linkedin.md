@@ -106,7 +106,7 @@ This standalone example follows `latest`. Check the [current default build API](
 for the default build number and immutable ID. Maintained integration templates select `latest`; follow the selected template's compatibility
 guide when running it. A `1.0.x` check alone does not prove compatibility.
 
-[Integration guides and templates](https://github.com/Exdenta/nomad-agent-job-scrapers)
+[Integration guides and templates](https://github.com/Exdenta/jobatlas)
 cover MCP, n8n, Make, Airtable, and agent skills.
 
 ## Pricing and limits

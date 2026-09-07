@@ -85,7 +85,7 @@ destination delivery.
 - Product guide: <https://jobatlas.dev/actors/linkedin>
 - Setup and support: <https://jobatlas.dev/integrations/make>
 - Actor: <https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper>
-- Source and issues: <https://github.com/Exdenta/nomad-agent-job-scrapers>
+- Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## Template 2: EURAXESS jobs to Google Sheets
 
@@ -158,7 +158,7 @@ claim that the template is submitted, approved, shared, or public.
 - Product guide: <https://jobatlas.dev/actors/euraxess>
 - Setup and support: <https://jobatlas.dev/integrations/make>
 - Actor: <https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper>
-- Source and issues: <https://github.com/Exdenta/nomad-agent-job-scrapers>
+- Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## Template 3: AI job-fit scores to Google Sheets
 
@@ -234,7 +234,7 @@ elsewhere do not prove this Make scenario or its named Google Sheets write.
 - Product guide: <https://jobatlas.dev/actors/ai-job-fit-scorer>
 - Setup and support: <https://jobatlas.dev/integrations/make>
 - Actor: <https://apify.com/job-atlas/ai-job-fit-scorer>
-- Source and issues: <https://github.com/Exdenta/nomad-agent-job-scrapers>
+- Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## License
 

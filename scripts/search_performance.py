@@ -25,7 +25,13 @@ SEARCH_ANALYTICS_ENDPOINT = (
 DEFAULT_SITE_URL = "https://jobatlas.dev/"
 DEFAULT_ROW_LIMIT = 25_000
 MAX_ROWS = 50_000
-BRAND_TERMS = ("nomad agent", "nomadagent", "nomad-agent")
+BRAND_TERMS = (
+    "job atlas",
+    "jobatlas",
+    "nomad agent",
+    "nomadagent",
+    "nomad-agent",
+)
 
 
 def _response_summary(error: HTTPError) -> str:

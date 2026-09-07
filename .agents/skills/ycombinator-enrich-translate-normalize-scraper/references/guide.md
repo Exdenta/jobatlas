@@ -52,7 +52,7 @@ still accepting applicants. This service is unaffiliated with Y Combinator.
 - `maxItems` accepts 0–1,000; zero means the bounded 1,000-result window.
 - `dedupe` accepts `enabled` and `key`. Use a stable named key for a recurring
   alert. The empty default key uses the default delivery scope.
-- `filters` uses the shared [normalized filter grammar](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/.agents/skills/linkedin-enrich-translate-normalize-scraper/references/input-contract.md#filters).
+- `filters` uses the shared [normalized filter grammar](https://github.com/Exdenta/jobatlas/blob/main/.agents/skills/linkedin-enrich-translate-normalize-scraper/references/input-contract.md#filters).
 - `aiEnrichment` accepts `enabled` and `accuracy` (`silver` or `gold`). It fills
   only still-missing description-backed fields. `translateToEnglish` affects
   selected display fields and is usually unnecessary for this English source.
@@ -125,8 +125,8 @@ a bounded Actor/API canary, not source-wide completeness or destination proof.
 ## Output and installation
 
 Six roots: `schemaVersion`, `identity`, `data`, `custom`, `llm`, `raw`.
-The [canonical schema](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/integrations/shared/nomad-agent-job-v1.schema.json)
-describes common fields; the [YC v2 schema](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/integrations/shared/ycombinator-v2.schema.json)
+The [canonical schema](https://github.com/Exdenta/jobatlas/blob/main/integrations/shared/nomad-agent-job-v1.schema.json)
+describes common fields; the [YC v2 schema](https://github.com/Exdenta/jobatlas/blob/main/integrations/shared/ycombinator-v2.schema.json)
 validates `custom.data`. `null` means unknown, `[]` explicitly empty. A `$` salary
 may have null currency and period; raw city text may have null parsed geography.
 Founders are company context, not hiring contacts. Raw descriptions stay in the
@@ -136,7 +136,7 @@ source language even when selected fields are translated.
 python3 scripts/install_skill.py --skill ycombinator-enrich-translate-normalize-scraper --client both --target /path/to/project
 ```
 
-The [Agent Skill](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/.agents/skills/ycombinator-enrich-translate-normalize-scraper/SKILL.md) supports source-specific
+The [Agent Skill](https://github.com/Exdenta/jobatlas/blob/main/.agents/skills/ycombinator-enrich-translate-normalize-scraper/SKILL.md) supports source-specific
 input and completion checks. Existing LinkedIn/EURAXESS destination templates
 have not been ported or live-tested for this YC profile; do not merely replace
-their Actor slug. See the [compatibility matrix](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/docs/integration-compatibility.md).
+their Actor slug. See the [compatibility matrix](https://github.com/Exdenta/jobatlas/blob/main/docs/integration-compatibility.md).

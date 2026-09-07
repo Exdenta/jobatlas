@@ -94,7 +94,7 @@ Before that baseline, use these non-negotiable gates:
 ### Days 1–14: integrity, catalog, and measurement
 
 - Serve every public contract identifier and publish the contracts hub.
-- Align the website with all three products and every supported integration.
+- Align the website with all four promoted products and every supported integration.
 - Give the homepage a customer-outcome title, H1, and three-path product model.
 - Add Actor, integration, guide, About, methodology, privacy, and changelog hubs.
 - Instrument consistent semantic events on every CTA and copy/download action.

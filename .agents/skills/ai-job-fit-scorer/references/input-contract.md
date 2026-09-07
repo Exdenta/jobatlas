@@ -37,7 +37,7 @@ fields `schemaVersion`, `identity`, `data`, `custom`, `llm`, and `raw`;
 `identity` needs `source` plus `externalId` or `url`; `raw.description` holds
 the posting text, at most 20,000 characters. Oversized evidence is rejected,
 not truncated. A complete record is in
-[`docs/examples/ai-job-fit-scorer/inline-input.json`](https://github.com/Exdenta/nomad-agent-job-scrapers/blob/main/docs/examples/ai-job-fit-scorer/inline-input.json).
+[`docs/examples/ai-job-fit-scorer/inline-input.json`](https://github.com/Exdenta/jobatlas/blob/main/docs/examples/ai-job-fit-scorer/inline-input.json).
 
 ## `search`
 

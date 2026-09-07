@@ -85,9 +85,11 @@ proves notification, not crawling, indexing, ranking, or traffic.
 The workflow requires the repository-scoped Workload Identity provider and
 service account already documented in `.github/workflows/deploy-website.yml`,
 plus an `INDEXNOW_KEY` secret containing 8–128 letters, digits, or dashes. The
-provider is restricted to `Exdenta/nomad-agent-job-scrapers` on
-`refs/heads/main`, and the service account must be a full user of the exact
-URL-prefix Search Console property `https://jobatlas.dev/`.
+provider keeps its stable `nomad-agent-job-scrapers` resource ID, but after
+the repository cutover its trust condition and service-account principal must
+both restrict access to `Exdenta/jobatlas` on `refs/heads/main`. The service
+account must also be a full user of the exact URL-prefix Search Console
+property `https://jobatlas.dev/`.
 
 ## Search measurement
 

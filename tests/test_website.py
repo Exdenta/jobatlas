@@ -14,7 +14,7 @@ from urllib.parse import parse_qs, unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 WEBSITE = ROOT / "website"
 ORIGIN = "https://jobatlas.dev"
-SOCIAL_IMAGE = f"{ORIGIN}/assets/nomad-agent-social-card.png"
+SOCIAL_IMAGE = f"{ORIGIN}/assets/job-atlas-social-card.png"
 
 # Intent owners come from docs/seo-program.md; its first milestone adds these
 # hubs and trust pages to the public surface.

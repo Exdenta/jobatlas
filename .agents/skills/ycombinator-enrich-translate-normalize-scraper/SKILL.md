@@ -27,7 +27,7 @@ After a run:
    `status`, `delivered`, `resultsLimited`, and the bounded `retry` recommendation.
 3. Fetch the complete default dataset and reconcile its count with `delivered`.
    A platform `SUCCEEDED` status alone does not prove complete search coverage.
-4. Validate the [canonical job schema](https://raw.githubusercontent.com/Exdenta/nomad-agent-job-scrapers/main/integrations/shared/nomad-agent-job-v1.schema.json),
+4. Validate the [canonical job schema](https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/nomad-agent-job-v1.schema.json),
    exactly six roots, and `identity.source = ycombinator_was`. Require
    `custom.schemaId = https://raw.githubusercontent.com/Exdenta/nomad-agent-job-scrapers/main/integrations/shared/ycombinator-v2.schema.json` and validate `custom.data` against that schema.
 5. Preserve `null` versus `[]`, raw source evidence, and `source:externalId`
