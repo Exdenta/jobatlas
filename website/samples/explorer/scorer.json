@@ -1,0 +1,23 @@
+{
+  "exampleType": "illustrative-fit-preview",
+  "candidate": {
+    "primaryRole": "Data Engineer",
+    "skills": [
+      "Python",
+      "SQL",
+      "dbt"
+    ]
+  },
+  "role": "Data Engineer",
+  "company": "Example Analytics",
+  "fitScore": 82,
+  "deliveryScore": 4,
+  "evidence": [
+    "Python and SQL are present in both the fictional profile and role.",
+    "The fictional role asks for dbt experience."
+  ],
+  "gaps": [
+    "The profile does not establish years of experience."
+  ],
+  "note": "Fictional UI example, not a live evaluation or the canonical fit schema."
+}

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "nomad-agent-job-v1",
+  "identity": {
+    "source": "ycombinator_was",
+    "externalId": "demo-001",
+    "url": null
+  },
+  "data": {
+    "title": "Founding Engineer",
+    "company": {
+      "name": "Example Startup",
+      "sourceId": null,
+      "department": null,
+      "url": null,
+      "logoUrl": null
+    },
+    "classification": {
+      "industries": [
+        "Software Development"
+      ],
+      "jobFunctions": [
+        "Engineering"
+      ]
+    },
+    "domains": null,
+    "domainsRaw": null,
+    "locations": [
+      {
+        "raw": "Remote",
+        "countryName": null,
+        "countryCode": null,
+        "city": null,
+        "region": null,
+        "postalCode": null,
+        "streetAddress": null,
+        "facilityName": null,
+        "positionsAvailable": null,
+        "latitude": null,
+        "longitude": null
+      }
+    ],
+    "employment": {
+      "workArrangements": null,
+      "applicantLocationRequirements": null,
+      "workSchedules": [
+        "full_time"
+      ],
+      "contractTypes": [],
+      "durationMonths": null,
+      "hoursPerWeek": null,
+      "hoursPerWeekRaw": null,
+      "startDate": null,
+      "startDateRaw": null
+    },
+    "application": {
+      "postedAt": null,
+      "deadline": null,
+      "referenceNumber": null,
+      "referenceNumberIssuer": null,
+      "applicantSnapshot": null,
+      "url": null,
+      "email": null,
+      "directApply": null,
+      "applyMethodRaw": null,
+      "availability": null,
+      "hiringContacts": null,
+      "eligibilityCriteria": null,
+      "selectionProcess": null
+    },
+    "seniority": {
+      "raw": [
+        "Entry level"
+      ],
+      "levels": [
+        "entry"
+      ]
+    },
+    "requirements": {
+      "education": null,
+      "experience": null,
+      "languages": null,
+      "requiredSkills": null,
+      "preferredSkills": null,
+      "certifications": null,
+      "skillsQualifications": null,
+      "specificRequirements": null
+    },
+    "benefits": null,
+    "funding": {
+      "programme": null
+    },
+    "compensation": {
+      "currency": null,
+      "exact": null,
+      "minimum": null,
+      "maximum": null,
+      "period": null,
+      "raw": null
+    },
+    "constraints": {
+      "visaSponsorship": null,
+      "workAuthorization": null,
+      "securityClearance": null,
+      "locationPreference": null
+    }
+  },
+  "custom": null,
+  "llm": {
+    "status": "not_requested",
+    "requestedFields": [],
+    "filledFields": [],
+    "provider": null,
+    "model": null,
+    "promptVersion": null,
+    "completedAt": null
+  },
+  "raw": null
+}

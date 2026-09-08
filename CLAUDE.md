@@ -24,3 +24,7 @@ This repository publishes integration assets for normalized job-search Actors.
 - Maintained Actor callers select `latest`. Verify the immutable build ID and
   build number returned by each exact run; never require a historical numeric
   build selector. Preserve schema, source, count, retry, and cost validation.
+
+- For website visual or public-copy changes, follow the approved decisions in
+  [docs/website-style-guide.md](docs/website-style-guide.md). Preserve the original
+  visual system and keep naming updates separate from contract changes.

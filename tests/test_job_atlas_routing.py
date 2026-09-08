@@ -87,6 +87,8 @@ class JobAtlasRoutingTests(unittest.TestCase):
             'integrations/shared/run-summary-v4.schema.json',
             'integrations/shared/ycombinator-v2.schema.json',
             'website/samples/euraxess-job.json',
+            # Exact downloadable copy of the recorded source result.
+            'website/samples/explorer/euraxess.json',
         }
         text_suffixes = {
             '.csv', '.html', '.json', '.md', '.mjs', '.py', '.svg', '.toml',

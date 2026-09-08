@@ -1,0 +1,32 @@
+[
+  {
+    "name": "n8n",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/n8n.svg",
+    "bytes": 1573
+  },
+  {
+    "name": "make",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/make.svg",
+    "bytes": 598
+  },
+  {
+    "name": "modelcontextprotocol",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/modelcontextprotocol.svg",
+    "bytes": 939
+  },
+  {
+    "name": "airtable",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/airtable.svg",
+    "bytes": 652
+  },
+  {
+    "name": "python",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/python.svg",
+    "bytes": 1518
+  },
+  {
+    "name": "zapier",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/zapier.svg",
+    "bytes": 2832
+  }
+]

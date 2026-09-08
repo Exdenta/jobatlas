@@ -7,6 +7,11 @@ directory from the isolated `nomad-agent-job-scrapers` site in project
 
 ## Visual system
 
+Follow the [approved website style guide](../docs/website-style-guide.md) for
+visual and public-copy changes. It records the selected Original Plus homepage,
+section backgrounds, cream workflow cards and gentle lift interaction. Secondary
+page layouts remain the original design until reviewed.
+
 Job Atlas uses bottle green (`#0B4B38`), warm cream (`#F4E8CF`), and vermilion
 (`#E83A20`) with system typography, printed route tickets, and flat color. The
 shared `styles.css` and `detail.css` cover the homepage and reference pages;
@@ -43,13 +48,20 @@ proof state are in `SUCCESS_CRITERIA.md`.
 ## First-visit content
 
 The homepage explains the outcome before the platform terminology, shows a dated
-EURAXESS record from `samples/euraxess-job.json`, and connects six audience use
+EURAXESS record from `samples/euraxess-job.json`, and connects four audience use
 cases to a tool or workflow. The sample is a checked-in illustration, not a live
 vacancy feed; retain its observation date and source link. The four-tool catalog
 and product `#first-run` sections provide bounded starter inputs. Price examples
 are dated Actor-event estimates and separate optional services and Apify costs.
 
-`first-visit.css` extends the existing visual design. Keep meaningful content in
+`first-visit.css` extends the original visual design. `homepage.css` adds the
+approved section colors, cream workflow cards and gentle lift interaction.
+`homepage.js` powers two independent output explorers and the trial calculator.
+Collector downloads include canonical nested JSON and the existing flat CSV
+projection; the scorer preview is explicitly fictional. `homepage-samples.js`
+must contain the same records as `samples/explorer/*.json`.
+
+Keep the version query on the homepage assets current when those assets change. Keep meaningful content in
 reading order on mobile, and retain the lower-page technical contracts and
 source limitations when editing the introductory copy.
 
