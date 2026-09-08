@@ -2,6 +2,11 @@
 
 [Job Atlas on Apify](https://apify.com/job-atlas) is the current customer-facing home for these four Actors. The website uses [jobatlas.dev](https://jobatlas.dev/), and the interoperability repository is [Exdenta/jobatlas](https://github.com/Exdenta/jobatlas).
 
+The [versioned catalogue](../catalogue/actors-v1.json) distinguishes logical
+products from deployed copies and reconciles the wider live legacy fleet. Use
+the [client migration guide](client-migration.md) before changing a Task,
+workflow, webhook, schedule, credential, subscription, or destination.
+
 | Actor | Store | Website guide |
 | --- | --- | --- |
 | LinkedIn | [Run Actor](https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper) | [LinkedIn guide](https://jobatlas.dev/actors/linkedin) |
@@ -11,9 +16,9 @@
 
 ## Client migration
 
-New Store links, Actor identifiers, REST endpoints, MCP examples, skills, and workflow starters target Job Atlas. Start runs through `latest`, then retain and verify the returned immutable build ID and build number. Existing saved Tasks and imported workflows do not migrate themselves: create a Task for the corresponding Job Atlas Actor and replace its Task ID in your integration. Keep credentials in your integration platform.
+New Store links, Actor identifiers, REST endpoints, MCP examples, skills, and workflow starters target Job Atlas. Start runs through `latest`, then retain and verify the returned immutable build ID and build number. Existing saved Tasks and imported workflows do not migrate themselves. Recreate or rebind them only after reading back their current Actor, selector, caps, inputs, credentials, schedules, and destinations. Keep credentials in the integration platform.
 
-The organization change does not rename `nomad-agent-job-v1`, `nomad-agent-flat-job-v1`, or scorer schemas. Those remain data contracts. It does not change source sites, optional feature costs, or the meaning of unknown fields.
+Changing a caller's deployment does not rename `nomad-agent-job-v1`, `nomad-agent-flat-job-v1`, or scorer schemas. Those remain data contracts. It does not change source sites, optional feature costs, or the meaning of unknown fields.
 
 ## Evidence boundaries
 

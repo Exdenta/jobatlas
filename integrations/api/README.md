@@ -1,6 +1,6 @@
 # REST API and webhook integration
 
-Current starters target Job Atlas. [Migration steps and evidence limits](https://github.com/Exdenta/jobatlas/blob/main/docs/job-atlas.md): recreate saved Tasks for Job Atlas; historical destination proofs remain tied to their original organization.
+Current starters target Job Atlas. Follow the [client migration matrix](https://github.com/Exdenta/jobatlas/blob/main/docs/client-migration.md): read back each dependency before choosing an in-place transfer, a parallel Task, or an unchanged compatibility route. Historical destination proofs remain tied to their original deployment and destination.
 
 The Apify REST API transports the complete Actor input without an
 integration-specific subset. Select `latest` in the run query:

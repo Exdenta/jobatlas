@@ -1,6 +1,6 @@
 # MCP: normalized LinkedIn and EURAXESS jobs
 
-Current starters target Job Atlas. [Migration steps and evidence limits](https://github.com/Exdenta/jobatlas/blob/main/docs/job-atlas.md): recreate saved Tasks for Job Atlas; historical destination proofs remain tied to their original organization.
+Current starters target Job Atlas. Follow the [client migration matrix](https://github.com/Exdenta/jobatlas/blob/main/docs/client-migration.md); historical destination proofs remain tied to their original deployment and destination.
 
 
 All maintained starters select `latest` and retain each run’s immutable `buildId` and numeric `buildNumber`. Validate the run, summary and dataset before delivery; the selector itself is not immutable evidence.
@@ -12,7 +12,7 @@ cap:
 https://mcp.apify.com?tools=fetch-actor-details,call-actor,get-actor-run,get-dataset-items,get-key-value-store-record
 ```
 
-| Profile | Actor | Exact build |
+| Profile | Actor | Build selector |
 | --- | --- | --- |
 | LinkedIn | `job-atlas/linkedin-enrich-translate-normalize-scraper` | `latest` |
 | EURAXESS | `job-atlas/euraxess-enrich-translate-normalize-scraper` | `latest` |

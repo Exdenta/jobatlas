@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/catalogue/actors-v1.schema.json",
+  "title": "Job Atlas Actor catalogue v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "scope",
+    "contractProfiles",
+    "logicalProducts",
+    "deployments",
+    "excludedCandidates",
+    "clientMatrix",
+    "externalStateMatrix"
+  ],
+  "properties": {
+    "$schema": {"const": "actors-v1.schema.json"},
+    "schemaVersion": {"const": "job-atlas-actor-catalogue-v1"},
+    "scope": {"$ref": "#/$defs/scope"},
+    "contractProfiles": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/contractProfile"}
+    },
+    "logicalProducts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/logicalProduct"}
+    },
+    "deployments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/deployment"}
+    },
+    "excludedCandidates": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/excludedCandidate"}
+    },
+    "clientMatrix": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/clientRow"}
+    },
+    "externalStateMatrix": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/externalStateRow"}
+    }
+  },
+  "$defs": {
+    "identifier": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {"pattern": "(^/|(^|/)\\.\\.(/|$))"}
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observedAt", "sourceRevision", "sourceRepository", "inventoryCounts", "inclusionRule", "evidenceBoundary"],
+      "properties": {
+        "observedAt": {"type": "string", "format": "date-time"},
+        "sourceRevision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "sourceRepository": {"type": "string", "format": "uri"},
+        "inventoryCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ownedActors", "ownedInScopePublic", "ownedPrivateSupportExcluded", "ownedUnrelatedPublicExcluded", "promotedJobAtlasDeployments", "inScopeDeployments"],
+          "properties": {
+            "ownedActors": {"type": "integer", "minimum": 0},
+            "ownedInScopePublic": {"type": "integer", "minimum": 0},
+            "ownedPrivateSupportExcluded": {"type": "integer", "minimum": 0},
+            "ownedUnrelatedPublicExcluded": {"type": "integer", "minimum": 0},
+            "promotedJobAtlasDeployments": {"type": "integer", "minimum": 0},
+            "inScopeDeployments": {"type": "integer", "minimum": 0}
+          }
+        },
+        "inclusionRule": {"type": "string", "minLength": 1},
+        "evidenceBoundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "contractProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "canonicalRoots", "schemaPaths", "currentRunSummary", "legacyRunSummaries", "postingKey", "destinationKey", "emptyValueSemantics"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "name": {"type": "string", "minLength": 1},
+        "canonicalRoots": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+        "schemaPaths": {"type": "array", "items": {"$ref": "#/$defs/relativePath"}, "minItems": 1, "uniqueItems": true},
+        "currentRunSummary": {"type": "string", "minLength": 1},
+        "legacyRunSummaries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "postingKey": {
+          "oneOf": [
+            {"type": "string", "minLength": 1},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["primary", "fallback"],
+              "properties": {"primary": {"type": "string"}, "fallback": {"type": "string"}}
+            }
+          ]
+        },
+        "destinationKey": {"type": "string", "minLength": 1},
+        "emptyValueSemantics": {"type": "string", "minLength": 1}
+      }
+    },
+    "implementationSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "location", "evidence"],
+      "properties": {
+        "state": {"enum": ["in-repository", "not-in-repository", "unresolved"]},
+        "location": {"type": ["string", "null"]},
+        "evidence": {"type": "string", "minLength": 1}
+      }
+    },
+    "logicalProduct": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind", "lifecycle", "promotion", "implementationSource", "contractProfileId", "maintainedExamples"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "name": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["source-scraper", "bundle", "search-agent", "fit-scorer"]},
+        "lifecycle": {"enum": ["promoted", "legacy-live"]},
+        "promotion": {"enum": ["job-atlas", "not-planned"]},
+        "implementationSource": {"$ref": "#/$defs/implementationSource"},
+        "contractProfileId": {"type": ["string", "null"]},
+        "maintainedExamples": {"type": "array", "items": {"$ref": "#/$defs/relativePath"}, "uniqueItems": true}
+      }
+    },
+    "latestObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observedAt", "buildId", "buildNumber", "sourceType", "evidence"],
+      "properties": {
+        "observedAt": {"type": "string", "format": "date-time"},
+        "buildId": {"type": "string", "pattern": "^[A-Za-z0-9]{17}$"},
+        "buildNumber": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "sourceType": {"enum": ["SOURCE_FILES", "TARBALL", "GIT_REPO", "unresolved"]},
+        "evidence": {"type": "string", "minLength": 1}
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "logicalProductId", "owner", "slug", "actorId", "endpointState", "releaseSelector", "relationship", "relationshipTargetId", "latestObservation"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+--[a-z0-9-]+$"},
+        "logicalProductId": {"$ref": "#/$defs/identifier"},
+        "owner": {"enum": ["nomad-agent", "job-atlas"]},
+        "slug": {"$ref": "#/$defs/identifier"},
+        "actorId": {"type": "string", "pattern": "^[A-Za-z0-9]{17}$"},
+        "endpointState": {"const": "live-metadata-verified"},
+        "releaseSelector": {"const": "latest"},
+        "relationship": {"enum": ["legacy-primary", "promoted-copy"]},
+        "relationshipTargetId": {"type": ["string", "null"]},
+        "latestObservation": {"$ref": "#/$defs/latestObservation"}
+      }
+    },
+    "excludedCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "slug", "actorId", "category", "reason"],
+      "properties": {
+        "owner": {"const": "nomad-agent"},
+        "slug": {"$ref": "#/$defs/identifier"},
+        "actorId": {"type": "string", "pattern": "^[A-Za-z0-9]{17}$"},
+        "category": {"const": "unrelated-public"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "clientRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["logicalProductId", "clientClass", "support", "deploymentId", "routeMode", "releaseSelector", "assets", "externalStateClasses", "gap"],
+      "properties": {
+        "logicalProductId": {"$ref": "#/$defs/identifier"},
+        "clientClass": {"enum": ["api-sdk", "mcp", "n8n", "make", "zapier", "airtable", "agent-skill", "python"]},
+        "support": {"enum": ["maintained", "documented-only", "destination-only", "not-claimed"]},
+        "deploymentId": {"type": "string"},
+        "routeMode": {"enum": ["direct", "task-owned", "destination-only", "post-run", "not-applicable"]},
+        "releaseSelector": {"enum": ["latest", "task-latest", null]},
+        "assets": {"type": "array", "items": {"$ref": "#/$defs/relativePath"}, "uniqueItems": true},
+        "externalStateClasses": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "gap": {"type": ["string", "null"]}
+      }
+    },
+    "externalStateRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class", "evidenceState", "action", "verification", "rollback", "gaps"],
+      "properties": {
+        "class": {"enum": ["saved-tasks", "webhooks", "imports", "schedules", "billing-subscriptions", "credentials", "named-destinations"]},
+        "evidenceState": {"type": "string", "minLength": 1},
+        "action": {"type": "string", "minLength": 1},
+        "verification": {"type": "string", "minLength": 1},
+        "rollback": {"type": "string", "minLength": 1},
+        "gaps": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}
