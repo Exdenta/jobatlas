@@ -128,7 +128,11 @@ class FitSkillTests(unittest.TestCase):
                 if '0.1.22' in paragraph:
                     self.assertNotIn('2026-09-03',paragraph)
                     self.assertNotIn('September 3, 2026',paragraph)
-            self.assertIn('AkjZ6lVDultxapjdP',text)
+            if name == 'website/index.html':
+                # The approved homepage links to the product's dated evidence.
+                self.assertIn('href="/actors/ai-job-fit-scorer"', text)
+            else:
+                self.assertIn('AkjZ6lVDultxapjdP',text)
         active_docs = ['README.md', 'docs/integration-compatibility.md', 'docs/implementation-plan.md',
                        'integrations/api/README.md', 'integrations/mcp/README.md',
                        'integrations/n8n/README.md', 'integrations/n8n/template-listing.md',
