@@ -164,8 +164,8 @@ Actor run, and upsert duplicate-safe Google Sheets rows by stable job identity.
 ### Full description
 
 Build a repeatable tracker for PhD, postdoc, fellowship, research, and faculty
-vacancies from EURAXESS. The workflow runs manually or daily, calls the Nomad
-Agent EURAXESS Actor at build selector `latest`, polls the original run ID, and
+vacancies from EURAXESS. The workflow runs manually or daily, calls the Job
+Atlas EURAXESS Actor at build selector `latest`, polls the original run ID, and
 requires terminal success, exit code 0, the expected build, and a valid factual
 `nomad-agent-run-summary-v4` record.
 

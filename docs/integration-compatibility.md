@@ -1,10 +1,10 @@
 # Integration compatibility matrix
 
-Current starters target Job Atlas. [Migration steps and evidence limits](https://github.com/Exdenta/jobatlas/blob/main/docs/job-atlas.md): recreate saved Tasks for Job Atlas; historical destination proofs remain tied to their original organization.
+Current starters target Job Atlas. Follow the [client migration matrix](client-migration.md); historical destination proofs remain tied to their original deployment and destination.
 
-Supported release builds:
+Supported release selectors:
 
-| Actor | Exact build | Current input fields |
+| Actor | Build selector | Current input fields |
 | --- | --- | --- |
 | LinkedIn | `latest` | `firstRunMode`, `schemaVersion`, `keyword`, `location`, `linkedinSearch`, `strictGeography`, `workArrangements`, `postedWithin`, `filters`, `companyProfileEnrichment`, `companyFilters`, `maxItems`, `translateToEnglish`, `aiEnrichment`, `includeRaw`, `dedupe`, `analyticsEnabled` |
 | EURAXESS | `latest` | `schemaVersion`, `keyword`, `location`, `euraxessSearch`, `workArrangements`, `postedWithin`, `filters`, `maxItems`, `translateToEnglish`, `aiEnrichment`, `includeRaw`, `dedupe`, `analyticsEnabled` |
@@ -33,7 +33,7 @@ scraper profile and must not be sent through the flat-job mapper.
 
 ## AI Job Search & Fit Scorer parity
 
-| Integration | Exact build | Input support | Output handling | Live channel boundary |
+| Integration | Build selector | Input support | Output handling | Live channel boundary |
 | --- | --- | --- | --- | --- |
 | n8n | `latest` | Bounded shortlist starter; edit the complete strict Actor input in Configuration | Validates v3/v4, result-policy billing, and fit rows; projects 21 columns and upserts by `matchKey` | Artifact and Actor run tested; import and named Sheet write not tested |
 | Make | Task uses `latest` | The Apify Task owns the complete Actor input and charge cap | Native filters separate legacy v3, v4 shortlist, and v4 audit; projects and upserts by `matchKey` | Artifact and Actor run tested; import and named Sheet write not tested |
@@ -70,7 +70,7 @@ does not activate a schedule.
 
 ## Y Combinator normalized profile
 
-| Surface | Exact build | Verification boundary |
+| Surface | Build selector | Verification boundary |
 | --- | --- | --- |
 | Actor, REST recipe, Agent Skill | `latest` | Historical build `1.0.6` (`6aqB3jicww58310qm`) has Actor execution and public-schema validation; hosted MCP and named destinations remain untested |
 

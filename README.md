@@ -1,6 +1,6 @@
 # jobatlas
 
-[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/job-atlas) · [Release evidence](docs/job-atlas.md)
+[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/job-atlas) · [Actor catalogue](catalogue/actors-v1.json) · [Release evidence](docs/job-atlas.md)
 
 Open schemas, integration recipes, and agent skills for Job Atlas job-search
 Actors. The Actor implementations may be hosted services; this repository
@@ -37,7 +37,13 @@ drop/hold/failure audit when requested, without requiring a customer model key.
 > authorization to crawl or republish personal data; review source terms,
 > licensing, privacy obligations, and applicable law before use.
 
-## Actor catalog
+## Promoted Actor catalog
+
+The [complete public deployment catalogue, with aggregate private exclusions](catalogue/actors-v1.json)
+accounts for the current Job Atlas copies, their live legacy counterparts,
+explicit out-of-scope candidates, contracts, and client support. See the
+[client migration guide](docs/client-migration.md) before changing an existing
+Task, workflow, webhook, schedule, or destination.
 
 | Actor | Best for | Key advantages | Availability and verification boundary |
 | --- | --- | --- | --- |
@@ -195,6 +201,7 @@ See [Agent skill setup](docs/agent-skills.md).
 ```text
 .agents/skills/   Codex-compatible Agent Skills
 benchmarks/       Public quality contracts, scorers, fixtures, and results
+catalogue/        Versioned logical-product, deployment, and client inventory
 docs/             MCP, contracts, and integration guidance
 integrations/     Importable integration assets and shared projections
 scripts/          Repository setup utilities
@@ -212,12 +219,12 @@ tests/            Offline contract and mapper tests
 
 ## Project status
 
-LinkedIn `0.6` and EURAXESS `1.0` are public Store Actors. AI Job Search & Fit
-Scorer `0.1` is also public. Select `latest` in every maintained integration
-and verify destination behavior independently before enabling a recurring
-workflow. The scorer's Actor canaries are live-verified; its hosted/no-code
-channel and named-destination proof remain explicitly unverified in the
-evidence manifest.
+LinkedIn `0.6` and EURAXESS `1.0` are public Store Actors. Y Combinator `1.0`
+and AI Job Search & Fit Scorer `0.1` are also public Job Atlas Store Actors.
+Select `latest` in every maintained integration, retain the returned immutable
+build identity, and verify destination behavior independently before enabling
+a recurring workflow. Existing Actor-run evidence does not prove hosted/no-code
+channel behavior or named-destination delivery.
 
 ## License
 

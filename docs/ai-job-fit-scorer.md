@@ -189,20 +189,21 @@ Prove create and update behavior before enabling the schedule.
 - Scores are decision support. Verify the source posting and keep a human
   responsible for application and hiring decisions.
 
-## Current live proof
+## Historical predecessor proof
 
-The public documentation and form release is `0.1.24`
+The predecessor `nomad-agent` documentation and form release was `0.1.24`
 (`xQR0NAjBhmJdxG0XK`). Its runtime source files are unchanged from `0.1.22`.
-After promotion, both `latest` and the default selector resolved to this build.
+At the time of that release, both `latest` and the default selector resolved to this build.
 Default run `2LeF5m1YjsWw2rMWD` then succeeded on 2026-09-05 with exit code 0,
 three scored rows, no AI failures, and three result charges totaling $0.06.
 Its dataset, v4 summary, and exact run receipt reconcile. The run used the
 built-in fictional candidate. The preceding inline canary
 `Z0i7In8Kibqh4Qoe8` returned one scored row for a $0.02 result charge.
-This proves the Actor path; authenticated integration and destination writes
-remain separately untested.
+This proves that predecessor Actor path at the recorded time; it is not
+execution proof for the current Job Atlas copy. Authenticated integration and
+destination writes remain separately untested.
 
-### Maintained integration and example proof
+### Historical integration and example proof
 
 Build `0.1.22` (`XQhyxEg3YZ3NMel70`) was read back as both `latest` and
 its default selector on 2026-09-05. Existing run `AkjZ6lVDultxapjdP`, started

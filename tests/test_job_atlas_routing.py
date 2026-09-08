@@ -5,8 +5,14 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SLUGS = ('linkedin-enrich-translate-normalize-scraper', 'euraxess-enrich-translate-normalize-scraper',
-         'ycombinator-enrich-translate-normalize-scraper', 'ai-job-fit-scorer')
+CATALOGUE = json.loads((ROOT / 'catalogue/actors-v1.json').read_text(encoding='utf-8'))
+SLUGS = tuple(sorted(
+    deployment['slug']
+    for deployment in CATALOGUE['deployments']
+    if deployment['owner'] == 'job-atlas'
+    and deployment['relationship'] == 'promoted-copy'
+    and deployment['endpointState'] == 'live-metadata-verified'
+))
 TARGET_REPOSITORY = 'https://github.com/Exdenta/jobatlas'
 LEGACY_REPOSITORY = 'https://github.com/Exdenta/nomad-agent-job-scrapers'
 LEGACY_RAW_REPOSITORY = (
@@ -39,6 +45,21 @@ class JobAtlasRoutingTests(unittest.TestCase):
                 for slug in SLUGS:
                     self.assertNotRegex(text, r'nomad-agent(?:/|~|%2[Ff])' + re.escape(slug), path)
         self.assertIn('nomad-agent-job-v1', (ROOT / 'README.md').read_text())
+
+    def test_promoted_routes_are_derived_from_the_checked_catalogue(self):
+        self.assertEqual(len(SLUGS), 4)
+        self.assertEqual(
+            set(SLUGS),
+            {
+                'linkedin-enrich-translate-normalize-scraper',
+                'euraxess-enrich-translate-normalize-scraper',
+                'ycombinator-enrich-translate-normalize-scraper',
+                'ai-job-fit-scorer',
+            },
+        )
+        readme = (ROOT / 'README.md').read_text(encoding='utf-8')
+        self.assertIn('catalogue/actors-v1.json', readme)
+        self.assertIn('docs/client-migration.md', readme)
 
     def test_current_brand_assets_are_present(self):
         assets = ROOT / 'website/assets'
