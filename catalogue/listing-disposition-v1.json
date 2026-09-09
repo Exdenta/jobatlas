@@ -1,0 +1,1112 @@
+{
+  "schemaVersion": "job-atlas-listing-disposition-v1",
+  "scope": {
+    "observedAt": "2026-09-09T01:19:34+02:00",
+    "sourceRevision": "348f2f32f9c23f52afecaefcfd9f0db43c5cb4fb",
+    "sourceCatalogue": "catalogue/actors-v1.json",
+    "baselineLogicalProducts": 43,
+    "baselineDeployments": 47,
+    "accountedLogicalProducts": 44,
+    "accountedDeployments": 48,
+    "ownedActorsAccounted": 65,
+    "privateSupportExcluded": 3,
+    "unrelatedPublicExcluded": 18,
+    "knownPostBaselineDelta": [
+      {
+        "kind": "logical-product",
+        "id": "foorilla-ai-jobs-scraper"
+      },
+      {
+        "kind": "deployment",
+        "id": "nomad-agent--foorilla-ai-jobs-scraper"
+      }
+    ],
+    "evidenceBoundary": "Four existing job-atlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
+  },
+  "logicalProducts": [
+    {
+      "logicalProductId": "wellfound-scraper",
+      "name": "Wellfound startup jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "devex-scraper",
+      "name": "Devex international-development jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "name": "LinkedIn Jobs Scraper | AI Enrichment",
+      "catalogueState": "catalogued",
+      "promotion": "job-atlas",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "supportClaim": "catalogue-client-matrix",
+      "listingDraft": "docs/apify-store/actors/linkedin-enrich-translate-normalize-scraper.md"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "name": "AI Job Search & Fit Scorer",
+      "catalogueState": "catalogued",
+      "promotion": "job-atlas",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "supportClaim": "catalogue-client-matrix",
+      "listingDraft": "docs/apify-store/actors/ai-job-fit-scorer.md"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "name": "Y Combinator normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "job-atlas",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "supportClaim": "catalogue-client-matrix",
+      "listingDraft": "docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "name": "EURAXESS Jobs Scraper | Full Details & AI Enrichment",
+      "catalogueState": "catalogued",
+      "promotion": "job-atlas",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "supportClaim": "catalogue-client-matrix",
+      "listingDraft": "docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md"
+    },
+    {
+      "logicalProductId": "linkedin-full-info-scraper",
+      "name": "LinkedIn full-information jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ai-job-search-agent",
+      "name": "AI job search agent",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "all-jobs-scraper",
+      "name": "All jobs scraper",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "europe-jobs-bundle",
+      "name": "Europe jobs bundle",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "company-careers-bundle",
+      "name": "Company careers bundle",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "workable-jobs-scraper",
+      "name": "Workable jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ashby-jobs-scraper",
+      "name": "Ashby jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "lever-jobs-scraper",
+      "name": "Lever jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "greenhouse-jobs-scraper",
+      "name": "Greenhouse jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "academicpositions-scraper",
+      "name": "AcademicPositions jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "researcher-bundle",
+      "name": "Researcher jobs bundle",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "web-dev-bundle",
+      "name": "Web developer jobs bundle",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "wttj-scraper",
+      "name": "Welcome to the Jungle jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "web-search-scraper",
+      "name": "Open-web job search",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ub-doctoral-scraper",
+      "name": "Universitat de Barcelona doctoral jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "tecnoempleo-scraper",
+      "name": "Tecnoempleo jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "remote-boards-scraper",
+      "name": "Remote job boards",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "nofluffjobs-scraper",
+      "name": "NoFluffJobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "math-ku-phd-scraper",
+      "name": "University of Copenhagen mathematics PhD jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "justjoinit-scraper",
+      "name": "JustJoin.it jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "jobs-ac-uk-scraper",
+      "name": "jobs.ac.uk jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "infojobs-scraper",
+      "name": "InfoJobs Spain jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "impactpool-scraper",
+      "name": "Impactpool jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ikerbasque-scraper",
+      "name": "Ikerbasque jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "hackernews-scraper",
+      "name": "Hacker News jobs and search",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "eures-scraper",
+      "name": "EURES jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "builtin-scraper",
+      "name": "Built In jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ai-jobs-net-scraper",
+      "name": "aijobs.net jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "un-careers-scraper",
+      "name": "UN Careers jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "reliefweb-scraper",
+      "name": "ReliefWeb jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ycombinator-was-scraper",
+      "name": "Y Combinator Work at a Startup legacy jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "ml-ai-dev-bundle",
+      "name": "AI and machine-learning developer jobs bundle",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "american-jobs-bundle",
+      "name": "American jobs bundle",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "linkedin-scraper",
+      "name": "LinkedIn short-output jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "unjobs-scraper",
+      "name": "unjobs.org jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "devex-jobs-scraper",
+      "name": "Devex jobs legacy variant",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "euraxess-scraper",
+      "name": "EURAXESS legacy jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "foorilla-ai-jobs-scraper",
+      "name": "Foorilla Data, AI, and Machine Learning jobs",
+      "catalogueState": "known-concurrent",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    }
+  ],
+  "deployments": [
+    {
+      "deploymentId": "nomad-agent--wellfound-scraper",
+      "logicalProductId": "wellfound-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--devex-scraper",
+      "logicalProductId": "devex-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--linkedin-enrich-translate-normalize-scraper",
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ai-job-fit-scorer",
+      "logicalProductId": "ai-job-fit-scorer",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ycombinator-enrich-translate-normalize-scraper",
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--euraxess-enrich-translate-normalize-scraper",
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--linkedin-full-info-scraper",
+      "logicalProductId": "linkedin-full-info-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ai-job-search-agent",
+      "logicalProductId": "ai-job-search-agent",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--all-jobs-scraper",
+      "logicalProductId": "all-jobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--europe-jobs-bundle",
+      "logicalProductId": "europe-jobs-bundle",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--company-careers-bundle",
+      "logicalProductId": "company-careers-bundle",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--workable-jobs-scraper",
+      "logicalProductId": "workable-jobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ashby-jobs-scraper",
+      "logicalProductId": "ashby-jobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--lever-jobs-scraper",
+      "logicalProductId": "lever-jobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--greenhouse-jobs-scraper",
+      "logicalProductId": "greenhouse-jobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--academicpositions-scraper",
+      "logicalProductId": "academicpositions-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--researcher-bundle",
+      "logicalProductId": "researcher-bundle",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--web-dev-bundle",
+      "logicalProductId": "web-dev-bundle",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--wttj-scraper",
+      "logicalProductId": "wttj-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--web-search-scraper",
+      "logicalProductId": "web-search-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ub-doctoral-scraper",
+      "logicalProductId": "ub-doctoral-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--tecnoempleo-scraper",
+      "logicalProductId": "tecnoempleo-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--remote-boards-scraper",
+      "logicalProductId": "remote-boards-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--nofluffjobs-scraper",
+      "logicalProductId": "nofluffjobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--math-ku-phd-scraper",
+      "logicalProductId": "math-ku-phd-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--justjoinit-scraper",
+      "logicalProductId": "justjoinit-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--jobs-ac-uk-scraper",
+      "logicalProductId": "jobs-ac-uk-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--infojobs-scraper",
+      "logicalProductId": "infojobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--impactpool-scraper",
+      "logicalProductId": "impactpool-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ikerbasque-scraper",
+      "logicalProductId": "ikerbasque-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--hackernews-scraper",
+      "logicalProductId": "hackernews-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--eures-scraper",
+      "logicalProductId": "eures-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--builtin-scraper",
+      "logicalProductId": "builtin-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ai-jobs-net-scraper",
+      "logicalProductId": "ai-jobs-net-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--un-careers-scraper",
+      "logicalProductId": "un-careers-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--reliefweb-scraper",
+      "logicalProductId": "reliefweb-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ycombinator-was-scraper",
+      "logicalProductId": "ycombinator-was-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--ml-ai-dev-bundle",
+      "logicalProductId": "ml-ai-dev-bundle",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--american-jobs-bundle",
+      "logicalProductId": "american-jobs-bundle",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--linkedin-scraper",
+      "logicalProductId": "linkedin-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--unjobs-scraper",
+      "logicalProductId": "unjobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--devex-jobs-scraper",
+      "logicalProductId": "devex-jobs-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--euraxess-scraper",
+      "logicalProductId": "euraxess-scraper",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "job-atlas--linkedin-enrich-translate-normalize-scraper",
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "catalogueState": "catalogued",
+      "owner": "job-atlas",
+      "relationship": "promoted-copy",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "listingDraft": "docs/apify-store/actors/linkedin-enrich-translate-normalize-scraper.md"
+    },
+    {
+      "deploymentId": "job-atlas--euraxess-enrich-translate-normalize-scraper",
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "catalogueState": "catalogued",
+      "owner": "job-atlas",
+      "relationship": "promoted-copy",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "listingDraft": "docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md"
+    },
+    {
+      "deploymentId": "job-atlas--ycombinator-enrich-translate-normalize-scraper",
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "catalogueState": "catalogued",
+      "owner": "job-atlas",
+      "relationship": "promoted-copy",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "listingDraft": "docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md"
+    },
+    {
+      "deploymentId": "job-atlas--ai-job-fit-scorer",
+      "logicalProductId": "ai-job-fit-scorer",
+      "catalogueState": "catalogued",
+      "owner": "job-atlas",
+      "relationship": "promoted-copy",
+      "action": "draft-listing-copy",
+      "migrationProposed": false,
+      "listingDraft": "docs/apify-store/actors/ai-job-fit-scorer.md"
+    },
+    {
+      "deploymentId": "nomad-agent--foorilla-ai-jobs-scraper",
+      "logicalProductId": "foorilla-ai-jobs-scraper",
+      "catalogueState": "known-concurrent",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    }
+  ],
+  "clientSupport": [
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "api-sdk",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "mcp",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "n8n",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "make",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "airtable",
+      "support": "destination-only"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "agent-skill",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "clientClass": "python",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "api-sdk",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "mcp",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "n8n",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "make",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "airtable",
+      "support": "destination-only"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "agent-skill",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "clientClass": "python",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "api-sdk",
+      "support": "documented-only"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "mcp",
+      "support": "documented-only"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "agent-skill",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "api-sdk",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "mcp",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "n8n",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "make",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "zapier",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "agent-skill",
+      "support": "maintained"
+    },
+    {
+      "logicalProductId": "ai-job-fit-scorer",
+      "clientClass": "python",
+      "support": "maintained"
+    }
+  ]
+}

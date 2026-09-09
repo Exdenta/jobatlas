@@ -74,6 +74,19 @@ class JobAtlasRoutingTests(unittest.TestCase):
             'benchmarks/enrichment-quality-v1/prediction.schema.json',
             'integrations/shared/flat-job-v1.schema.json',
         }
+        # Approval-gated migration drafts quote the exact current value so an
+        # operator can replace and, if needed, restore it without guessing.
+        migration_draft_paths = {
+            'docs/apify-store/publisher-profile.md',
+            'docs/apify-store/actors/ai-job-fit-scorer.md',
+            'docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md',
+            'docs/apify-store/actors/linkedin-enrich-translate-normalize-scraper.md',
+            'docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md',
+        }
+        raw_migration_draft_paths = {
+            'docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md',
+            'docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md',
+        }
         legacy_raw_identifier_paths = {
             '.agents/skills/euraxess-enrich-translate-normalize-scraper/'
             'references/output-contract.md',
@@ -114,8 +127,11 @@ class JobAtlasRoutingTests(unittest.TestCase):
             if LEGACY_RAW_REPOSITORY in text:
                 old_raw_paths.add(relative)
 
-        self.assertEqual(old_web_paths, legacy_web_identifier_paths)
-        self.assertEqual(old_raw_paths, legacy_raw_identifier_paths)
+        self.assertEqual(old_web_paths, legacy_web_identifier_paths | migration_draft_paths)
+        self.assertEqual(
+            old_raw_paths,
+            legacy_raw_identifier_paths | raw_migration_draft_paths,
+        )
 
         for relative in (
             'README.md',

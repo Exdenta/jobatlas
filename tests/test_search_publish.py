@@ -490,6 +490,48 @@ class SearchPublishTests(unittest.TestCase):
             google_submit.assert_not_called()
             indexnow_submit.assert_not_called()
 
+    def test_verify_live_deployment_never_submits(self) -> None:
+        site_url = "https://jobatlas.dev/"
+        html = b'<link rel="canonical" href="https://jobatlas.dev/">'
+        with TemporaryDirectory() as directory:
+            site_dir = Path(directory)
+            (site_dir / "index.html").write_bytes(html)
+            sitemap = search_publish.render_sitemap([site_url])
+            (site_dir / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+
+            def fake_fetch_text(url: str) -> str:
+                if url.endswith("sitemap.xml"):
+                    return sitemap
+                if url.endswith("indexnow-key.txt"):
+                    return "abcDEF12-345\n"
+                raise AssertionError(url)
+
+            with patch.object(
+                search_publish, "fetch_text", side_effect=fake_fetch_text
+            ), patch.object(
+                search_publish, "verify_live_html"
+            ) as verify_html, patch.object(
+                search_publish, "verify_live_contracts"
+            ) as verify_contracts, patch.object(
+                search_publish, "submit_google_sitemap"
+            ) as google_submit, patch.object(
+                search_publish, "submit_indexnow"
+            ) as indexnow_submit, patch.object(
+                search_publish, "google_access_token"
+            ) as google_token:
+                urls = search_publish.verify_live_deployment(
+                    site_dir, site_url, "abcDEF12-345"
+                )
+
+            self.assertEqual(urls, [site_url])
+            verify_html.assert_called_once_with(
+                site_url, site_dir / "index.html", site_url
+            )
+            verify_contracts.assert_called_once_with(site_dir, site_url)
+            google_token.assert_not_called()
+            google_submit.assert_not_called()
+            indexnow_submit.assert_not_called()
+
     def test_repository_public_contracts_match_shared_sources_exactly(self) -> None:
         root = Path(__file__).resolve().parents[1]
         for filename in search_publish.PUBLIC_CONTRACT_FILENAMES:
@@ -531,7 +573,7 @@ class SearchPublishTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertNotIn("https://jobatlas.dev/404", actual)
 
-    def test_deployment_notifies_only_after_tests_preflight_and_firebase(self) -> None:
+    def test_deployment_verifies_live_and_requires_discovery_opt_in(self) -> None:
         root = Path(__file__).resolve().parents[1]
         workflow = (root / ".github/workflows/deploy-website.yml").read_text(
             encoding="utf-8"
@@ -546,13 +588,45 @@ class SearchPublishTests(unittest.TestCase):
         deploy_at = workflow.index(
             "firebase deploy --only hosting --project hryu-jobs --non-interactive"
         )
+        verify_at = workflow.index("python3 scripts/search_publish.py verify-live")
         notify_at = workflow.index("python3 scripts/search_publish.py notify")
         self.assertLess(prepare_at, generated_gate_at)
         self.assertLess(generated_gate_at, tests_at)
         self.assertLess(tests_at, auth_at)
         self.assertLess(tests_at, preflight_at)
         self.assertLess(preflight_at, deploy_at)
-        self.assertLess(deploy_at, notify_at)
+        self.assertLess(deploy_at, verify_at)
+        self.assertLess(verify_at, notify_at)
+        self.assertIn("submit_discovery:", workflow)
+        self.assertIn("default: false", workflow)
+        self.assertIn("if: github.ref == 'refs/heads/main'", workflow)
+        self.assertIn(
+            "github.event_name == 'workflow_dispatch' && inputs.submit_discovery",
+            workflow,
+        )
+        discovery_gate = (
+            "github.event_name == 'workflow_dispatch' && inputs.submit_discovery"
+        )
+        preflight_step = workflow[
+            workflow.index("- name: Verify Search Console property access"):preflight_at
+        ]
+        notify_step = workflow[
+            workflow.index("- name: Notify Google and Bing"):notify_at
+        ]
+        deploy_step = workflow[
+            workflow.index("- name: Deploy isolated Firebase Hosting site"):deploy_at
+        ]
+        verify_step = workflow[
+            workflow.index("- name: Verify live pages without search submission"):verify_at
+        ]
+        self.assertIn(discovery_gate, preflight_step)
+        self.assertIn(discovery_gate, notify_step)
+        self.assertNotIn(discovery_gate, deploy_step)
+        self.assertNotIn(discovery_gate, verify_step)
+        self.assertIn(
+            "Search notification: skipped; explicit manual opt-in is required",
+            workflow,
+        )
         self.assertIn("actions/checkout@v6", workflow)
         self.assertIn("actions/setup-python@v6", workflow)
         self.assertIn("id-token: write", workflow)
