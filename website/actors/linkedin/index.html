@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/detail.css?v=first-visit-20260906" />
     <link rel="stylesheet" href="/first-visit.css?v=first-visit-20260906" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://jobatlas.dev/actors/linkedin#webpage","url":"https://jobatlas.dev/actors/linkedin","name":"LinkedIn Jobs Scraper API","description":"Public LinkedIn jobs mapped to nomad-agent-job-v1 for alerts, products, automations, and AI agents."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jobatlas.dev/"},{"@type":"ListItem","position":2,"name":"Actors","item":"https://jobatlas.dev/actors"},{"@type":"ListItem","position":3,"name":"LinkedIn Jobs Scraper","item":"https://jobatlas.dev/actors/linkedin"}]}]}
+      {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://jobatlas.dev/actors/linkedin#webpage","url":"https://jobatlas.dev/actors/linkedin","name":"LinkedIn Jobs Scraper API","description":"Public LinkedIn jobs mapped to nomad-agent-job-v1 for alerts, products, automations, and AI agents."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jobatlas.dev/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://jobatlas.dev/actors"},{"@type":"ListItem","position":3,"name":"LinkedIn","item":"https://jobatlas.dev/actors/linkedin"}]}]}
     </script>
     <script defer src="/script.js?v=first-visit-20260906"></script>
   </head>
@@ -66,7 +66,7 @@
   "analyticsEnabled": false
 }</code></pre>
           </section>
-          <section class="detail-panel"><h2>What a small run costs</h2><p>Base results cost $0.90 per 1,000 jobs: 100 base results cost $0.09 in Actor result charges. Five base results cost $0.0045. AI enrichment, translation, and applicable platform costs are additional.</p><p>Prices checked 6 September 2026. Check <a href="https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper/pricing">current Apify pricing</a> and set a maximum run cost.</p></section><section class="detail-panel">
+          <section class="detail-panel"><h2>What a small run costs</h2><p>Base results cost $0.90 per 1,000 jobs: 100 base results cost $0.09 in Actor result charges. Five base results cost $0.0045. The Actor returns up to 1,000 jobs per run. AI enrichment, translation, and applicable platform costs are additional.</p><p>Prices checked 6 September 2026. Check <a href="https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper/pricing">current Apify pricing</a> and set a maximum run cost.</p></section><section class="detail-panel">
             <h2>For developers: the job record</h2>
             <p>Each row uses exactly <code>schemaVersion</code>, <code>identity</code>, <code>data</code>, <code>custom</code>, <code>llm</code>, and <code>raw</code> at the root. Derive <code>jobKey = source:externalId</code> for destination upserts. A title, company name, or URL can change and is not stable identity.</p>
             <p>Keep the canonical record when downstream logic needs nested requirements, hiring contacts, source provenance, raw descriptions, or the distinction between <code>null</code> and <code>[]</code>. The 32-field flat projection is a destination convenience and deliberately loses nested detail.</p>

@@ -25,11 +25,12 @@ translation are optional paid extras.
 - [Build a duplicate-safe Google Sheets job tracker](integrations/n8n/linkedin-jobs-to-google-sheets.json)
 - [Connect an agent that can find and monitor jobs](docs/agent-skills.md#one-command-linkedin-setup)
 
-The LinkedIn and EURAXESS Actors turn public job postings into the same stable,
-source-linked record shape. The AI Job Search & Fit Scorer adds a separate
-candidate-evaluation layer: it searches 10 developer-job sources or accepts
-normalized jobs, then returns a ranked shortlist by default or a complete
-drop/hold/failure audit when requested, without requiring a customer model key.
+The LinkedIn, Y Combinator, and EURAXESS Actors turn public job postings into
+the same stable, source-linked record shape. The AI Job Search & Fit Scorer adds
+a separate candidate-evaluation layer: it searches 10 developer-job sources or
+accepts normalized jobs, then returns a ranked shortlist by default or a
+complete drop/hold/failure audit when requested, without requiring a customer
+model key.
 
 > **Unofficial integrations.** This project and its Actors are independently
 > developed. They are not affiliated with or endorsed by LinkedIn, EURAXESS,
@@ -47,12 +48,13 @@ Task, workflow, webhook, schedule, or destination.
 
 | Actor | Best for | Key advantages | Availability and verification boundary |
 | --- | --- | --- | --- |
-| [`LinkedIn Jobs Scraper \| AI Enrichment`](https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper) | Public LinkedIn job search | Find fresh jobs, suppress already-delivered matches, and send clean records with complete descriptions when available to alerts, trackers, job boards, or agents. Optional enrichment and translation stay off until selected. | Public Store Actor; see the [current default build API](https://api.apify.com/v2/acts/job-atlas~linkedin-enrich-translate-normalize-scraper/builds/default). Integrations follow `latest` |
-| [`EURAXESS Jobs Scraper &#124; Full Details & AI Enrichment`](https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper) | PhD, postdoc, fellowship, research, and faculty vacancies | Research domains, requirements, funding, deadlines, contacts, multilingual keyword expansion, strict filters, deduplication, optional enrichment, and translation | Public Store Actor; maintained integration selector `latest`; check Apify for the current default |
-| [`AI Job Search & Fit Scorer — 10 Sources + AI Matching`](https://apify.com/job-atlas/ai-job-fit-scorer) | Candidate-specific developer-job shortlists | Search 10 public developer-job sources or score your own job list against a résumé or profile. Get a ranked shortlist with a 0–100 fit score, a 0–5 delivery score after hard-requirement checks, evidence, skill gaps, and links to the postings. No model key needed. | Public Store Actor; Job Atlas production selector `latest`; see [current release evidence](docs/job-atlas.md); $0.02 per returned shortlist row or retained non-failure audit row |
-| [Y Combinator Jobs Scraper](https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper) | Startup pipelines and recurring alerts | Complete descriptions, stable job identity, deduplication, optional enrichment | Job Atlas release selector `latest`; Actor execution proof, destination templates untested |
+| [`LinkedIn Jobs Scraper \| AI Enrichment`](https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper) | Public LinkedIn job search | Find fresh jobs, suppress already-delivered matches, and send clean records with complete descriptions when available to alerts, trackers, job boards, or agents. Optional enrichment and translation stay off until selected. | Public Store Actor; `latest` is a mutable selector. API, MCP, n8n, Make, Python, and Agent Skill assets are maintained. Airtable is a destination projection only; Zapier is not claimed. See the [current default build API](https://api.apify.com/v2/acts/job-atlas~linkedin-enrich-translate-normalize-scraper/builds/default). |
+| [`EURAXESS Jobs Scraper &#124; Full Details & AI Enrichment`](https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper) | PhD, postdoc, fellowship, research, and faculty vacancies | Research domains, requirements, funding, deadlines, contacts, multilingual keyword expansion, strict filters, deduplication, optional enrichment, and translation | Public Store Actor; maintained integration selector `latest`, which is mutable. API, MCP, n8n, Make, Python, and Agent Skill assets are maintained. Airtable is a destination projection only; Zapier is not claimed; check Apify for the current default build. |
+| [`AI Job Search & Fit Scorer — 10 Sources + AI Matching`](https://apify.com/job-atlas/ai-job-fit-scorer) | Candidate-specific developer-job shortlists | Search 10 public developer-job sources or score your own job list against a résumé or profile. Get a ranked shortlist with a 0–100 fit score, a 0–5 delivery score after hard-requirement checks, evidence, skill gaps, and links to the postings. No model key needed. | Public Store Actor; `latest` is a mutable selector. API, MCP, n8n, Make, Zapier, Python, and Agent Skill assets are maintained. No Airtable asset is claimed for the scorer. See [current release evidence](docs/job-atlas.md); $0.02 per returned shortlist row or retained non-failure audit row. |
+| [Y Combinator Jobs Scraper](https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper) | Startup pipelines and recurring alerts | Complete descriptions, stable job identity, deduplication, optional enrichment | Public Store Actor; `latest` is a mutable selector. The Agent Skill is maintained. YC API and MCP examples are documented-only; no n8n, Make, Zapier, Airtable, or Python client is claimed. |
 
 Implementation guides: [LinkedIn jobs](https://jobatlas.dev/actors/linkedin) ·
+[Y Combinator jobs](https://jobatlas.dev/actors/ycombinator) ·
 [EURAXESS jobs](https://jobatlas.dev/actors/euraxess) ·
 [AI job-fit scoring](https://jobatlas.dev/actors/ai-job-fit-scorer) ·
 [n8n workflows](https://jobatlas.dev/integrations/n8n) ·
@@ -94,10 +96,11 @@ https://mcp.apify.com?tools=fetch-actor-details,call-actor,get-actor-run,get-dat
 ```
 
 Inspect Actor details, then use generic `call-actor` with build `latest` for
-LinkedIn, `latest` for EURAXESS, or `latest` for the AI Job Search & Fit
-Scorer. Confirm terminal success, verify the exact build through the Apify run
-API, validate the Actor-specific `RUN-SUMMARY`, and reconcile the default
-dataset.
+LinkedIn, EURAXESS, Y Combinator, or the AI Job Search & Fit Scorer. The selector
+is mutable, so confirm terminal success, verify the exact resolved build through
+the Apify run API, validate the Actor-specific `RUN-SUMMARY`, and reconcile the
+default dataset. The YC API and MCP examples are documented-only until
+standalone assets are maintained and a dated live-readiness run proves them.
 
 Or let the Apify CLI configure a supported client:
 

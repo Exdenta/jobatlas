@@ -91,6 +91,34 @@ class PageParser(HTMLParser):
             self.visible_text.append(data.strip())
 
 
+class BreadcrumbParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.items: list[tuple[str, str]] = []
+        self._href: str | None = None
+        self._parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() not in {"a", "span"}:
+            return
+        attributes = {key.lower(): value or "" for key, value in attrs}
+        self._href = attributes.get("href", "") if tag.lower() == "a" else ""
+        self._parts = []
+
+    def handle_data(self, data: str) -> None:
+        if self._href is not None:
+            self._parts.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() not in {"a", "span"} or self._href is None:
+            return
+        label = re.sub(r"\s+", " ", "".join(self._parts)).strip()
+        if label and label != "/":
+            self.items.append((label, self._href))
+        self._href = None
+        self._parts = []
+
+
 def parse_page(path: Path) -> PageParser:
     parser = PageParser()
     parser.feed(path.read_text(encoding="utf-8"))
@@ -244,6 +272,33 @@ class WebsiteContractTests(unittest.TestCase):
                 self.assertEqual(items[0]["item"], f"{ORIGIN}/")
                 self.assertEqual(items[-1]["item"], ORIGIN + route)
 
+    def test_visible_and_structured_breadcrumbs_match_exactly(self) -> None:
+        for route, document in self.pages.items():
+            raw = document.read_text(encoding="utf-8")
+            match = re.search(
+                r'<nav class="detail-breadcrumbs"[^>]*>(.*?)</nav>', raw, re.S
+            )
+            if match is None:
+                continue
+            visible = BreadcrumbParser()
+            visible.feed(match.group(1))
+            visible.close()
+            expected = []
+            for position, (name, href) in enumerate(visible.items, start=1):
+                item_route = clean_path(urlsplit(href).path) if href else route
+                item_url = f"{ORIGIN}/" if item_route == "/" else ORIGIN + item_route
+                expected.append(
+                    {"@type": "ListItem", "position": position, "name": name, "item": item_url}
+                )
+
+            nodes = []
+            for payload in structured_data(self.parsers[route]):
+                nodes.extend(payload.get("@graph", [payload]))
+            crumbs = [node for node in nodes if node.get("@type") == "BreadcrumbList"]
+            with self.subTest(route=route):
+                self.assertEqual(len(crumbs), 1)
+                self.assertEqual(crumbs[0]["itemListElement"], expected)
+
     def test_local_links_assets_and_fragments_resolve(self) -> None:
         for route, parser in self.parsers.items():
             for tag, attrs in parser.elements:
@@ -330,6 +385,33 @@ class WebsiteContractTests(unittest.TestCase):
         self.assertNotIn("$0.02 per job", visible)
         self.assertNotIn("$0.02 per run", visible)
         self.assertNotRegex(visible, r"\b(?:100|[1-9]\d(?:\.\d+)?)\s*%")
+
+    def test_flagship_pages_disclose_per_run_limits(self) -> None:
+        expected_limits = {
+            "/actors/linkedin": "up to 1,000 jobs per run",
+            "/actors/ycombinator": "up to 1,000 jobs per run",
+            "/actors/euraxess": "up to 200 jobs per run",
+            "/actors/ai-job-fit-scorer": "up to 200 unique jobs per run",
+        }
+        for route, disclosure in expected_limits.items():
+            visible = " ".join(self.parsers[route].visible_text).lower()
+            with self.subTest(route=route):
+                self.assertIn(disclosure.lower(), visible)
+
+    def test_high_volume_estimates_disclose_multiple_runs(self) -> None:
+        home = " ".join(self.home.visible_text).lower()
+        self.assertIn("volumes above a tool's per-run limit require multiple runs", home)
+
+    def test_contract_overview_links_every_canonical_collector(self) -> None:
+        parser = self.parsers["/contracts"]
+        actor_links = {
+            clean_path(urlsplit(attrs.get("href", "")).path)
+            for tag, attrs in parser.elements
+            if tag == "a" and attrs.get("href", "").startswith("/actors/")
+        }
+        self.assertTrue(
+            {"/actors/linkedin", "/actors/ycombinator", "/actors/euraxess"}.issubset(actor_links)
+        )
 
     def test_public_contracts_are_byte_identical_and_resolvable(self) -> None:
         for filename in PUBLIC_SCHEMAS:
