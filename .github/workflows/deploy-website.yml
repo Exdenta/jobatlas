@@ -1,4 +1,4 @@
-name: Deploy website and notify search engines
+name: Deploy website with optional search notification
 
 on:
   push:
@@ -14,6 +14,12 @@ on:
       - "tests/test_website.py"
       - "website/**"
   workflow_dispatch:
+    inputs:
+      submit_discovery:
+        description: Submit the sitemap to Google and URLs to IndexNow after deploy
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -25,7 +31,8 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy and submit search discovery
+    name: Deploy and verify website
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -70,6 +77,7 @@ jobs:
         run: python3 -m unittest discover -s tests -v
 
       - name: Install Google authentication client
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_discovery }}
         run: python3 -m pip install "google-auth[requests]>=2.38,<3"
 
       - name: Authenticate to Google Cloud with GitHub OIDC
@@ -80,6 +88,7 @@ jobs:
           service_account: github-nomad-agent-web@hryu-jobs.iam.gserviceaccount.com
 
       - name: Verify Search Console property access
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_discovery }}
         run: python3 scripts/search_publish.py preflight
 
       - name: Install Firebase CLI
@@ -88,17 +97,29 @@ jobs:
       - name: Deploy isolated Firebase Hosting site
         run: firebase deploy --only hosting --project hryu-jobs --non-interactive
 
-      - name: Verify live pages and notify Google and Bing
+      - name: Verify live pages without search submission
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: python3 scripts/search_publish.py verify-live
+
+      - name: Notify Google and Bing
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_discovery }}
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: python3 scripts/search_publish.py notify
 
       - name: Record deployment evidence
+        env:
+          DISCOVERY_SUBMITTED: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_discovery }}
         run: |
           {
             echo "## Job Atlas website deployment"
             echo "- Commit: \`${GITHUB_SHA}\`"
             echo "- Canonical origin: https://jobatlas.dev/"
-            echo "- Live HTML: byte-matched before search notification"
-            echo "- Search notification: see the preceding step; acceptance is not indexing proof"
+            echo "- Live HTML: byte-matched after deploy"
+            if [ "$DISCOVERY_SUBMITTED" = "true" ]; then
+              echo "- Search notification: submitted after verification; acceptance is not indexing proof"
+            else
+              echo "- Search notification: skipped; explicit manual opt-in is required"
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
