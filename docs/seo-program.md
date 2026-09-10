@@ -39,6 +39,7 @@ link back to one product page and one implementation page.
 | `/` | Job-data APIs, automations, and AI matching |
 | `/actors/linkedin` | LinkedIn jobs scraper API and normalized LinkedIn job data |
 | `/actors/euraxess` | EURAXESS jobs scraper and research-jobs data API |
+| `/actors/ycombinator` | Y Combinator jobs scraper for startup pipelines and alerts |
 | `/actors/ai-job-fit-scorer` | AI job matching and job-fit scoring API |
 | `/integrations/n8n` | n8n job-alert and job-tracker workflows |
 | `/integrations/make` | Make job-data to Google Sheets automation |
@@ -69,15 +70,37 @@ The program evaluates search discovery, traffic, and product intent separately:
 | On-site intent | Privacy-minimized CTA, copy, and workflow-download events | Compares landing-page usefulness |
 | Product outcome | Attributable first successful run or verified destination | Measures activation only when available |
 
+The machine-readable [measurement contract](../measurement/README.md) fixes the
+event vocabulary, required fields, campaign values, denominators, and baseline
+states used by these layers. Incoming campaign dimensions are limited to the
+registered `source`, `medium`, `campaign`, and optional `content` values. The
+legacy `nomad-agent-job-scrapers` source remains valid evidence and is normalized
+to `jobatlas` only when reporting.
+
+Each local browser event has an ephemeral event ID and UTC occurrence time so a
+future receiver can deduplicate retries without creating a user or session ID.
+The browser API still sends no network request by default. A `CustomEvent`,
+`dataLayer` entry, or configured hook proves only local dispatch; measurement is
+not operational until an approved receiver returns a receipt and the event
+appears once in an aggregate report.
+
 `scripts/search_performance.py` captures aggregate Search Console page/query
 evidence. `.github/workflows/seo-observatory.yml` runs it weekly, omits raw query
 text, and retains the page-level and branded/non-brand aggregates for 90 days.
-It contains no cookies or session identifiers. An explicitly private local run
+New reports label a successful empty API response as `observed_empty`; returned
+clicks and impressions are then observed zero, while CTR and average position
+are marked unavailable because they have no impression denominator. This does
+not establish zero total search demand because Search Console returns top rows.
+Public artifacts reduce page values to the 24 canonical routes, `/404`, or one
+`/__other__` bucket and discard URL parameters and fragments. The artifact
+contains no cookies or session identifiers. An explicitly private local run
 may retain query strings, but those are user-supplied text and must be reviewed
 before any quotation or publication. Search Console can return top rows rather
 than an exhaustive query set, so the artifact records that limitation described in the
 [Search Analytics API documentation](https://developers.google.com/webmaster-tools/v1/searchanalytics/query).
 The existing indexing monitor remains the source for Google and Bing URL state.
+`scripts/measurement_baseline.py` validates dated inputs and keeps observed zero,
+unknown, unavailable, not-yet-mature, and not-collected results distinct.
 
 Set numerical growth targets only after the first complete 28-day baseline.
 Before that baseline, use these non-negotiable gates:
@@ -149,5 +172,3 @@ design partner and retain only:
 
 If any item is missing, keep the evidence private and describe the work as a
 design-partner test rather than a customer result.
-
-| `/actors/ycombinator` | Y Combinator jobs scraper for startup pipelines and alerts | Normalized YC Actor guide and source limitations |

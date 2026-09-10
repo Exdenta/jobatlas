@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 from typing import Iterable
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
 
 try:
@@ -32,6 +32,24 @@ BRAND_TERMS = (
     "nomadagent",
     "nomad-agent",
 )
+CANONICAL_REPORT_PATHS = {
+    "/", "/404", "/about", "/actors", "/actors/ai-job-fit-scorer",
+    "/actors/euraxess", "/actors/linkedin", "/actors/ycombinator", "/changelog",
+    "/contracts", "/guides", "/guides/ai-job-fit-scoring-api",
+    "/guides/euraxess-jobs-api-export", "/guides/linkedin-job-alerts-n8n",
+    "/guides/linkedin-jobs-api-alternatives", "/integrations",
+    "/integrations/airtable", "/integrations/api", "/integrations/make",
+    "/integrations/mcp", "/integrations/n8n", "/integrations/python",
+    "/integrations/zapier", "/methodology", "/privacy",
+}
+
+
+def _privacy_safe_site_url(raw: str) -> str:
+    site_url = search_publish.normalize_site_url(raw)
+    parsed = urlsplit(site_url)
+    if parsed.username is not None or parsed.password is not None:
+        raise ValueError("site URL cannot contain user information")
+    return site_url
 
 
 def _response_summary(error: HTTPError) -> str:
@@ -52,7 +70,7 @@ def fetch_search_rows(
     row_limit: int = DEFAULT_ROW_LIMIT,
 ) -> list[dict[str, object]]:
     """Read aggregate page/query rows from Search Console, with pagination."""
-    site_url = search_publish.normalize_site_url(site_url)
+    site_url = _privacy_safe_site_url(site_url)
     if start_date > end_date:
         raise ValueError("start date cannot be after end date")
     if not 1 <= row_limit <= DEFAULT_ROW_LIMIT:
@@ -110,6 +128,23 @@ def _is_brand_query(query: str) -> bool:
     return any(term in normalized for term in BRAND_TERMS)
 
 
+def _report_page(site_url: str, page: str) -> str:
+    """Return an allowlisted origin URL or one privacy-safe aggregate bucket."""
+
+    site = urlsplit(site_url)
+    candidate = urlsplit(page)
+    if (
+        candidate.scheme != site.scheme
+        or candidate.netloc != site.netloc
+        or candidate.username is not None
+        or candidate.password is not None
+    ):
+        raise ValueError(f"off-origin Search Console page: {page}")
+    path = candidate.path.rstrip("/") or "/"
+    origin = f"{site.scheme}://{site.netloc}"
+    return f"{origin}{path}" if path in CANONICAL_REPORT_PATHS else f"{origin}/__other__"
+
+
 def _empty_metrics() -> dict[str, float]:
     return {"clicks": 0.0, "impressions": 0.0, "positionWeight": 0.0}
 
@@ -123,7 +158,7 @@ def _add_metrics(target: dict[str, float], row: dict[str, object]) -> None:
     target["positionWeight"] += position * impressions
 
 
-def _finalize_metrics(metrics: dict[str, float]) -> dict[str, int | float]:
+def _finalize_metrics(metrics: dict[str, float]) -> dict[str, int | float | bool]:
     clicks = metrics["clicks"]
     impressions = metrics["impressions"]
     return {
@@ -132,9 +167,11 @@ def _finalize_metrics(metrics: dict[str, float]) -> dict[str, int | float]:
             int(impressions) if impressions.is_integer() else round(impressions, 3)
         ),
         "ctr": round(clicks / impressions, 6) if impressions else 0,
+        "ctrAvailable": bool(impressions),
         "averagePosition": (
             round(metrics["positionWeight"] / impressions, 3) if impressions else 0
         ),
+        "averagePositionAvailable": bool(impressions),
     }
 
 
@@ -148,7 +185,7 @@ def build_report(
     include_query_text: bool = True,
 ) -> dict[str, object]:
     """Aggregate GSC rows without collecting cookies, sessions, or identities."""
-    site_url = search_publish.normalize_site_url(site_url)
+    site_url = _privacy_safe_site_url(site_url)
     page_metrics: defaultdict[str, dict[str, float]] = defaultdict(_empty_metrics)
     query_metrics: defaultdict[str, dict[str, float]] = defaultdict(_empty_metrics)
     totals = _empty_metrics()
@@ -161,8 +198,7 @@ def build_report(
         if not isinstance(keys, list) or len(keys) != 2:
             raise ValueError("each Search Console row must have page and query keys")
         page, query = (str(keys[0]), str(keys[1]))
-        if not page.startswith(site_url):
-            raise ValueError(f"off-origin Search Console page: {page}")
+        page = _report_page(site_url, page)
         _add_metrics(totals, row)
         _add_metrics(page_metrics[page], row)
         _add_metrics(query_metrics[query], row)
@@ -214,20 +250,28 @@ def build_report(
             "containsSessionIdentifiers": False,
             "queryTextIncluded": include_query_text,
             "queryTextMayContainPersonalData": include_query_text,
+            "pageQueryAndFragmentIncluded": False,
+            "unknownPagePathsBucketed": True,
             "handling": (
-                "Review query text before quoting or publishing it."
+                "Page values are reduced to allowlisted paths or one other-page bucket; "
+                "review query text before quoting or publishing it."
                 if include_query_text
-                else "Safe for the public-repository workflow artifact; raw query text omitted."
+                else "Safe for the public-repository workflow artifact: raw query text, "
+                "URL parameters, fragments, and unknown page paths are omitted."
             ),
         },
         "coverage": {
+            "observationStatus": "observed" if row_count else "observed_empty",
             "rowCount": row_count,
             "maximumRowsRequested": MAX_ROWS,
+            "measurementScope": "returned_top_rows",
             "dimensions": ["page", "query"],
             "dataState": "final",
             "limitation": (
                 "Search Console returns top rows and does not guarantee exhaustive "
-                "page/query data."
+                "page/query data. When no rows are returned, the returned clicks and "
+                "impressions are observed zero; this is not proof of zero total search "
+                "demand, and CTR and average position have no denominator."
             ),
         },
         "totals": _finalize_metrics(totals),

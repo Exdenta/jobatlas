@@ -1,0 +1,35 @@
+{
+  "$schema": "campaign-registry-v1.schema.json",
+  "schemaVersion": "jobatlas-campaign-registry-v1",
+  "registryVersion": "2026-09-10",
+  "sources": [
+    "jobatlas",
+    "devto",
+    "linkedin",
+    "youtube",
+    "github",
+    "apify",
+    "n8n",
+    "make"
+  ],
+  "sourceAliases": {
+    "nomad-agent-job-scrapers": "jobatlas"
+  },
+  "media": [
+    "owned-site",
+    "tutorial",
+    "social",
+    "video",
+    "documentation",
+    "template",
+    "referral"
+  ],
+  "campaigns": [
+    "actor-discovery",
+    "linkedin-alerts",
+    "euraxess-tracker",
+    "yc-tracker",
+    "fit-scoring"
+  ],
+  "contentPattern": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$"
+}

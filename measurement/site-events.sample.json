@@ -1,0 +1,48 @@
+{
+  "$schema": "site-events-v1.schema.json",
+  "schemaVersion": "jobatlas-site-event-batch-v1",
+  "batchId": "6f63030d-03fa-44e8-a167-4d5316005f76",
+  "observedAt": "2026-09-10T01:02:03Z",
+  "source": "synthetic_fixture",
+  "events": [
+    {
+      "schemaVersion": "jobatlas-site-event-v1",
+      "eventId": "54641ab3-2b50-4fb1-9b80-c6e97998c6b4",
+      "occurredAt": "2026-09-10T01:00:00Z",
+      "event": "page_view",
+      "page": "/",
+      "activityClass": "owner_test",
+      "category": "navigation",
+      "label": "home",
+      "placement": "document"
+    },
+    {
+      "schemaVersion": "jobatlas-site-event-v1",
+      "eventId": "cb7a7384-3e71-427c-8f10-d1063a5aa003",
+      "occurredAt": "2026-09-10T01:01:00Z",
+      "event": "actor_cta_click",
+      "page": "/actors/linkedin",
+      "activityClass": "customer_activity",
+      "actor": "linkedin",
+      "placement": "w04-guide",
+      "source": "nomad-agent-job-scrapers",
+      "medium": "owned-site",
+      "campaign": "actor-discovery",
+      "content": "w04-guide"
+    },
+    {
+      "schemaVersion": "jobatlas-site-event-v1",
+      "eventId": "cb7a7384-3e71-427c-8f10-d1063a5aa003",
+      "occurredAt": "2026-09-10T01:01:00Z",
+      "event": "actor_cta_click",
+      "page": "/actors/linkedin",
+      "activityClass": "customer_activity",
+      "actor": "linkedin",
+      "placement": "w04-guide",
+      "source": "jobatlas",
+      "medium": "owned-site",
+      "campaign": "actor-discovery",
+      "content": "w04-guide"
+    }
+  ]
+}
