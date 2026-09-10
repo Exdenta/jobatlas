@@ -276,8 +276,8 @@
     },
     "discoveryEvidencePolicy": {
       "allOf": [
-        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "discovery_receipt", "deployment_receipt"]}}}}}},
-        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["discovery_receipt", "deployment_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}}
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "discovery_receipt"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["discovery_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}}
       ]
     },
     "googleIndexingEvidencePolicy": {

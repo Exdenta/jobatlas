@@ -224,7 +224,7 @@ EVIDENCE_KINDS = (
 )
 LAYER_QUALIFYING_EVIDENCE_KINDS = {
     "deployment": ("deployment_receipt",),
-    "discovery": ("discovery_receipt", "deployment_receipt"),
+    "discovery": ("discovery_receipt",),
     "googleIndexing": ("google_url_inspection",),
     "bingIndexing": ("bing_url_inspection",),
     "searchDemand": ("google_search_console",),

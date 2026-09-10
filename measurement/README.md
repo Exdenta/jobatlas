@@ -24,7 +24,7 @@ The fixed layer order is deployment, discovery, Google indexing, Bing indexing, 
 Each layer has separate allowed evidence and qualifying evidence kinds. `repository_fixture` and `operator_statement` may add context to any layer, but neither can qualify an observed metric. The qualifying evidence kinds are:
 
 - deployment: `deployment_receipt`
-- discovery: `discovery_receipt` or `deployment_receipt`
+- discovery: `discovery_receipt`
 - Google indexing: `google_url_inspection`
 - Bing indexing: `bing_url_inspection`
 - search demand: `google_search_console`
@@ -36,7 +36,7 @@ Each layer has separate allowed evidence and qualifying evidence kinds. `reposit
 - commercial: `commercial_report`
 - support: `support_ledger`
 
-Evidence that belongs to another layer fails validation. In particular, a discovery receipt cannot prove Google indexing, and a site-event batch cannot prove useful activation. Qualification is checked for every observed metric and its activity segment, rather than once for the layer.
+Evidence that belongs to another layer fails validation. In particular, a deployment receipt cannot prove discovery, a discovery receipt cannot prove Google indexing, and a site-event batch cannot prove useful activation. Qualification is checked for every observed metric and its activity segment, rather than once for the layer.
 
 For Actor execution, `deployment_receipt` may qualify only an `owner_test` metric. Observed `unclassified` and `customer_activity` Actor-execution metrics require `actor_analytics`. The other activity layers use their named qualifying kind for every permitted activity segment: `site_event_batch` for onsite intent, `activation_receipt` for useful activation, `destination_receipt` for destination delivery, `retention_report` for retention, `commercial_report` for commercial, and `support_ledger` for support. One qualifying receipt may support multiple observed metrics in the same layer and segment when its referenced artifact contains those measurements.
 

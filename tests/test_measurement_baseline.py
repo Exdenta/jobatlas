@@ -333,7 +333,7 @@ class MeasurementBaselineTests(unittest.TestCase):
     def test_layers_reject_cross_layer_evidence_substitution(self) -> None:
         qualifying = {
             "deployment": ("deployment_receipt",),
-            "discovery": ("discovery_receipt", "deployment_receipt"),
+            "discovery": ("discovery_receipt",),
             "googleIndexing": ("google_url_inspection",),
             "bingIndexing": ("bing_url_inspection",),
             "searchDemand": ("google_search_console",),
@@ -396,6 +396,17 @@ class MeasurementBaselineTests(unittest.TestCase):
             "site_event_batch.*usefulActivation",
         ):
             measurement_baseline.validate_baseline(wrong_activation)
+
+        unsupported_discovery = copy.deepcopy(self.baseline)
+        unsupported_discovery["layers"]["discovery"]["metrics"][0]["value"] = 99
+        unsupported_discovery["layers"]["discovery"]["evidence"][0][
+            "kind"
+        ] = "deployment_receipt"
+        with self.assertRaisesRegex(
+            measurement_baseline.ValidationError,
+            "deployment_receipt.*discovery",
+        ):
+            measurement_baseline.validate_baseline(unsupported_discovery)
 
         nonqualifying = copy.deepcopy(self.baseline)
         nonqualifying["layers"]["deployment"]["evidence"][0][
