@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/measurement/campaign-registry-v1.schema.json",
+  "title": "Job Atlas campaign registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "registryVersion",
+    "sources",
+    "sourceAliases",
+    "media",
+    "campaigns",
+    "contentPattern"
+  ],
+  "properties": {
+    "$schema": {"const": "campaign-registry-v1.schema.json"},
+    "schemaVersion": {"const": "jobatlas-campaign-registry-v1"},
+    "registryVersion": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "sources": {
+      "const": ["jobatlas", "devto", "linkedin", "youtube", "github", "apify", "n8n", "make"]
+    },
+    "sourceAliases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nomad-agent-job-scrapers"],
+      "properties": {
+        "nomad-agent-job-scrapers": {"const": "jobatlas"}
+      }
+    },
+    "media": {
+      "const": ["owned-site", "tutorial", "social", "video", "documentation", "template", "referral"]
+    },
+    "campaigns": {
+      "const": ["actor-discovery", "linkedin-alerts", "euraxess-tracker", "yc-tracker", "fit-scoring"]
+    },
+    "contentPattern": {
+      "const": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$"
+    }
+  }
+}

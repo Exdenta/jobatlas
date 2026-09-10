@@ -1,0 +1,966 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/measurement/event-definitions-v1.schema.json",
+  "title": "Job Atlas site event definitions v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "canonicalPages",
+    "definitions"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "event-definitions-v1.schema.json"
+    },
+    "schemaVersion": {
+      "const": "jobatlas-site-event-definitions-v1"
+    },
+    "canonicalPages": {
+      "const": [
+        "/",
+        "/404",
+        "/about",
+        "/actors",
+        "/actors/ai-job-fit-scorer",
+        "/actors/euraxess",
+        "/actors/linkedin",
+        "/actors/ycombinator",
+        "/changelog",
+        "/contracts",
+        "/guides",
+        "/guides/ai-job-fit-scoring-api",
+        "/guides/euraxess-jobs-api-export",
+        "/guides/linkedin-job-alerts-n8n",
+        "/guides/linkedin-jobs-api-alternatives",
+        "/integrations",
+        "/integrations/airtable",
+        "/integrations/api",
+        "/integrations/make",
+        "/integrations/mcp",
+        "/integrations/n8n",
+        "/integrations/python",
+        "/integrations/zapier",
+        "/methodology",
+        "/privacy"
+      ]
+    },
+    "definitions": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/eventDefinition"
+      }
+    }
+  },
+  "$defs": {
+    "eventDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event",
+        "requiredDimensions",
+        "allowedActivityClasses",
+        "reportingDenominator"
+      ],
+      "properties": {
+        "event": {
+          "enum": [
+            "actor_cta_click",
+            "asset_cta_click",
+            "choose_actor_click",
+            "contract_cta_click",
+            "cta_click",
+            "first_run_selected",
+            "guide_cta_click",
+            "history_cta_click",
+            "install_command_copied",
+            "integration_click",
+            "integration_page_click",
+            "methodology_cta_click",
+            "navigation_click",
+            "outbound_click",
+            "page_view",
+            "path_selected",
+            "product_page_click",
+            "product_selected",
+            "sample_copied",
+            "sample_download",
+            "sample_source_selected",
+            "sample_view",
+            "skill_source_selected",
+            "source_cta_click",
+            "support_cta_click"
+          ]
+        },
+        "requiredDimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "contains": {
+            "const": "placement"
+          },
+          "minContains": 1,
+          "maxContains": 1,
+          "items": {
+            "enum": [
+              "category",
+              "label",
+              "placement",
+              "product",
+              "actor",
+              "destination",
+              "format"
+            ]
+          }
+        },
+        "allowedActivityClasses": {
+          "const": [
+            "unclassified",
+            "owner_test",
+            "customer_activity"
+          ]
+        },
+        "reportingDenominator": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/reportingDenominator"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "actor_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "asset_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "choose_actor_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "contract_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "category",
+                  "label"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "first_run_selected"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "product"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "guide_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "history_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "install_command_copied"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "category",
+                  "product",
+                  "format"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "integration_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "label"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "integration_page_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "methodology_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "navigation_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "category",
+                  "label"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "outbound_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "category",
+                  "label",
+                  "destination"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "page_view"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "category",
+                  "label"
+                ]
+              },
+              "reportingDenominator": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "path_selected"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "label"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "product_page_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "product_selected"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "product"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "sample_copied"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "product",
+                  "format"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "sample_download"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "product",
+                  "format"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "sample_source_selected"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "product",
+                  "format"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "sample_view"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "product",
+                  "format"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "skill_source_selected"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "category",
+                  "product"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "source_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event": {
+                "const": "support_cta_click"
+              }
+            },
+            "required": [
+              "event"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requiredDimensions": {
+                "const": [
+                  "placement",
+                  "actor"
+                ]
+              },
+              "reportingDenominator": {
+                "const": {
+                  "event": "page_view",
+                  "matchDimensions": [
+                    "page",
+                    "window",
+                    "activityClass"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "reportingDenominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event",
+        "matchDimensions"
+      ],
+      "properties": {
+        "event": {
+          "const": "page_view"
+        },
+        "matchDimensions": {
+          "const": [
+            "page",
+            "window",
+            "activityClass"
+          ]
+        }
+      }
+    }
+  }
+}

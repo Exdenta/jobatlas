@@ -1,0 +1,918 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/measurement/baseline-v1.schema.json",
+  "title": "Job Atlas measurement baseline v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "baselineId",
+    "generatedAt",
+    "siteUrl",
+    "sourceRevision",
+    "window",
+    "campaignRegistryVersion",
+    "changePoints",
+    "layers",
+    "eventSummary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "baseline-v1.schema.json"
+    },
+    "schemaVersion": {
+      "const": "jobatlas-measurement-baseline-v1"
+    },
+    "baselineId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+    },
+    "siteUrl": {
+      "const": "https://jobatlas.dev/"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "window": {
+      "$ref": "#/$defs/window"
+    },
+    "campaignRegistryVersion": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "changePoints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/changePoint"
+      }
+    },
+    "layers": {
+      "$ref": "#/$defs/layers"
+    },
+    "eventSummary": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/eventSummary"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end",
+        "days",
+        "complete"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date"
+        },
+        "end": {
+          "type": "string",
+          "format": "date"
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "changePoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "occurredAt",
+        "description",
+        "reference"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+        },
+        "occurredAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deployment",
+        "discovery",
+        "googleIndexing",
+        "bingIndexing",
+        "searchDemand",
+        "onsiteIntent",
+        "actorExecution",
+        "usefulActivation",
+        "destinationDelivery",
+        "retention",
+        "commercial",
+        "support"
+      ],
+      "properties": {
+        "deployment": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/deploymentEvidencePolicy"}
+          ]
+        },
+        "discovery": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/discoveryEvidencePolicy"}
+          ]
+        },
+        "googleIndexing": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/googleIndexingEvidencePolicy"}
+          ]
+        },
+        "bingIndexing": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/bingIndexingEvidencePolicy"}
+          ]
+        },
+        "searchDemand": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/searchDemandEvidencePolicy"}
+          ]
+        },
+        "onsiteIntent": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/onsiteIntentEvidencePolicy"}
+          ]
+        },
+        "actorExecution": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/actorExecutionEvidencePolicy"}
+          ]
+        },
+        "usefulActivation": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/usefulActivationEvidencePolicy"}
+          ]
+        },
+        "destinationDelivery": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/destinationDeliveryEvidencePolicy"}
+          ]
+        },
+        "retention": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/retentionEvidencePolicy"}
+          ]
+        },
+        "commercial": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/commercialEvidencePolicy"}
+          ]
+        },
+        "support": {
+          "allOf": [
+            {"$ref": "#/$defs/layer"},
+            {"$ref": "#/$defs/supportEvidencePolicy"}
+          ]
+        }
+      }
+    },
+    "hasObservedMetric": {
+      "properties": {
+        "metrics": {
+          "contains": {
+            "properties": {"status": {"const": "observed"}},
+            "required": ["status"]
+          },
+          "minContains": 1
+        }
+      },
+      "required": ["metrics"]
+    },
+    "hasObservedUnclassifiedMetric": {
+      "properties": {
+        "metrics": {
+          "contains": {
+            "properties": {"status": {"const": "observed"}, "segment": {"const": "unclassified"}},
+            "required": ["status", "segment"]
+          },
+          "minContains": 1
+        }
+      },
+      "required": ["metrics"]
+    },
+    "hasObservedOwnerTestMetric": {
+      "properties": {
+        "metrics": {
+          "contains": {
+            "properties": {"status": {"const": "observed"}, "segment": {"const": "owner_test"}},
+            "required": ["status", "segment"]
+          },
+          "minContains": 1
+        }
+      },
+      "required": ["metrics"]
+    },
+    "hasObservedCustomerActivityMetric": {
+      "properties": {
+        "metrics": {
+          "contains": {
+            "properties": {"status": {"const": "observed"}, "segment": {"const": "customer_activity"}},
+            "required": ["status", "segment"]
+          },
+          "minContains": 1
+        }
+      },
+      "required": ["metrics"]
+    },
+    "deploymentEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "deployment_receipt"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["deployment_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "discoveryEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "discovery_receipt", "deployment_receipt"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["discovery_receipt", "deployment_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "googleIndexingEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "google_url_inspection"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["google_url_inspection"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "bingIndexingEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "bing_url_inspection"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["bing_url_inspection"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "searchDemandEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "google_search_console"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["google_search_console"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "onsiteIntentEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "site_event_batch"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["site_event_batch"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["site_event_batch"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["site_event_batch"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["site_event_batch"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "actorExecutionEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "actor_analytics", "deployment_receipt"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["actor_analytics", "deployment_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["actor_analytics"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["actor_analytics", "deployment_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["actor_analytics"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "usefulActivationEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "activation_receipt"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["activation_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["activation_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["activation_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["activation_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "destinationDeliveryEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "destination_receipt"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["destination_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["destination_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["destination_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["destination_receipt"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "retentionEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "retention_report"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["retention_report"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["retention_report"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["retention_report"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["retention_report"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "commercialEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "commercial_report"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["commercial_report"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["commercial_report"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["commercial_report"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["commercial_report"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "supportEvidencePolicy": {
+      "allOf": [
+        {"properties": {"evidence": {"items": {"properties": {"kind": {"enum": ["repository_fixture", "operator_statement", "support_ledger"]}}}}}},
+        {"if": {"$ref": "#/$defs/hasObservedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["support_ledger"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedUnclassifiedMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["support_ledger"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedOwnerTestMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["support_ledger"]}}, "required": ["kind"]}, "minContains": 1}}}},
+        {"if": {"$ref": "#/$defs/hasObservedCustomerActivityMetric"}, "then": {"properties": {"evidence": {"contains": {"properties": {"kind": {"enum": ["support_ledger"]}}, "required": ["kind"]}, "minContains": 1}}}}
+      ]
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason",
+        "asOf",
+        "window",
+        "ownerTestsExcluded",
+        "metrics",
+        "evidence",
+        "limitations"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "observed",
+            "unknown",
+            "unavailable",
+            "not_mature",
+            "not_collected"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "asOf": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+        },
+        "window": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/window"
+            }
+          ]
+        },
+        "ownerTestsExcluded": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/metric"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status",
+        "unit",
+        "value",
+        "denominator",
+        "reason",
+        "segment"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]{0,79}$"
+        },
+        "status": {
+          "enum": [
+            "observed",
+            "unknown",
+            "unavailable",
+            "not_mature",
+            "not_collected"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "count",
+            "ratio",
+            "percent",
+            "usd",
+            "seconds",
+            "position"
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "denominator": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/denominator"
+            }
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "segment": {
+          "enum": [
+            "aggregate",
+            "unclassified",
+            "owner_test",
+            "customer_activity"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "const": "count"
+              }
+            },
+            "required": [
+              "unit"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "const": "ratio"
+              }
+            },
+            "required": [
+              "unit"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "const": "percent"
+              }
+            },
+            "required": [
+              "unit"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "observed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "reason": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "denominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The semantic validator resolves this to a distinct observed count metric in the same layer and segment and requires an equal value.",
+      "required": [
+        "metric",
+        "value"
+      ],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]{0,79}$"
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observedAt",
+        "reference"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "repository_fixture",
+            "deployment_receipt",
+            "discovery_receipt",
+            "google_search_console",
+            "google_url_inspection",
+            "bing_url_inspection",
+            "site_event_batch",
+            "actor_analytics",
+            "activation_receipt",
+            "destination_receipt",
+            "retention_report",
+            "commercial_report",
+            "support_ledger",
+            "operator_statement"
+          ]
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The semantic validator requires this timestamp not to exceed the top-level generatedAt timestamp.",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "countRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "count"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "eventSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "batchId",
+        "batchSource",
+        "observedAt",
+        "firstOccurredAt",
+        "lastOccurredAt",
+        "inputCount",
+        "uniqueCount",
+        "exactDuplicateCount",
+        "attributedCount",
+        "unattributedCount",
+        "byEvent",
+        "byActivityClass",
+        "byPage",
+        "byCampaign",
+        "eventDigestSha256"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "jobatlas-site-event-summary-v1"
+        },
+        "batchId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "batchSource": {
+          "enum": [
+            "synthetic_fixture",
+            "local_owner_test",
+            "collector_export"
+          ]
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+        },
+        "firstOccurredAt": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+            }
+          ]
+        },
+        "lastOccurredAt": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+            }
+          ]
+        },
+        "inputCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "uniqueCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exactDuplicateCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "attributedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unattributedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "byEvent": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/countRow"
+              },
+              {
+                "properties": {
+                  "key": {
+                    "enum": [
+                      "actor_cta_click",
+                      "asset_cta_click",
+                      "choose_actor_click",
+                      "contract_cta_click",
+                      "cta_click",
+                      "first_run_selected",
+                      "guide_cta_click",
+                      "history_cta_click",
+                      "install_command_copied",
+                      "integration_click",
+                      "integration_page_click",
+                      "methodology_cta_click",
+                      "navigation_click",
+                      "outbound_click",
+                      "page_view",
+                      "path_selected",
+                      "product_page_click",
+                      "product_selected",
+                      "sample_copied",
+                      "sample_download",
+                      "sample_source_selected",
+                      "sample_view",
+                      "skill_source_selected",
+                      "source_cta_click",
+                      "support_cta_click"
+                    ]
+                  }
+                },
+                "required": [
+                  "key"
+                ]
+              }
+            ]
+          }
+        },
+        "byActivityClass": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/countRow"
+              },
+              {
+                "properties": {
+                  "key": {
+                    "enum": [
+                      "unclassified",
+                      "owner_test",
+                      "customer_activity"
+                    ]
+                  }
+                },
+                "required": [
+                  "key"
+                ]
+              }
+            ]
+          }
+        },
+        "byPage": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/countRow"
+              },
+              {
+                "properties": {
+                  "key": {
+                    "enum": [
+                      "/",
+                      "/404",
+                      "/about",
+                      "/actors",
+                      "/actors/ai-job-fit-scorer",
+                      "/actors/euraxess",
+                      "/actors/linkedin",
+                      "/actors/ycombinator",
+                      "/changelog",
+                      "/contracts",
+                      "/guides",
+                      "/guides/ai-job-fit-scoring-api",
+                      "/guides/euraxess-jobs-api-export",
+                      "/guides/linkedin-job-alerts-n8n",
+                      "/guides/linkedin-jobs-api-alternatives",
+                      "/integrations",
+                      "/integrations/airtable",
+                      "/integrations/api",
+                      "/integrations/make",
+                      "/integrations/mcp",
+                      "/integrations/n8n",
+                      "/integrations/python",
+                      "/integrations/zapier",
+                      "/methodology",
+                      "/privacy"
+                    ]
+                  }
+                },
+                "required": [
+                  "key"
+                ]
+              }
+            ]
+          }
+        },
+        "byCampaign": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/countRow"
+              },
+              {
+                "properties": {
+                  "key": {
+                    "pattern": "^(jobatlas|devto|linkedin|youtube|github|apify|n8n|make)/(owned-site|tutorial|social|video|documentation|template|referral)/(actor-discovery|linkedin-alerts|euraxess-tracker|yc-tracker|fit-scoring)(/[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?)?$"
+                  }
+                },
+                "required": [
+                  "key"
+                ]
+              }
+            ]
+          }
+        },
+        "eventDigestSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

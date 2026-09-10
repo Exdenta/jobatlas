@@ -6,6 +6,7 @@ import json
 from html import unescape
 from pathlib import Path
 import re
+import subprocess
 import struct
 import unittest
 from urllib.parse import parse_qs, unquote, urlsplit
@@ -46,6 +47,71 @@ PROGRAM_INTENT_ROUTES = {
     "/integrations/airtable", "/integrations/python", "/integrations/zapier", "/contracts",
     "/guides/linkedin-jobs-api-alternatives", "/guides/linkedin-job-alerts-n8n",
     "/guides/euraxess-jobs-api-export", "/guides/ai-job-fit-scoring-api",
+}
+SITE_EVENT_SCHEMA = "jobatlas-site-event-v1"
+SITE_EVENT_CACHE_VERSION = "site-event-v1-20260910"
+SITE_EVENT_NAMES = {
+    "actor_cta_click",
+    "asset_cta_click",
+    "choose_actor_click",
+    "contract_cta_click",
+    "cta_click",
+    "first_run_selected",
+    "guide_cta_click",
+    "history_cta_click",
+    "install_command_copied",
+    "integration_click",
+    "integration_page_click",
+    "methodology_cta_click",
+    "navigation_click",
+    "outbound_click",
+    "page_view",
+    "path_selected",
+    "product_page_click",
+    "product_selected",
+    "sample_copied",
+    "sample_download",
+    "sample_source_selected",
+    "sample_view",
+    "skill_source_selected",
+    "source_cta_click",
+    "support_cta_click",
+}
+SITE_EVENT_REQUIRED = {
+    "actor_cta_click": {"actor"},
+    "asset_cta_click": {"actor"},
+    "choose_actor_click": {"actor"},
+    "contract_cta_click": {"actor"},
+    "cta_click": {"category", "label"},
+    "first_run_selected": {"product"},
+    "guide_cta_click": {"actor"},
+    "history_cta_click": {"actor"},
+    "install_command_copied": {"category", "product", "format"},
+    "integration_click": {"label"},
+    "integration_page_click": {"actor"},
+    "methodology_cta_click": {"actor"},
+    "navigation_click": {"category", "label"},
+    "outbound_click": {"category", "label", "destination"},
+    "page_view": {"category", "label"},
+    "path_selected": {"label"},
+    "product_page_click": {"actor"},
+    "product_selected": {"product"},
+    "sample_copied": {"product", "format"},
+    "sample_download": {"product", "format"},
+    "sample_source_selected": {"product", "format"},
+    "sample_view": {"product", "format"},
+    "skill_source_selected": {"category", "product"},
+    "source_cta_click": {"actor"},
+    "support_cta_click": {"actor"},
+}
+CAMPAIGN_SOURCES = {
+    "jobatlas", "devto", "linkedin", "youtube", "github", "apify", "n8n", "make"
+}
+CAMPAIGN_MEDIA = {
+    "owned-site", "tutorial", "social", "video", "documentation", "template", "referral"
+}
+CAMPAIGNS = {
+    "actor-discovery", "linkedin-alerts", "euraxess-tracker", "yc-tracker", "fit-scoring"
 }
 
 
@@ -131,6 +197,27 @@ def clean_path(path: str) -> str:
     return path if path.startswith("/") else f"/{path}"
 
 
+def javascript_string_set(source: str, name: str) -> set[str]:
+    match = re.search(
+        rf'const {name} = new Set\("([^"]+)"\.split\(" "\)\);', source
+    )
+    if match is None:
+        raise AssertionError(f"missing JavaScript set: {name}")
+    return set(match.group(1).split())
+
+
+def javascript_event_rules(source: str) -> dict[str, set[str]]:
+    match = re.search(
+        r'const eventRules = new Map\("([^"]+)"\.split\(" "\)', source
+    )
+    if match is None:
+        raise AssertionError("missing JavaScript event rules")
+    return {
+        event: set(fields.split(","))
+        for event, fields in (rule.split(":") for rule in match.group(1).split())
+    }
+
+
 def local_document_for_route(route: str) -> Path | None:
     route = clean_path(route)
     if route == "/":
@@ -172,6 +259,88 @@ class WebsiteContractTests(unittest.TestCase):
         cls.css = (WEBSITE / "styles.css").read_text(encoding="utf-8")
         cls.detail_css = (WEBSITE / "detail.css").read_text(encoding="utf-8")
         cls.script = (WEBSITE / "script.js").read_text(encoding="utf-8")
+        cls.homepage_script = (WEBSITE / "homepage.js").read_text(encoding="utf-8")
+
+    def run_event_harness(self, config: dict[str, object]) -> dict[str, object]:
+        harness = r"""
+const fs = require("node:fs");
+const vm = require("node:vm");
+const { randomUUID } = require("node:crypto");
+const source = fs.readFileSync(process.argv[1], "utf8");
+const config = JSON.parse(process.argv[2]);
+const emitted = [];
+const dataLayer = [];
+const plausible = [];
+const classList = { add() {}, remove() {}, toggle() {} };
+const location = {};
+Object.defineProperty(location, "pathname", {
+  get() {
+    if (config.throwOnLocationRead) throw new Error("pathname read while privacy signal enabled");
+    return config.pathname || "/";
+  },
+});
+Object.defineProperty(location, "search", {
+  get() {
+    if (config.throwOnLocationRead) throw new Error("search read while privacy signal enabled");
+    return config.search || "";
+  },
+});
+class Element {}
+class CustomEvent {
+  constructor(type, options) { this.type = type; this.detail = options.detail; }
+}
+const document = {
+  body: { classList, append() {} },
+  addEventListener() {},
+  createElement() { return { classList, setAttribute() {}, select() {}, remove() {} }; },
+  execCommand() { return true; },
+  querySelector(selector) {
+    if (selector === 'meta[name="robots"]') {
+      return config.noindex ? { content: "noindex,follow" } : null;
+    }
+    return null;
+  },
+  querySelectorAll() { return []; },
+};
+const window = {
+  clearTimeout,
+  crypto: { randomUUID },
+  dataLayer,
+  dispatchEvent(event) { emitted.push(event.detail); },
+  doNotTrack: config.windowDnt || "0",
+  innerWidth: 1280,
+  location,
+  matchMedia() { return { matches: false, addEventListener() {} }; },
+  plausible(event, options) { plausible.push({ event, props: options.props }); },
+  setTimeout,
+  addEventListener() {},
+};
+const navigator = {
+  doNotTrack: config.dnt || "0",
+  globalPrivacyControl: config.gpc === true,
+};
+vm.runInNewContext(source, {
+  CustomEvent,
+  Element,
+  URLSearchParams,
+  console,
+  document,
+  navigator,
+  window,
+});
+const callResults = (config.calls || []).map(call =>
+  window.nomadAgentAnalytics.track(call.event, call.properties || {})
+);
+process.stdout.write(JSON.stringify({ emitted, dataLayer, plausible, callResults }));
+"""
+        result = subprocess.run(
+            ["node", "-e", harness, str(WEBSITE / "script.js"), json.dumps(config)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return json.loads(result.stdout)
 
     def test_seo_program_declares_the_complete_intent_surface(self) -> None:
         program = (ROOT / "docs" / "seo-program.md").read_text(encoding="utf-8")
@@ -340,14 +509,154 @@ class WebsiteContractTests(unittest.TestCase):
         self.assertEqual(reached, EXPECTED_CANONICALS)
 
     def test_semantic_events_are_local_and_no_default_network_collector_exists(self) -> None:
-        for token in ('CustomEvent("nomad-agent:analytics"', "window.nomadAgentAnalytics", "skill_source_selected", "install_command_copied"):
+        for token in (
+            'CustomEvent("nomad-agent:analytics"',
+            "window.nomadAgentAnalytics",
+            SITE_EVENT_SCHEMA,
+            "skill_source_selected",
+            "install_command_copied",
+        ):
             self.assertIn(token, self.script)
         self.assertNotIn("fetch(", self.script)
         self.assertNotIn("XMLHttpRequest", self.script)
+        self.assertNotIn("sendBeacon", self.script)
+        self.assertNotIn("localStorage", self.script)
+        self.assertNotIn("sessionStorage", self.script)
+        self.assertNotIn("document.cookie", self.script)
+
+        self.assertEqual(javascript_event_rules(self.script), SITE_EVENT_REQUIRED)
+        self.assertEqual(set(SITE_EVENT_REQUIRED), SITE_EVENT_NAMES)
+        self.assertEqual(javascript_string_set(self.script, "canonicalPages"), EXPECTED_CANONICALS)
+
+        annotated_names: set[str] = set()
         for route, parser in self.parsers.items():
-            events = [attrs for tag, attrs in parser.elements if tag == "a" and attrs.get("data-event")]
+            events = [attrs for _, attrs in parser.elements if attrs.get("data-event")]
             self.assertGreaterEqual(len(events), 2, route)
-            self.assertTrue(all(attrs.get("data-placement") for attrs in events), route)
+            for attrs in events:
+                event = attrs["data-event"]
+                annotated_names.add(event)
+                with self.subTest(route=route, event=event, placement=attrs.get("data-placement")):
+                    self.assertIn(event, SITE_EVENT_NAMES)
+                    self.assertTrue(attrs.get("data-placement"))
+                    for required in SITE_EVENT_REQUIRED[event]:
+                        self.assertTrue(attrs.get(f"data-{required}"), required)
+
+        called_names = set(
+            re.findall(r"\btrack\(\s*['\"]([a-z0-9_]+)['\"]", self.script + self.homepage_script)
+        )
+        self.assertEqual(annotated_names | called_names, SITE_EVENT_NAMES)
+
+        for document in WEBSITE.rglob("*.html"):
+            versions = re.findall(r'/script\.js\?v=([^"\']+)', document.read_text(encoding="utf-8"))
+            self.assertEqual(versions, [SITE_EVENT_CACHE_VERSION], document)
+
+    def test_event_envelope_campaign_privacy_and_404_runtime(self) -> None:
+        self.assertEqual(javascript_string_set(self.script, "campaignSources"), CAMPAIGN_SOURCES)
+        self.assertEqual(javascript_string_set(self.script, "campaignMedia"), CAMPAIGN_MEDIA)
+        self.assertEqual(javascript_string_set(self.script, "campaignNames"), CAMPAIGNS)
+
+        valid = self.run_event_harness({
+            "pathname": "/actors/linkedin/",
+            "search": (
+                "?utm_source=nomad-agent-job-scrapers&utm_medium=owned-site"
+                "&utm_campaign=actor-discovery&utm_content=w04-guide"
+            ),
+            "calls": [
+                {"event": "not_an_event", "properties": {"placement": "test"}},
+                {"event": "cta_click", "properties": {}},
+                {"event": "cta_click", "properties": {"placement": "free text"}},
+                {"event": "cta_click", "properties": {"placement": "test"}},
+                {
+                    "event": "cta_click",
+                    "properties": {
+                        "placement": "test",
+                        "label": "person@example.com",
+                        "category": "navigation",
+                    },
+                },
+                {"event": "actor_cta_click", "properties": {"placement": "test"}},
+                {
+                    "event": "sample_view",
+                    "properties": {"placement": "test", "product": "euraxess"},
+                },
+                {
+                    "event": "cta_click",
+                    "properties": {
+                        "placement": "test",
+                        "category": "navigation",
+                        "label": "start",
+                    },
+                },
+                {
+                    "event": "actor_cta_click",
+                    "properties": {
+                        "placement": "test",
+                        "actor": "linkedin",
+                        "label": "person@example.com",
+                        "destination": "free text",
+                    },
+                },
+            ],
+        })
+        self.assertEqual(
+            valid["callResults"],
+            [False, False, False, False, False, False, False, True, True],
+        )
+        self.assertEqual(valid["emitted"], valid["dataLayer"])
+        self.assertEqual(len(valid["emitted"]), 3)
+        self.assertEqual(len({event["eventId"] for event in valid["emitted"]}), 3)
+        for detail, plausible in zip(valid["emitted"], valid["plausible"], strict=True):
+            self.assertEqual(detail["schemaVersion"], SITE_EVENT_SCHEMA)
+            self.assertEqual(detail["activityClass"], "unclassified")
+            self.assertRegex(
+                detail["eventId"],
+                r"^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            )
+            self.assertRegex(detail["occurredAt"], r"^\d{4}-\d{2}-\d{2}T.*Z$")
+            self.assertEqual(detail["page"], "/actors/linkedin")
+            self.assertEqual(detail["source"], "jobatlas")
+            self.assertEqual(detail["medium"], "owned-site")
+            self.assertEqual(detail["campaign"], "actor-discovery")
+            self.assertEqual(detail["content"], "w04-guide")
+            self.assertEqual(plausible["event"], detail["event"])
+            for private_key in ("schemaVersion", "eventId", "occurredAt", "activityClass", "event"):
+                self.assertNotIn(private_key, plausible["props"])
+            self.assertEqual(plausible["props"]["source"], "jobatlas")
+        self.assertNotIn("person@example.com", json.dumps(valid["emitted"]))
+        self.assertNotIn("free text", json.dumps(valid["emitted"]))
+
+        privacy = self.run_event_harness({"gpc": True, "throwOnLocationRead": True})
+        self.assertEqual(privacy["emitted"], [])
+        self.assertEqual(privacy["dataLayer"], [])
+        self.assertEqual(privacy["plausible"], [])
+
+        noindex = self.run_event_harness({
+            "pathname": "/private/person@example.com",
+            "search": "?token=secret",
+            "noindex": True,
+        })
+        self.assertEqual(noindex["emitted"][0]["page"], "/404")
+        self.assertEqual(noindex["emitted"][0]["label"], "404")
+        self.assertNotIn("private", json.dumps(noindex["emitted"]))
+        self.assertNotIn("secret", json.dumps(noindex["emitted"]))
+
+        unknown_path = self.run_event_harness({"pathname": "/private/john-doe"})
+        self.assertEqual(unknown_path["emitted"][0]["page"], "/404")
+        self.assertNotIn("john-doe", json.dumps(unknown_path["emitted"]))
+
+        invalid_queries = (
+            "?utm_source=jobatlas&utm_medium=owned-site",
+            "?utm_source=unknown&utm_medium=owned-site&utm_campaign=actor-discovery",
+            "?utm_source=devto&utm_medium=email&utm_campaign=linkedin-alerts",
+            "?utm_source=devto&utm_medium=tutorial&utm_campaign=unknown",
+            "?utm_source=devto&utm_medium=tutorial&utm_campaign=linkedin-alerts&utm_content=Person%40example.com",
+            "?utm_source=devto&utm_source=github&utm_medium=tutorial&utm_campaign=linkedin-alerts",
+        )
+        for query in invalid_queries:
+            with self.subTest(query=query):
+                detail = self.run_event_harness({"pathname": "/", "search": query})["emitted"][0]
+                for key in ("source", "medium", "campaign", "content"):
+                    self.assertNotIn(key, detail)
 
     def test_apify_ctas_are_direct_attributed_and_cover_all_products(self) -> None:
         counts = {actor: 0 for actor in ACTOR_PATHS}

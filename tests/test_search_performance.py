@@ -154,6 +154,97 @@ class SearchPerformanceTests(unittest.TestCase):
                 self.assertTrue(search_performance._is_brand_query(query))
         self.assertFalse(search_performance._is_brand_query("job data api"))
 
+    def test_empty_result_marks_observed_zero_and_undefined_ratios(self) -> None:
+        report = search_performance.build_report(
+            "https://jobatlas.dev/",
+            date(2026, 8, 9),
+            date(2026, 9, 5),
+            [],
+            generated_at="2026-09-07T10:16:48Z",
+            include_query_text=False,
+        )
+
+        self.assertEqual(report["coverage"]["observationStatus"], "observed_empty")
+        self.assertEqual(report["coverage"]["rowCount"], 0)
+        self.assertEqual(report["totals"]["clicks"], 0)
+        self.assertEqual(report["totals"]["impressions"], 0)
+        self.assertFalse(report["totals"]["ctrAvailable"])
+        self.assertFalse(report["totals"]["averagePositionAvailable"])
+        self.assertIn("returned", report["coverage"]["limitation"].lower())
+
+        populated = search_performance.build_report(
+            "https://jobatlas.dev/",
+            date(2026, 8, 9),
+            date(2026, 9, 5),
+            [
+                {
+                    "keys": ["https://jobatlas.dev/", "job data api"],
+                    "clicks": 1,
+                    "impressions": 10,
+                    "position": 7,
+                }
+            ],
+            generated_at="2026-09-07T10:16:48Z",
+            include_query_text=False,
+        )
+        self.assertEqual(populated["coverage"]["observationStatus"], "observed")
+        self.assertTrue(populated["totals"]["ctrAvailable"])
+        self.assertTrue(populated["totals"]["averagePositionAvailable"])
+
+    def test_report_buckets_query_fragments_and_unknown_page_paths(self) -> None:
+        rows = [
+            {
+                "keys": [
+                    "https://jobatlas.dev/actors/linkedin?token=secret#person-name",
+                    "linkedin jobs",
+                ],
+                "clicks": 1,
+                "impressions": 5,
+                "position": 3,
+            },
+            {
+                "keys": [
+                    "https://jobatlas.dev/private/john-doe?email=person@example.com",
+                    "private query",
+                ],
+                "clicks": 0,
+                "impressions": 1,
+                "position": 10,
+            },
+        ]
+        report = search_performance.build_report(
+            "https://jobatlas.dev/",
+            date(2026, 8, 9),
+            date(2026, 9, 5),
+            rows,
+            generated_at="2026-09-07T10:16:48Z",
+            include_query_text=False,
+        )
+
+        serialized = json.dumps(report)
+        self.assertNotIn("secret", serialized)
+        self.assertNotIn("person-name", serialized)
+        self.assertNotIn("john-doe", serialized)
+        self.assertNotIn("person@example.com", serialized)
+        self.assertEqual(
+            {row["page"] for row in report["pages"]},
+            {
+                "https://jobatlas.dev/actors/linkedin",
+                "https://jobatlas.dev/__other__",
+            },
+        )
+        self.assertFalse(report["privacy"]["pageQueryAndFragmentIncluded"])
+        self.assertTrue(report["privacy"]["unknownPagePathsBucketed"])
+
+        with self.assertRaisesRegex(ValueError, "user information"):
+            search_performance.build_report(
+                "https://person:secret@jobatlas.dev/",
+                date(2026, 8, 9),
+                date(2026, 9, 5),
+                [],
+                include_query_text=False,
+            )
+
     def test_write_report_is_deterministic_and_creates_parent(self) -> None:
         report = {"generatedAt": "2026-09-03T12:00:00Z", "totals": {"clicks": 0}}
         with TemporaryDirectory() as directory:
@@ -189,6 +280,10 @@ class SearchPerformanceTests(unittest.TestCase):
             "no page is revised solely because it was unindexed for less than 72 hours",
         ):
             self.assertIn(required, program)
+        intent_table = program.split("## Search-intent ownership", 1)[1].split(
+            "Do not publish role/location combinations", 1
+        )[0]
+        self.assertIn("| `/actors/ycombinator` |", intent_table)
         self.assertIn("https://jobatlas.dev/", (root / "README.md").read_text())
 
 
