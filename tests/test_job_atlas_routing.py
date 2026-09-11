@@ -99,6 +99,8 @@ class JobAtlasRoutingTests(unittest.TestCase):
             'integrations/shared/run-summary-v3.schema.json',
             'integrations/shared/run-summary-v4.schema.json',
             'integrations/shared/ycombinator-v2.schema.json',
+            # Illustrative record must retain the stable YC v2 schema identity.
+            'first-run/samples/ycombinator-v2.illustrative.json',
             'website/samples/euraxess-job.json',
             # Exact downloadable copy of the recorded source result.
             'website/samples/explorer/euraxess.json',

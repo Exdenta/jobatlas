@@ -1,0 +1,553 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/first-run/first-run-pack-v1.schema.json",
+  "title": "Job Atlas first-run pack v1",
+  "description": "A closed, evidence-labelled starter and approval proposal for one promoted Job Atlas Actor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packId",
+    "product",
+    "actor",
+    "starter",
+    "sample",
+    "completion",
+    "guidance",
+    "relatedExecutionEvidence",
+    "approvalProposal"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "jobatlas-first-run-pack-v1"
+    },
+    "packId": {
+      "enum": [
+        "linkedin",
+        "euraxess",
+        "ycombinator",
+        "ai-job-fit-scorer"
+      ]
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "outcome",
+        "websiteUrl"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "websiteUrl": {
+          "type": "string",
+          "pattern": "^https://jobatlas[.]dev/actors/"
+        }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "immutableActorId",
+        "storeUrl",
+        "apiActorId",
+        "buildSelector",
+        "datedPublicReadback"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 1
+        },
+        "immutableActorId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9]{17}$"
+        },
+        "storeUrl": {
+          "type": "string",
+          "pattern": "^https://apify[.]com/job-atlas/"
+        },
+        "apiActorId": {
+          "type": "string",
+          "pattern": "^job-atlas~"
+        },
+        "buildSelector": {
+          "const": "latest"
+        },
+        "datedPublicReadback": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "observedAt",
+            "actorPublic",
+            "actorDeprecated",
+            "defaultBuildSelector",
+            "buildNumber",
+            "buildId",
+            "buildStatus",
+            "pricingModel",
+            "primaryEventName",
+            "primaryUnitPriceUsd",
+            "optionalEventPricesUsd",
+            "proofBoundary"
+          ],
+          "properties": {
+            "observedAt": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:[.][0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+            },
+            "actorPublic": {
+              "const": true
+            },
+            "actorDeprecated": {
+              "const": false
+            },
+            "defaultBuildSelector": {
+              "const": "latest"
+            },
+            "buildNumber": {
+              "type": "string",
+              "pattern": "^[0-9]+[.][0-9]+[.][0-9]+$"
+            },
+            "buildId": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9]{17}$"
+            },
+            "buildStatus": {
+              "const": "SUCCEEDED"
+            },
+            "pricingModel": {
+              "const": "PAY_PER_EVENT"
+            },
+            "primaryEventName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "primaryUnitPriceUsd": {
+              "type": "number",
+              "minimum": 0
+            },
+            "optionalEventPricesUsd": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "eventName",
+                  "unitPriceUsd"
+                ],
+                "properties": {
+                  "eventName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "unitPriceUsd": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            "proofBoundary": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "starter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputPath",
+        "inputSha256",
+        "maxItems",
+        "maxTotalChargeUsd",
+        "optionalPaidFeaturesDisabled",
+        "statefulFeaturesDisabled"
+      ],
+      "properties": {
+        "inputPath": {
+          "type": "string",
+          "pattern": "^(integrations/api|first-run/inputs)/"
+        },
+        "inputSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "maxItems": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "maxTotalChargeUsd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "optionalPaidFeaturesDisabled": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "statefulFeaturesDisabled": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordPath",
+        "recordSha256",
+        "rowSchemaPath",
+        "rowSchemaSha256",
+        "rowSchemaVersion",
+        "sourceExtensionSchemaPath",
+        "sourceExtensionSchemaSha256",
+        "sourceExtensionSchemaVersion",
+        "sampleSource",
+        "evidenceClass",
+        "observedAt",
+        "note",
+        "notProofOf"
+      ],
+      "properties": {
+        "recordPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rowSchemaPath": {
+          "type": "string",
+          "pattern": "^integrations/shared/"
+        },
+        "rowSchemaSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rowSchemaVersion": {
+          "enum": [
+            "nomad-agent-job-v1",
+            "nomad-ai-job-fit-v1"
+          ]
+        },
+        "sourceExtensionSchemaPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceExtensionSchemaSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceExtensionSchemaVersion": {
+          "enum": [
+            null,
+            "euraxess-v1",
+            "ycombinator-v2"
+          ]
+        },
+        "sampleSource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceClass": {
+          "enum": [
+            "illustrative_fixture",
+            "recorded_source_result",
+            "historical_predecessor_run"
+          ]
+        },
+        "observedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notProofOf": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runSummarySchemaPath",
+        "runSummarySchemaSha256",
+        "runSummarySchemaVersion",
+        "datasetCountField",
+        "usableSummaryStatuses",
+        "requiredRunReceiptFields",
+        "sourceRule",
+        "retryRule",
+        "costRule"
+      ],
+      "properties": {
+        "runSummarySchemaPath": {
+          "type": "string",
+          "pattern": "^integrations/shared/"
+        },
+        "runSummarySchemaSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runSummarySchemaVersion": {
+          "enum": [
+            "nomad-agent-run-summary-v4",
+            "nomad-ai-job-fit-run-summary-v4"
+          ]
+        },
+        "datasetCountField": {
+          "enum": [
+            "delivered",
+            "counts.outputRows"
+          ]
+        },
+        "usableSummaryStatuses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "requiredRunReceiptFields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "sourceRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retryRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "costRule": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "guidance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectedOutput",
+        "unknownFields",
+        "empty",
+        "partial",
+        "failure",
+        "limitations",
+        "supportUrl",
+        "supportedNextStep",
+        "nextStepProof"
+      ],
+      "properties": {
+        "expectedOutput": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unknownFields": {
+          "type": "string",
+          "minLength": 1
+        },
+        "empty": {
+          "type": "string",
+          "minLength": 1
+        },
+        "partial": {
+          "type": "string",
+          "minLength": 1
+        },
+        "failure": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "supportUrl": {
+          "type": "string",
+          "pattern": "^https://apify[.]com/job-atlas/"
+        },
+        "supportedNextStep": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nextStepProof": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "relatedExecutionEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observedAt",
+        "runId",
+        "resolvedBuildNumber",
+        "resolvedBuildId",
+        "datasetRows",
+        "summaryStatus",
+        "exactStarterInput",
+        "destinationWrite",
+        "evidenceClass",
+        "note"
+      ],
+      "properties": {
+        "observedAt": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9]{17}$"
+        },
+        "resolvedBuildNumber": {
+          "type": "string",
+          "pattern": "^[0-9]+[.][0-9]+[.][0-9]+$"
+        },
+        "resolvedBuildId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9]{17}$"
+        },
+        "datasetRows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "summaryStatus": {
+          "enum": [
+            "partial",
+            "complete"
+          ]
+        },
+        "exactStarterInput": {
+          "const": false
+        },
+        "destinationWrite": {
+          "const": false
+        },
+        "evidenceClass": {
+          "const": "related_current_organization_run"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "approvalProposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "method",
+        "endpoint",
+        "buildSelector",
+        "inputPath",
+        "inputSha256",
+        "maxItems",
+        "maxTotalChargeUsd",
+        "maxFollowUpRuns",
+        "checks",
+        "sideEffects",
+        "rollback"
+      ],
+      "properties": {
+        "state": {
+          "const": "not_run_requires_approval"
+        },
+        "method": {
+          "const": "apify_actor_api"
+        },
+        "endpoint": {
+          "type": "string",
+          "pattern": "^https://api[.]apify[.]com/v2/act(ors|s)/job-atlas~"
+        },
+        "buildSelector": {
+          "const": "latest"
+        },
+        "inputPath": {
+          "type": "string",
+          "pattern": "^(integrations/api|first-run/inputs)/"
+        },
+        "inputSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "maxItems": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "maxTotalChargeUsd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxFollowUpRuns": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "sideEffects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rollback": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

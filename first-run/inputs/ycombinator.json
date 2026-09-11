@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "nomad-agent-job-search-input-v1",
+  "firstRunMode": false,
+  "postedWithin": "any",
+  "maxItems": 5,
+  "ycSearch": {
+    "schemaVersion": "nomad-agent-ycombinator-search-v1",
+    "queries": [
+      "founding engineer"
+    ]
+  },
+  "translateToEnglish": false,
+  "aiEnrichment": {
+    "enabled": false,
+    "accuracy": "silver"
+  },
+  "includeRaw": false,
+  "dedupe": {
+    "enabled": false,
+    "key": ""
+  },
+  "analyticsEnabled": false
+}
