@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "jobatlas-first-run-pack-v1",
+  "packId": "ai-job-fit-scorer",
+  "product": {
+    "name": "AI Job Search & Fit Scorer",
+    "outcome": "Inspect an evidence-backed shortlist of up to five developer-job evaluations for one fictional candidate profile.",
+    "websiteUrl": "https://jobatlas.dev/actors/ai-job-fit-scorer"
+  },
+  "actor": {
+    "slug": "ai-job-fit-scorer",
+    "immutableActorId": "OZ919PaAyAbifOdcL",
+    "storeUrl": "https://apify.com/job-atlas/ai-job-fit-scorer",
+    "apiActorId": "job-atlas~ai-job-fit-scorer",
+    "buildSelector": "latest",
+    "datedPublicReadback": {
+      "observedAt": "2026-09-11T01:13:07+02:00",
+      "actorPublic": true,
+      "actorDeprecated": false,
+      "defaultBuildSelector": "latest",
+      "buildNumber": "0.1.5",
+      "buildId": "gxzLgzyS6vc1djG9S",
+      "buildStatus": "SUCCEEDED",
+      "pricingModel": "PAY_PER_EVENT",
+      "primaryEventName": "job-fit-result",
+      "primaryUnitPriceUsd": 0.02,
+      "optionalEventPricesUsd": [],
+      "proofBoundary": "Public metadata and build state only; this read did not execute a search or score, prove source health, settle billing, or deliver a shortlist."
+    }
+  },
+  "starter": {
+    "inputPath": "integrations/api/ai-job-fit-scorer-input.json",
+    "inputSha256": "1745db37eaf9c95188cbb4b7191afacf6d1e3440332cddeab32fea9e4212d977",
+    "maxItems": 5,
+    "maxTotalChargeUsd": 0.1,
+    "optionalPaidFeaturesDisabled": [],
+    "statefulFeaturesDisabled": []
+  },
+  "sample": {
+    "recordPath": "docs/examples/ai-job-fit-scorer/fit-row.example.json",
+    "recordSha256": "13702f4f99c6c7e62d58f7ed99ec3befa02f81d6744c578543878f5ceb928d47",
+    "rowSchemaPath": "integrations/shared/nomad-ai-job-fit-v1.schema.json",
+    "rowSchemaSha256": "9f71e0e14d0349e026dc429250dbda8f2e52aa2bbbb73cb3af20534e4c4d5452",
+    "rowSchemaVersion": "nomad-ai-job-fit-v1",
+    "sourceExtensionSchemaPath": null,
+    "sourceExtensionSchemaSha256": null,
+    "sourceExtensionSchemaVersion": null,
+    "sampleSource": "linkedin",
+    "evidenceClass": "historical_predecessor_run",
+    "observedAt": "2026-09-05",
+    "note": "Contract-valid scored row from historical nomad-agent predecessor evidence. It is useful for schema interpretation, not current Job Atlas execution proof.",
+    "notProofOf": [
+      "the current Job Atlas Actor output",
+      "a fresh source search",
+      "model quality or score accuracy",
+      "a destination write"
+    ]
+  },
+  "completion": {
+    "runSummarySchemaPath": "integrations/shared/nomad-ai-job-fit-run-summary-v4.schema.json",
+    "runSummarySchemaSha256": "32098b5db9c57e4db4ee1fb5b0ec18994b5743a8aac58b2ee854e84a8f2bbb51",
+    "runSummarySchemaVersion": "nomad-ai-job-fit-run-summary-v4",
+    "datasetCountField": "counts.outputRows",
+    "usableSummaryStatuses": [
+      "complete",
+      "partial",
+      "empty"
+    ],
+    "requiredRunReceiptFields": [
+      "id",
+      "buildId",
+      "buildNumber",
+      "defaultDatasetId",
+      "defaultKeyValueStoreId",
+      "status",
+      "exitCode"
+    ],
+    "sourceRule": "Every fit row must validate as nomad-ai-job-fit-v1; row.source and row.job.identity.source must agree, and source provenance must reconcile with the summary.",
+    "retryRule": "Do not start another run automatically. Internal source attempts are governed by the fit-summary contract; any new Actor run needs separate approval.",
+    "costRule": "Require settled job-fit-result accounting and v4 result-policy arithmetic. At most five retained shortlist rows cost up to $0.10 at the observed unit price; fewer or zero rows can be valid, and $0.10 is a ceiling."
+  },
+  "guidance": {
+    "expectedOutput": "Zero to five nomad-ai-job-fit-v1 shortlist rows with fit and delivery scores, hard-gate evidence, gaps, source provenance, and candidate-specific matchKey.",
+    "unknownFields": "Missing evidence remains a gap or null; a fit score is not a probability. Use matchKey, not jobKey alone, for candidate-specific destination identity.",
+    "empty": "A contract-valid empty shortlist can mean evaluated jobs were filtered by static or delivery gates. Reconcile counts before calling it clean; it is not proof that the sources had no jobs.",
+    "partial": "A partial summary can preserve usable rows while reporting bounded source or scoring limitations. Inspect source statuses, warnings, counts, and budgetLimited.",
+    "failure": "Reject non-SUCCEEDED terminal runs, invalid result-policy arithmetic, missing immutable build or storage identities, unbound candidate/source provenance, schema errors, or unsettled count/charge mismatches.",
+    "limitations": [
+      "The Actor evaluates one candidate per run and does not apply to jobs, send alerts, learn from clicks, or make hiring decisions.",
+      "Public sources can fail or omit fields, and shortlist mode deliberately filters some evaluations.",
+      "Use synthetic or consented candidate data; platform input retention remains governed by Apify controls."
+    ],
+    "supportUrl": "https://apify.com/job-atlas/ai-job-fit-scorer/issues",
+    "supportedNextStep": "Use the maintained REST runner after validating the exact Actor result; local MCP, n8n, Make, Zapier, Python, and Agent Skill assets remain available for their documented scopes.",
+    "nextStepProof": "No hosted MCP exposure, workflow import, active schedule, or named Google Sheets write is proved by this pack."
+  },
+  "relatedExecutionEvidence": {
+    "observedAt": "2026-09-09",
+    "runId": "he2KWlCNQ7c53lHK8",
+    "resolvedBuildNumber": "0.1.5",
+    "resolvedBuildId": "gxzLgzyS6vc1djG9S",
+    "datasetRows": 1,
+    "summaryStatus": "complete",
+    "exactStarterInput": false,
+    "destinationWrite": false,
+    "evidenceClass": "related_current_organization_run",
+    "note": "S03 retained a successful default-selector Job Atlas run with one contract-valid row. It did not use this exact input, and its early charge receipt was not final billing proof."
+  },
+  "approvalProposal": {
+    "state": "not_run_requires_approval",
+    "method": "apify_actor_api",
+    "endpoint": "https://api.apify.com/v2/actors/job-atlas~ai-job-fit-scorer/runs",
+    "buildSelector": "latest",
+    "inputPath": "integrations/api/ai-job-fit-scorer-input.json",
+    "inputSha256": "1745db37eaf9c95188cbb4b7191afacf6d1e3440332cddeab32fea9e4212d977",
+    "maxItems": 5,
+    "maxTotalChargeUsd": 0.1,
+    "maxFollowUpRuns": 0,
+    "checks": [
+      "terminal_succeeded",
+      "resolved_build_identity",
+      "same_run_storages",
+      "summary_schema",
+      "summary_result_policy",
+      "dataset_count",
+      "row_schema",
+      "row_source",
+      "match_key",
+      "settled_cost"
+    ],
+    "sideEffects": [
+      "One paid Actor run and retained Apify run, dataset, key-value-store, source receipts, and accounting records.",
+      "The input contains a fictional candidate profile; no destination, schedule, webhook, publication, or metadata change."
+    ],
+    "rollback": "Do not retry, deliver, or publish the result. Preserve the failed receipt for diagnosis; no Actor selector or metadata is changed by this proposal."
+  }
+}

@@ -12,6 +12,8 @@ are published at [jobatlas.dev](https://jobatlas.dev/). The operating rules
 for search discovery, measurement, and evidence-led content are documented in
 the [SEO program](docs/seo-program.md).
 
+Start one of the four flagship Actors with the [versioned first-run pack index](first-run/README.md); each pack labels its sample evidence and keeps exact-run and destination proof separate.
+
 ## LinkedIn Jobs Scraper | AI Enrichment
 
 Get LinkedIn jobs ready for alerts, job boards, and spreadsheets. Keep full

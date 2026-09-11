@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "jobatlas-first-run-pack-v1",
+  "packId": "ycombinator",
+  "product": {
+    "name": "Y Combinator Jobs Scraper",
+    "outcome": "Inspect up to five founding-engineer roles from the refreshed YC jobs inventory.",
+    "websiteUrl": "https://jobatlas.dev/actors/ycombinator"
+  },
+  "actor": {
+    "slug": "ycombinator-enrich-translate-normalize-scraper",
+    "immutableActorId": "pF4Lk4ifzb9tZXg7K",
+    "storeUrl": "https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper",
+    "apiActorId": "job-atlas~ycombinator-enrich-translate-normalize-scraper",
+    "buildSelector": "latest",
+    "datedPublicReadback": {
+      "observedAt": "2026-09-11T01:13:07+02:00",
+      "actorPublic": true,
+      "actorDeprecated": false,
+      "defaultBuildSelector": "latest",
+      "buildNumber": "1.0.4",
+      "buildId": "9D13ViqHgk6hFtWVi",
+      "buildStatus": "SUCCEEDED",
+      "pricingModel": "PAY_PER_EVENT",
+      "primaryEventName": "result",
+      "primaryUnitPriceUsd": 0.0009,
+      "optionalEventPricesUsd": [
+        {
+          "eventName": "position-enrichment",
+          "unitPriceUsd": 0.006
+        },
+        {
+          "eventName": "position-enrichment-gold",
+          "unitPriceUsd": 0.01
+        },
+        {
+          "eventName": "translation",
+          "unitPriceUsd": 0.006
+        }
+      ],
+      "proofBoundary": "Public metadata and build state only; this read did not execute the Actor or prove inventory freshness, output, billing, or delivery."
+    }
+  },
+  "starter": {
+    "inputPath": "first-run/inputs/ycombinator.json",
+    "inputSha256": "cb3d1fe7785f107b46024fbf326fd133da11dfcc22deaa099a0a840464a6d4c8",
+    "maxItems": 5,
+    "maxTotalChargeUsd": 0.05,
+    "optionalPaidFeaturesDisabled": [
+      "firstRunMode",
+      "aiEnrichment",
+      "translateToEnglish"
+    ],
+    "statefulFeaturesDisabled": [
+      "dedupe",
+      "analyticsEnabled"
+    ]
+  },
+  "sample": {
+    "recordPath": "first-run/samples/ycombinator-v2.illustrative.json",
+    "recordSha256": "d01fbe4472eb963effea89937e1659e7392b67ba7330ab6d769c2726ce3410b2",
+    "rowSchemaPath": "integrations/shared/nomad-agent-job-v1.schema.json",
+    "rowSchemaSha256": "98f80ed31df9ae5ff7f4ebea97e2c6b5d835c1dcfcdfac54fec8e20b59ba3f4f",
+    "rowSchemaVersion": "nomad-agent-job-v1",
+    "sourceExtensionSchemaPath": "integrations/shared/ycombinator-v2.schema.json",
+    "sourceExtensionSchemaSha256": "bbd163f2dde9f44defe8bb432721a0b65728308936e7d3663aa0fe07b5bd0e5a",
+    "sourceExtensionSchemaVersion": "ycombinator-v2",
+    "sampleSource": "ycombinator_was",
+    "evidenceClass": "illustrative_fixture",
+    "observedAt": null,
+    "note": "Fictional schema example whose custom.data also validates against ycombinator-v2. The filename and this manifest keep its illustrative status visible.",
+    "notProofOf": [
+      "a live startup or vacancy",
+      "an Actor run",
+      "current YC inventory",
+      "a destination write"
+    ]
+  },
+  "completion": {
+    "runSummarySchemaPath": "integrations/shared/run-summary-v4.schema.json",
+    "runSummarySchemaSha256": "3cdd430412bdd7fbbb864b1c92c91743d3577dcd1d0e6280b202d073287dec21",
+    "runSummarySchemaVersion": "nomad-agent-run-summary-v4",
+    "datasetCountField": "delivered",
+    "usableSummaryStatuses": [
+      "succeeded",
+      "empty",
+      "empty-limited",
+      "partial"
+    ],
+    "requiredRunReceiptFields": [
+      "id",
+      "buildId",
+      "buildNumber",
+      "defaultDatasetId",
+      "defaultKeyValueStoreId",
+      "status",
+      "exitCode"
+    ],
+    "sourceRule": "Every dataset row must validate as nomad-agent-job-v1, have identity.source=ycombinator_was, and validate custom.data against ycombinator-v2.",
+    "retryRule": "Do not retry automatically. Record a partial summary's bounded recommendation and request separate approval before another paid run.",
+    "costRule": "Read settled result and optional-event charges from the exact run. Five base rows at the observed unit price are $0.0045; $0.05 is a ceiling, not a quote or a promise of five rows."
+  },
+  "guidance": {
+    "expectedOutput": "Zero to five canonical startup-job rows with stable source identity, complete descriptions and YC-specific company facts when published.",
+    "unknownFields": "null means unknown or unavailable; [] means the source established an empty collection. Founders are company context, not hiring contacts.",
+    "empty": "Accept zero rows only with a valid same-run summary. It means no rows were delivered for this bounded query and observed inventory state, not that no YC job matches in general.",
+    "partial": "A partial result can be useful. resultsLimited=true with no retry recommendation can simply reflect the five-row cap.",
+    "failure": "Reject non-SUCCEEDED terminal runs, stale or unavailable inventory failures, missing immutable build or storage identities, invalid summaries, source/custom-schema drift, or count mismatches.",
+    "limitations": [
+      "The Actor filters a regularly refreshed inventory and does not scrape YC pages on demand.",
+      "Availability and first-seen timestamps are not employer guarantees or source posting dates.",
+      "This service is independently developed and is not affiliated with Y Combinator."
+    ],
+    "supportUrl": "https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper/issues",
+    "supportedNextStep": "Use the documented REST recipe or the maintained Agent Skill after validating the Actor result.",
+    "nextStepProof": "API and MCP examples are documented-only. No maintained YC n8n, Make, Zapier, Airtable, Python client, or named-destination proof is claimed."
+  },
+  "relatedExecutionEvidence": {
+    "observedAt": "2026-09-09",
+    "runId": "GLrBSf94Z2x87EH7X",
+    "resolvedBuildNumber": "1.0.4",
+    "resolvedBuildId": "9D13ViqHgk6hFtWVi",
+    "datasetRows": 2,
+    "summaryStatus": "partial",
+    "exactStarterInput": false,
+    "destinationWrite": false,
+    "evidenceClass": "related_current_organization_run",
+    "note": "S03 retained a successful default-selector Job Atlas run with two usable rows. It did not use this exact input or prove a destination."
+  },
+  "approvalProposal": {
+    "state": "not_run_requires_approval",
+    "method": "apify_actor_api",
+    "endpoint": "https://api.apify.com/v2/acts/job-atlas~ycombinator-enrich-translate-normalize-scraper/runs",
+    "buildSelector": "latest",
+    "inputPath": "first-run/inputs/ycombinator.json",
+    "inputSha256": "cb3d1fe7785f107b46024fbf326fd133da11dfcc22deaa099a0a840464a6d4c8",
+    "maxItems": 5,
+    "maxTotalChargeUsd": 0.05,
+    "maxFollowUpRuns": 0,
+    "checks": [
+      "terminal_succeeded",
+      "resolved_build_identity",
+      "same_run_storages",
+      "summary_schema",
+      "summary_status",
+      "dataset_count",
+      "row_schema",
+      "row_source",
+      "retry_policy",
+      "settled_cost"
+    ],
+    "sideEffects": [
+      "One paid Actor run and retained Apify run, dataset, key-value-store, and accounting records.",
+      "No destination, schedule, webhook, publication, or metadata change."
+    ],
+    "rollback": "Do not retry or publish the result. Preserve the failed receipt for diagnosis; no Actor selector or metadata is changed by this proposal."
+  }
+}

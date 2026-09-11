@@ -44,10 +44,13 @@ jobs:
 
       - name: Check Python and browser-script syntax
         run: |
-          python3 -m py_compile scripts/search_publish.py scripts/search_performance.py
+          python3 -m py_compile scripts/search_publish.py scripts/search_performance.py scripts/validate_first_run_packs.py
           node --check website/script.js
           node --check website/homepage.js
           node --check website/homepage-samples.js
+
+      - name: Validate flagship first-run packs
+        run: python3 scripts/validate_first_run_packs.py
 
       - name: Run full repository test suite
         run: python3 -m unittest discover -s tests -v
