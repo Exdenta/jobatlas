@@ -10,7 +10,7 @@
       "step": 1,
       "app": "Apify",
       "event": "Run Actor",
-      "actor": "job-atlas/ai-job-fit-scorer",
+      "actor": "jobatlas/ai-job-fit-scorer",
       "build": "latest",
       "input": {
         "mode": "search",

@@ -85,7 +85,7 @@ class ApifyStoreCopyTests(unittest.TestCase):
 
     def test_only_four_existing_job_atlas_listings_receive_drafts(self) -> None:
         deployments = self.manifest["deployments"]
-        promoted = [row for row in deployments if row["owner"] == "job-atlas"]
+        promoted = [row for row in deployments if row["owner"] == "jobatlas"]
         legacy = [row for row in deployments if row["owner"] == "nomad-agent"]
         self.assertEqual(len(promoted), 4)
         self.assertEqual(len(legacy), 44)
@@ -99,7 +99,7 @@ class ApifyStoreCopyTests(unittest.TestCase):
         for slug, (actor_id, website_path, limit, support) in DRAFTS.items():
             document = (DOCS / "actors" / f"{slug}.md").read_text(encoding="utf-8")
             with self.subTest(slug=slug):
-                self.assertIn(f"Target: `job-atlas/{slug}`", document)
+                self.assertIn(f"Target: `jobatlas/{slug}`", document)
                 self.assertIn(f"Actor ID: `{actor_id}`", document)
                 self.assertIn(f"https://jobatlas.dev{website_path}", document)
                 self.assertIn(limit, document)
@@ -126,8 +126,8 @@ class ApifyStoreCopyTests(unittest.TestCase):
         self.assertIn("https://jobatlas.dev/", document)
         self.assertIn("https://github.com/Exdenta/jobatlas", document)
         for slug in DRAFTS:
-            self.assertIn(f"https://apify.com/job-atlas/{slug}", document)
-        self.assertEqual(document.count("https://apify.com/job-atlas/"), 4)
+            self.assertIn(f"https://apify.com/jobatlas/{slug}", document)
+        self.assertEqual(document.count("https://apify.com/jobatlas/"), 4)
         self.assertNotIn("monthly users", document.lower())
         self.assertNotIn("runs succeeded", document.lower())
 

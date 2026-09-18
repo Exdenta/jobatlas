@@ -1,6 +1,6 @@
 # AI Job Fit Scorer listing amendment draft
 
-- Target: `job-atlas/ai-job-fit-scorer`
+- Target: `jobatlas/ai-job-fit-scorer`
 - Actor ID: `OZ919PaAyAbifOdcL`
 - Website guide: `https://jobatlas.dev/actors/ai-job-fit-scorer`
 - Observed: 2026-09-09

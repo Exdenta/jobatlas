@@ -1,6 +1,6 @@
 # Actor catalogue and client migration
 
-The [versioned Actor catalogue](../catalogue/actors-v1.json) separates a logical product from each deployed copy. The 2026-09-08 read-back accounts for 64 Actors owned by `nomad-agent`: 43 public job products, three private support Actors, and 18 unrelated public products. It also records four public `job-atlas` deployments. Those four have different immutable Actor IDs and build histories from their same-slug `nomad-agent` counterparts, so they are copies, not redirects or renamed Actors.
+The [versioned Actor catalogue](../catalogue/actors-v1.json) separates a logical product from each deployed copy. The 2026-09-08 read-back accounts for 64 Actors owned by `nomad-agent`: 43 public job products, three private support Actors, and 18 unrelated public products. It also records four public `jobatlas` deployments. Those four have different immutable Actor IDs and build histories from their same-slug `nomad-agent` counterparts, so they are copies, not redirects. Their Actor IDs survived the 2026-09-18 publisher rename from `job-atlas` to `jobatlas`.
 
 The catalogue is an interoperability record. It does not claim that hosted Actor source is present in this repository, that a mutable `latest` build was executed, or that a destination received data. Validate it with:
 
@@ -10,7 +10,7 @@ python3 scripts/validate_actor_catalogue.py
 
 ## Recommended namespace policy
 
-Keep the four verified `job-atlas` deployments as the maintained endpoints for new repository callers. Keep all `nomad-agent` deployments unchanged as compatibility endpoints until each migration is approved and verified.
+Keep the four verified `jobatlas` deployments as the maintained endpoints for new repository callers. Keep all `nomad-agent` deployments unchanged as compatibility endpoints until each migration is approved and verified.
 
 Do not mass-copy the remaining 39 job products. Apify documents Actor transfer as a Support-assisted operation that retains reviews and usage statistics while changing the Store URL. Before using that path, ask Support to confirm immutable Actor-ID continuity, same-slug collision handling, monetization and existing-user behavior, Task ownership, webhooks, schedules, and rollback for the exact Actors in the batch. If any of those answers is incomplete, retain `nomad-agent` as the technical compatibility namespace and use Job Atlas only as the display brand.
 

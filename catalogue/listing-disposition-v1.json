@@ -21,7 +21,7 @@
         "id": "nomad-agent--foorilla-ai-jobs-scraper"
       }
     ],
-    "evidenceBoundary": "Four existing job-atlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
+    "evidenceBoundary": "Four existing jobatlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
   },
   "logicalProducts": [
     {
@@ -897,40 +897,40 @@
       "listingDraft": null
     },
     {
-      "deploymentId": "job-atlas--linkedin-enrich-translate-normalize-scraper",
+      "deploymentId": "jobatlas--linkedin-enrich-translate-normalize-scraper",
       "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
       "catalogueState": "catalogued",
-      "owner": "job-atlas",
+      "owner":"jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
       "listingDraft": "docs/apify-store/actors/linkedin-enrich-translate-normalize-scraper.md"
     },
     {
-      "deploymentId": "job-atlas--euraxess-enrich-translate-normalize-scraper",
+      "deploymentId": "jobatlas--euraxess-enrich-translate-normalize-scraper",
       "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
       "catalogueState": "catalogued",
-      "owner": "job-atlas",
+      "owner":"jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
       "listingDraft": "docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md"
     },
     {
-      "deploymentId": "job-atlas--ycombinator-enrich-translate-normalize-scraper",
+      "deploymentId": "jobatlas--ycombinator-enrich-translate-normalize-scraper",
       "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
       "catalogueState": "catalogued",
-      "owner": "job-atlas",
+      "owner":"jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
       "listingDraft": "docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md"
     },
     {
-      "deploymentId": "job-atlas--ai-job-fit-scorer",
+      "deploymentId": "jobatlas--ai-job-fit-scorer",
       "logicalProductId": "ai-job-fit-scorer",
       "catalogueState": "catalogued",
-      "owner": "job-atlas",
+      "owner":"jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,

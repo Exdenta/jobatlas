@@ -112,8 +112,8 @@ class FirstRunPackTests(unittest.TestCase):
                 self.assertEqual(pack["packId"], pack_id)
                 self.assertEqual(actor["slug"], slug)
                 self.assertEqual(actor["immutableActorId"], expected["actor_id"])
-                self.assertEqual(actor["apiActorId"], f"job-atlas~{slug}")
-                self.assertEqual(actor["storeUrl"], f"https://apify.com/job-atlas/{slug}")
+                self.assertEqual(actor["apiActorId"], f"jobatlas~{slug}")
+                self.assertEqual(actor["storeUrl"], f"https://apify.com/jobatlas/{slug}")
                 self.assertEqual(
                     pack["product"]["websiteUrl"],
                     f"https://jobatlas.dev/actors/{pack_id}",
@@ -124,7 +124,7 @@ class FirstRunPackTests(unittest.TestCase):
                 self.assertEqual(
                     proposal["endpoint"],
                     f"https://api.apify.com/v2/{endpoint_segment}/"
-                    f"job-atlas~{slug}/runs",
+                    f"jobatlas~{slug}/runs",
                 )
 
     def test_inputs_are_bounded_and_declared_features_are_off(self) -> None:
@@ -322,7 +322,7 @@ class FirstRunPackTests(unittest.TestCase):
     def test_wrong_route_build_hash_cost_retry_and_checks_are_rejected(self) -> None:
         mutations = {
             "route": lambda value: value["actor"].update(
-                apiActorId="job-atlas~euraxess-enrich-translate-normalize-scraper"
+                apiActorId="jobatlas~euraxess-enrich-translate-normalize-scraper"
             ),
             "build": lambda value: value["actor"]["datedPublicReadback"].update(
                 buildId="x0bGueGFnm6eEGY3K"

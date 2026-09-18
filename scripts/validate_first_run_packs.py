@@ -389,7 +389,7 @@ def _validate_catalogue_identity(pack: Mapping[str, Any], root: Path) -> None:
     matches = [
         item
         for item in catalogue.get("deployments", [])
-        if item.get("owner") == "job-atlas" and item.get("slug") == actor["slug"]
+        if item.get("owner") == "jobatlas" and item.get("slug") == actor["slug"]
     ]
     if len(matches) != 1 or matches[0].get("actorId") != actor["immutableActorId"]:
         raise ValidationError("actor owner/slug/immutable ID does not match the catalogue")
@@ -858,8 +858,8 @@ def validate_pack(
     expected_actor = {
         "slug": spec["slug"],
         "immutableActorId": spec["actor_id"],
-        "apiActorId": f"job-atlas~{spec['slug']}",
-        "storeUrl": f"https://apify.com/job-atlas/{spec['slug']}",
+        "apiActorId": f"jobatlas~{spec['slug']}",
+        "storeUrl": f"https://apify.com/jobatlas/{spec['slug']}",
         "buildSelector": "latest",
     }
     for field, expected in expected_actor.items():
@@ -1008,7 +1008,7 @@ def validate_pack(
     proposal = pack["approvalProposal"]
     expected_endpoint = (
         f"https://api.apify.com/v2/{spec['endpoint_segment']}/"
-        f"job-atlas~{spec['slug']}/runs"
+        f"jobatlas~{spec['slug']}/runs"
     )
     if proposal["endpoint"] != expected_endpoint:
         raise ValidationError(f"approval endpoint must equal {expected_endpoint}")

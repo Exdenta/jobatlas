@@ -1,6 +1,6 @@
 # Y Combinator listing amendment draft
 
-- Target: `job-atlas/ycombinator-enrich-translate-normalize-scraper`
+- Target: `jobatlas/ycombinator-enrich-translate-normalize-scraper`
 - Actor ID: `pF4Lk4ifzb9tZXg7K`
 - Website guide: `https://jobatlas.dev/actors/ycombinator`
 - Observed: 2026-09-09

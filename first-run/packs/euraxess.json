@@ -9,8 +9,8 @@
   "actor": {
     "slug": "euraxess-enrich-translate-normalize-scraper",
     "immutableActorId": "Slu3SAWULLRYnCN9Y",
-    "storeUrl": "https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper",
-    "apiActorId": "job-atlas~euraxess-enrich-translate-normalize-scraper",
+    "storeUrl": "https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper",
+    "apiActorId": "jobatlas~euraxess-enrich-translate-normalize-scraper",
     "buildSelector": "latest",
     "datedPublicReadback": {
       "observedAt": "2026-09-11T01:13:07+02:00",
@@ -109,7 +109,7 @@
       "A recorded source row does not guarantee that its application remains open.",
       "Job Atlas is independently developed and is not an official European Commission or EURAXESS service."
     ],
-    "supportUrl": "https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper/issues",
+    "supportUrl": "https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper/issues",
     "supportedNextStep": "After validating the Actor result, use the maintained REST, MCP, n8n, Make, Python, or Agent Skill path; Airtable is a projection only.",
     "nextStepProof": "Repository assets are locally validated. Import, hosted-channel execution, scheduling, and named-destination delivery remain separate proof."
   },
@@ -128,7 +128,7 @@
   "approvalProposal": {
     "state": "not_run_requires_approval",
     "method": "apify_actor_api",
-    "endpoint": "https://api.apify.com/v2/acts/job-atlas~euraxess-enrich-translate-normalize-scraper/runs",
+    "endpoint": "https://api.apify.com/v2/acts/jobatlas~euraxess-enrich-translate-normalize-scraper/runs",
     "buildSelector": "latest",
     "inputPath": "integrations/api/euraxess-search.json",
     "inputSha256": "1ef65e202ebee45f038d5cd6905d6b9a6ea1e7b5073ce4610fc0e63865c3f5c8",

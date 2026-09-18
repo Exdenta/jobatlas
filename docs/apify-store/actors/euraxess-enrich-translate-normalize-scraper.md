@@ -1,6 +1,6 @@
 # EURAXESS listing amendment draft
 
-- Target: `job-atlas/euraxess-enrich-translate-normalize-scraper`
+- Target: `jobatlas/euraxess-enrich-translate-normalize-scraper`
 - Actor ID: `Slu3SAWULLRYnCN9Y`
 - Website guide: `https://jobatlas.dev/actors/euraxess`
 - Observed: 2026-09-09

@@ -1,6 +1,6 @@
 # Job Atlas releases
 
-[Job Atlas on Apify](https://apify.com/job-atlas) is the current customer-facing home for these four Actors. The website uses [jobatlas.dev](https://jobatlas.dev/), and the interoperability repository is [Exdenta/jobatlas](https://github.com/Exdenta/jobatlas).
+[Job Atlas on Apify](https://apify.com/jobatlas) is the current customer-facing home for these four Actors. The website uses [jobatlas.dev](https://jobatlas.dev/), and the interoperability repository is [Exdenta/jobatlas](https://github.com/Exdenta/jobatlas).
 
 The [versioned catalogue](../catalogue/actors-v1.json) distinguishes logical
 products from deployed copies and reconciles the wider live legacy fleet. Use
@@ -9,10 +9,10 @@ workflow, webhook, schedule, credential, subscription, or destination.
 
 | Actor | Store | Website guide |
 | --- | --- | --- |
-| LinkedIn | [Run Actor](https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper) | [LinkedIn guide](https://jobatlas.dev/actors/linkedin) |
-| EURAXESS | [Run Actor](https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper) | [EURAXESS guide](https://jobatlas.dev/actors/euraxess) |
-| Y Combinator | [Run Actor](https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper) | [YC guide](https://jobatlas.dev/actors/ycombinator) |
-| AI Job Fit Scorer | [Run Actor](https://apify.com/job-atlas/ai-job-fit-scorer) | [Scorer guide](https://jobatlas.dev/actors/ai-job-fit-scorer) |
+| LinkedIn | [Run Actor](https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper) | [LinkedIn guide](https://jobatlas.dev/actors/linkedin) |
+| EURAXESS | [Run Actor](https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper) | [EURAXESS guide](https://jobatlas.dev/actors/euraxess) |
+| Y Combinator | [Run Actor](https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper) | [YC guide](https://jobatlas.dev/actors/ycombinator) |
+| AI Job Fit Scorer | [Run Actor](https://apify.com/jobatlas/ai-job-fit-scorer) | [Scorer guide](https://jobatlas.dev/actors/ai-job-fit-scorer) |
 
 ## Client migration
 

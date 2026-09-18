@@ -7,7 +7,7 @@ from [`ai-job-fit-scorer-template-spec.json`](ai-job-fit-scorer-template-spec.js
 
 1. Trigger: **Schedule by Zapier → Every Day**. Keep the Zap off during setup.
 2. Action: **Apify → Run Actor**.
-   - Actor: `job-atlas/ai-job-fit-scorer`
+   - Actor: `jobatlas/ai-job-fit-scorer`
    - build: keep the template on selector `latest`; record the returned immutable build
    - input: the bounded five-item search starter after reviewing the explicit
      search terms and candidate profile; keep `resultMode: "shortlist"` and

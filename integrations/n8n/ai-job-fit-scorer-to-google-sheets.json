@@ -90,7 +90,7 @@
       ],
       "parameters": {
         "method": "POST",
-        "url": "https://api.apify.com/v2/acts/job-atlas~ai-job-fit-scorer/runs",
+        "url": "https://api.apify.com/v2/acts/jobatlas~ai-job-fit-scorer/runs",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,

@@ -29,10 +29,10 @@ EXPECTED_CANONICALS = {
 }
 HUBS = {"/", "/actors", "/integrations", "/guides"}
 ACTOR_PATHS = {
-    "ycombinator": "/job-atlas/ycombinator-enrich-translate-normalize-scraper",
-    "linkedin": "/job-atlas/linkedin-enrich-translate-normalize-scraper",
-    "euraxess": "/job-atlas/euraxess-enrich-translate-normalize-scraper",
-    "ai-job-fit-scorer": "/job-atlas/ai-job-fit-scorer",
+    "ycombinator": "/jobatlas/ycombinator-enrich-translate-normalize-scraper",
+    "linkedin": "/jobatlas/linkedin-enrich-translate-normalize-scraper",
+    "euraxess": "/jobatlas/euraxess-enrich-translate-normalize-scraper",
+    "ai-job-fit-scorer": "/jobatlas/ai-job-fit-scorer",
 }
 PUBLIC_SCHEMAS = (
     "nomad-ai-job-fit-destination-v1.schema.json",

@@ -96,16 +96,17 @@ class ActorCatalogueTests(unittest.TestCase):
         self.assertEqual(errors, [])
         extract = self.validator.extract_actor_routes
         sample = (
-            "https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper "
-            "job-atlas~ai-job-fit-scorer "
-            "job-atlas%2Feuraxess-enrich-translate-normalize-scraper"
+            "https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper "
+            "jobatlas~ai-job-fit-scorer "
+            "jobatlas%2Feuraxess-enrich-translate-normalize-scraper "
+            "https://github.com/Exdenta/jobatlas/blob/main/docs/linkedin.md"
         )
         self.assertEqual(
             extract(sample),
             {
-                "job-atlas/linkedin-enrich-translate-normalize-scraper",
-                "job-atlas/ai-job-fit-scorer",
-                "job-atlas/euraxess-enrich-translate-normalize-scraper",
+                "jobatlas/linkedin-enrich-translate-normalize-scraper",
+                "jobatlas/ai-job-fit-scorer",
+                "jobatlas/euraxess-enrich-translate-normalize-scraper",
             },
         )
 

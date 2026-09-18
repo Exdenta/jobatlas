@@ -55,7 +55,7 @@ def _product_disposition(product: dict[str, Any], catalogue_state: str) -> dict[
 
 
 def _deployment_disposition(deployment: dict[str, Any], catalogue_state: str) -> dict[str, Any]:
-    promoted_copy = deployment["owner"] == "job-atlas"
+    promoted_copy = deployment["owner"] == "jobatlas"
     return {
         "deploymentId": deployment["id"],
         "logicalProductId": deployment["logicalProductId"],
@@ -116,7 +116,7 @@ def build_manifest(catalogue: dict[str, Any]) -> dict[str, Any]:
             "privateSupportExcluded": counts["ownedPrivateSupportExcluded"],
             "unrelatedPublicExcluded": counts["ownedUnrelatedPublicExcluded"],
             "knownPostBaselineDelta": known_delta,
-            "evidenceBoundary": "Four existing job-atlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write.",
+            "evidenceBoundary": "Four existing jobatlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write.",
         },
         "logicalProducts": products,
         "deployments": deployments,

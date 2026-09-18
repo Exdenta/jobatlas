@@ -1,6 +1,6 @@
 # EURAXESS Jobs Scraper | Full Details & AI Enrichment
 
-[`job-atlas/euraxess-enrich-translate-normalize-scraper`](https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper)
+[`jobatlas/euraxess-enrich-translate-normalize-scraper`](https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper)
 finds public EURAXESS PhD, postdoctoral, fellowship, research, and faculty
 vacancies and returns the shared `nomad-agent-job-v1` contract.
 

@@ -74,11 +74,11 @@
         },
         "storeUrl": {
           "type": "string",
-          "pattern": "^https://apify[.]com/job-atlas/"
+          "pattern": "^https://apify[.]com/jobatlas/"
         },
         "apiActorId": {
           "type": "string",
-          "pattern": "^job-atlas~"
+          "pattern": "^jobatlas~"
         },
         "buildSelector": {
           "const": "latest"
@@ -407,7 +407,7 @@
         },
         "supportUrl": {
           "type": "string",
-          "pattern": "^https://apify[.]com/job-atlas/"
+          "pattern": "^https://apify[.]com/jobatlas/"
         },
         "supportedNextStep": {
           "type": "string",
@@ -502,7 +502,7 @@
         },
         "endpoint": {
           "type": "string",
-          "pattern": "^https://api[.]apify[.]com/v2/act(ors|s)/job-atlas~"
+          "pattern": "^https://api[.]apify[.]com/v2/act(ors|s)/jobatlas~"
         },
         "buildSelector": {
           "const": "latest"

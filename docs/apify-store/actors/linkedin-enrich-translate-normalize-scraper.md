@@ -1,6 +1,6 @@
 # LinkedIn listing amendment draft
 
-- Target: `job-atlas/linkedin-enrich-translate-normalize-scraper`
+- Target: `jobatlas/linkedin-enrich-translate-normalize-scraper`
 - Actor ID: `KMflYVTHiIAXE6nKN`
 - Website guide: `https://jobatlas.dev/actors/linkedin`
 - Observed: 2026-09-09

@@ -5,7 +5,7 @@ description: Search and interpret normalized Y Combinator Work at a Startup jobs
 
 # Y Combinator startup jobs
 
-Use `job-atlas/ycombinator-enrich-translate-normalize-scraper` at build selector `latest`
+Use `jobatlas/ycombinator-enrich-translate-normalize-scraper` at build selector `latest`
 and record the numeric build number and immutable build ID returned by Apify. Read [the input and output guide](references/guide.md)
 for recipes, costs, filter grammar, and source boundaries. The service filters
 an inventory; each user run does not contact YC directly.

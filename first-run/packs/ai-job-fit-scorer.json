@@ -9,8 +9,8 @@
   "actor": {
     "slug": "ai-job-fit-scorer",
     "immutableActorId": "OZ919PaAyAbifOdcL",
-    "storeUrl": "https://apify.com/job-atlas/ai-job-fit-scorer",
-    "apiActorId": "job-atlas~ai-job-fit-scorer",
+    "storeUrl": "https://apify.com/jobatlas/ai-job-fit-scorer",
+    "apiActorId": "jobatlas~ai-job-fit-scorer",
     "buildSelector": "latest",
     "datedPublicReadback": {
       "observedAt": "2026-09-11T01:13:07+02:00",
@@ -89,7 +89,7 @@
       "Public sources can fail or omit fields, and shortlist mode deliberately filters some evaluations.",
       "Use synthetic or consented candidate data; platform input retention remains governed by Apify controls."
     ],
-    "supportUrl": "https://apify.com/job-atlas/ai-job-fit-scorer/issues",
+    "supportUrl": "https://apify.com/jobatlas/ai-job-fit-scorer/issues",
     "supportedNextStep": "Use the maintained REST runner after validating the exact Actor result; local MCP, n8n, Make, Zapier, Python, and Agent Skill assets remain available for their documented scopes.",
     "nextStepProof": "No hosted MCP exposure, workflow import, active schedule, or named Google Sheets write is proved by this pack."
   },
@@ -108,7 +108,7 @@
   "approvalProposal": {
     "state": "not_run_requires_approval",
     "method": "apify_actor_api",
-    "endpoint": "https://api.apify.com/v2/actors/job-atlas~ai-job-fit-scorer/runs",
+    "endpoint": "https://api.apify.com/v2/actors/jobatlas~ai-job-fit-scorer/runs",
     "buildSelector": "latest",
     "inputPath": "integrations/api/ai-job-fit-scorer-input.json",
     "inputSha256": "1745db37eaf9c95188cbb4b7191afacf6d1e3440332cddeab32fea9e4212d977",

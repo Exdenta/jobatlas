@@ -9,7 +9,7 @@ CATALOGUE = json.loads((ROOT / 'catalogue/actors-v1.json').read_text(encoding='u
 SLUGS = tuple(sorted(
     deployment['slug']
     for deployment in CATALOGUE['deployments']
-    if deployment['owner'] == 'job-atlas'
+    if deployment['owner'] == 'jobatlas'
     and deployment['relationship'] == 'promoted-copy'
     and deployment['endpointState'] == 'live-metadata-verified'
 ))
@@ -34,7 +34,7 @@ class JobAtlasRoutingTests(unittest.TestCase):
             self.assertIn('/assets/job-atlas-mark.svg', text, path)
         home = (ROOT / 'website/index.html').read_text()
         for slug in SLUGS:
-            self.assertIn('https://apify.com/job-atlas/' + slug, home)
+            self.assertIn('https://apify.com/jobatlas/' + slug, home)
 
     def test_runnable_examples_and_skills_use_job_atlas(self):
         for folder in ('integrations', '.agents/skills', 'scripts'):
@@ -176,4 +176,4 @@ class JobAtlasRoutingTests(unittest.TestCase):
             ).read_text(encoding='utf-8')
         )
         for system in sample['systems'].values():
-            self.assertTrue(system['actorId'].startswith('job-atlas/'))
+            self.assertTrue(system['actorId'].startswith('jobatlas/'))

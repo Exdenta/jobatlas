@@ -9,8 +9,8 @@
   "actor": {
     "slug": "ycombinator-enrich-translate-normalize-scraper",
     "immutableActorId": "pF4Lk4ifzb9tZXg7K",
-    "storeUrl": "https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper",
-    "apiActorId": "job-atlas~ycombinator-enrich-translate-normalize-scraper",
+    "storeUrl": "https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper",
+    "apiActorId": "jobatlas~ycombinator-enrich-translate-normalize-scraper",
     "buildSelector": "latest",
     "datedPublicReadback": {
       "observedAt": "2026-09-11T01:13:07+02:00",
@@ -110,7 +110,7 @@
       "Availability and first-seen timestamps are not employer guarantees or source posting dates.",
       "This service is independently developed and is not affiliated with Y Combinator."
     ],
-    "supportUrl": "https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper/issues",
+    "supportUrl": "https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper/issues",
     "supportedNextStep": "Use the documented REST recipe or the maintained Agent Skill after validating the Actor result.",
     "nextStepProof": "API and MCP examples are documented-only. No maintained YC n8n, Make, Zapier, Airtable, Python client, or named-destination proof is claimed."
   },
@@ -129,7 +129,7 @@
   "approvalProposal": {
     "state": "not_run_requires_approval",
     "method": "apify_actor_api",
-    "endpoint": "https://api.apify.com/v2/acts/job-atlas~ycombinator-enrich-translate-normalize-scraper/runs",
+    "endpoint": "https://api.apify.com/v2/acts/jobatlas~ycombinator-enrich-translate-normalize-scraper/runs",
     "buildSelector": "latest",
     "inputPath": "first-run/inputs/ycombinator.json",
     "inputSha256": "cb3d1fe7785f107b46024fbf326fd133da11dfcc22deaa099a0a840464a6d4c8",

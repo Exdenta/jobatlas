@@ -81,7 +81,7 @@ named Sheet write.
 - Workflow: [`linkedin-jobs-to-google-sheets.json`](linkedin-jobs-to-google-sheets.json)
 - Product guide: <https://jobatlas.dev/actors/linkedin>
 - Setup and support: <https://jobatlas.dev/integrations/n8n>
-- Actor: <https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper>
+- Actor: <https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper>
 - Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## Template 2: LinkedIn daily job alerts
@@ -147,7 +147,7 @@ an n8n template.
 - Workflow: [`linkedin-daily-job-alerts.json`](linkedin-daily-job-alerts.json)
 - Product guide: <https://jobatlas.dev/actors/linkedin>
 - Setup and support: <https://jobatlas.dev/integrations/n8n>
-- Actor: <https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper>
+- Actor: <https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper>
 - Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## Template 3: EURAXESS jobs to Google Sheets
@@ -217,7 +217,7 @@ successful Actor run remain supporting artifact evidence only.
 - Workflow: [`euraxess-jobs-to-google-sheets.json`](euraxess-jobs-to-google-sheets.json)
 - Product guide: <https://jobatlas.dev/actors/euraxess>
 - Setup and support: <https://jobatlas.dev/integrations/n8n>
-- Actor: <https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper>
+- Actor: <https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper>
 - Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## Template 4: AI job-fit scores to Google Sheets
@@ -288,7 +288,7 @@ or submitted to the template library.
 - Workflow: [`ai-job-fit-scorer-to-google-sheets.json`](ai-job-fit-scorer-to-google-sheets.json)
 - Product guide: <https://jobatlas.dev/actors/ai-job-fit-scorer>
 - Setup and support: <https://jobatlas.dev/integrations/n8n>
-- Actor: <https://apify.com/job-atlas/ai-job-fit-scorer>
+- Actor: <https://apify.com/jobatlas/ai-job-fit-scorer>
 - Source and issues: <https://github.com/Exdenta/jobatlas>
 
 ## License

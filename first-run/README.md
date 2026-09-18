@@ -1,6 +1,6 @@
 # Four Job Atlas first-run packs
 
-These packs turn a first Actor trial into a reviewable, bounded proposal. Each one binds a small starter input to the promoted `job-atlas` Actor, a dated public build readback, an evidence-labelled sample, the output and run-summary contracts, expected cost mechanics, and the checks required before calling a result usable.
+These packs turn a first Actor trial into a reviewable, bounded proposal. Each one binds a small starter input to the promoted `jobatlas` Actor, a dated public build readback, an evidence-labelled sample, the output and run-summary contracts, expected cost mechanics, and the checks required before calling a result usable.
 
 No exact pack input was run while preparing this package. The included September 9 run IDs are related current-organization evidence, not proof of these inputs or any destination delivery. Each proposed run remains separately approval-gated.
 
