@@ -61,7 +61,7 @@
     "rowSchemaSha256": "98f80ed31df9ae5ff7f4ebea97e2c6b5d835c1dcfcdfac54fec8e20b59ba3f4f",
     "rowSchemaVersion": "nomad-agent-job-v1",
     "sourceExtensionSchemaPath": "integrations/shared/euraxess-v1.schema.json",
-    "sourceExtensionSchemaSha256": "b8bf5e3f85dfc91f1b42396dddec4cc0469029218147141a5e0fec7bb79d36a7",
+    "sourceExtensionSchemaSha256": "ced8255f5950ba0e07bcdb9340b5202952b22044cb008e9462868b6665036956",
     "sourceExtensionSchemaVersion": "euraxess-v1",
     "sampleSource": "euraxess",
     "evidenceClass": "recorded_source_result",

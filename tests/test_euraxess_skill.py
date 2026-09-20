@@ -19,7 +19,7 @@ SUMMARY_SCHEMA = ROOT / "integrations" / "shared" / "run-summary-v4.schema.json"
 SUMMARY_VALIDATOR = ROOT / "integrations" / "shared" / "validate_run_summary.py"
 CUSTOM_SCHEMA = ROOT / "integrations" / "shared" / "euraxess-v1.schema.json"
 CANONICAL_CUSTOM_SCHEMA_SHA256 = (
-    "b8bf5e3f85dfc91f1b42396dddec4cc0469029218147141a5e0fec7bb79d36a7"
+    "ced8255f5950ba0e07bcdb9340b5202952b22044cb008e9462868b6665036956"
 )
 CANONICAL_FIXTURE_SHA256 = (
     "9ab8e26a0bd2ae490b7f760923077a27d4d87fb7f7685eac492f50d72a546d0f"
