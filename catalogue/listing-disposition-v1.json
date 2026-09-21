@@ -1,26 +1,17 @@
 {
   "schemaVersion": "job-atlas-listing-disposition-v1",
   "scope": {
-    "observedAt": "2026-09-09T01:19:34+02:00",
-    "sourceRevision": "348f2f32f9c23f52afecaefcfd9f0db43c5cb4fb",
+    "observedAt": "2026-09-21T18:10:47.921478+00:00",
+    "sourceRevision": "6742f11452d79ae20b7c01d478acb2cb25ee725a",
     "sourceCatalogue": "catalogue/actors-v1.json",
-    "baselineLogicalProducts": 43,
-    "baselineDeployments": 47,
-    "accountedLogicalProducts": 44,
-    "accountedDeployments": 48,
-    "ownedActorsAccounted": 65,
-    "privateSupportExcluded": 3,
+    "baselineLogicalProducts": 58,
+    "baselineDeployments": 64,
+    "accountedLogicalProducts": 58,
+    "accountedDeployments": 64,
+    "ownedActorsAccounted": 92,
+    "privateSupportExcluded": 16,
     "unrelatedPublicExcluded": 18,
-    "knownPostBaselineDelta": [
-      {
-        "kind": "logical-product",
-        "id": "foorilla-ai-jobs-scraper"
-      },
-      {
-        "kind": "deployment",
-        "id": "nomad-agent--foorilla-ai-jobs-scraper"
-      }
-    ],
+    "knownPostBaselineDelta": [],
     "evidenceBoundary": "Four existing jobatlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
   },
   "logicalProducts": [
@@ -457,7 +448,147 @@
     {
       "logicalProductId": "foorilla-ai-jobs-scraper",
       "name": "Foorilla Data, AI, and Machine Learning jobs",
-      "catalogueState": "known-concurrent",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "name": "Ashby normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "name": "Dynamite Jobs normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "name": "EURACTIV Jobs normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "name": "EuroBrussels normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "job-atlas",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "catalogue-client-matrix",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "name": "FashionJobs normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-greenhouse",
+      "name": "Greenhouse normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "name": "HelloWorld.rs normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "name": "Himalayas normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "name": "Poslovi Infostud normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "name": "Jobgether normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "name": "Lever normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "name": "Manfred normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "job-atlas",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "catalogue-client-matrix",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "name": "MLOps Community normalized jobs",
+      "catalogueState": "catalogued",
+      "promotion": "not-planned",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "supportClaim": "none",
+      "listingDraft": null
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "name": "SmartRecruiters normalized jobs",
+      "catalogueState": "catalogued",
       "promotion": "not-planned",
       "action": "no-listing-change",
       "migrationProposed": false,
@@ -900,7 +1031,7 @@
       "deploymentId": "jobatlas--linkedin-enrich-translate-normalize-scraper",
       "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
       "catalogueState": "catalogued",
-      "owner":"jobatlas",
+      "owner": "jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
@@ -910,7 +1041,7 @@
       "deploymentId": "jobatlas--euraxess-enrich-translate-normalize-scraper",
       "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
       "catalogueState": "catalogued",
-      "owner":"jobatlas",
+      "owner": "jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
@@ -920,7 +1051,7 @@
       "deploymentId": "jobatlas--ycombinator-enrich-translate-normalize-scraper",
       "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
       "catalogueState": "catalogued",
-      "owner":"jobatlas",
+      "owner": "jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
@@ -930,7 +1061,7 @@
       "deploymentId": "jobatlas--ai-job-fit-scorer",
       "logicalProductId": "ai-job-fit-scorer",
       "catalogueState": "catalogued",
-      "owner":"jobatlas",
+      "owner": "jobatlas",
       "relationship": "promoted-copy",
       "action": "draft-listing-copy",
       "migrationProposed": false,
@@ -939,9 +1070,169 @@
     {
       "deploymentId": "nomad-agent--foorilla-ai-jobs-scraper",
       "logicalProductId": "foorilla-ai-jobs-scraper",
-      "catalogueState": "known-concurrent",
+      "catalogueState": "catalogued",
       "owner": "nomad-agent",
       "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-ashby-jobs-scraper",
+      "logicalProductId": "normalized-ashby",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-dynamitejobs-jobs-scraper",
+      "logicalProductId": "normalized-dynamitejobs",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-euractiv-jobs-scraper",
+      "logicalProductId": "normalized-euractiv",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-eurobrussels-jobs-scraper",
+      "logicalProductId": "normalized-eurobrussels",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-fashionjobs-jobs-scraper",
+      "logicalProductId": "normalized-fashionjobs",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-greenhouse-jobs-scraper",
+      "logicalProductId": "normalized-greenhouse",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-helloworld-jobs-scraper",
+      "logicalProductId": "normalized-helloworld",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-himalayas-jobs-scraper",
+      "logicalProductId": "normalized-himalayas",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-infostud-jobs-scraper",
+      "logicalProductId": "normalized-infostud",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-jobgether-jobs-scraper",
+      "logicalProductId": "normalized-jobgether",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-lever-jobs-scraper",
+      "logicalProductId": "normalized-lever",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-manfred-jobs-scraper",
+      "logicalProductId": "normalized-manfred",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-mlops-community-jobs-scraper",
+      "logicalProductId": "normalized-mlops-community",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "nomad-agent--normalized-smartrecruiters-jobs-scraper",
+      "logicalProductId": "normalized-smartrecruiters",
+      "catalogueState": "catalogued",
+      "owner": "nomad-agent",
+      "relationship": "legacy-primary",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-manfred-jobs-scraper",
+      "logicalProductId": "normalized-manfred",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-eurobrussels-jobs-scraper",
+      "logicalProductId": "normalized-eurobrussels",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
       "action": "no-listing-change",
       "migrationProposed": false,
       "listingDraft": null
@@ -1107,6 +1398,86 @@
       "logicalProductId": "ai-job-fit-scorer",
       "clientClass": "python",
       "support": "maintained"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "api-sdk",
+      "support": "documented-only"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-manfred",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "api-sdk",
+      "support": "documented-only"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "python",
+      "support": "not-claimed"
     }
   ]
 }

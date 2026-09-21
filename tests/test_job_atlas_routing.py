@@ -13,6 +13,12 @@ SLUGS = tuple(sorted(
     and deployment['relationship'] == 'promoted-copy'
     and deployment['endpointState'] == 'live-metadata-verified'
 ))
+HOME_SLUGS = {
+    'linkedin-enrich-translate-normalize-scraper',
+    'euraxess-enrich-translate-normalize-scraper',
+    'ycombinator-enrich-translate-normalize-scraper',
+    'ai-job-fit-scorer',
+}
 TARGET_REPOSITORY = 'https://github.com/Exdenta/jobatlas'
 LEGACY_REPOSITORY = 'https://github.com/Exdenta/nomad-agent-job-scrapers'
 LEGACY_RAW_REPOSITORY = (
@@ -33,8 +39,12 @@ class JobAtlasRoutingTests(unittest.TestCase):
                 self.assertNotIn('Nomad Agent', text, path)
             self.assertIn('/assets/job-atlas-mark.svg', text, path)
         home = (ROOT / 'website/index.html').read_text()
-        for slug in SLUGS:
+        self.assertTrue(HOME_SLUGS <= set(SLUGS))
+        for slug in HOME_SLUGS:
             self.assertIn('https://apify.com/jobatlas/' + slug, home)
+        directory = (ROOT / 'docs/job-actor-tiers.md').read_text()
+        for slug in SLUGS:
+            self.assertIn('https://apify.com/jobatlas/' + slug, home + directory)
 
     def test_runnable_examples_and_skills_use_job_atlas(self):
         for folder in ('integrations', '.agents/skills', 'scripts'):
@@ -47,7 +57,7 @@ class JobAtlasRoutingTests(unittest.TestCase):
         self.assertIn('nomad-agent-job-v1', (ROOT / 'README.md').read_text())
 
     def test_promoted_routes_are_derived_from_the_checked_catalogue(self):
-        self.assertEqual(len(SLUGS), 4)
+        self.assertEqual(len(SLUGS), 6)
         self.assertEqual(
             set(SLUGS),
             {
@@ -55,6 +65,8 @@ class JobAtlasRoutingTests(unittest.TestCase):
                 'euraxess-enrich-translate-normalize-scraper',
                 'ycombinator-enrich-translate-normalize-scraper',
                 'ai-job-fit-scorer',
+                'normalized-manfred-jobs-scraper',
+                'normalized-eurobrussels-jobs-scraper',
             },
         )
         readme = (ROOT / 'README.md').read_text(encoding='utf-8')

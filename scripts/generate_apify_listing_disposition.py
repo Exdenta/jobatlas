@@ -47,7 +47,7 @@ def _product_disposition(product: dict[str, Any], catalogue_state: str) -> dict[
         "name": product["name"],
         "catalogueState": catalogue_state,
         "promotion": product["promotion"],
-        "action": "draft-listing-copy" if promoted else "no-listing-change",
+        "action": "draft-listing-copy" if promoted and product["id"] in DRAFTS else "no-listing-change",
         "migrationProposed": False,
         "supportClaim": "catalogue-client-matrix" if promoted else "none",
         "listingDraft": DRAFTS.get(product["id"]),
@@ -62,7 +62,7 @@ def _deployment_disposition(deployment: dict[str, Any], catalogue_state: str) ->
         "catalogueState": catalogue_state,
         "owner": deployment["owner"],
         "relationship": deployment["relationship"],
-        "action": "draft-listing-copy" if promoted_copy else "no-listing-change",
+        "action": "draft-listing-copy" if promoted_copy and deployment["logicalProductId"] in DRAFTS else "no-listing-change",
         "migrationProposed": False,
         "listingDraft": DRAFTS.get(deployment["logicalProductId"]) if promoted_copy else None,
     }
@@ -105,8 +105,8 @@ def build_manifest(catalogue: dict[str, Any]) -> dict[str, Any]:
     return {
         "schemaVersion": "job-atlas-listing-disposition-v1",
         "scope": {
-            "observedAt": OBSERVED_AT,
-            "sourceRevision": SOURCE_REVISION,
+            "observedAt": catalogue["scope"]["observedAt"],
+            "sourceRevision": catalogue["scope"]["sourceRevision"],
             "sourceCatalogue": "catalogue/actors-v1.json",
             "baselineLogicalProducts": len(catalogue["logicalProducts"]),
             "baselineDeployments": len(catalogue["deployments"]),

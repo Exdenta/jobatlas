@@ -437,22 +437,22 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
 
     counts = scope.get("inventoryCounts", {})
     expected_counts = {
-        "ownedActors": 64,
-        "ownedInScopePublic": 43,
-        "ownedPrivateSupportExcluded": 3,
+        "ownedActors": 92,
+        "ownedInScopePublic": 58,
+        "ownedPrivateSupportExcluded": 16,
         "ownedUnrelatedPublicExcluded": 18,
-        "promotedJobAtlasDeployments": 4,
-        "inScopeDeployments": 47,
+        "promotedJobAtlasDeployments": 6,
+        "inScopeDeployments": 64,
     }
     if counts != expected_counts:
         errors.append(f"inventoryCounts mismatch: expected {expected_counts}")
-    if len(products) != 43 or len(deployments) != 47 or len(exclusions) != 18:
-        errors.append("catalogue cardinality must be 43 products, 47 deployments, and 18 public exclusions")
+    if len(products) != 58 or len(deployments) != 64 or len(exclusions) != 18:
+        errors.append("catalogue cardinality must be 58 products, 64 deployments, and 18 public exclusions")
     public_nomad_candidates = sum(
         item.get("owner") == "nomad-agent" for item in deployments + exclusions
     )
-    if public_nomad_candidates != 61 or public_nomad_candidates + counts.get("ownedPrivateSupportExcluded", 0) != 64:
-        errors.append("catalogue and aggregate private count do not account for all 64 owned candidates")
+    if public_nomad_candidates != 76 or public_nomad_candidates + counts.get("ownedPrivateSupportExcluded", 0) != 92:
+        errors.append("catalogue and aggregate private count do not account for all 92 owned candidates")
 
     promoted_products = {
         item.get("logicalProductId")
@@ -533,13 +533,10 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
 
 def validate_repository_routes(data: dict[str, Any], root: Path) -> list[str]:
     """Reconcile maintained route and contextual immutable-ID references."""
-    current_deployment_ids = {
-        row["deploymentId"] for row in data.get("clientMatrix", [])
-    }
+    # Integration support is separate from a metadata-verified endpoint.
     current_deployments = [
         item for item in data.get("deployments", [])
-        if item.get("id") in current_deployment_ids
-        and item.get("endpointState") == "live-metadata-verified"
+        if item.get("endpointState") == "live-metadata-verified"
     ]
     current_routes = {
         f'{item["owner"]}/{item["slug"]}'.lower()

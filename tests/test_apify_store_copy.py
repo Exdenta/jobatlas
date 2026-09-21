@@ -60,14 +60,14 @@ class ApifyStoreCopyTests(unittest.TestCase):
 
     def test_disposition_is_reproducible_from_catalogue_and_bounded_delta(self) -> None:
         self.assertEqual(self.manifest, self.generator.build_manifest(self.catalogue))
-        self.assertEqual(self.manifest["scope"]["accountedLogicalProducts"], 44)
-        self.assertEqual(self.manifest["scope"]["accountedDeployments"], 48)
+        self.assertEqual(self.manifest["scope"]["accountedLogicalProducts"], 58)
+        self.assertEqual(self.manifest["scope"]["accountedDeployments"], 64)
 
     def test_every_product_and_deployment_has_exactly_one_disposition(self) -> None:
         products = self.manifest["logicalProducts"]
         deployments = self.manifest["deployments"]
-        self.assertEqual(len({row["logicalProductId"] for row in products}), 44)
-        self.assertEqual(len({row["deploymentId"] for row in deployments}), 48)
+        self.assertEqual(len({row["logicalProductId"] for row in products}), 58)
+        self.assertEqual(len({row["deploymentId"] for row in deployments}), 64)
         self.assertTrue(all(row["migrationProposed"] is False for row in products + deployments))
         delta = self.manifest["scope"]["knownPostBaselineDelta"]
         known_products = {row["id"] for row in delta if row["kind"] == "logical-product"}
@@ -87,13 +87,17 @@ class ApifyStoreCopyTests(unittest.TestCase):
         deployments = self.manifest["deployments"]
         promoted = [row for row in deployments if row["owner"] == "jobatlas"]
         legacy = [row for row in deployments if row["owner"] == "nomad-agent"]
-        self.assertEqual(len(promoted), 4)
-        self.assertEqual(len(legacy), 44)
-        self.assertTrue(all(row["action"] == "draft-listing-copy" for row in promoted))
+        self.assertEqual(len(promoted), 6)
+        self.assertEqual(len(legacy), 58)
+        self.assertEqual(sum(row["action"] == "draft-listing-copy" for row in promoted), 4)
         self.assertTrue(all(row["action"] == "no-listing-change" for row in legacy))
         self.assertTrue(all(row["listingDraft"] is None for row in legacy))
         for row in promoted:
-            self.assertTrue((ROOT / row["listingDraft"]).is_file(), row)
+            if row["logicalProductId"] in DRAFTS:
+                self.assertTrue((ROOT / row["listingDraft"]).is_file(), row)
+            else:
+                self.assertEqual(row["action"], "no-listing-change")
+                self.assertIsNone(row["listingDraft"])
 
     def test_listing_drafts_pin_identity_limits_support_and_reciprocal_links(self) -> None:
         for slug, (actor_id, website_path, limit, support) in DRAFTS.items():

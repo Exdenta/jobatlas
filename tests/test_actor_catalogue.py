@@ -38,24 +38,24 @@ class ActorCatalogueTests(unittest.TestCase):
     def test_catalogue_is_closed_and_referentially_valid(self) -> None:
         self.assertEqual(self.validator.validate_catalogue(self.catalogue, ROOT), [])
         self.assertEqual(self.catalogue["schemaVersion"], "job-atlas-actor-catalogue-v1")
-        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedActors"], 64)
-        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], 47)
+        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedActors"], 92)
+        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], 64)
 
     def test_all_source_and_live_candidates_have_one_disposition(self) -> None:
         deployments = self.catalogue["deployments"]
         exclusions = self.catalogue["excludedCandidates"]
-        self.assertEqual(len(deployments), 47)
+        self.assertEqual(len(deployments), 64)
         self.assertEqual(len(exclusions), 18)
         identities = {
             (record["owner"], record["slug"], record["actorId"])
             for record in deployments + exclusions
         }
-        self.assertEqual(len(identities), 65)
+        self.assertEqual(len(identities), 82)
         self.assertEqual(
             sum(record["owner"] == "nomad-agent" for record in deployments + exclusions),
-            61,
+            76,
         )
-        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedPrivateSupportExcluded"], 3)
+        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedPrivateSupportExcluded"], 16)
         for record in exclusions:
             self.assertEqual(record["category"], "unrelated-public")
             self.assertRegex(record["actorId"], r"^[A-Za-z0-9]{17}$")
@@ -63,7 +63,7 @@ class ActorCatalogueTests(unittest.TestCase):
     def test_logical_products_are_not_deployments(self) -> None:
         products = self.catalogue["logicalProducts"]
         deployments = self.catalogue["deployments"]
-        self.assertEqual(len(products), 43)
+        self.assertEqual(len(products), 58)
         self.assertEqual({record["id"] for record in products}, {
             record["logicalProductId"] for record in deployments
         })
@@ -72,12 +72,18 @@ class ActorCatalogueTests(unittest.TestCase):
             self.assertNotIn("owner", product)
             self.assertNotIn("slug", product)
         copied = [record for record in deployments if record["relationship"] == "promoted-copy"]
-        self.assertEqual(len(copied), 4)
+        self.assertEqual(len(copied), 6)
         for record in copied:
             predecessor = next(
                 item for item in deployments if item["id"] == record["relationshipTargetId"]
             )
             self.assertNotEqual(record["actorId"], predecessor["actorId"])
+
+    def test_inventory_mirror_support_gaps_name_the_correct_source(self) -> None:
+        for row in self.catalogue["clientMatrix"]:
+            if row["logicalProductId"] == "normalized-eurobrussels" and row["gap"]:
+                self.assertIn("EuroBrussels", row["gap"])
+                self.assertNotIn("Manfred", row["gap"])
 
     def test_endpoint_states_require_live_observations(self) -> None:
         for deployment in self.catalogue["deployments"]:
