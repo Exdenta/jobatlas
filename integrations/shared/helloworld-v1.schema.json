@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/helloworld-v1.schema.json",
+  "title": "HelloWorld.rs custom job facts v1",
+  "description": "Source-supplied facts in custom.data for HelloWorld.rs jobs. Version 1 permits source-specific properties; absent facts are not inferred. The enclosing job follows nomad-agent-job-v1.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {}
+}
