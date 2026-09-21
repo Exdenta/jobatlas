@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/manfred-v1.schema.json",
+  "title": "Manfred custom job facts v1",
+  "description": "Source-specific facts in custom.data for Manfred normalized jobs. Version 1 accepts an object with optional source-defined properties. Fields may be absent when the source does not supply them. A future closed property set requires a new schema version.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {}
+}
