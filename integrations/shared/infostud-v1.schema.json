@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/infostud-v1.schema.json",
+  "title": "Poslovi Infostud custom job facts v1",
+  "description": "Source-specific facts and a deterministic deduplication identifier carried in custom.data for Infostud jobs. Source fields retain their supplied values. familyDedupeKey is derived from the project-owned infostud-family prefix and the posting externalId; it is not a source-supplied fact. The v1 object is open to additional source-specific fields.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {}
+}
