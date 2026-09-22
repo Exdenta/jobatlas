@@ -55,7 +55,7 @@ contracts keep their current meaning until their own migration.
 | [tecnoempleo-scraper](https://apify.com/nomad-agent/tecnoempleo-scraper) | Paid contract retained; migration skipped |
 | [ub-doctoral-scraper](https://apify.com/nomad-agent/ub-doctoral-scraper) | Inventory and simple-contract migration pending |
 | [un-careers-scraper](https://apify.com/nomad-agent/un-careers-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [unjobs-scraper](https://apify.com/nomad-agent/unjobs-scraper) | Inventory and simple-contract migration pending |
+| [unjobs-scraper](https://apify.com/nomad-agent/unjobs-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
 | [web-dev-bundle](https://apify.com/nomad-agent/web-dev-bundle) | Paid contract retained; migration skipped |
 | [web-search-scraper](https://apify.com/nomad-agent/web-search-scraper) | Retired in local code; hosted retirement not verified |
 | [wellfound-scraper](https://apify.com/nomad-agent/wellfound-scraper) | Inventory and simple-contract migration pending |
