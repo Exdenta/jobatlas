@@ -50,7 +50,7 @@ contracts keep their current meaning until their own migration.
 | [math-ku-phd-scraper](https://apify.com/nomad-agent/math-ku-phd-scraper) | Inventory and simple-contract migration pending |
 | [ml-ai-dev-bundle](https://apify.com/nomad-agent/ml-ai-dev-bundle) | Paid contract retained; migration skipped |
 | [nofluffjobs-scraper](https://apify.com/nomad-agent/nofluffjobs-scraper) | Inventory and simple-contract migration pending |
-| [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper) | Inventory and simple-contract migration pending |
+| [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
 | [remote-boards-scraper](https://apify.com/nomad-agent/remote-boards-scraper) | Paid contract retained; migration skipped |
 | [tecnoempleo-scraper](https://apify.com/nomad-agent/tecnoempleo-scraper) | Paid contract retained; migration skipped |
 | [ub-doctoral-scraper](https://apify.com/nomad-agent/ub-doctoral-scraper) | Inventory and simple-contract migration pending |
