@@ -10,11 +10,11 @@
       "ownedInScopePublic": 58,
       "ownedPrivateSupportExcluded": 16,
       "ownedUnrelatedPublicExcluded": 18,
-      "promotedJobAtlasDeployments": 6,
-      "inScopeDeployments": 64
+      "promotedJobAtlasDeployments": 7,
+      "inScopeDeployments": 65
     },
     "inclusionRule": "Include every public nomad-agent Actor whose current title or slug identifies a job-search, job-enrichment, job-bundle, or candidate-fit product, plus every public jobatlas deployment maintained by this repository.",
-    "evidenceBoundary": "Owned identities and aggregate visibility counts were read from authenticated Actor detail endpoints. Each deployment retains its dated build observation and explicit execution boundary. Manfred, EuroBrussels and Impactpool observations name bounded owner functional tests; these are not normal buyer, scheduled consumer or destination integration evidence. Private support Actors are aggregate-only; implementation, bindings and private operational data are not published."
+    "evidenceBoundary": "Owned identities and aggregate visibility counts were read from authenticated Actor detail endpoints. Each deployment retains its dated build observation and explicit execution boundary. Manfred, EuroBrussels and Impactpool observations name bounded owner functional tests; these are not normal buyer, scheduled consumer or destination integration evidence. Private support Actors are aggregate-only; implementation, bindings and private operational data are not published. UN Careers, Copenhagen, Ikerbasque and Infostud were subsequently read back on 22 September 2026 after their inventory releases; their bounded owner tests and the new Infostud mirror do not establish normal buyer traffic. The owned-account counts retain their original snapshot date."
   },
   "contractProfiles": [
     {
@@ -502,8 +502,10 @@
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-inventory-job-v2",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "justjoinit-scraper",
@@ -574,8 +576,10 @@
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-inventory-job-v2",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "hackernews-scraper",
@@ -644,8 +648,10 @@
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-inventory-job-v2",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "reliefweb-scraper",
@@ -891,15 +897,17 @@
       "id": "normalized-infostud",
       "name": "Poslovi Infostud normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/normalized-infostud.md"
+      ]
     },
     {
       "id": "normalized-jobgether",
@@ -1418,11 +1426,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "UWzPmWJs8b74c53bc",
-        "buildNumber": "0.1.29",
+        "observedAt": "2026-09-22T14:54:56.899789+00:00",
+        "buildId": "gIWRtG3Q0ePh0XDcz",
+        "buildNumber": "0.1.32",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Promoted latest/default read back. Owner default test SeLyTmG0902OCfE6V returned a complete original description and HTML; repeat NFZhhGCO5OESrrgOE proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
       }
     },
     {
@@ -1508,11 +1516,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "5Ij7asGZlWJqSl9H5",
-        "buildNumber": "0.1.30",
+        "observedAt": "2026-09-22T14:58:54.413082+00:00",
+        "buildId": "ez0l2SLc7ZyrKrHM1",
+        "buildNumber": "0.1.34",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Promoted latest/default read back. Owner default test DiSkROVXzDblf67Iq returned a complete original description and HTML; repeat svekQ3gXFgFqsy1FS proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
       }
     },
     {
@@ -1598,11 +1606,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "wmsQIGfoJgy6Jp8F2",
-        "buildNumber": "0.1.34",
+        "observedAt": "2026-09-22T14:50:01.086710+00:00",
+        "buildId": "KQoiBFmJw01ItSQiU",
+        "buildNumber": "0.1.38",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Promoted latest/default read back. Owner default test TP9AXuDjSYt6uCdg0 returned a complete original description and HTML; repeat fmm6v57tMcTOFAYBA proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
       }
     },
     {
@@ -1994,11 +2002,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "EwVmVkTYRJea6D5Kq",
-        "buildNumber": "1.0.1",
+        "observedAt": "2026-09-22T15:01:33.318213+00:00",
+        "buildId": "KNNRRuUWV6DOVvc1q",
+        "buildNumber": "1.0.2",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Promoted latest/default read back. Owner default test Qq3Jaqzi8NQt1CIGT returned a complete original description and HTML; repeat 6O8rN4YxNDFwFCok2 proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
       }
     },
     {
@@ -2125,6 +2133,24 @@
         "buildNumber": "1.0.1",
         "sourceType": "SOURCE_FILES",
         "evidence": "Independent hosted release verification: latest/default selectors exact. Owner tests YmQRgKjYFK32XUBYT (processing enabled) and nYmQNga9b2CrNHxe1 (options omitted) returned complete descriptions; default-off had no owner provider usage. No normal buyer or downstream destination execution claimed."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-infostud-jobs-scraper",
+      "logicalProductId": "normalized-infostud",
+      "owner": "jobatlas",
+      "slug": "normalized-infostud-jobs-scraper",
+      "actorId": "OunbuA4cIXZZBDV3p",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-infostud-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-09-22T15:41:03.951454+00:00",
+        "buildId": "3XW7pPeVyjsqArqy2",
+        "buildNumber": "1.0.1",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Public latest/default read back; independently checked against the primary package. Owner tests LGXoR4HeIqJKvYccY and IDZu6Qx4XwtUuUHp1 returned two complete descriptions with processing enabled. Default-off CWrlIID5xM2Ld2uSl retained original Serbian text and title with no owner provider usage. No normal buyer or destination execution claimed."
       }
     }
   ],
@@ -2974,6 +3000,99 @@
       "assets": [],
       "externalStateClasses": [],
       "gap": "No maintained EuroBrussels python integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "api-sdk",
+      "support": "documented-only",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "direct",
+      "releaseSelector": "latest",
+      "assets": [
+        "docs/normalized-infostud.md"
+      ],
+      "externalStateClasses": [
+        "credentials",
+        "billing-subscriptions"
+      ],
+      "gap": null
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud mcp integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud n8n integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud make integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud zapier integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud airtable integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud agent-skill integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "No maintained Infostud python integration is claimed."
     }
   ],
   "externalStateMatrix": [

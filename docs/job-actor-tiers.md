@@ -39,7 +39,7 @@ contracts keep their current meaning until their own migration.
 | [foorilla-ai-jobs-scraper](https://apify.com/nomad-agent/foorilla-ai-jobs-scraper) | Inventory and simple-contract migration pending |
 | [greenhouse-jobs-scraper](https://apify.com/nomad-agent/greenhouse-jobs-scraper) | Inventory and simple-contract migration pending |
 | [hackernews-scraper](https://apify.com/nomad-agent/hackernews-scraper) | Paid contract retained; migration skipped |
-| [ikerbasque-scraper](https://apify.com/nomad-agent/ikerbasque-scraper) | Inventory and simple-contract migration pending |
+| [ikerbasque-scraper](https://apify.com/nomad-agent/ikerbasque-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [impactpool-scraper](https://apify.com/nomad-agent/impactpool-scraper) | Database-only simple v2 and complete descriptions verified |
 | [infojobs-scraper](https://apify.com/nomad-agent/infojobs-scraper) | Inventory and simple-contract migration pending |
 | [jobs-ac-uk-scraper](https://apify.com/nomad-agent/jobs-ac-uk-scraper) | Paid contract retained; migration skipped |
@@ -47,14 +47,14 @@ contracts keep their current meaning until their own migration.
 | [lever-jobs-scraper](https://apify.com/nomad-agent/lever-jobs-scraper) | Inventory and simple-contract migration pending |
 | [linkedin-full-info-scraper](https://apify.com/nomad-agent/linkedin-full-info-scraper) | Inventory and simple-contract migration pending |
 | [linkedin-scraper](https://apify.com/nomad-agent/linkedin-scraper) | Paid contract retained; migration skipped |
-| [math-ku-phd-scraper](https://apify.com/nomad-agent/math-ku-phd-scraper) | Inventory and simple-contract migration pending |
+| [math-ku-phd-scraper](https://apify.com/nomad-agent/math-ku-phd-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [ml-ai-dev-bundle](https://apify.com/nomad-agent/ml-ai-dev-bundle) | Paid contract retained; migration skipped |
 | [nofluffjobs-scraper](https://apify.com/nomad-agent/nofluffjobs-scraper) | Inventory and simple-contract migration pending |
 | [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
 | [remote-boards-scraper](https://apify.com/nomad-agent/remote-boards-scraper) | Paid contract retained; migration skipped |
 | [tecnoempleo-scraper](https://apify.com/nomad-agent/tecnoempleo-scraper) | Paid contract retained; migration skipped |
 | [ub-doctoral-scraper](https://apify.com/nomad-agent/ub-doctoral-scraper) | Inventory and simple-contract migration pending |
-| [un-careers-scraper](https://apify.com/nomad-agent/un-careers-scraper) | Inventory and simple-contract migration pending |
+| [un-careers-scraper](https://apify.com/nomad-agent/un-careers-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [unjobs-scraper](https://apify.com/nomad-agent/unjobs-scraper) | Inventory and simple-contract migration pending |
 | [web-dev-bundle](https://apify.com/nomad-agent/web-dev-bundle) | Paid contract retained; migration skipped |
 | [web-search-scraper](https://apify.com/nomad-agent/web-search-scraper) | Retired in local code; hosted retirement not verified |
@@ -92,7 +92,7 @@ does not imply an observed customer run.
 | [normalized-greenhouse-jobs-scraper](https://apify.com/nomad-agent/normalized-greenhouse-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
 | [normalized-helloworld-jobs-scraper](https://apify.com/nomad-agent/normalized-helloworld-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
 | [normalized-himalayas-jobs-scraper](https://apify.com/nomad-agent/normalized-himalayas-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-infostud-jobs-scraper](https://apify.com/nomad-agent/normalized-infostud-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
+| [normalized-infostud-jobs-scraper](https://apify.com/nomad-agent/normalized-infostud-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-infostud-jobs-scraper) | Released inventory with independent optional processing, both off by default; owner tests passed in both accounts. Normal buyer traffic unverified |
 | [normalized-jobgether-jobs-scraper](https://apify.com/nomad-agent/normalized-jobgether-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
 | [normalized-lever-jobs-scraper](https://apify.com/nomad-agent/normalized-lever-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
 | [normalized-manfred-jobs-scraper](https://apify.com/nomad-agent/normalized-manfred-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-manfred-jobs-scraper) | Inventory and complete descriptions verified; optional processing tested |

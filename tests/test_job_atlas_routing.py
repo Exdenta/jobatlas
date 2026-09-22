@@ -57,7 +57,7 @@ class JobAtlasRoutingTests(unittest.TestCase):
         self.assertIn('nomad-agent-job-v1', (ROOT / 'README.md').read_text())
 
     def test_promoted_routes_are_derived_from_the_checked_catalogue(self):
-        self.assertEqual(len(SLUGS), 6)
+        self.assertEqual(len(SLUGS), 7)
         self.assertEqual(
             set(SLUGS),
             {
@@ -67,6 +67,7 @@ class JobAtlasRoutingTests(unittest.TestCase):
                 'ai-job-fit-scorer',
                 'normalized-manfred-jobs-scraper',
                 'normalized-eurobrussels-jobs-scraper',
+                'normalized-infostud-jobs-scraper',
             },
         )
         readme = (ROOT / 'README.md').read_text(encoding='utf-8')

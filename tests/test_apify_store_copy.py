@@ -61,13 +61,13 @@ class ApifyStoreCopyTests(unittest.TestCase):
     def test_disposition_is_reproducible_from_catalogue_and_bounded_delta(self) -> None:
         self.assertEqual(self.manifest, self.generator.build_manifest(self.catalogue))
         self.assertEqual(self.manifest["scope"]["accountedLogicalProducts"], 58)
-        self.assertEqual(self.manifest["scope"]["accountedDeployments"], 64)
+        self.assertEqual(self.manifest["scope"]["accountedDeployments"], 65)
 
     def test_every_product_and_deployment_has_exactly_one_disposition(self) -> None:
         products = self.manifest["logicalProducts"]
         deployments = self.manifest["deployments"]
         self.assertEqual(len({row["logicalProductId"] for row in products}), 58)
-        self.assertEqual(len({row["deploymentId"] for row in deployments}), 64)
+        self.assertEqual(len({row["deploymentId"] for row in deployments}), 65)
         self.assertTrue(all(row["migrationProposed"] is False for row in products + deployments))
         delta = self.manifest["scope"]["knownPostBaselineDelta"]
         known_products = {row["id"] for row in delta if row["kind"] == "logical-product"}
@@ -87,7 +87,7 @@ class ApifyStoreCopyTests(unittest.TestCase):
         deployments = self.manifest["deployments"]
         promoted = [row for row in deployments if row["owner"] == "jobatlas"]
         legacy = [row for row in deployments if row["owner"] == "nomad-agent"]
-        self.assertEqual(len(promoted), 6)
+        self.assertEqual(len(promoted), 7)
         self.assertEqual(len(legacy), 58)
         self.assertEqual(sum(row["action"] == "draft-listing-copy" for row in promoted), 4)
         self.assertTrue(all(row["action"] == "no-listing-change" for row in legacy))

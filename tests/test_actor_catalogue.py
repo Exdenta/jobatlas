@@ -39,18 +39,18 @@ class ActorCatalogueTests(unittest.TestCase):
         self.assertEqual(self.validator.validate_catalogue(self.catalogue, ROOT), [])
         self.assertEqual(self.catalogue["schemaVersion"], "job-atlas-actor-catalogue-v1")
         self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedActors"], 92)
-        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], 64)
+        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], 65)
 
     def test_all_source_and_live_candidates_have_one_disposition(self) -> None:
         deployments = self.catalogue["deployments"]
         exclusions = self.catalogue["excludedCandidates"]
-        self.assertEqual(len(deployments), 64)
+        self.assertEqual(len(deployments), 65)
         self.assertEqual(len(exclusions), 18)
         identities = {
             (record["owner"], record["slug"], record["actorId"])
             for record in deployments + exclusions
         }
-        self.assertEqual(len(identities), 82)
+        self.assertEqual(len(identities), 83)
         self.assertEqual(
             sum(record["owner"] == "nomad-agent" for record in deployments + exclusions),
             76,
@@ -72,7 +72,7 @@ class ActorCatalogueTests(unittest.TestCase):
             self.assertNotIn("owner", product)
             self.assertNotIn("slug", product)
         copied = [record for record in deployments if record["relationship"] == "promoted-copy"]
-        self.assertEqual(len(copied), 6)
+        self.assertEqual(len(copied), 7)
         for record in copied:
             predecessor = next(
                 item for item in deployments if item["id"] == record["relationshipTargetId"]

@@ -441,13 +441,13 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
         "ownedInScopePublic": 58,
         "ownedPrivateSupportExcluded": 16,
         "ownedUnrelatedPublicExcluded": 18,
-        "promotedJobAtlasDeployments": 6,
-        "inScopeDeployments": 64,
+        "promotedJobAtlasDeployments": 7,
+        "inScopeDeployments": 65,
     }
     if counts != expected_counts:
         errors.append(f"inventoryCounts mismatch: expected {expected_counts}")
-    if len(products) != 58 or len(deployments) != 64 or len(exclusions) != 18:
-        errors.append("catalogue cardinality must be 58 products, 64 deployments, and 18 public exclusions")
+    if len(products) != 58 or len(deployments) != 65 or len(exclusions) != 18:
+        errors.append("catalogue cardinality must be 58 products, 65 deployments, and 18 public exclusions")
     public_nomad_candidates = sum(
         item.get("owner") == "nomad-agent" for item in deployments + exclusions
     )

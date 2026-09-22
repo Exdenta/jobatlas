@@ -5,14 +5,14 @@
     "sourceRevision": "6742f11452d79ae20b7c01d478acb2cb25ee725a",
     "sourceCatalogue": "catalogue/actors-v1.json",
     "baselineLogicalProducts": 58,
-    "baselineDeployments": 64,
+    "baselineDeployments": 65,
     "accountedLogicalProducts": 58,
-    "accountedDeployments": 64,
+    "accountedDeployments": 65,
     "ownedActorsAccounted": 92,
     "privateSupportExcluded": 16,
     "unrelatedPublicExcluded": 18,
     "knownPostBaselineDelta": [],
-    "evidenceBoundary": "Four existing jobatlas Store listings receive local copy drafts. Every nomad-agent deployment remains unchanged. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
+    "evidenceBoundary": "Four jobatlas Store listings have local copy drafts. All other jobatlas listings and every nomad-agent deployment have no listing change. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
   },
   "logicalProducts": [
     {
@@ -539,10 +539,10 @@
       "logicalProductId": "normalized-infostud",
       "name": "Poslovi Infostud normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
@@ -1236,6 +1236,16 @@
       "action": "no-listing-change",
       "migrationProposed": false,
       "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-infostud-jobs-scraper",
+      "logicalProductId": "normalized-infostud",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
     }
   ],
   "clientSupport": [
@@ -1476,6 +1486,46 @@
     },
     {
       "logicalProductId": "normalized-eurobrussels",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "api-sdk",
+      "support": "documented-only"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-infostud",
       "clientClass": "python",
       "support": "not-claimed"
     }
