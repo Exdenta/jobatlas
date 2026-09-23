@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "nomad-agent-board-inventory-search-v1",
+  "boards": [
+    "stripe"
+  ],
+  "maxItems": 5,
+  "postedWithin": "any",
+  "dedupe": {
+    "enabled": false,
+    "key": ""
+  },
+  "aiEnrichment": {
+    "enabled": false,
+    "accuracy": "silver"
+  },
+  "translateToEnglish": false
+}

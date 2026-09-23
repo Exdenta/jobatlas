@@ -1,0 +1,287 @@
+{
+  "title": "Greenhouse normalized inventory search",
+  "description": "Search stored jobs from selected supported Greenhouse boards. Complete original descriptions, advanced filters and independent optional owner-funded AI enrichment and English translation. Both options default off; no source website is requested.",
+  "type": "object",
+  "schemaVersion": 1,
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "title": "Input format",
+      "type": "string",
+      "enum": [
+        "nomad-agent-board-inventory-search-v1",
+        "nomad-agent-job-search-input-v1"
+      ],
+      "default": "nomad-agent-board-inventory-search-v1",
+      "editor": "select",
+      "prefill": "nomad-agent-board-inventory-search-v1",
+      "description": "Version marker for database-only normalized job search."
+    },
+    "maxItems": {
+      "title": "Maximum jobs",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 200,
+      "default": 100,
+      "prefill": 5,
+      "description": "Maximum returned jobs. Zero means 200. Enrichment and filters may produce fewer matches."
+    },
+    "postedWithin": {
+      "title": "Posted within",
+      "type": "string",
+      "description": "Filter by the stored posting date, or first inventory admission date when no source date was available. Refreshes do not reset it. Use any or a positive h/d/w/m duration of at most 36500 days.",
+      "editor": "textfield",
+      "pattern": "^(?:any|(?:[1-9][0-9]{0,4}|[1-7][0-9]{5}|8[0-6][0-9]{4}|87[0-5][0-9]{3}|876000)h|(?:[1-9][0-9]{0,3}|[12][0-9]{4}|3[0-5][0-9]{3}|36[0-4][0-9]{2}|36500)d|(?:[1-9][0-9]{0,2}|[1-4][0-9]{3}|5[01][0-9]{2}|520[0-9]|521[0-4])w|(?:[1-9][0-9]{0,2}|1[01][0-9]{2}|120[0-9]|121[0-6])m)(?![\\s\\S])",
+      "default": "any",
+      "prefill": "any"
+    },
+    "workArrangements": {
+      "title": "Work arrangements",
+      "type": "array",
+      "uniqueItems": true,
+      "editor": "select",
+      "default": [],
+      "prefill": [],
+      "items": {
+        "type": "string",
+        "enum": [
+          "remote",
+          "hybrid",
+          "onsite"
+        ],
+        "enumTitles": [
+          "Remote",
+          "Hybrid",
+          "On-site"
+        ]
+      },
+      "description": "Optional remote, hybrid, or onsite filter; empty means all."
+    },
+    "dedupe": {
+      "title": "Repeat-delivery suppression",
+      "type": "object",
+      "editor": "json",
+      "description": "Suppress confirmed repeat deliveries for the same Apify user and search. Disable it for a stateless run.",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "key"
+      ],
+      "properties": {
+        "enabled": {
+          "title": "Enabled",
+          "type": "boolean",
+          "description": "Use the persistent tenant-isolated delivery ledger."
+        },
+        "key": {
+          "title": "Scope key",
+          "type": "string",
+          "maxLength": 256,
+          "description": "Optional stable alert/profile key; leave empty to derive the scope from this search."
+        }
+      },
+      "default": {
+        "enabled": true,
+        "key": ""
+      },
+      "prefill": {
+        "enabled": false,
+        "key": ""
+      }
+    },
+    "keyword": {
+      "title": "Keyword",
+      "type": "string",
+      "editor": "textfield",
+      "default": "",
+      "maxLength": 512,
+      "description": "Case-insensitive phrase matched against the stored title, employer, and complete original description."
+    },
+    "accuracy": {
+      "title": "AI accuracy",
+      "type": "string",
+      "enum": [
+        "silver",
+        "gold"
+      ],
+      "editor": "select",
+      "description": "Compatibility override for aiEnrichment.accuracy. Prefer the accuracy field inside aiEnrichment; when this field is explicitly supplied, it takes precedence."
+    },
+    "filters": {
+      "title": "Advanced filters",
+      "type": "object",
+      "editor": "json",
+      "description": "Versioned filters over normalized fields. With enrichment off, only stored source facts are evaluated; unknown values do not satisfy ordinary comparisons.",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "expression"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "enum": [
+            "nomad-agent-job-filter-v1"
+          ],
+          "title": "Filter schema version",
+          "description": "Version marker for the shared normalized job-filter contract."
+        },
+        "expression": {
+          "type": "object",
+          "description": "Validated by the shared filter parser: all/any/not groups or allowlisted field/operator/value predicates, at most 8 levels and 100 predicates. Invalid expressions fail before inventory or owner-provider work.",
+          "title": "Filter expression"
+        }
+      }
+    },
+    "aiEnrichment": {
+      "title": "AI enrichment",
+      "description": "Optional owner-funded enrichment fills unknown fields. Disabled by default. No customer API key is required.",
+      "type": "object",
+      "editor": "json",
+      "additionalProperties": false,
+      "required": [
+        "enabled"
+      ],
+      "default": {
+        "enabled": false,
+        "accuracy": "silver"
+      },
+      "properties": {
+        "enabled": {
+          "title": "Enable AI enrichment",
+          "description": "Fill unknown normalized fields with owner-funded AI and preserve source facts.",
+          "type": "boolean"
+        },
+        "accuracy": {
+          "title": "AI accuracy",
+          "description": "Choose the owner-funded enrichment profile when enrichment is enabled.",
+          "type": "string",
+          "enum": [
+            "silver",
+            "gold"
+          ]
+        }
+      }
+    },
+    "translateToEnglish": {
+      "title": "Translate display text to English",
+      "description": "Translate selected display fields using the owner service. Original descriptions remain unchanged. Independent of AI enrichment; disabled by default.",
+      "type": "boolean",
+      "default": false
+    },
+    "boards": {
+      "title": "Boards",
+      "description": "Select qualified board IDs. Only Stripe and Figma are supported. The inventory must be ready for every selected board; this request never crawls or enrolls a board.",
+      "type": "array",
+      "editor": "select",
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "enum": [
+          "stripe",
+          "figma"
+        ],
+        "enumTitles": [
+          "Stripe",
+          "Figma"
+        ]
+      },
+      "prefill": [
+        "stripe"
+      ]
+    },
+    "includeRaw": {
+      "title": "Retain original descriptions",
+      "description": "Complete original descriptions and HTML are always retained. False is not supported.",
+      "type": "boolean",
+      "enum": [
+        true
+      ],
+      "default": true
+    },
+    "greenhouse": {
+      "title": "Legacy Greenhouse selection",
+      "description": "Compatibility input only with nomad-agent-job-search-input-v1. New requests use top-level boards. Do not supply both forms.",
+      "type": "object",
+      "editor": "json",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "boards"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "title": "Legacy source format",
+          "description": "Version marker for the previous nested Greenhouse board selection.",
+          "type": "string",
+          "enum": [
+            "nomad-greenhouse-search-v1"
+          ]
+        },
+        "boards": {
+          "title": "Boards",
+          "description": "Select qualified board IDs. Only Stripe and Figma are supported. The inventory must be ready for every selected board; this request never crawls or enrolls a board.",
+          "type": "array",
+          "editor": "select",
+          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "enum": [
+              "stripe",
+              "figma"
+            ],
+            "enumTitles": [
+              "Stripe",
+              "Figma"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "schemaVersion": {
+          "enum": [
+            "nomad-agent-board-inventory-search-v1"
+          ]
+        }
+      },
+      "required": [
+        "boards"
+      ],
+      "not": {
+        "required": [
+          "greenhouse"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "schemaVersion": {
+          "enum": [
+            "nomad-agent-job-search-input-v1"
+          ]
+        }
+      },
+      "required": [
+        "greenhouse"
+      ],
+      "not": {
+        "required": [
+          "boards"
+        ]
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/greenhouse-inventory-input-v1.schema.json"
+}

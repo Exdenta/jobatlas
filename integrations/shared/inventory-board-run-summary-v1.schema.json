@@ -1,0 +1,173 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "source",
+    "tier",
+    "status",
+    "inventoryRequests",
+    "inventoryScanned",
+    "inventoryAsOf",
+    "sourceFreshAt",
+    "provenCandidates",
+    "duplicateSuppressed",
+    "sourceFiltered",
+    "enrichmentFailed",
+    "finalFiltered",
+    "emitted",
+    "scanLimited",
+    "chargeLimited",
+    "errorClass",
+    "cleanupErrorClass",
+    "selection",
+    "selectionDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "nomad-inventory-board-public-run-v1"
+    },
+    "source": {
+      "type": "string"
+    },
+    "tier": {
+      "enum": [
+        "normalized"
+      ]
+    },
+    "status": {
+      "enum": [
+        "running",
+        "succeeded",
+        "partial",
+        "failed"
+      ]
+    },
+    "inventoryRequests": {
+      "type": "integer"
+    },
+    "inventoryScanned": {
+      "type": "integer"
+    },
+    "inventoryAsOf": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sourceFreshAt": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "provenCandidates": {
+      "type": "integer"
+    },
+    "duplicateSuppressed": {
+      "type": "integer"
+    },
+    "sourceFiltered": {
+      "type": "integer"
+    },
+    "enrichmentFailed": {
+      "type": "integer"
+    },
+    "finalFiltered": {
+      "type": "integer"
+    },
+    "emitted": {
+      "type": "integer"
+    },
+    "scanLimited": {
+      "type": "boolean"
+    },
+    "chargeLimited": {
+      "type": "boolean"
+    },
+    "errorClass": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cleanupErrorClass": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selection": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "schemaVersion": {
+              "const": "findjobs-collector-board-selection-v1",
+              "title": "Schemaversion",
+              "type": "string"
+            },
+            "scopeKeys": {
+              "items": {
+                "type": "string",
+                "pattern": "^bs_[0-9a-f]{64}$"
+              },
+              "maxItems": 20,
+              "minItems": 1,
+              "title": "Scopekeys",
+              "type": "array",
+              "uniqueItems": true
+            },
+            "source": {
+              "enum": [
+                "greenhouse",
+                "lever",
+                "ashby",
+                "smartrecruiters"
+              ],
+              "title": "Source",
+              "type": "string"
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "source",
+            "scopeKeys"
+          ],
+          "title": "BoardSelectionModel",
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selectionDigest": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/inventory-board-run-summary-v1.schema.json",
+  "title": "Board inventory Actor run summary",
+  "description": "Prepared normalized board-run receipt. Selection and digest are null when input was rejected before board selection."
+}
