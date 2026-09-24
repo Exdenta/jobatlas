@@ -73,6 +73,9 @@ jobs:
             exit 1
           fi
 
+      - name: Install repository test dependency
+        run: python3 -m pip install jsonschema==4.25.1
+
       - name: Run repository tests
         run: python3 -m unittest discover -s tests -v
 
