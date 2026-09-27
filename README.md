@@ -1,6 +1,6 @@
 # jobatlas
 
-[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/job-atlas) · [Actor catalogue](catalogue/actors-v1.json) · [Release evidence](docs/job-atlas.md)
+[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/jobatlas) · [Actor catalogue](catalogue/actors-v1.json) · [Simple and normalized tiers](docs/job-actor-tiers.md) · [Release evidence](docs/job-atlas.md)
 
 Open schemas, integration recipes, and agent skills for Job Atlas job-search
 Actors. The Actor implementations may be hosted services; this repository
@@ -11,6 +11,8 @@ Product guides, runnable examples, versioned contracts, and integration paths
 are published at [jobatlas.dev](https://jobatlas.dev/). The operating rules
 for search discovery, measurement, and evidence-led content are documented in
 the [SEO program](docs/seo-program.md).
+
+Start one of the four flagship Actors with the [versioned first-run pack index](first-run/README.md); each pack labels its sample evidence and keeps exact-run and destination proof separate.
 
 ## LinkedIn Jobs Scraper | AI Enrichment
 
@@ -25,11 +27,12 @@ translation are optional paid extras.
 - [Build a duplicate-safe Google Sheets job tracker](integrations/n8n/linkedin-jobs-to-google-sheets.json)
 - [Connect an agent that can find and monitor jobs](docs/agent-skills.md#one-command-linkedin-setup)
 
-The LinkedIn and EURAXESS Actors turn public job postings into the same stable,
-source-linked record shape. The AI Job Search & Fit Scorer adds a separate
-candidate-evaluation layer: it searches 10 developer-job sources or accepts
-normalized jobs, then returns a ranked shortlist by default or a complete
-drop/hold/failure audit when requested, without requiring a customer model key.
+The LinkedIn, Y Combinator, and EURAXESS Actors turn public job postings into
+the same stable, source-linked record shape. The AI Job Search & Fit Scorer adds
+a separate candidate-evaluation layer: it searches 10 developer-job sources or
+accepts normalized jobs, then returns a ranked shortlist by default or a
+complete drop/hold/failure audit when requested, without requiring a customer
+model key.
 
 > **Unofficial integrations.** This project and its Actors are independently
 > developed. They are not affiliated with or endorsed by LinkedIn, EURAXESS,
@@ -47,12 +50,13 @@ Task, workflow, webhook, schedule, or destination.
 
 | Actor | Best for | Key advantages | Availability and verification boundary |
 | --- | --- | --- | --- |
-| [`LinkedIn Jobs Scraper \| AI Enrichment`](https://apify.com/job-atlas/linkedin-enrich-translate-normalize-scraper) | Public LinkedIn job search | Find fresh jobs, suppress already-delivered matches, and send clean records with complete descriptions when available to alerts, trackers, job boards, or agents. Optional enrichment and translation stay off until selected. | Public Store Actor; see the [current default build API](https://api.apify.com/v2/acts/job-atlas~linkedin-enrich-translate-normalize-scraper/builds/default). Integrations follow `latest` |
-| [`EURAXESS Jobs Scraper &#124; Full Details & AI Enrichment`](https://apify.com/job-atlas/euraxess-enrich-translate-normalize-scraper) | PhD, postdoc, fellowship, research, and faculty vacancies | Research domains, requirements, funding, deadlines, contacts, multilingual keyword expansion, strict filters, deduplication, optional enrichment, and translation | Public Store Actor; maintained integration selector `latest`; check Apify for the current default |
-| [`AI Job Search & Fit Scorer — 10 Sources + AI Matching`](https://apify.com/job-atlas/ai-job-fit-scorer) | Candidate-specific developer-job shortlists | Search 10 public developer-job sources or score your own job list against a résumé or profile. Get a ranked shortlist with a 0–100 fit score, a 0–5 delivery score after hard-requirement checks, evidence, skill gaps, and links to the postings. No model key needed. | Public Store Actor; Job Atlas production selector `latest`; see [current release evidence](docs/job-atlas.md); $0.02 per returned shortlist row or retained non-failure audit row |
-| [Y Combinator Jobs Scraper](https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper) | Startup pipelines and recurring alerts | Complete descriptions, stable job identity, deduplication, optional enrichment | Job Atlas release selector `latest`; Actor execution proof, destination templates untested |
+| [`LinkedIn Jobs Scraper \| AI Enrichment`](https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper) | Public LinkedIn job search | Find fresh jobs, suppress already-delivered matches, and send clean records with complete descriptions when available to alerts, trackers, job boards, or agents. Optional enrichment and translation stay off until selected. | Public Store Actor; `latest` is a mutable selector. API, MCP, n8n, Make, Python, and Agent Skill assets are maintained. Airtable is a destination projection only; Zapier is not claimed. See the [current default build API](https://api.apify.com/v2/acts/jobatlas~linkedin-enrich-translate-normalize-scraper/builds/default). |
+| [`EURAXESS Jobs Scraper &#124; Full Details & AI Enrichment`](https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper) | PhD, postdoc, fellowship, research, and faculty vacancies | Research domains, requirements, funding, deadlines, contacts, multilingual keyword expansion, strict filters, deduplication, optional enrichment, and translation | Public Store Actor; maintained integration selector `latest`, which is mutable. API, MCP, n8n, Make, Python, and Agent Skill assets are maintained. Airtable is a destination projection only; Zapier is not claimed; check Apify for the current default build. |
+| [`AI Job Search & Fit Scorer — 10 Sources + AI Matching`](https://apify.com/jobatlas/ai-job-fit-scorer) | Candidate-specific developer-job shortlists | Search 10 public developer-job sources or score your own job list against a résumé or profile. Get a ranked shortlist with a 0–100 fit score, a 0–5 delivery score after hard-requirement checks, evidence, skill gaps, and links to the postings. No model key needed. | Public Store Actor; `latest` is a mutable selector. API, MCP, n8n, Make, Zapier, Python, and Agent Skill assets are maintained. No Airtable asset is claimed for the scorer. See [current release evidence](docs/job-atlas.md); $0.02 per returned shortlist row or retained non-failure audit row. |
+| [Y Combinator Jobs Scraper](https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper) | Startup pipelines and recurring alerts | Complete descriptions, stable job identity, deduplication, optional enrichment | Public Store Actor; `latest` is a mutable selector. The Agent Skill is maintained. YC API and MCP examples are documented-only; no n8n, Make, Zapier, Airtable, or Python client is claimed. |
 
 Implementation guides: [LinkedIn jobs](https://jobatlas.dev/actors/linkedin) ·
+[Y Combinator jobs](https://jobatlas.dev/actors/ycombinator) ·
 [EURAXESS jobs](https://jobatlas.dev/actors/euraxess) ·
 [AI job-fit scoring](https://jobatlas.dev/actors/ai-job-fit-scorer) ·
 [n8n workflows](https://jobatlas.dev/integrations/n8n) ·
@@ -94,10 +98,11 @@ https://mcp.apify.com?tools=fetch-actor-details,call-actor,get-actor-run,get-dat
 ```
 
 Inspect Actor details, then use generic `call-actor` with build `latest` for
-LinkedIn, `latest` for EURAXESS, or `latest` for the AI Job Search & Fit
-Scorer. Confirm terminal success, verify the exact build through the Apify run
-API, validate the Actor-specific `RUN-SUMMARY`, and reconcile the default
-dataset.
+LinkedIn, EURAXESS, Y Combinator, or the AI Job Search & Fit Scorer. The selector
+is mutable, so confirm terminal success, verify the exact resolved build through
+the Apify run API, validate the Actor-specific `RUN-SUMMARY`, and reconcile the
+default dataset. The YC API and MCP examples are documented-only until
+standalone assets are maintained and a dated live-readiness run proves them.
 
 Or let the Apify CLI configure a supported client:
 
@@ -240,7 +245,7 @@ repository.
 
 | Actor | Best for | Contract and release |
 | --- | --- | --- |
-| [Y Combinator Jobs Scraper](https://apify.com/job-atlas/ycombinator-enrich-translate-normalize-scraper) | Startup recruiting pipelines and recurring alerts | Six-root normalized records; exact release `latest` |
+| [Y Combinator Jobs Scraper](https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper) | Startup recruiting pipelines and recurring alerts | Six-root normalized records; exact release `latest` |
 
 [YC guide](docs/ycombinator.md) · [Website](https://jobatlas.dev/actors/ycombinator) · [Agent Skill](.agents/skills/ycombinator-enrich-translate-normalize-scraper/SKILL.md) · [Public YC v2 schema](integrations/shared/ycombinator-v2.schema.json).
 

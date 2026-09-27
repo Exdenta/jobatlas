@@ -15,8 +15,8 @@ PINNED_URL = (
     "fetch-actor-details,call-actor,get-actor-run,get-dataset-items,"
     "get-key-value-store-record"
 )
-LINKEDIN_ACTOR = "job-atlas/linkedin-enrich-translate-normalize-scraper"
-EURAXESS_ACTOR = "job-atlas/euraxess-enrich-translate-normalize-scraper"
+LINKEDIN_ACTOR = "jobatlas/linkedin-enrich-translate-normalize-scraper"
+EURAXESS_ACTOR = "jobatlas/euraxess-enrich-translate-normalize-scraper"
 LINKEDIN_BUILD = "latest"
 EURAXESS_BUILD = "latest"
 CANONICAL_ROOTS = {"custom", "data", "identity", "llm", "raw", "schemaVersion"}

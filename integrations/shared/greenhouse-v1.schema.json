@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/greenhouse-v1.schema.json",
+  "title": "Greenhouse source facts v1",
+  "description": "Source-published Greenhouse facts. Null means unavailable; an empty array means the source explicitly returned an empty collection.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "board",
+    "nativeId",
+    "internalJobId",
+    "firstPublished",
+    "updatedAt",
+    "requisitionId",
+    "applicationDeadline",
+    "language",
+    "offices",
+    "departments",
+    "payInputRanges"
+  ],
+  "properties": {
+    "board": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$",
+      "description": "Exact source board identifier, not inferred from the company name."
+    },
+    "nativeId": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{0,19}$"
+    },
+    "internalJobId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "firstPublished": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "format": "date-time",
+      "description": "Source first_published timestamp. Null means absent; updatedAt never substitutes for it."
+    },
+    "updatedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "format": "date-time",
+      "description": "Source updated_at timestamp, retained without changing posting age."
+    },
+    "requisitionId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "applicationDeadline": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "description": "Uninterpreted source deadline value; no core deadline mapping is qualified yet."
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "offices": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "parentId",
+          "childIds",
+          "location"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parentId": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "childIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "uniqueItems": true
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          }
+        }
+      },
+      "description": "Organization office hierarchy. These are not advertised job locations."
+    },
+    "departments": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "parentId",
+          "childIds"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parentId": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "childIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "payInputRanges": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "currencyType",
+          "minCents",
+          "maxCents",
+          "blurbHtml"
+        ],
+        "properties": {
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "currencyType": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "minCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "maxCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "blurbHtml": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "description": "All structured source pay ranges. Cents are retained exactly; multiple ranges are never collapsed into one core range."
+    }
+  }
+}

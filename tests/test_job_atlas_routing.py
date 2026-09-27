@@ -9,10 +9,16 @@ CATALOGUE = json.loads((ROOT / 'catalogue/actors-v1.json').read_text(encoding='u
 SLUGS = tuple(sorted(
     deployment['slug']
     for deployment in CATALOGUE['deployments']
-    if deployment['owner'] == 'job-atlas'
+    if deployment['owner'] == 'jobatlas'
     and deployment['relationship'] == 'promoted-copy'
     and deployment['endpointState'] == 'live-metadata-verified'
 ))
+HOME_SLUGS = {
+    'linkedin-enrich-translate-normalize-scraper',
+    'euraxess-enrich-translate-normalize-scraper',
+    'ycombinator-enrich-translate-normalize-scraper',
+    'ai-job-fit-scorer',
+}
 TARGET_REPOSITORY = 'https://github.com/Exdenta/jobatlas'
 LEGACY_REPOSITORY = 'https://github.com/Exdenta/nomad-agent-job-scrapers'
 LEGACY_RAW_REPOSITORY = (
@@ -33,8 +39,12 @@ class JobAtlasRoutingTests(unittest.TestCase):
                 self.assertNotIn('Nomad Agent', text, path)
             self.assertIn('/assets/job-atlas-mark.svg', text, path)
         home = (ROOT / 'website/index.html').read_text()
+        self.assertTrue(HOME_SLUGS <= set(SLUGS))
+        for slug in HOME_SLUGS:
+            self.assertIn('https://apify.com/jobatlas/' + slug, home)
+        directory = (ROOT / 'docs/job-actor-tiers.md').read_text()
         for slug in SLUGS:
-            self.assertIn('https://apify.com/job-atlas/' + slug, home)
+            self.assertIn('https://apify.com/jobatlas/' + slug, home + directory)
 
     def test_runnable_examples_and_skills_use_job_atlas(self):
         for folder in ('integrations', '.agents/skills', 'scripts'):
@@ -47,7 +57,7 @@ class JobAtlasRoutingTests(unittest.TestCase):
         self.assertIn('nomad-agent-job-v1', (ROOT / 'README.md').read_text())
 
     def test_promoted_routes_are_derived_from_the_checked_catalogue(self):
-        self.assertEqual(len(SLUGS), 4)
+        self.assertEqual(len(SLUGS), 7)
         self.assertEqual(
             set(SLUGS),
             {
@@ -55,6 +65,9 @@ class JobAtlasRoutingTests(unittest.TestCase):
                 'euraxess-enrich-translate-normalize-scraper',
                 'ycombinator-enrich-translate-normalize-scraper',
                 'ai-job-fit-scorer',
+                'normalized-manfred-jobs-scraper',
+                'normalized-eurobrussels-jobs-scraper',
+                'normalized-infostud-jobs-scraper',
             },
         )
         readme = (ROOT / 'README.md').read_text(encoding='utf-8')
@@ -74,6 +87,19 @@ class JobAtlasRoutingTests(unittest.TestCase):
             'benchmarks/enrichment-quality-v1/prediction.schema.json',
             'integrations/shared/flat-job-v1.schema.json',
         }
+        # Approval-gated migration drafts quote the exact current value so an
+        # operator can replace and, if needed, restore it without guessing.
+        migration_draft_paths = {
+            'docs/apify-store/publisher-profile.md',
+            'docs/apify-store/actors/ai-job-fit-scorer.md',
+            'docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md',
+            'docs/apify-store/actors/linkedin-enrich-translate-normalize-scraper.md',
+            'docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md',
+        }
+        raw_migration_draft_paths = {
+            'docs/apify-store/actors/euraxess-enrich-translate-normalize-scraper.md',
+            'docs/apify-store/actors/ycombinator-enrich-translate-normalize-scraper.md',
+        }
         legacy_raw_identifier_paths = {
             '.agents/skills/euraxess-enrich-translate-normalize-scraper/'
             'references/output-contract.md',
@@ -86,6 +112,8 @@ class JobAtlasRoutingTests(unittest.TestCase):
             'integrations/shared/run-summary-v3.schema.json',
             'integrations/shared/run-summary-v4.schema.json',
             'integrations/shared/ycombinator-v2.schema.json',
+            # Illustrative record must retain the stable YC v2 schema identity.
+            'first-run/samples/ycombinator-v2.illustrative.json',
             'website/samples/euraxess-job.json',
             # Exact downloadable copy of the recorded source result.
             'website/samples/explorer/euraxess.json',
@@ -114,8 +142,11 @@ class JobAtlasRoutingTests(unittest.TestCase):
             if LEGACY_RAW_REPOSITORY in text:
                 old_raw_paths.add(relative)
 
-        self.assertEqual(old_web_paths, legacy_web_identifier_paths)
-        self.assertEqual(old_raw_paths, legacy_raw_identifier_paths)
+        self.assertEqual(old_web_paths, legacy_web_identifier_paths | migration_draft_paths)
+        self.assertEqual(
+            old_raw_paths,
+            legacy_raw_identifier_paths | raw_migration_draft_paths,
+        )
 
         for relative in (
             'README.md',
@@ -158,4 +189,4 @@ class JobAtlasRoutingTests(unittest.TestCase):
             ).read_text(encoding='utf-8')
         )
         for system in sample['systems'].values():
-            self.assertTrue(system['actorId'].startswith('job-atlas/'))
+            self.assertTrue(system['actorId'].startswith('jobatlas/'))

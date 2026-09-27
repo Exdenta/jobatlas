@@ -12,6 +12,10 @@
     "unparsedGeofields"
   ],
   "properties": {
+    "postedAtProvenance": {
+      "description": "Whether postedAt came from the listing card or the collector's provisional UTC admission date.",
+      "enum": ["listing_card", "inventory_admission"]
+    },
     "academicLevelRaw": {
       "description": "Unmodified EURAXESS Positions / Academic Level taxonomy labels. These are source search classifications, not applicant education requirements.",
       "type": [

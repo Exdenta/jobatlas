@@ -1,0 +1,180 @@
+{
+  "$schema": "baseline-v1.schema.json",
+  "schemaVersion": "jobatlas-measurement-baseline-v1",
+  "baselineId": "jobatlas-synthetic-28-day-sample-2026-09-10",
+  "generatedAt": "2026-09-10T01:05:00Z",
+  "siteUrl": "https://jobatlas.dev/",
+  "sourceRevision": "08a4134716653031ca298b2bbf797d0e1f526ffa",
+  "window": {"start": "2026-08-13", "end": "2026-09-09", "days": 28, "complete": true},
+  "campaignRegistryVersion": "2026-09-10",
+  "changePoints": [
+    {
+      "id": "s03-release-2026-09-09",
+      "occurredAt": "2026-09-09T20:00:00Z",
+      "description": "The synthetic example marks the S03 release boundary so comparisons do not silently mix site states.",
+      "reference": "synthetic-s03-release-receipt"
+    }
+  ],
+  "layers": {
+    "deployment": {
+      "status": "observed",
+      "reason": null,
+      "asOf": "2026-09-09T20:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": null,
+      "metrics": [
+        {"name": "canonicalPages", "status": "observed", "unit": "count", "value": 24, "denominator": null, "reason": null, "segment": "aggregate"}
+      ],
+      "evidence": [
+        {"kind": "deployment_receipt", "observedAt": "2026-09-09T20:00:00Z", "reference": "synthetic-deployment-receipt"}
+      ],
+      "limitations": ["Synthetic value demonstrating an observed deployment metric."]
+    },
+    "discovery": {
+      "status": "observed",
+      "reason": null,
+      "asOf": "2026-09-10T01:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": null,
+      "metrics": [
+        {"name": "acceptedNotifications", "status": "observed", "unit": "count", "value": 0, "denominator": null, "reason": null, "segment": "aggregate"}
+      ],
+      "evidence": [
+        {"kind": "discovery_receipt", "observedAt": "2026-09-10T01:00:00Z", "reference": "synthetic-discovery-receipt"}
+      ],
+      "limitations": ["Observed zero means the source was checked and no notification was accepted."]
+    },
+    "googleIndexing": {
+      "status": "observed",
+      "reason": null,
+      "asOf": "2026-09-08T18:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": null,
+      "metrics": [
+        {"name": "indexedUrls", "status": "observed", "unit": "count", "value": 4, "denominator": null, "reason": null, "segment": "aggregate"}
+      ],
+      "evidence": [
+        {"kind": "google_url_inspection", "observedAt": "2026-09-08T18:00:00Z", "reference": "synthetic-google-inspection"}
+      ],
+      "limitations": ["Synthetic URL-inspection count, not a claim about current indexing."]
+    },
+    "bingIndexing": {
+      "status": "unavailable",
+      "reason": "The synthetic example models a property without usable Bing inspection access.",
+      "asOf": "2026-09-08T18:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": null,
+      "metrics": [
+        {"name": "indexedUrls", "status": "unavailable", "unit": "count", "value": null, "denominator": null, "reason": "No Bing inspection result was available.", "segment": "aggregate"}
+      ],
+      "evidence": [],
+      "limitations": []
+    },
+    "searchDemand": {
+      "status": "observed",
+      "reason": null,
+      "asOf": "2026-09-07T23:59:59Z",
+      "window": {"start": "2026-08-11", "end": "2026-09-07", "days": 28, "complete": true},
+      "ownerTestsExcluded": null,
+      "metrics": [
+        {"name": "clicks", "status": "observed", "unit": "count", "value": 0, "denominator": null, "reason": null, "segment": "aggregate"},
+        {"name": "impressions", "status": "observed", "unit": "count", "value": 100, "denominator": null, "reason": null, "segment": "aggregate"},
+        {"name": "clickThroughRate", "status": "observed", "unit": "ratio", "value": 0.0, "denominator": {"metric": "impressions", "value": 100}, "reason": null, "segment": "aggregate"}
+      ],
+      "evidence": [
+        {"kind": "google_search_console", "observedAt": "2026-09-07T23:59:59Z", "reference": "synthetic-search-console-export"}
+      ],
+      "limitations": ["Synthetic aggregate values contain no query text or identifiers."]
+    },
+    "onsiteIntent": {
+      "status": "not_collected",
+      "reason": "No collector receipt is attached to this baseline sample.",
+      "asOf": "2026-09-10T01:00:00Z",
+      "window": {"start": "2026-08-14", "end": "2026-09-10", "days": 28, "complete": false},
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "uniqueSiteEvents", "status": "not_collected", "unit": "count", "value": null, "denominator": null, "reason": "Local event emission is not a received collector event.", "segment": "unclassified"}
+      ],
+      "evidence": [],
+      "limitations": ["Owner tests and customer activity remain separate when events are supplied."]
+    },
+    "actorExecution": {
+      "status": "unknown",
+      "reason": "No attributable customer Actor execution export is attached.",
+      "asOf": "2026-09-09T22:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "actorRuns", "status": "observed", "unit": "count", "value": 3, "denominator": null, "reason": null, "segment": "owner_test"},
+        {"name": "customerRuns", "status": "unknown", "unit": "count", "value": null, "denominator": null, "reason": "Website events are not linked to customer Actor runs.", "segment": "customer_activity"}
+      ],
+      "evidence": [
+        {"kind": "actor_analytics", "observedAt": "2026-09-09T22:00:00Z", "reference": "synthetic-s03-owner-canaries"}
+      ],
+      "limitations": ["Observed owner canaries are retained but excluded from the customer-run status."]
+    },
+    "usefulActivation": {
+      "status": "unknown",
+      "reason": "No successful delivered-row activation receipt is attached.",
+      "asOf": "2026-09-09T22:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "usefulActivations", "status": "unknown", "unit": "count", "value": null, "denominator": null, "reason": "An Actor click or run alone does not establish useful activation.", "segment": "customer_activity"}
+      ],
+      "evidence": [],
+      "limitations": []
+    },
+    "destinationDelivery": {
+      "status": "not_collected",
+      "reason": "No named-destination receipt is attached.",
+      "asOf": "2026-09-09T22:00:00Z",
+      "window": null,
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "verifiedDeliveries", "status": "not_collected", "unit": "count", "value": null, "denominator": null, "reason": "No destination was inspected for this sample.", "segment": "customer_activity"}
+      ],
+      "evidence": [],
+      "limitations": []
+    },
+    "retention": {
+      "status": "not_mature",
+      "reason": "The example has no attributable seven-day return window.",
+      "asOf": "2026-09-10T01:00:00Z",
+      "window": {"start": "2026-09-03", "end": "2026-09-09", "days": 7, "complete": true},
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "returningUsers7d", "status": "not_mature", "unit": "count", "value": null, "denominator": null, "reason": "No mature attributable cohort exists.", "segment": "customer_activity"}
+      ],
+      "evidence": [],
+      "limitations": []
+    },
+    "commercial": {
+      "status": "unavailable",
+      "reason": "No privacy-safe billing export is attached.",
+      "asOf": "2026-09-10T01:00:00Z",
+      "window": {"start": "2026-08-13", "end": "2026-09-09", "days": 28, "complete": true},
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "payingUsers", "status": "unavailable", "unit": "count", "value": null, "denominator": null, "reason": "Commercial account evidence is unavailable.", "segment": "customer_activity"}
+      ],
+      "evidence": [],
+      "limitations": []
+    },
+    "support": {
+      "status": "observed",
+      "reason": null,
+      "asOf": "2026-09-10T01:00:00Z",
+      "window": {"start": "2026-08-13", "end": "2026-09-09", "days": 28, "complete": true},
+      "ownerTestsExcluded": true,
+      "metrics": [
+        {"name": "supportRequests", "status": "observed", "unit": "count", "value": 0, "denominator": null, "reason": null, "segment": "unclassified"}
+      ],
+      "evidence": [
+        {"kind": "support_ledger", "observedAt": "2026-09-10T01:00:00Z", "reference": "synthetic-support-ledger"}
+      ],
+      "limitations": ["Synthetic observed zero, not a current support count."]
+    }
+  },
+  "eventSummary": null
+}

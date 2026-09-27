@@ -68,15 +68,31 @@ source limitations when editing the introductory copy.
 ## Privacy-minimized interaction events
 
 `script.js` dispatches a local `nomad-agent:analytics` `CustomEvent` for page
-views and annotated actions. Its allowlist accepts only short semantic values
-such as event, product, placement, destination, and format; it does not collect
-cookies, user IDs, query strings, form content, or resume data. Global Privacy
-Control or Do Not Track suppresses the events.
+views and annotated actions. Every accepted `jobatlas-site-event-v1` envelope
+has an allowlisted event name, page, placement, one event-scoped UUID, one UTC
+timestamp, and the fixed activity class `unclassified`. The UUID is generated
+again for every event; it is not a user or session identifier and is never
+stored by the site. The first-party annotations contain reviewed semantic
+tokens, not dedicated user/session fields; producers must not reuse a semantic
+dimension as an opaque identifier. No cookie, form content, or resume data is
+collected. Global Privacy Control or Do Not Track suppresses the event
+before campaign parameters or the page path are read.
+
+The page field has an explicit allowlist of the 24 canonical routes; every
+other pathname, including a noindex or custom missing-page response, reports
+only `/404`. An arbitrary requested path is never copied into the event.
+Campaign dimensions are emitted
+only as a complete valid source, medium, and campaign tuple, with an optional
+lowercase hyphen token for content. The legacy source
+`nomad-agent-job-scrapers` is reported as `jobatlas`; partial or unexpected
+campaign values are omitted together.
 
 No event leaves the browser by default. A site owner may deliberately attach a
-subscriber, an existing `dataLayer`, or Plausible. Such a collector is a
-separate deployment and consent decision; the current static site does not
-prove that any event was received or tied to a product outcome.
+subscriber, an existing `dataLayer`, or Plausible. These are collector hooks,
+not receipts: their presence does not prove that an event was accepted, stored,
+deduplicated, or tied to a successful Actor run or product outcome. Collector
+deployment, consent, receipt semantics, retention, and downstream attribution
+remain separate decisions.
 
 ## Production deployment and search discovery
 

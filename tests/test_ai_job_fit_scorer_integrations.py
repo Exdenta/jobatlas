@@ -89,7 +89,7 @@ class AiJobFitScorerIntegrationTests(unittest.TestCase):
                 / "ai-job-fit-scorer.mcp.json"
             ).read_text()
         )
-        self.assertEqual(mcp["actor"], "job-atlas/ai-job-fit-scorer")
+        self.assertEqual(mcp["actor"], "jobatlas/ai-job-fit-scorer")
         self.assertEqual(mcp["input"], actor_input)
         self.assertEqual(
             mcp["callOptions"],
@@ -274,7 +274,7 @@ await import({json.dumps(module_url)});
         self.assertEqual(assignments["maxTotalChargeUsd"], 0.10)
         self.assertEqual(
             nodes["Start exact Actor build"]["parameters"]["url"],
-            "https://api.apify.com/v2/acts/job-atlas~ai-job-fit-scorer/runs",
+            "https://api.apify.com/v2/acts/jobatlas~ai-job-fit-scorer/runs",
         )
         self.assertEqual(
             nodes["Upsert Google Sheets by matchKey"]["parameters"]["columns"]["matchingColumns"],

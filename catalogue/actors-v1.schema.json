@@ -149,7 +149,7 @@
       "properties": {
         "id": {"type": "string", "pattern": "^[a-z0-9-]+--[a-z0-9-]+$"},
         "logicalProductId": {"$ref": "#/$defs/identifier"},
-        "owner": {"enum": ["nomad-agent", "job-atlas"]},
+          "owner": {"enum": ["nomad-agent", "jobatlas"]},
         "slug": {"$ref": "#/$defs/identifier"},
         "actorId": {"type": "string", "pattern": "^[A-Za-z0-9]{17}$"},
         "endpointState": {"const": "live-metadata-verified"},

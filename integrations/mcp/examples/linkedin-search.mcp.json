@@ -1,5 +1,5 @@
 {
-  "actor": "job-atlas/linkedin-enrich-translate-normalize-scraper",
+  "actor": "jobatlas/linkedin-enrich-translate-normalize-scraper",
   "input": {
     "schemaVersion": "nomad-agent-job-search-input-v1",
     "keyword": "TypeScript developer",

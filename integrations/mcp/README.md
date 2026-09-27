@@ -14,9 +14,9 @@ https://mcp.apify.com?tools=fetch-actor-details,call-actor,get-actor-run,get-dat
 
 | Profile | Actor | Build selector |
 | --- | --- | --- |
-| LinkedIn | `job-atlas/linkedin-enrich-translate-normalize-scraper` | `latest` |
-| EURAXESS | `job-atlas/euraxess-enrich-translate-normalize-scraper` | `latest` |
-| AI Job Search & Fit Scorer | `job-atlas/ai-job-fit-scorer` | `latest` |
+| LinkedIn | `jobatlas/linkedin-enrich-translate-normalize-scraper` | `latest` |
+| EURAXESS | `jobatlas/euraxess-enrich-translate-normalize-scraper` | `latest` |
+| AI Job Search & Fit Scorer | `jobatlas/ai-job-fit-scorer` | `latest` |
 
 Select `latest` explicitly, then verify the immutable build returned by that run. Confirm Actor
 availability and account access with `fetch-actor-details` before a paid run.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build search artifacts and notify Google Search Console and IndexNow."""
+"""Build and verify search artifacts, with optional discovery notification."""
 
 from __future__ import annotations
 
@@ -504,7 +504,9 @@ def inspect(site_dir: Path, site_url: str) -> None:
     print(json.dumps({"siteUrl": site_url, "results": results}, indent=2))
 
 
-def notify(site_dir: Path, site_url: str, indexnow_key: str) -> None:
+def verify_live_deployment(
+    site_dir: Path, site_url: str, indexnow_key: str
+) -> list[str]:
     site_url = normalize_site_url(site_url)
     key = validate_indexnow_key(indexnow_key)
     canonical_documents = discover_canonical_documents(site_dir, site_url)
@@ -524,6 +526,15 @@ def notify(site_dir: Path, site_url: str, indexnow_key: str) -> None:
     key_url = urljoin(site_url, "indexnow-key.txt")
     if fetch_text(key_url).strip() != key:
         raise RuntimeError("live IndexNow key file does not match INDEXNOW_KEY")
+
+    return canonical_urls
+
+
+def notify(site_dir: Path, site_url: str, indexnow_key: str) -> None:
+    site_url = normalize_site_url(site_url)
+    key = validate_indexnow_key(indexnow_key)
+    canonical_urls = verify_live_deployment(site_dir, site_url, key)
+    sitemap_url = urljoin(site_url, "sitemap.xml")
 
     errors: list[str] = []
     try:
@@ -548,7 +559,7 @@ def notify(site_dir: Path, site_url: str, indexnow_key: str) -> None:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
-    for command in ("prepare", "preflight", "inspect", "notify"):
+    for command in ("prepare", "preflight", "inspect", "verify-live", "notify"):
         child = subparsers.add_parser(command)
         child.add_argument("--site-dir", type=Path, default=Path("website"))
         child.add_argument("--site-url", default="https://jobatlas.dev/")
@@ -572,7 +583,15 @@ def main() -> int:
             print(f"Search Console property access verified ({permission})")
         elif args.command == "inspect":
             inspect(args.site_dir, args.site_url)
-        else:
+        elif args.command == "verify-live":
+            indexnow_key = os.environ.get("INDEXNOW_KEY")
+            if not indexnow_key:
+                raise RuntimeError("INDEXNOW_KEY is required")
+            urls = verify_live_deployment(
+                args.site_dir, args.site_url, indexnow_key
+            )
+            print(f"Live deployment verified for {len(urls)} canonical URL(s)")
+        elif args.command == "notify":
             indexnow_key = os.environ.get("INDEXNOW_KEY")
             if not indexnow_key:
                 raise RuntimeError("INDEXNOW_KEY is required")

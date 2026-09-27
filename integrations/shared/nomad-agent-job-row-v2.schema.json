@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nomad-agent-job-row-v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "recordType",
+    "source",
+    "id",
+    "url",
+    "title",
+    "company",
+    "locations",
+    "postedAt",
+    "deadline",
+    "description",
+    "descriptionHtml",
+    "workType",
+    "salary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "nomad-agent-job-row-v2"
+    },
+    "recordType": {
+      "const": "posting"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "company": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "postedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "deadline": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "descriptionHtml": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workType": {
+      "enum": [
+        "remote",
+        "hybrid",
+        "onsite",
+        null
+      ]
+    },
+    "salary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  },
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/nomad-agent-job-row-v2.schema.json"
+}

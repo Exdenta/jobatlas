@@ -2,7 +2,7 @@
 // Bounded exact-run REST example. Requires Node 18+ and APIFY_TOKEN.
 import { readFile } from 'node:fs/promises';
 
-const ACTOR = 'job-atlas~ai-job-fit-scorer';
+const ACTOR = 'jobatlas~ai-job-fit-scorer';
 const BUILD_SELECTOR = 'latest';
 const ACTOR_ID = 'OZ919PaAyAbifOdcL';
 const MAX_TOTAL_CHARGE_USD = 0.10;

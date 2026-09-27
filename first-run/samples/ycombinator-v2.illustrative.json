@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "nomad-agent-job-v1",
+  "identity": {
+    "source": "ycombinator_was",
+    "externalId": "illustrative-yc-v2-001",
+    "url": null
+  },
+  "data": {
+    "title": "Founding Engineer",
+    "company": {
+      "name": "Example Startup",
+      "sourceId": null,
+      "department": null,
+      "url": null,
+      "logoUrl": null
+    },
+    "classification": {
+      "industries": [
+        "Software Development"
+      ],
+      "jobFunctions": [
+        "Engineering"
+      ]
+    },
+    "domains": null,
+    "domainsRaw": null,
+    "locations": [
+      {
+        "raw": "Remote",
+        "countryName": null,
+        "countryCode": null,
+        "city": null,
+        "region": null,
+        "postalCode": null,
+        "streetAddress": null,
+        "facilityName": null,
+        "positionsAvailable": null,
+        "latitude": null,
+        "longitude": null
+      }
+    ],
+    "employment": {
+      "workArrangements": null,
+      "applicantLocationRequirements": null,
+      "workSchedules": [
+        "full_time"
+      ],
+      "contractTypes": [],
+      "durationMonths": null,
+      "hoursPerWeek": null,
+      "hoursPerWeekRaw": null,
+      "startDate": null,
+      "startDateRaw": null
+    },
+    "application": {
+      "postedAt": null,
+      "deadline": null,
+      "referenceNumber": null,
+      "referenceNumberIssuer": null,
+      "applicantSnapshot": null,
+      "url": null,
+      "email": null,
+      "directApply": null,
+      "applyMethodRaw": null,
+      "availability": null,
+      "hiringContacts": null,
+      "eligibilityCriteria": null,
+      "selectionProcess": null
+    },
+    "seniority": {
+      "raw": [
+        "Founding engineer"
+      ],
+      "levels": [
+        "lead"
+      ]
+    },
+    "requirements": {
+      "education": null,
+      "experience": null,
+      "languages": null,
+      "requiredSkills": [
+        {
+          "name": "TypeScript",
+          "yearsRequired": null
+        },
+        {
+          "name": "PostgreSQL",
+          "yearsRequired": null
+        }
+      ],
+      "preferredSkills": null,
+      "certifications": null,
+      "skillsQualifications": null,
+      "specificRequirements": null
+    },
+    "benefits": null,
+    "funding": {
+      "programme": null
+    },
+    "compensation": {
+      "currency": null,
+      "exact": null,
+      "minimum": null,
+      "maximum": null,
+      "period": null,
+      "raw": null
+    },
+    "constraints": {
+      "visaSponsorship": null,
+      "workAuthorization": null,
+      "securityClearance": null,
+      "locationPreference": null
+    }
+  },
+  "custom": {
+    "schemaId": "https://raw.githubusercontent.com/Exdenta/nomad-agent-job-scrapers/main/integrations/shared/ycombinator-v2.schema.json",
+    "data": {
+      "companyBatch": "W24",
+      "companySlug": "example-startup",
+      "locationRaw": "Remote",
+      "jobTypeRaw": "Full-time",
+      "equityRaw": null,
+      "visaPolicyRaw": null,
+      "skills": [
+        "TypeScript",
+        "PostgreSQL"
+      ],
+      "interviewProcessHtml": null,
+      "customQuestions": [],
+      "company": {
+        "tagline": "Illustrative software product",
+        "location": "Remote",
+        "teamSize": 12,
+        "lastActiveAt": null,
+        "hiringDescription": "Illustrative hiring context for contract validation.",
+        "hiringDescriptionHtml": null,
+        "technologyDescription": "Illustrative TypeScript and PostgreSQL stack.",
+        "technologyDescriptionHtml": null,
+        "founders": []
+      }
+    }
+  },
+  "llm": {
+    "status": "not_requested",
+    "requestedFields": [],
+    "filledFields": [],
+    "provider": null,
+    "model": null,
+    "promptVersion": null,
+    "completedAt": null
+  },
+  "raw": null
+}

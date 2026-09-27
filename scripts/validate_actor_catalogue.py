@@ -59,7 +59,17 @@ IGNORED_ROUTE_FILES = {
     "docs/client-migration.md",
 }
 ROUTE_PATTERN = re.compile(
-    r"(?i)(?:job-atlas|nomad-agent)(?:/|~|%2f)[a-z0-9][a-z0-9-]*"
+    r"(?i)(?:"
+    r"(?:https://apify\.com/|https://api\.apify\.com/v2/(?:acts|actors)/|/v2/(?:acts|actors)/)"
+    r"(?P<qualified>(?:jobatlas|nomad-agent)(?:/|~|%2f)[a-z0-9][a-z0-9-]*)"
+    r"|(?<![A-Za-z0-9_./-])"
+    r"(?P<standalone>(?:jobatlas|nomad-agent)(?:/|~|%2f)[a-z0-9][a-z0-9-]*)"
+    r")"
+)
+RETIRED_APIFY_OWNER = "job-" + "atlas"
+RETIRED_JOB_ATLAS_ROUTE_PATTERN = re.compile(
+    rf"(?i)(?:https://apify\.com/{RETIRED_APIFY_OWNER}(?:[/\s\"'<>?#]|$)|"
+    rf"{RETIRED_APIFY_OWNER}(?:/|~|%2f)[a-z0-9][a-z0-9-]*)"
 )
 ACTOR_ID_PATTERN = re.compile(
     r"(?i)(?:expected[_-]?actor[_-]?id|actor[_-]?id|actId)"
@@ -70,7 +80,8 @@ ACTOR_ID_PATTERN = re.compile(
 def extract_actor_routes(text: str) -> set[str]:
     """Return normalized owner/slug routes from slash, tilde, or encoded forms."""
     routes: set[str] = set()
-    for raw in ROUTE_PATTERN.findall(text):
+    for match in ROUTE_PATTERN.finditer(text):
+        raw = match.group("qualified") or match.group("standalone")
         normalized = re.sub(r"(?i)(?:~|%2f)", "/", raw).lower()
         routes.add(normalized)
     return routes
@@ -402,8 +413,8 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
         if deployment.get("relationship") == "legacy-primary" and deployment.get("owner") != "nomad-agent":
             errors.append(f"deployment {deployment.get('id')} legacy-primary must use nomad-agent owner")
         if deployment.get("relationship") == "promoted-copy":
-            if deployment.get("owner") != "job-atlas":
-                errors.append(f"deployment {deployment.get('id')} promoted-copy must use job-atlas owner")
+            if deployment.get("owner") != "jobatlas":
+                errors.append(f"deployment {deployment.get('id')} promoted-copy must use jobatlas owner")
             target = deployment_by_id.get(target_id)
             if target is None:
                 errors.append(f"deployment {deployment.get('id')} promoted-copy target is unknown")
@@ -426,22 +437,22 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
 
     counts = scope.get("inventoryCounts", {})
     expected_counts = {
-        "ownedActors": 64,
-        "ownedInScopePublic": 43,
-        "ownedPrivateSupportExcluded": 3,
+        "ownedActors": 92,
+        "ownedInScopePublic": 58,
+        "ownedPrivateSupportExcluded": 16,
         "ownedUnrelatedPublicExcluded": 18,
-        "promotedJobAtlasDeployments": 4,
-        "inScopeDeployments": 47,
+        "promotedJobAtlasDeployments": 7,
+        "inScopeDeployments": 65,
     }
     if counts != expected_counts:
         errors.append(f"inventoryCounts mismatch: expected {expected_counts}")
-    if len(products) != 43 or len(deployments) != 47 or len(exclusions) != 18:
-        errors.append("catalogue cardinality must be 43 products, 47 deployments, and 18 public exclusions")
+    if len(products) != 58 or len(deployments) != 65 or len(exclusions) != 18:
+        errors.append("catalogue cardinality must be 58 products, 65 deployments, and 18 public exclusions")
     public_nomad_candidates = sum(
         item.get("owner") == "nomad-agent" for item in deployments + exclusions
     )
-    if public_nomad_candidates != 61 or public_nomad_candidates + counts.get("ownedPrivateSupportExcluded", 0) != 64:
-        errors.append("catalogue and aggregate private count do not account for all 64 owned candidates")
+    if public_nomad_candidates != 76 or public_nomad_candidates + counts.get("ownedPrivateSupportExcluded", 0) != 92:
+        errors.append("catalogue and aggregate private count do not account for all 92 owned candidates")
 
     promoted_products = {
         item.get("logicalProductId")
@@ -470,7 +481,7 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
             deployment = deployment_by_id[row.get("deploymentId")]
             if deployment.get("logicalProductId") != row.get("logicalProductId"):
                 errors.append(f"clientMatrix row {row.get('logicalProductId')}/{row.get('clientClass')} crosses deployments")
-            if deployment.get("owner") != "job-atlas":
+            if deployment.get("owner") != "jobatlas":
                 errors.append(f"clientMatrix row {row.get('logicalProductId')}/{row.get('clientClass')} must target Job Atlas")
         if row.get("clientClass") not in CLIENT_CLASSES:
             errors.append(f"clientMatrix row {row.get('logicalProductId')}/{row.get('clientClass')} has invalid client class")
@@ -522,13 +533,10 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
 
 def validate_repository_routes(data: dict[str, Any], root: Path) -> list[str]:
     """Reconcile maintained route and contextual immutable-ID references."""
-    current_deployment_ids = {
-        row["deploymentId"] for row in data.get("clientMatrix", [])
-    }
+    # Integration support is separate from a metadata-verified endpoint.
     current_deployments = [
         item for item in data.get("deployments", [])
-        if item.get("id") in current_deployment_ids
-        and item.get("endpointState") == "live-metadata-verified"
+        if item.get("endpointState") == "live-metadata-verified"
     ]
     current_routes = {
         f'{item["owner"]}/{item["slug"]}'.lower()
@@ -549,6 +557,8 @@ def validate_repository_routes(data: dict[str, Any], root: Path) -> list[str]:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
+        if RETIRED_JOB_ATLAS_ROUTE_PATTERN.search(text):
+            errors.append(f"retired Apify owner route in {relative}")
         for route in sorted(extract_actor_routes(text) - current_routes):
             errors.append(f"uncatalogued maintained Actor route {route} in {relative}")
         for actor_id in sorted(set(ACTOR_ID_PATTERN.findall(text)) - current_ids):

@@ -2,8 +2,7 @@
   "use strict";
 
 
-  // Content stays readable without JavaScript or IntersectionObserver.
-  // Animate each section once, and honor changes to the OS motion preference.
+  // Reveal sections when motion and IntersectionObserver permit.
   const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
   let revealObserver;
   const configureMotion = () => {
@@ -50,98 +49,83 @@
     if (window.innerWidth > 960) setMenuOpen(false);
   });
 
-  // This layer intentionally creates no cookies, user IDs, query-string capture,
-  // or network requests. A site owner may attach a consent-aware collector to the
-  // CustomEvent, subscribe API, or an existing dataLayer/Plausible installation.
-  const subscribers = new Set();
-  const propertyNames = [
-    "category",
-    "label",
-    "placement",
-    "product",
-    "actor",
-    "destination",
-    "content",
-    "format",
-  ];
-  const privacySignalEnabled =
-    navigator.globalPrivacyControl === true ||
-    navigator.doNotTrack === "1" ||
-    window.doNotTrack === "1";
+  const hooks = new Set();
+  const eventRules = new Map("actor_cta_click:actor asset_cta_click:actor choose_actor_click:actor contract_cta_click:actor cta_click:category,label first_run_selected:product guide_cta_click:actor history_cta_click:actor install_command_copied:category,product,format integration_click:label integration_page_click:actor methodology_cta_click:actor navigation_click:category,label outbound_click:category,label,destination page_view:category,label path_selected:label product_page_click:actor product_selected:product sample_copied:product,format sample_download:product,format sample_source_selected:product,format sample_view:product,format skill_source_selected:category,product source_cta_click:actor support_cta_click:actor".split(" ").map((rule) => { const [event, fields] = rule.split(":"); return [event, fields.split(",")]; }));
+  const canonicalPages = new Set("/ /about /actors /actors/ai-job-fit-scorer /actors/euraxess /actors/linkedin /actors/ycombinator /changelog /contracts /guides /guides/ai-job-fit-scoring-api /guides/euraxess-jobs-api-export /guides/linkedin-job-alerts-n8n /guides/linkedin-jobs-api-alternatives /integrations /integrations/airtable /integrations/api /integrations/make /integrations/mcp /integrations/n8n /integrations/python /integrations/zapier /methodology /privacy".split(" "));
+  const fields = "category label placement product actor destination format".split(" ");
+  const campaignSources = new Set("jobatlas devto linkedin youtube github apify n8n make".split(" "));
+  const campaignMedia = new Set("owned-site tutorial social video documentation template referral".split(" "));
+  const campaignNames = new Set("actor-discovery linkedin-alerts euraxess-tracker yc-tracker fit-scoring".split(" "));
+  const privacyEnabled = navigator.globalPrivacyControl === true ||
+    navigator.doNotTrack === "1" || window.doNotTrack === "1";
 
-  const cleanValue = (value) => {
-    if (typeof value !== "string") return undefined;
-    const cleaned = value.trim().slice(0, 120);
-    return cleaned || undefined;
+  const sanitize = (properties = {}) => Object.fromEntries(fields.flatMap((key) => {
+    const value = typeof properties?.[key] === "string" ? properties[key].trim() : "";
+    return /^[a-z0-9][a-z0-9_-]{0,63}$/.test(value) ? [[key, value]] : [];
+  }));
+
+  const pageValue = () => {
+    const robots = document.querySelector('meta[name="robots"]')?.content ?? "";
+    if (/(^|,)\s*noindex\s*(,|$)/i.test(robots)) return "/404";
+    const normalized = window.location.pathname.replace(/\/+$/, "") || "/";
+    return canonicalPages.has(normalized) ? normalized : "/404";
   };
 
-  const sanitizeProperties = (properties = {}) => {
-    const result = {};
-    for (const key of propertyNames) {
-      const value = cleanValue(properties[key]);
-      if (value) result[key] = value;
-    }
-    result.page = window.location.pathname;
-    return result;
+  const campaignData = () => {
+    const query = new URLSearchParams(window.location.search);
+    const [s, m, c, t] = ["source", "medium", "campaign", "content"].map((name) => query.getAll(`utm_${name}`));
+    if (s.length !== 1 || m.length !== 1 || c.length !== 1 || t.length > 1) return {};
+    const source = s[0] === "nomad-agent-job-scrapers" ? "jobatlas" : s[0];
+    const [medium] = m, [campaign] = c, [content] = t;
+    if (!campaignSources.has(source) || !campaignMedia.has(medium) || !campaignNames.has(campaign)) return {};
+    if (content !== undefined && !/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/.test(content)) return {};
+    return { source, medium, campaign, ...(content ? { content } : {}) };
   };
 
-  const track = (eventName, properties = {}) => {
-    const event = cleanValue(eventName);
-    if (!event || privacySignalEnabled) return false;
+  const track = (name, properties = {}) => {
+    const required = eventRules.get(name);
+    if (privacyEnabled || !required) return false;
+    const props = sanitize(properties);
+    if (!props.placement || required.some((key) => !props[key]) ||
+      typeof window.crypto?.randomUUID !== "function") return false;
 
-    const detail = Object.freeze({ event, ...sanitizeProperties(properties) });
+    const campaign = campaignData();
+    const detail = Object.freeze({
+      schemaVersion: "jobatlas-site-event-v1", eventId: window.crypto.randomUUID(),
+      occurredAt: new Date().toISOString(), activityClass: "unclassified",
+      event: name, page: pageValue(), ...campaign, ...props,
+    });
     window.dispatchEvent(new CustomEvent("nomad-agent:analytics", { detail }));
 
-    if (Array.isArray(window.dataLayer)) {
-      window.dataLayer.push({ ...detail });
-    }
+    if (Array.isArray(window.dataLayer)) window.dataLayer.push({ ...detail });
 
-    if (typeof window.plausible === "function") {
-      const { event: _event, ...props } = detail;
-      window.plausible(event, { props });
-    }
+    if (typeof window.plausible === "function")
+      window.plausible(name, { props: { page: detail.page, ...campaign, ...props } });
 
-    subscribers.forEach((subscriber) => {
-      try {
-        subscriber(detail);
-      } catch {
-        // A consumer must not break navigation or other page behavior.
-      }
-    });
+    hooks.forEach((hook) => { try { hook(detail); } catch {} });
     return true;
   };
 
-  const subscribe = (subscriber) => {
-    if (typeof subscriber !== "function") return () => {};
-    subscribers.add(subscriber);
-    return () => subscribers.delete(subscriber);
-  };
+  const subscribe = (hook) => typeof hook !== "function" ? () => {} :
+    (hooks.add(hook), () => hooks.delete(hook));
 
-  window.nomadAgentAnalytics = Object.freeze({
-    track,
-    subscribe,
-    collectorConfigured: () =>
-      Array.isArray(window.dataLayer) || typeof window.plausible === "function" || subscribers.size > 0,
-  });
+  window.nomadAgentAnalytics = Object.freeze({ track, subscribe,
+    collectorConfigured: () => Array.isArray(window.dataLayer) ||
+      typeof window.plausible === "function" || hooks.size > 0 });
 
   document.addEventListener("click", (event) => {
     const origin = event.target instanceof Element ? event.target : event.target.parentElement;
     const element = origin?.closest("[data-event]");
     if (!element) return;
-
-    const properties = {};
-    for (const key of propertyNames) {
-      if (element.dataset[key]) properties[key] = element.dataset[key];
-    }
+    const properties = Object.fromEntries(fields.flatMap((key) =>
+      element.dataset[key] ? [[key, element.dataset[key]]] : []));
     track(element.dataset.event, properties);
   });
 
-  const [pageGroup = "home"] = window.location.pathname.split("/").filter(Boolean);
-  track("page_view", {
-    category: "navigation",
-    label: pageGroup,
-    placement: "document",
-  });
+  if (!privacyEnabled) {
+    const [pageGroup = "home"] = pageValue().split("/").filter(Boolean);
+    track("page_view", { category: "navigation", label: pageGroup, placement: "document" });
+  }
 
   const copyButton = document.querySelector("[data-copy-command]");
   const command = document.querySelector("[data-command]");

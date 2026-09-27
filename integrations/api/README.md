@@ -7,9 +7,9 @@ integration-specific subset. Select `latest` in the run query:
 
 | Actor | API Actor identifier | Required build |
 | --- | --- | --- |
-| LinkedIn | `job-atlas~linkedin-enrich-translate-normalize-scraper` | `latest` |
-| EURAXESS | `job-atlas~euraxess-enrich-translate-normalize-scraper` | `latest` |
-| AI Job Search & Fit Scorer | `job-atlas~ai-job-fit-scorer` | `latest` |
+| LinkedIn | `jobatlas~linkedin-enrich-translate-normalize-scraper` | `latest` |
+| EURAXESS | `jobatlas~euraxess-enrich-translate-normalize-scraper` | `latest` |
+| AI Job Search & Fit Scorer | `jobatlas~ai-job-fit-scorer` | `latest` |
 
 Confirm EURAXESS availability before a paid run. EURAXESS uses `build=latest`; record the immutable `buildId` and numeric `buildNumber` returned by the run. Other Actor targets keep their documented selectors.
 The scorer also selects `latest` and validates the immutable build returned by that exact run.
@@ -24,7 +24,7 @@ curl --request POST \
   --header "Authorization: Bearer $APIFY_TOKEN" \
   --header "Content-Type: application/json" \
   --data @integrations/api/linkedin-search.json \
-  "https://api.apify.com/v2/acts/job-atlas~linkedin-enrich-translate-normalize-scraper/runs?build=latest&maxTotalChargeUsd=0.10"
+  "https://api.apify.com/v2/acts/jobatlas~linkedin-enrich-translate-normalize-scraper/runs?build=latest&maxTotalChargeUsd=0.10"
 ```
 
 For EURAXESS, substitute its Actor identifier, body file, and

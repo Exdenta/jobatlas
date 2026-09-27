@@ -118,11 +118,11 @@ Use short, human-readable, outcome-led copy. Explain platform terms when they fi
 | Public brand | Job Atlas | Use in customer-facing prose |
 | Website | `https://jobatlas.dev/` | Canonical public origin |
 | GitHub repository | `https://github.com/Exdenta/jobatlas` | Use for source links, documentation and install commands |
-| Apify publisher | `job-atlas` | Keep the hyphen; verified public listings use this owner |
+| Apify publisher | `jobatlas` | Match the current owner exactly in Store, API, and integration routes |
 | Technical contracts | `nomad-agent-job-v1`, `nomad-agent-flat-job-v1`, `nomad-ai-job-fit-v1` | Preserve stable identifiers |
 | Historical sample provenance | Original recorded values | Preserve rather than rewriting evidence |
 
-GitHub's public API confirmed the repository rename on 9 September 2026: both repository routes resolve to repository ID `1328909865`. The four promoted public Apify tools were separately checked under `job-atlas`; the equivalent `jobatlas` routes returned 404. Repository naming and publisher naming are different identifiers.
+GitHub's public API confirmed the repository rename on 9 September 2026: both repository routes resolve to repository ID `1328909865`. On 18 September 2026, the Apify publisher was renamed to `jobatlas`: the four promoted Actor IDs stayed unchanged, the new Store and API routes resolved, and the former `job-atlas` routes returned 404 without redirects. Repository naming and publisher naming are still separate identifiers even though both now use `jobatlas`.
 
 Keep prices and sample observations dated. Refresh dates only when the relevant fact has actually been rechecked. A link cleanup is not a new Actor run, pricing audit or production release. Preserve `null` versus empty-array semantics, original source identity and the `latest` release selector.
 
