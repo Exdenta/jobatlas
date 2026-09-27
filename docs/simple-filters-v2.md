@@ -62,6 +62,11 @@ Select `latest` or the default selector and record the immutable build ID the ru
 - [web-dev-bundle](https://apify.com/nomad-agent/web-dev-bundle)
 - [web-search-scraper](https://apify.com/nomad-agent/web-search-scraper)
 
-`web-search-scraper` now searches 35 stored boards with the same filters and rows. Its earlier AI provider and key fields are accepted and ignored. The separate `ai-job-search-agent` has not changed.
+- [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper)
+- [unjobs-scraper](https://apify.com/nomad-agent/unjobs-scraper)
+- [ikerbasque-scraper](https://apify.com/nomad-agent/ikerbasque-scraper)
+- [impactpool-scraper](https://apify.com/nomad-agent/impactpool-scraper)
 
-ReliefWeb, UNjobs, Ikerbasque and Impactpool keep their earlier simple input and row-v2 contracts. The four hand-built readers are not included in this release.
+`web-search-scraper` now searches 38 stored boards with the same filters and rows. Its earlier AI provider and key fields are accepted and ignored. The separate `ai-job-search-agent` has not changed.
+
+Web search includes MLOps Community, EURACTIV and DynamiteJobs alongside the other stored boards. Coverage depends on the facts each source publishes; missing employment and arrangement facts remain unknown.
