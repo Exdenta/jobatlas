@@ -79,6 +79,16 @@ Choose exactly one candidate source as well: `candidateProfile`, `resume`, or
 language, location, and contract constraints that the candidate actually
 provided.
 
+For a conditional candidate profile, set `candidateProfile.schemaVersion` to
+`8` and supply both `matchingPolicy` (`profile-matching-policy-v1`) and
+`tenureBounds` (`profile-tenure-bounds-v1`). Each alternative in the policy is
+one complete acceptable combination. When the job lacks a fact needed to
+check a hard condition, the scorer holds that job for review. Keep year-only
+experience dates as bounded tenure rather than an invented exact year count.
+The existing flat input format remains available when these v8 fields are
+omitted. Check the deployed Actor build and its input schema before relying on v8
+fields.
+
 ## Choose what the dataset returns
 
 - `resultMode: "shortlist"` is the default. It returns and charges only rows
