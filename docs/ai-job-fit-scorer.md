@@ -82,8 +82,10 @@ provided.
 For a conditional candidate profile, set `candidateProfile.schemaVersion` to
 `8` and supply both `matchingPolicy` (`profile-matching-policy-v1`) and
 `tenureBounds` (`profile-tenure-bounds-v1`). Each alternative in the policy is
-one complete acceptable combination. When the job lacks a fact needed to
-check a hard condition, the scorer holds that job for review. Keep year-only
+one complete acceptable combination. Missing facts can hold a job for
+review, except that an unknown salary passes a
+salary rule explicitly set to `unknown_job_salary: "allow"`. Held rows appear
+in `resultMode: "audit"`; the default shortlist omits them. Keep year-only
 experience dates as bounded tenure rather than an invented exact year count.
 The existing flat input format remains available when these v8 fields are
 omitted. Check the deployed Actor build and its input schema before relying on v8
