@@ -151,7 +151,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor reads completed Devex inventory records with complete description text and HTML; the existing public wire contract is retained."
       },
       "contractProfileId": null,
       "maintainedExamples": []
@@ -739,14 +739,14 @@
     },
     {
       "id": "devex-jobs-scraper",
-      "name": "Devex jobs legacy variant",
+      "name": "Devex jobs from inventory",
       "kind": "source-scraper",
       "lifecycle": "legacy-live",
       "promotion": "not-planned",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor reads completed Devex inventory records with complete description text and HTML; the existing public wire contract is retained."
       },
       "contractProfileId": null,
       "maintainedExamples": []
@@ -1012,11 +1012,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "zbdRtAqYOAqGPCPfe",
-        "buildNumber": "0.3.6",
+        "observedAt": "2026-09-30T22:50:00Z",
+        "buildId": "qeTRUXPT4aerRwOZZ",
+        "buildNumber": "0.3.14",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Inventory reader build succeeded; latest and default select the exact build. Existing input/output schemas are retained. Live reader execution remains unverified."
       }
     },
     {
@@ -1732,11 +1732,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "7v4sMJyVaMCd1jOF0",
-        "buildNumber": "0.1.8",
+        "observedAt": "2026-09-30T22:50:00Z",
+        "buildId": "3OXoBwPTUpaMdVMil",
+        "buildNumber": "0.1.14",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Inventory reader build succeeded; latest and default select the exact build. Existing input/output schemas are retained. Live reader execution remains unverified."
       }
     },
     {
