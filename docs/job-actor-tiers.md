@@ -28,6 +28,7 @@ contracts keep their current meaning until their own migration.
 | [academicpositions-scraper](https://apify.com/nomad-agent/academicpositions-scraper) | Paid contract retained; migration skipped |
 | [ai-job-search-agent](https://apify.com/nomad-agent/ai-job-search-agent) | Paid contract retained; migration skipped |
 | [ai-jobs-net-scraper](https://apify.com/nomad-agent/ai-jobs-net-scraper) | Inventory and simple-contract migration pending |
+| [all-jobs-scraper](https://apify.com/nomad-agent/all-jobs-scraper) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [american-jobs-bundle](https://apify.com/nomad-agent/american-jobs-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [ashby-jobs-scraper](https://apify.com/nomad-agent/ashby-jobs-scraper) | Inventory and simple-contract migration pending |
 | [builtin-scraper](https://apify.com/nomad-agent/builtin-scraper) | Inventory and simple-contract migration pending |
@@ -36,6 +37,7 @@ contracts keep their current meaning until their own migration.
 | [devex-scraper](https://apify.com/nomad-agent/devex-scraper) | Inventory reader deployed; complete source text and HTML; live reader verification pending |
 | [euraxess-scraper](https://apify.com/nomad-agent/euraxess-scraper) | Paid contract retained; migration skipped |
 | [eures-scraper](https://apify.com/nomad-agent/eures-scraper) | Paid contract retained; migration skipped |
+| [europe-jobs-bundle](https://apify.com/nomad-agent/europe-jobs-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [foorilla-ai-jobs-scraper](https://apify.com/nomad-agent/foorilla-ai-jobs-scraper) | Inventory and simple-contract migration pending |
 | [greenhouse-jobs-scraper](https://apify.com/nomad-agent/greenhouse-jobs-scraper) | Inventory and simple-contract migration pending |
 | [hackernews-scraper](https://apify.com/nomad-agent/hackernews-scraper) | Paid contract retained; migration skipped |
@@ -52,11 +54,12 @@ contracts keep their current meaning until their own migration.
 | [nofluffjobs-scraper](https://apify.com/nomad-agent/nofluffjobs-scraper) | Inventory and simple-contract migration pending |
 | [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
 | [remote-boards-scraper](https://apify.com/nomad-agent/remote-boards-scraper) | Paid contract retained; migration skipped |
+| [researcher-bundle](https://apify.com/nomad-agent/researcher-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [tecnoempleo-scraper](https://apify.com/nomad-agent/tecnoempleo-scraper) | Paid contract retained; migration skipped |
 | [ub-doctoral-scraper](https://apify.com/nomad-agent/ub-doctoral-scraper) | Inventory and simple-contract migration pending |
 | [un-careers-scraper](https://apify.com/nomad-agent/un-careers-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [unjobs-scraper](https://apify.com/nomad-agent/unjobs-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
-| [web-dev-bundle](https://apify.com/nomad-agent/web-dev-bundle) | Paid contract retained; migration skipped |
+| [web-dev-bundle](https://apify.com/nomad-agent/web-dev-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [web-search-scraper](https://apify.com/nomad-agent/web-search-scraper) | Retired in local code; hosted retirement not verified |
 | [wellfound-scraper](https://apify.com/nomad-agent/wellfound-scraper) | Inventory and simple-contract migration pending |
 | [workable-jobs-scraper](https://apify.com/nomad-agent/workable-jobs-scraper) | Inventory and simple-contract migration pending |
