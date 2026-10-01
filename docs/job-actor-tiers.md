@@ -28,10 +28,10 @@ contracts keep their current meaning until their own migration.
 | [academicpositions-scraper](https://apify.com/nomad-agent/academicpositions-scraper) | Paid contract retained; migration skipped |
 | [ai-job-search-agent](https://apify.com/nomad-agent/ai-job-search-agent) | Paid contract retained; migration skipped |
 | [ai-jobs-net-scraper](https://apify.com/nomad-agent/ai-jobs-net-scraper) | Inventory and simple-contract migration pending |
-| [american-jobs-bundle](https://apify.com/nomad-agent/american-jobs-bundle) | Inventory and simple-contract migration pending |
+| [american-jobs-bundle](https://apify.com/nomad-agent/american-jobs-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [ashby-jobs-scraper](https://apify.com/nomad-agent/ashby-jobs-scraper) | Inventory and simple-contract migration pending |
 | [builtin-scraper](https://apify.com/nomad-agent/builtin-scraper) | Inventory and simple-contract migration pending |
-| [company-careers-bundle](https://apify.com/nomad-agent/company-careers-bundle) | Inventory and simple-contract migration pending |
+| [company-careers-bundle](https://apify.com/nomad-agent/company-careers-bundle) | Released inventory/simple v3 (rows without `recordType`); serves only the collected company career sites; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
 | [devex-jobs-scraper](https://apify.com/nomad-agent/devex-jobs-scraper) | Inventory reader deployed; complete source text and HTML; live reader verification pending |
 | [devex-scraper](https://apify.com/nomad-agent/devex-scraper) | Inventory reader deployed; complete source text and HTML; live reader verification pending |
 | [euraxess-scraper](https://apify.com/nomad-agent/euraxess-scraper) | Paid contract retained; migration skipped |
