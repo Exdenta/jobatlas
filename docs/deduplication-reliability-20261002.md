@@ -8,14 +8,14 @@ The public deployments below use the repaired build through `latest` and the def
 
 | Account | Actor | Verified build | Immutable build ID |
 | --- | --- | --- | --- |
-| jobatlas | [normalized-ashby-jobs-scraper](https://apify.com/jobatlas/normalized-ashby-jobs-scraper) | 1.0.2 | `kgqD7fC6JpmyfOApp` |
-| jobatlas | [normalized-euractiv-jobs-scraper](https://apify.com/jobatlas/normalized-euractiv-jobs-scraper) | 1.0.3 | `PIdcLGPrJyzZAgaLT` |
-| jobatlas | [normalized-eurobrussels-jobs-scraper](https://apify.com/jobatlas/normalized-eurobrussels-jobs-scraper) | 1.0.2 | `zpsf6yv0qNRwZJaXV` |
-| jobatlas | [normalized-fashionjobs-jobs-scraper](https://apify.com/jobatlas/normalized-fashionjobs-jobs-scraper) | 1.0.2 | `FNJ9lQTP17s5V8dSY` |
-| jobatlas | [normalized-helloworld-jobs-scraper](https://apify.com/jobatlas/normalized-helloworld-jobs-scraper) | 1.0.2 | `lGP02SuFPKB5WUuNf` |
-| jobatlas | [normalized-himalayas-jobs-scraper](https://apify.com/jobatlas/normalized-himalayas-jobs-scraper) | 1.0.2 | `PxVcOCoasOBeN5J5L` |
-| jobatlas | [normalized-infostud-jobs-scraper](https://apify.com/jobatlas/normalized-infostud-jobs-scraper) | 1.0.2 | `0qcVq7ohJDumNmwdn` |
-| jobatlas | [normalized-manfred-jobs-scraper](https://apify.com/jobatlas/normalized-manfred-jobs-scraper) | 1.0.3 | `JIdHJ5wqHrB3nz3gS` |
+| jobatlas | normalized-ashby-jobs-scraper | 1.0.2 | `kgqD7fC6JpmyfOApp` |
+| jobatlas | normalized-euractiv-jobs-scraper | 1.0.3 | `PIdcLGPrJyzZAgaLT` |
+| jobatlas | normalized-eurobrussels-jobs-scraper | 1.0.2 | `zpsf6yv0qNRwZJaXV` |
+| jobatlas | normalized-fashionjobs-jobs-scraper | 1.0.2 | `FNJ9lQTP17s5V8dSY` |
+| jobatlas | normalized-helloworld-jobs-scraper | 1.0.2 | `lGP02SuFPKB5WUuNf` |
+| jobatlas | normalized-himalayas-jobs-scraper | 1.0.2 | `PxVcOCoasOBeN5J5L` |
+| jobatlas | normalized-infostud-jobs-scraper | 1.0.2 | `0qcVq7ohJDumNmwdn` |
+| jobatlas | normalized-manfred-jobs-scraper | 1.0.3 | `JIdHJ5wqHrB3nz3gS` |
 | nomad-agent | [academicpositions-scraper](https://apify.com/nomad-agent/academicpositions-scraper) | 0.1.48 | `2qM2QMuTBjwZvfMxf` |
 | nomad-agent | [ai-jobs-net-scraper](https://apify.com/nomad-agent/ai-jobs-net-scraper) | 0.1.40 | `jrAfLfjdmVd33UhQm` |
 | nomad-agent | [ashby-jobs-scraper](https://apify.com/nomad-agent/ashby-jobs-scraper) | 0.1.27 | `O2U93al9LxbSfEAKN` |
