@@ -50,7 +50,7 @@ contracts keep their current meaning until their own migration.
 | [linkedin-full-info-scraper](https://apify.com/nomad-agent/linkedin-full-info-scraper) | Inventory and simple-contract migration pending |
 | [linkedin-scraper](https://apify.com/nomad-agent/linkedin-scraper) | Paid contract retained; migration skipped |
 | [math-ku-phd-scraper](https://apify.com/nomad-agent/math-ku-phd-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [ml-ai-dev-bundle](https://apify.com/nomad-agent/ml-ai-dev-bundle) | Paid contract retained; migration skipped |
+| [ml-ai-dev-bundle](https://apify.com/nomad-agent/ml-ai-dev-bundle) | Released simple v3 (15 fields, no `recordType`); build 0.1.42 verified on 2 October 2026 through `latest` and the default selector. Bounded default, repeat, legacy-input, filter and LinkedIn runs passed. Normal buyer traffic and the next platform daily QA are unverified |
 | [nofluffjobs-scraper](https://apify.com/nomad-agent/nofluffjobs-scraper) | Inventory and simple-contract migration pending |
 | [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
 | [remote-boards-scraper](https://apify.com/nomad-agent/remote-boards-scraper) | Paid contract retained; migration skipped |
