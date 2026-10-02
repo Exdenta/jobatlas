@@ -24,6 +24,17 @@ do not include a posting hour, so `1h` is unsupported. Cutoffs use inclusive UTC
 calendar dates: `24h` includes the current and previous UTC date, while `7d`
 and `30d` include the date 7 or 30 days before the run.
 
+## Coverage window
+
+Builds from 1.0.33 on search a bounded collection of recent EURAXESS offers that
+is refreshed hourly. That collection holds the newest few hundred offers, not
+every open EURAXESS vacancy, and it is not a historical archive. Offers whose
+application deadline has passed are not returned. A search over a narrow term or
+`postedWithin: "any"` therefore covers only that window: treat zero rows as
+"nothing in the window", not "nothing on EURAXESS". Input, output, billing and
+`postedWithin` semantics are unchanged. Check the `buildNumber` of each run to
+see which build served it.
+
 EURAXESS `Positions` or `Academic Level` is source taxonomy, not an applicant
 education requirement. A location is not workplace evidence. Only named people
 are hiring contacts. `null` means unknown or unavailable; `[]` means the source
