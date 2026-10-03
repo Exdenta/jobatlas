@@ -252,3 +252,8 @@ repository.
 This normalized profile is separate from the legacy flat-export YC Actor.
 It starts at $0.90 per 1,000 delivered jobs in Actor result events, checked
 2026-09-05. Destination templates for other sources are not YC-validated.
+
+
+## Quick setup for any public Actor
+
+Install the [generic Agent Skill](.agents/skills/public-apify-actors/SKILL.md) to configure an Actor from its current schema and inspect its output. The [setup guide](docs/public-actors-setup.md) includes a complete job-reader example and explains filters and repeat-delivery suppression.

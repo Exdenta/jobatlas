@@ -139,3 +139,14 @@ python3 scripts/install_skill.py --skill ai-job-fit-scorer \
 Invoke `$ai-job-fit-scorer` in Codex or `/ai-job-fit-scorer` in Claude Code.
 Installation adds the skill only. Connect and authorize Apify separately as
 described in the installed `references/client-setup.md`.
+
+
+## Any public Actor
+
+The `public-apify-actors` skill reads the selected Actor's current schema, starts a bounded run, and checks source output and the returned build. It covers simple and normalized job readers as well as the other public Actor families.
+
+```bash
+python scripts/install_skill.py --skill public-apify-actors --client both --target /path/to/your/project
+```
+
+See [Public Actor setup and examples](public-actors-setup.md) for filters, native defaults and repeat-delivery behavior.
