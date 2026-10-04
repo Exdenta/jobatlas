@@ -137,3 +137,9 @@ Keep prices and sample observations dated. Refresh dates only when the relevant 
 Edit the production files in `website/` and preview that directory before release. Keep the approved stylesheet when refreshing content. Check the section order, preserved hero/FAQ, current repository links, downloads, keyboard behavior and mobile overflow. A content refresh may update names and links on the original secondary pages; their layouts remain unchanged.
 
 Run the repository's public-text cleaner on new or edited public prose. Keep build evidence separate from customer copy. Record any future user-approved change in this guide; production deployment remains a separate action.
+
+## Nomad Agent simple Actor cards
+
+Owner-approved sizing update, 4 October 2026: the separate Nomad Agent site uses compact cards inspired by Oink’s source tiles, with enough room for the Actor description and both starting links. Apply this to the featured Actor cards and searchable catalogue only. Use three columns above 960 px, two from 641–960 px and one at 640 px or below, with a 16 px desktop gutter, 18 px vertical / 20 px horizontal padding, 22 px headings and 13 px descriptions. Preserve full descriptions and links, the cream and green ticket styling, keyboard focus and reduced-motion behavior. Workflow cards and the Job Atlas site retain their approved sizing.
+
+The compact Nomad Agent cards include the corresponding Actor’s current Apify icon beside its title, at 48 × 48 px with `object-fit: contain`. Keep the original image and aspect ratio; serve it from the site’s own assets. The adjacent title provides the accessible name, so the icon has empty alternative text. Apply this to both the featured cards and the full Actor catalogue.

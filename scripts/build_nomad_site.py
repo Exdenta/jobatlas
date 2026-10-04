@@ -35,6 +35,21 @@ class Actor(TypedDict):
     inputSchema: dict | None  # Raw external JSON Schema; None means unavailable.
 
 
+class ActorIcon(TypedDict):
+    """Observed public Apify image; sha256 identifies the original PNG bytes."""
+    actorId: str
+    sourceUrl: str
+    file: str
+    sha256: str
+    bytes: int
+
+
+class IconSnapshot(TypedDict):
+    schemaVersion: str
+    observedAt: str
+    icons: dict[str, ActorIcon]
+
+
 FEATURED = ['all-jobs-scraper', 'europe-jobs-bundle', 'remote-boards-scraper',
             'researcher-bundle', 'web-dev-bundle', 'ml-ai-dev-bundle']
 SHORT_NAMES = {
@@ -84,6 +99,7 @@ def section(body: str, cls: str = '', ident: str = '') -> str:
 def page(title: str, description: str, route: str, body: str, *, noindex: bool = False, structured: dict | None = None) -> str:
     if route != '/':
         body = body.replace('<h2>', '<h1>', 1).replace('</h2>', '</h1>', 1)
+    style_version = hashlib.sha256((SOURCE/'site.css').read_bytes()).hexdigest()[:12]
     canonical = '' if noindex else f'<link rel="canonical" href="{ORIGIN}{route}" />'
     seo = json.dumps(structured or {'@context': 'https://schema.org', '@type': 'WebPage', 'name': title, 'url': ORIGIN + route, 'description': description}, ensure_ascii=False).replace('<', '\\u003c')
     return f'''<!doctype html>
@@ -95,7 +111,7 @@ def page(title: str, description: str, route: str, body: str, *, noindex: bool =
 <meta property="og:image" content="{ORIGIN}/assets/social-card.jpg" /><meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="/assets/nomad-agent-mark.png" />
 <link rel="stylesheet" href="/styles.css?v={VERSION}" /><link rel="stylesheet" href="/first-visit.css?v={VERSION}" />
-<link rel="stylesheet" href="/site.css?v={VERSION}" /><script src="/site.js?v={VERSION}" defer></script>
+<link rel="stylesheet" href="/site.css?v={style_version}" /><script src="/site.js?v={VERSION}" defer></script>
 <script type="application/ld+json">{seo}</script></head>
 <body class="nomad-home"><a class="skip-link" href="#main-content">Skip to content</a>
 <header class="topbar"><nav class="nav-container" aria-label="Primary navigation">
@@ -118,7 +134,7 @@ def card(actor: Actor, number: int, *, filtering: bool = False) -> str:
     attrs = f' data-actor-card data-group="{escape(group(actor))}" data-search="{escape((short_name(actor)+" "+actor["title"]+" "+actor["description"]).lower(), quote=True)}"' if filtering else ''
     return f'''<article class="product-card nomad-card"{attrs}>
 <div class="actor-ticket"><span>NA / {number:02d}</span><span>{escape(group(actor))}</span></div>
-<h3>{escape(short_name(actor))}</h3><p>{escape(actor['description'])}</p>
+<div class="nomad-card-heading"><img class="nomad-actor-icon" src="/assets/actors/{escape(actor['slug'])}.png" alt="" width="48" height="48" loading="lazy" decoding="async" /><h3>{escape(short_name(actor))}</h3></div><p>{escape(actor['description'])}</p>
 <div class="product-actions">{link('/actors/'+actor['slug'], 'Details & first run →')}{link(actor['url'], 'Open on Apify ↗')}</div></article>'''
 
 
@@ -207,6 +223,19 @@ def build() -> dict[str, bytes]:
         raise ValueError('Only observed public active simple job Actors belong on this site')
     if len({a['slug'] for a in actors}) != len(actors):
         raise ValueError('Duplicate Actor slug')
+    icon_snapshot: IconSnapshot = json.loads((SOURCE/'actor-icons.json').read_text())
+    if icon_snapshot['schemaVersion'] != 'nomad-actor-icons-v1':
+        raise ValueError('Unsupported Actor icon snapshot')
+    icons = icon_snapshot['icons']
+    if set(icons) != {actor['slug'] for actor in actors}:
+        raise ValueError('Actor icon snapshot must match the website cohort')
+    for actor in actors:
+        icon = icons[actor['slug']]
+        if icon['actorId'] != actor['actorId'] or icon['file'] != actor['slug'] + '.png':
+            raise ValueError('Actor icon identity mismatch: ' + actor['slug'])
+        data = (SOURCE/'actor-icons'/icon['file']).read_bytes()
+        if not data.startswith(b'\x89PNG\r\n\x1a\n') or hashlib.sha256(data).hexdigest() != icon['sha256']:
+            raise ValueError('Actor icon bytes differ from the observed Apify image: ' + actor['slug'])
     sample = json.loads((SOURCE/'job-row.json').read_text())
     observed = catalog['observedAt'][:10]
     files: dict[str, bytes] = {}
@@ -235,6 +264,9 @@ def build() -> dict[str, bytes]:
         files[target]=(SOURCE/source).read_bytes()
     for source,target in [('styles.css','styles.css'),('first-visit.css','first-visit.css'),('assets/nomad-agent-mark-512.png','assets/nomad-agent-mark.png')]:
         files[target]=(ROOT/'website'/source).read_bytes()
+    for actor in actors:
+        icon = icons[actor['slug']]
+        files['assets/actors/' + icon['file']] = (SOURCE/'actor-icons'/icon['file']).read_bytes()
     schema_copy = (SOURCE/'job-row-v3.schema.json').read_bytes()
     canonical_schema = ROOT/'integrations/shared/nomad-agent-job-row-v3.schema.json'
     if canonical_schema.exists() and canonical_schema.read_bytes() != schema_copy:

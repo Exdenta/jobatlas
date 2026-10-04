@@ -7,6 +7,7 @@ The catalogue includes active public Nomad Agent simple and source-specific job 
 ## Source and build
 
 - `actors.json`: versioned public listing and input-schema observations, with observation time and evidence boundary. This snapshot defines the explicit website cohort; a refresh rechecks those slugs, not the entire publisher portfolio.
+- `actor-icons.json` and `actor-icons/`: dated public Apify `pictureUrl` observations and exact downloaded PNGs for every Actor in the site cohort. Icons are served locally. The build verifies Actor identity, cohort coverage and image hashes; adding an Actor or changing its icon requires a new observed image and matching receipt. The catalogue refresh does not refresh these images.
 - `job-row.json`: explicitly fictional 15-field row-v3 illustration.
 - `job-row-v3.schema.json`: byte-identical observed copy of the canonical shared contract, not an independently maintained schema. The build rejects drift from `integrations/shared/nomad-agent-job-row-v3.schema.json` when that canonical file exists.
 - `social-card.jpg`: 1200 × 630 sharing image exported from the generated editable SVG.

@@ -1,0 +1,272 @@
+{
+  "schemaVersion": "nomad-actor-icons-v1",
+  "observedAt": "2026-10-04T14:34:55+00:00",
+  "icons": {
+    "academicpositions-scraper": {
+      "actorId": "EkHXeGeaBlTu4QsvW",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-EkHXeGeaBlTu4QsvW-WhYMbkEOB5-original.png",
+      "file": "academicpositions-scraper.png",
+      "sha256": "87edf82071d95218fb29274c45fd092b051c3dc150fdea119c0af903262b768d",
+      "bytes": 3304
+    },
+    "ai-jobs-net-scraper": {
+      "actorId": "6W8kNgo85VjHlIqlq",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-6W8kNgo85VjHlIqlq-My7UYtuTbe-icon.png",
+      "file": "ai-jobs-net-scraper.png",
+      "sha256": "2f5e5d59a329354eeca8e94e764034f92d03f30bfcb74dc4662f7c37b5087e7c",
+      "bytes": 15267
+    },
+    "all-jobs-scraper": {
+      "actorId": "OOmLCBfYADq00uBNL",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-OOmLCBfYADq00uBNL-L2KbJzDraG-icon.png",
+      "file": "all-jobs-scraper.png",
+      "sha256": "2bfa3e3db05e4c9741cfb62dd7bf01c05a73622922924fd597a95a4ba72acae2",
+      "bytes": 21066
+    },
+    "american-jobs-bundle": {
+      "actorId": "PcdkFDsalUjKy5cwo",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-PcdkFDsalUjKy5cwo-OykqbexAzu-icon.png",
+      "file": "american-jobs-bundle.png",
+      "sha256": "8ab66c1777071e583c837bb7fd855cc245fdbff008fc22f1f7720302296cab10",
+      "bytes": 19623
+    },
+    "ashby-jobs-scraper": {
+      "actorId": "ASJ12iMIu97bFEeqY",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-ASJ12iMIu97bFEeqY-y0SK82v0lM-original.png",
+      "file": "ashby-jobs-scraper.png",
+      "sha256": "683d74b72b670df00e68f26b02383aa875b12eeca866564b782c0a7e656aa99e",
+      "bytes": 11449
+    },
+    "builtin-scraper": {
+      "actorId": "BTXRZhlNzd9W4zzfM",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-BTXRZhlNzd9W4zzfM-wyIJwgnCTc-original.png",
+      "file": "builtin-scraper.png",
+      "sha256": "320d7be6d38c46345d043c4a3fc2dc2ae5cd114757d2eab5dfb22169e3b81f53",
+      "bytes": 3370
+    },
+    "company-careers-bundle": {
+      "actorId": "TmG3tuikPbP8aNwoY",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-TmG3tuikPbP8aNwoY-e9LhFLokSF-icon.png",
+      "file": "company-careers-bundle.png",
+      "sha256": "19876451101e0ad72dc1823d62377e34a7556088d16b479c8bd5641637f2bfac",
+      "bytes": 186009
+    },
+    "devex-jobs-scraper": {
+      "actorId": "GVrnpaCKZs6ijvqTO",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-GVrnpaCKZs6ijvqTO-1i6hGbdiKe-icon.png",
+      "file": "devex-jobs-scraper.png",
+      "sha256": "dab80e42c3bd6fb58dfdd5cceb3c02a7bb4df5d24cfd3064d8f9edc250728059",
+      "bytes": 16823
+    },
+    "devex-scraper": {
+      "actorId": "ZutM3sroBQcWaeA0d",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-ZutM3sroBQcWaeA0d-QYY989ReIn-icon.png",
+      "file": "devex-scraper.png",
+      "sha256": "5c5529f4dfba1d14bb2679d740ab87cb161077c7768eb4f9a84bb9d1d75326c4",
+      "bytes": 40943
+    },
+    "euraxess-scraper": {
+      "actorId": "N3gbK5IYfJI62GZj3",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-N3gbK5IYfJI62GZj3-ALPYg7gcn4-icon.png",
+      "file": "euraxess-scraper.png",
+      "sha256": "dce50d566336b644df7e10386592a409469f701b140dee44c8cef62933cb4cfe",
+      "bytes": 86551
+    },
+    "eures-scraper": {
+      "actorId": "AJ9Iq8kh5dhNykxpK",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-AJ9Iq8kh5dhNykxpK-0c9JUwPPfW-original.png",
+      "file": "eures-scraper.png",
+      "sha256": "e2c35cdefb369492f2993cd950028d2f96a1a76efd9266bd80d075933944ca04",
+      "bytes": 50650
+    },
+    "europe-jobs-bundle": {
+      "actorId": "FE4YMaml2dEp5aYLr",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-FE4YMaml2dEp5aYLr-hzPQIYxs5m-icon.png",
+      "file": "europe-jobs-bundle.png",
+      "sha256": "3cbae90b67cab4fcbd0302dfe946349b2b955561bd6e87b338250aae4fe0fcf0",
+      "bytes": 35833
+    },
+    "foorilla-ai-jobs-scraper": {
+      "actorId": "3pmwELozh8x1P0dSu",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-3pmwELozh8x1P0dSu-F7CnTVoYLf-icon.png",
+      "file": "foorilla-ai-jobs-scraper.png",
+      "sha256": "72f82a43b0475a89e2bd0bafabb7efc76f3b17c7cada21471c206d3bd1ff299e",
+      "bytes": 40418
+    },
+    "greenhouse-jobs-scraper": {
+      "actorId": "GATXeV9PMl13KdbAM",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-GATXeV9PMl13KdbAM-9juh8K59s6-original.png",
+      "file": "greenhouse-jobs-scraper.png",
+      "sha256": "7596dee5a50084fec0560e08cbb3206b3c356229ab369056fbd36e45166d6f05",
+      "bytes": 6888
+    },
+    "hackernews-scraper": {
+      "actorId": "ULAYhMwdtqo7dShpk",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-ULAYhMwdtqo7dShpk-udFtMklH7I-icon.png",
+      "file": "hackernews-scraper.png",
+      "sha256": "25196f06754828193a6ed05dc39e4de3d4bf70292417716ebebbc5b081bb8152",
+      "bytes": 5178
+    },
+    "ikerbasque-scraper": {
+      "actorId": "AybSsaxL5kgF8Ekig",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-AybSsaxL5kgF8Ekig-E2uton3Q5b-orig.png",
+      "file": "ikerbasque-scraper.png",
+      "sha256": "6573ec421b2de35dad9f18565f35ba8787f03a87662bd95608b74a1cc10f8b22",
+      "bytes": 20323
+    },
+    "impactpool-scraper": {
+      "actorId": "6gD1RdMPm0CqH9Qv4",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-6gD1RdMPm0CqH9Qv4-xf0mRvdUvN-icon_2.png",
+      "file": "impactpool-scraper.png",
+      "sha256": "c0b7f2159cd2ed57714a8fcb69645977e4e679443fc5abe32a14341cecdfd302",
+      "bytes": 66190
+    },
+    "infojobs-scraper": {
+      "actorId": "rQXhPiMSny2KtShmX",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-rQXhPiMSny2KtShmX-cSFpO5q6SC-icon.png",
+      "file": "infojobs-scraper.png",
+      "sha256": "7b9f434f296d6ab71c054285aec973d37e5c66e7ba4a22bea044711e47b5f82b",
+      "bytes": 19138
+    },
+    "jobs-ac-uk-scraper": {
+      "actorId": "cUIrP3kvKrTo67yJA",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-cUIrP3kvKrTo67yJA-FTNzktk0XD-icon.png",
+      "file": "jobs-ac-uk-scraper.png",
+      "sha256": "da967e7783f423c6a351919535942ecbca01fb5ca6e6e0f7a29fe43ee2d67443",
+      "bytes": 51000
+    },
+    "justjoinit-scraper": {
+      "actorId": "G2IJgEuHp3ffadMdA",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-G2IJgEuHp3ffadMdA-KIEZHebP84-icon.png",
+      "file": "justjoinit-scraper.png",
+      "sha256": "2092ae3470b191331df74332f58e88387d7e36bfd4a2f96c854b441806c8c7aa",
+      "bytes": 25026
+    },
+    "lever-jobs-scraper": {
+      "actorId": "09DtdO51vrY4q0i0i",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-09DtdO51vrY4q0i0i-3khrWYVePx-original.png",
+      "file": "lever-jobs-scraper.png",
+      "sha256": "b25cdca1cf4930758456d12fe6c5cab89ed4d33d73f42ddf96670137b1fddb49",
+      "bytes": 306972
+    },
+    "linkedin-scraper": {
+      "actorId": "GGGJOOdpf4hgT6FbH",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-GGGJOOdpf4hgT6FbH-Lkf8oMyVEM-icon.png",
+      "file": "linkedin-scraper.png",
+      "sha256": "080d0226b50103e8a6667c1ebf1ce8f434016893c37162b6492376487753eb55",
+      "bytes": 22249
+    },
+    "math-ku-phd-scraper": {
+      "actorId": "kGMlC5NTXMeezLAut",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-kGMlC5NTXMeezLAut-pSqyAbN25c-original.png",
+      "file": "math-ku-phd-scraper.png",
+      "sha256": "2f057d79d347e7051aa4d89a104f6e278018a12abecf284fa9e2eedcf13cbed7",
+      "bytes": 121282
+    },
+    "ml-ai-dev-bundle": {
+      "actorId": "3NcZZ1KxyIoXvvOzN",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-3NcZZ1KxyIoXvvOzN-cOZG0kLNma-icon.png",
+      "file": "ml-ai-dev-bundle.png",
+      "sha256": "c4720815ffa250ced5b54d07a30271c87d4a75a9f646c01ccb9a3d29a2bf39fe",
+      "bytes": 65697
+    },
+    "nofluffjobs-scraper": {
+      "actorId": "daGnup1Nl7faGEbpi",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-daGnup1Nl7faGEbpi-jobb76RUyZ-Redesign_Image_Gold_Look_Jul_2_2026.png",
+      "file": "nofluffjobs-scraper.png",
+      "sha256": "297924a0a328522ba8aaabe4069c5ee45e42d8af9a62900686cbece09aca13b6",
+      "bytes": 500110
+    },
+    "reliefweb-scraper": {
+      "actorId": "ongoh9UyfgwIbvPfp",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-ongoh9UyfgwIbvPfp-a2dyCIlLl3-original.png",
+      "file": "reliefweb-scraper.png",
+      "sha256": "aef2a5f71ef2dbdd70a96e1150ecc404527c34ce85a2c03a2e72d200165ed965",
+      "bytes": 28125
+    },
+    "remote-boards-scraper": {
+      "actorId": "hJEnrpwrHuqE1jp9E",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-hJEnrpwrHuqE1jp9E-jgFDpxryIb-icon.png",
+      "file": "remote-boards-scraper.png",
+      "sha256": "3fa38b72317dd256594c165c82b69dc2e1d012992aee8031bc3396754c40a9f4",
+      "bytes": 14395
+    },
+    "researcher-bundle": {
+      "actorId": "vW8dfaG0Dybl5oVQT",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-vW8dfaG0Dybl5oVQT-nqq0NgROiU-icon.png",
+      "file": "researcher-bundle.png",
+      "sha256": "2a6caafe716a6005435ae17fdf87d378b92b282d782e0ddf6ba6a3ed12d294be",
+      "bytes": 164177
+    },
+    "tecnoempleo-scraper": {
+      "actorId": "lCuBIheEvgDhPPADA",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-lCuBIheEvgDhPPADA-qJr4PChEY2-icon.png",
+      "file": "tecnoempleo-scraper.png",
+      "sha256": "d3833e65b6f3f4dd92120cf97157dde7d87b5932be244eff9d05a86eebf6b0e7",
+      "bytes": 27403
+    },
+    "ub-doctoral-scraper": {
+      "actorId": "ugSECzLDDlEw716Or",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-ugSECzLDDlEw716Or-Tf1ZTxrGQu-original.png",
+      "file": "ub-doctoral-scraper.png",
+      "sha256": "e89aca8a75313e5bbbf6ae6cd365df0720f40b9938f7ffadf53f8f89a2c40504",
+      "bytes": 123621
+    },
+    "un-careers-scraper": {
+      "actorId": "AtAcVhbH1KVGbL9Wh",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-AtAcVhbH1KVGbL9Wh-lbNrcSIe1A-original.png",
+      "file": "un-careers-scraper.png",
+      "sha256": "1f9a4c6e1189e28de0101fca88377929480c019c4829359f4fc46ce4a80bbf71",
+      "bytes": 126750
+    },
+    "unjobs-scraper": {
+      "actorId": "JMR4w8RUMZsRPloZR",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-JMR4w8RUMZsRPloZR-5OvZDiGF99-original.png",
+      "file": "unjobs-scraper.png",
+      "sha256": "1f9a4c6e1189e28de0101fca88377929480c019c4829359f4fc46ce4a80bbf71",
+      "bytes": 126750
+    },
+    "web-dev-bundle": {
+      "actorId": "m6h2Dtyzxd2C0biiP",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-m6h2Dtyzxd2C0biiP-mJL0xRfd1K-icon.png",
+      "file": "web-dev-bundle.png",
+      "sha256": "988923a23ef694267d702223b3fc8cae716a90e17ed7ea2326bd272f2c27d9e5",
+      "bytes": 71836
+    },
+    "web-search-scraper": {
+      "actorId": "Jima07w7QhOtcSmRW",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-Jima07w7QhOtcSmRW-uiuTuxBLNf-original.png",
+      "file": "web-search-scraper.png",
+      "sha256": "60cfe1ec031283655d4b76947bd389bb8685e98e79e0af2d2681d08577354035",
+      "bytes": 22107
+    },
+    "wellfound-scraper": {
+      "actorId": "cLOYFtqDtZX8XV8Ip",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-cLOYFtqDtZX8XV8Ip-FEiOY1MeSr-original.png",
+      "file": "wellfound-scraper.png",
+      "sha256": "dd4c46925c324fe5cae026709d1741a4f0bd63d282acb6eca7f60315fff85e3a",
+      "bytes": 12980
+    },
+    "workable-jobs-scraper": {
+      "actorId": "C78dXd0fXEwXnVp3d",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-C78dXd0fXEwXnVp3d-lafsmkazJk-original.png",
+      "file": "workable-jobs-scraper.png",
+      "sha256": "e702dfda338996dc7cc74315b72e2a587cb7d277c12202fc35b3bab5593f4477",
+      "bytes": 189226
+    },
+    "wttj-scraper": {
+      "actorId": "KxVBFTH16XqrsEZfj",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-KxVBFTH16XqrsEZfj-GGNqvb7Ja9-icon.png",
+      "file": "wttj-scraper.png",
+      "sha256": "06fe98eaad994d97ebc0a391e97fef6d9ca5db3771490bf667abd14f1a47454f",
+      "bytes": 80116
+    },
+    "ycombinator-was-scraper": {
+      "actorId": "1JDUBKElJkIKoCkgG",
+      "sourceUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/kcYKSpukYc2NoEZeB-actor-1JDUBKElJkIKoCkgG-JbK8gJuAId-icon.png",
+      "file": "ycombinator-was-scraper.png",
+      "sha256": "25196f06754828193a6ed05dc39e4de3d4bf70292417716ebebbc5b081bb8152",
+      "bytes": 5178
+    }
+  }
+}
