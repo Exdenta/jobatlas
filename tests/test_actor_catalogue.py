@@ -152,9 +152,26 @@ class ActorCatalogueTests(unittest.TestCase):
             (root / "docs/public-actors.md").write_text(text)
             self.assertEqual(self.validator.validate_repository_routes(self.catalogue, root), [])
             (root / "README.md").write_text(text)
+            (root / "docs/actors").mkdir()
+            (root / f'docs/actors/{excluded["slug"]}.md').write_text(text)
+            self.assertEqual(self.validator.validate_repository_routes(self.catalogue, root), [])
+            (root / "integrations").mkdir()
+            (root / "integrations/caller.py").write_text(text)
             errors = self.validator.validate_repository_routes(self.catalogue, root)
             self.assertTrue(any("uncatalogued maintained Actor route" in error for error in errors))
             self.assertTrue(any("uncatalogued maintained Actor ID" in error for error in errors))
+
+    def test_public_guides_require_catalogued_identity_and_exact_path(self) -> None:
+        excluded = self.catalogue["excludedCandidates"][0]
+        route = f'https://apify.com/{excluded["owner"]}/{excluded["slug"]}'
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "docs/actors").mkdir(parents=True)
+            (root / "docs/actors/uncatalogued.md").write_text(route)
+            (root / "README.md").write_text("https://apify.com/nomad-agent/unknown-actor")
+            errors = self.validator.validate_repository_routes(self.catalogue, root)
+            self.assertEqual(len(errors), 2)
+            self.assertTrue(all("uncatalogued maintained Actor route" in error for error in errors))
 
     def test_client_matrix_is_complete_and_assets_exist(self) -> None:
         expected_classes = {
