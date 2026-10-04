@@ -66,3 +66,7 @@ Relative posting-age windows are limited to 36500 days. Use `any` for an unrestr
 ## Actor endpoints and verification
 
 Use [Job Atlas](https://apify.com/jobatlas/normalized-eurobrussels-jobs-scraper) or the [original publisher](https://apify.com/nomad-agent/normalized-eurobrussels-jobs-scraper), selecting `latest`. Both accounts passed bounded owner tests with processing enabled and with options omitted on 21 September 2026. New options default off. Original descriptions and HTML were retained. The English source examples required no translation request. This is not a normal buyer or destination integration test.
+
+## Version update
+
+The [4 October release notes](releases/2026-10-04-version-releases.md) record primary version 1.90.2 and Job Atlas version 1.90.1. The normalized output contract and optional processing controls are preserved. Native default searches can return no new jobs when repeat suppression applies.
