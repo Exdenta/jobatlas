@@ -562,7 +562,7 @@ def validate_repository_routes(data: dict[str, Any], root: Path) -> list[str]:
             errors.append(f"retired Apify owner route in {relative}")
         allowed_routes = current_routes
         allowed_ids = current_ids
-        if relative in {"docs/public-actors.md", "docs/public-actors.json"}:
+        if relative in {"docs/public-actors.md", "docs/public-actors.json"} or relative.startswith("website/actors/directory/"):
             allowed_routes = current_routes | {
                 f'{item["owner"]}/{item["slug"]}'.lower()
                 for item in data.get("excludedCandidates", [])

@@ -86,7 +86,7 @@ class MeasurementBaselineTests(unittest.TestCase):
         self.assertEqual(
             self.definitions["canonicalPages"], list(measurement_baseline.CANONICAL_PAGES)
         )
-        self.assertEqual(len(self.definitions["canonicalPages"]), 25)
+        self.assertEqual(len(self.definitions["canonicalPages"]), 34)
         for definition in definitions:
             self.assertIn("placement", definition["requiredDimensions"])
             self.assertEqual(

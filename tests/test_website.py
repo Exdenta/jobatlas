@@ -26,6 +26,15 @@ EXPECTED_CANONICALS = {
     "/guides", "/guides/linkedin-jobs-api-alternatives", "/guides/linkedin-job-alerts-n8n",
     "/guides/euraxess-jobs-api-export", "/guides/ai-job-fit-scoring-api", "/contracts",
     "/about", "/methodology", "/privacy", "/changelog",
+    '/actors/directory',
+    '/actors/directory/source-jobs',
+    '/actors/directory/normalized-jobs',
+    '/actors/directory/job-fit-scoring',
+    '/actors/directory/ai-job-search',
+    '/actors/directory/menus-and-photos',
+    '/actors/directory/property',
+    '/actors/directory/public-records',
+    '/actors/directory/data-tools',
 }
 HUBS = {"/", "/actors", "/integrations", "/guides"}
 ACTOR_PATHS = {

@@ -1,6 +1,6 @@
 # jobatlas
 
-[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/jobatlas) · [Public Actor directory](docs/public-actors.md) · [Job integration catalogue](catalogue/actors-v1.json) · [Simple and normalized tiers](docs/job-actor-tiers.md) · [Release evidence](docs/job-atlas.md)
+[Website](https://jobatlas.dev/) · [Oink personal job alerts](https://oinkjobsearch.com/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/jobatlas) · [Public Actor directory](docs/public-actors.md) · [Job integration catalogue](catalogue/actors-v1.json) · [Simple and normalized tiers](docs/job-actor-tiers.md) · [Release evidence](docs/job-atlas.md)
 
 Open schemas, integration recipes, and agent skills for Job Atlas job-search
 Actors. The Actor implementations may be hosted services; this repository

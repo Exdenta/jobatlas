@@ -13,6 +13,33 @@
     <loc>https://jobatlas.dev/actors/ai-job-fit-scorer</loc>
   </url>
   <url>
+    <loc>https://jobatlas.dev/actors/directory</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/ai-job-search</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/data-tools</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/job-fit-scoring</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/menus-and-photos</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/normalized-jobs</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/property</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/public-records</loc>
+  </url>
+  <url>
+    <loc>https://jobatlas.dev/actors/directory/source-jobs</loc>
+  </url>
+  <url>
     <loc>https://jobatlas.dev/actors/euraxess</loc>
   </url>
   <url>
