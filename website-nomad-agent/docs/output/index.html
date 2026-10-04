@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The simple job data format | Nomad Agent</title><meta name="description" content="Understand flat simple job rows, original descriptions, stable identity, and unknown values." /><link rel="canonical" href="https://nomadagent.dev/docs/output" />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="The simple job data format | Nomad Agent" /><meta property="og:description" content="Understand flat simple job rows, original descriptions, stable identity, and unknown values." />
+<meta property="og:type" content="website" /><meta property="og:url" content="https://nomadagent.dev/docs/output" />
+<meta property="og:image" content="https://nomadagent.dev/assets/social-card.jpg" /><meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/assets/nomad-agent-mark.png" />
+<link rel="stylesheet" href="/styles.css?v=nomad-20261004" /><link rel="stylesheet" href="/first-visit.css?v=nomad-20261004" />
+<link rel="stylesheet" href="/site.css?v=nomad-20261004" /><script src="/site.js?v=nomad-20261004" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "The simple job data format", "url": "https://nomadagent.dev/docs/output", "description": "Understand flat simple job rows, original descriptions, stable identity, and unknown values."}</script></head>
+<body class="nomad-home"><a class="skip-link" href="#main-content">Skip to content</a>
+<header class="topbar"><nav class="nav-container" aria-label="Primary navigation">
+<a class="brand" href="/" aria-label="Nomad Agent home"><img src="/assets/nomad-agent-mark.png" alt="" width="42" height="42" /><span>Nomad Agent</span></a>
+<div class="desktop-nav"><a href="/actors" class="">Actors</a><a href="/guides" class="">Workflows</a><a href="/docs" class="">Docs</a><a href="/about" class="">About</a></div>
+<div class="nav-actions"><a href="https://jobatlas.dev/" class="nav-link">Job Atlas ↗</a><a href="/actors" class="nav-primary">Choose an Actor</a></div>
+<div class="mobile-tools"><button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span><span></span></button></div>
+</nav><nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden><a href="/actors" class="">Actors</a><a href="/guides" class="">Workflows</a><a href="/docs" class="">Docs</a><a href="/about" class="">About</a><a href="https://jobatlas.dev/" class="">Job Atlas ↗</a></nav></header>
+<main id="main-content"><section class="home-section "><div class="home-container"><div class="section-heading"><p class="section-kicker">The data</p><h1>Source facts. Flat rows.</h1><p>Most current simple job readers use the 15-field nomad-agent-job-row-v3 contract. Older and source-specific products can have different formats. Always check the exact Actor’s Output tab.</p></div><div class="hero-actions"><a href="/samples/job-row.json" class="button button-dark" download>Download illustrative JSON</a><a href="/contracts/nomad-agent-job-row-v3.schema.json" class="button button-outline">Read the row-v3 schema</a></div></div></section><section class="home-section section-paper"><div class="home-container"><div class="nomad-detail-grid"><div><div class="section-heading"><p class="section-kicker">A fictional example</p><h2>Keep the useful details.</h2><p>The example illustrates the current shared simple format; it is not a live vacancy or evidence that a particular Actor ran.</p></div><dl class="nomad-definitions"><div><dt>Identity</dt><dd>The pair <code>(source, id)</code> identifies a posting. Do not deduplicate by title.</dd></div><div><dt>Original content</dt><dd>Keep <code>description</code>, <code>descriptionHtml</code>, and the original <code>url</code>.</dd></div><div><dt>Unknown values</dt><dd><code>null</code> means unknown. <code>locations: []</code> means no usable location was parsed; <code>hiringContacts: []</code> means no named contacts.</dd></div><div><dt>Dates & work arrangement</dt><dd>Retain posting dates and deadlines. Use source-stated arrangement and read the original eligibility requirements.</dd></div></dl></div><div class="nomad-code"><div class="code-title"><span>Illustration / row-v3</span><button type="button" data-copy="output-json">Copy JSON</button></div><pre id="output-json">{
+  &quot;schemaVersion&quot;: &quot;nomad-agent-job-row-v3&quot;,
+  &quot;source&quot;: &quot;illustration&quot;,
+  &quot;id&quot;: &quot;fictional-backend-role&quot;,
+  &quot;url&quot;: &quot;https://example.com/jobs/backend-engineer&quot;,
+  &quot;title&quot;: &quot;Backend Engineer&quot;,
+  &quot;company&quot;: &quot;Example Studio&quot;,
+  &quot;locations&quot;: [
+    &quot;Madrid, Spain&quot;
+  ],
+  &quot;postedAt&quot;: null,
+  &quot;deadline&quot;: null,
+  &quot;description&quot;: &quot;Fictional job for a data-format illustration. Build APIs and maintain backend services. This is not a live vacancy.&quot;,
+  &quot;descriptionHtml&quot;: &quot;&lt;p&gt;Fictional job for a data-format illustration. Build APIs and maintain backend services. This is not a live vacancy.&lt;/p&gt;&quot;,
+  &quot;workType&quot;: &quot;hybrid&quot;,
+  &quot;salary&quot;: null,
+  &quot;employmentTypes&quot;: null,
+  &quot;hiringContacts&quot;: []
+}</pre></div></div></div></section><section class="home-section "><div class="home-container"><div class="section-heading"><p class="section-kicker">Need a different layer?</p><h2>Explore normalized data at Job Atlas.</h2><p>Normalized job Actors use a separate nested format with richer fields and optional processing where supported. Fit scoring returns a separate candidate-evaluation contract.</p></div><a href="https://jobatlas.dev/" class="button button-dark">Explore Job Atlas ↗</a></div></section></main>
+<footer class="site-footer site-footer-expanded"><div class="footer-container footer-grid">
+<div class="footer-brand"><a class="brand" href="/">Nomad Agent</a><p>Source facts for your next job feed, tracker, or alert.</p><small>Independent tools. Original source links.</small></div>
+<div class="footer-links"><strong>Explore</strong><a href="/actors" class="">All Actors</a><a href="/guides" class="">Workflows</a><a href="/docs" class="">Getting started</a></div>
+<div class="footer-links"><strong>Reference</strong><a href="/docs/output" class="">Data format</a><a href="/about" class="">About</a><a href="/privacy" class="">Privacy</a></div>
+<div class="footer-links"><strong>Elsewhere</strong><a href="https://apify.com/nomad-agent" class="">Nomad Agent on Apify ↗</a><a href="https://jobatlas.dev/" class="">Normalized data at Job Atlas ↗</a><a href="https://github.com/Exdenta/jobatlas" class="">GitHub ↗</a></div></div>
+<div class="footer-bottom"><span>Nomad Agent · 2026</span><span>Unofficial, independent tools. No affiliation with source operators. Availability and fields depend on the selected Actor.</span></div></footer>
+</body></html>

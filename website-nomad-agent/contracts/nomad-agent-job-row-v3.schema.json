@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nomad-agent-job-row-v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "source",
+    "id",
+    "url",
+    "title",
+    "company",
+    "locations",
+    "postedAt",
+    "deadline",
+    "description",
+    "descriptionHtml",
+    "workType",
+    "salary",
+    "employmentTypes",
+    "hiringContacts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "nomad-agent-job-row-v3"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "company": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "postedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "deadline": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "descriptionHtml": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workType": {
+      "enum": [
+        "remote",
+        "hybrid",
+        "onsite",
+        null
+      ]
+    },
+    "salary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "employmentTypes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "Full-time",
+          "Part-time",
+          "Contract",
+          "Internship"
+        ]
+      }
+    },
+    "hiringContacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "title",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$id": "https://raw.githubusercontent.com/Exdenta/jobatlas/main/integrations/shared/nomad-agent-job-row-v3.schema.json"
+}

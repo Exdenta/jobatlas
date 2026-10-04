@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "nomad-agent-job-row-v3",
+  "source": "illustration",
+  "id": "fictional-backend-role",
+  "url": "https://example.com/jobs/backend-engineer",
+  "title": "Backend Engineer",
+  "company": "Example Studio",
+  "locations": [
+    "Madrid, Spain"
+  ],
+  "postedAt": null,
+  "deadline": null,
+  "description": "Fictional job for a data-format illustration. Build APIs and maintain backend services. This is not a live vacancy.",
+  "descriptionHtml": "<p>Fictional job for a data-format illustration. Build APIs and maintain backend services. This is not a live vacancy.</p>",
+  "workType": "hybrid",
+  "salary": null,
+  "employmentTypes": null,
+  "hiringContacts": []
+}
