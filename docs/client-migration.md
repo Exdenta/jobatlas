@@ -1,6 +1,6 @@
 # Actor catalogue and client migration
 
-The [versioned Actor catalogue](../catalogue/actors-v1.json) separates a logical product from each deployed copy. Its owned-account snapshot records 92 Actors: 58 public products in scope, 16 private support Actors and 18 unrelated public products. Seven public Job Atlas copies are catalogued after the Infostud release on 22 September 2026. Each copy has its own immutable Actor ID and build history; it is not a redirect. Six copies produce jobs and one is the downstream fit scorer.
+The [versioned Actor catalogue](../catalogue/actors-v1.json) separates a logical product from each deployed copy. It covers 58 public job products and 17 public Job Atlas copies, with endpoint and latest-build metadata checked on 4 October 2026. The [complete public directory](public-actors.md) also describes the 18 non-job products. Each copy has its own immutable Actor ID and build history; it is not a redirect. Sixteen copies produce jobs and one is the downstream fit scorer.
 
 The catalogue is an interoperability record. It does not claim that hosted Actor source is present in this repository, that a mutable `latest` build was executed, or that a destination received data. Validate it with:
 
@@ -46,6 +46,21 @@ Primary platform references:
 Namespace changes do not authorize schema changes. The three normalized source Actors keep the six-root `nomad-agent-job-v1` envelope, source-specific custom extensions, `nomad-agent-run-summary-v4`, and legacy v3 compatibility where documented. The flat projection keeps `jobKey`, using `{source}:{externalId}` and the existing `{source}:{url}` fallback; it never falls back to title or company. Unknown scalar values remain `null`, known-empty collections remain `[]`, and `raw: null` remains valid when raw capture is disabled.
 
 The fit scorer keeps `nomad-ai-job-fit-v1` and its current v4 summary. A posting's `jobKey` and a candidate-specific destination `matchKey` are different identities. Do not send fit rows through the flat-job mapper.
+
+## EURES location field transition
+
+The paid `nomad-agent/eures-scraper` publishes EURES geography only in
+`locations`: a sorted array of ISO country codes from the source's
+`locationMap`. An empty array means no usable code was parsed. EURES does not
+supply city names through this field.
+
+Clients reading the old scalar `country` or `location` fields must read
+`locations` instead and preserve the full array when possible. A table that
+needs one display value may use the first element, or `null` for an empty
+array. This output change was published in immutable build `0.1.36`
+(`upQ2C2HTAG8Uv9eEk`) on 2026-09-20. Check the build ID and dataset for
+any later run before changing an active client. The normalized Job Atlas
+Actors have a separate output contract.
 
 ## Approval-gated rollout
 

@@ -10,7 +10,7 @@ No exact pack input was run while preparing this package. The included September
 | --- | --- | --- | --- | ---: |
 | [LinkedIn](packs/linkedin.json) | Up to five recent TypeScript roles for a Spain search | Fictional illustrative row | `1.0.5` / `4wE4rKPq5aq7jeIY1`; base result `$0.0009` | `$0.10` |
 | [EURAXESS](packs/euraxess.json) | Up to five recent postdoctoral machine-learning opportunities | Recorded source row from 4 September 2026 | `1.0.4` / `x0bGueGFnm6eEGY3K`; base result `$0.0009` | `$0.05` |
-| [Y Combinator](packs/ycombinator.json) | Up to five founding-engineer roles from refreshed inventory | Fictional row validated against `ycombinator-v2` | `1.0.4` / `9D13ViqHgk6hFtWVi`; base result `$0.0009` | `$0.05` |
+| [Y Combinator](packs/ycombinator.json) | Up to five founding-engineer roles from public YC postings | Fictional row validated against `ycombinator-v2` | `1.0.4` / `9D13ViqHgk6hFtWVi`; base result `$0.0009` | `$0.05` |
 | [AI Job Fit Scorer](packs/ai-job-fit-scorer.json) | Up to five explained evaluations for a fictional candidate | Historical predecessor row, not current Job Atlas output | `0.1.5` / `gxzLgzyS6vc1djG9S`; fit result `$0.02` | `$0.10` |
 
 The ceiling is an authorization limit, not a quote or a promise of that many rows. The three scraper inputs disable optional enrichment, translation, raw output, deduplication, and analytics; the scorer uses a fictional profile and a three-source shortlist. Runtime varies with source state, options, cache state, and source health.

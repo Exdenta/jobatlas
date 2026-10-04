@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "actor-example-receipt-v1",
+  "capturedAt": "2026-10-03",
+  "immutableBuildId": "VHYDT7m65bXVzrJno",
+  "inputSchemaBuildId": "VHYDT7m65bXVzrJno",
+  "note": "An observed existing source row; the bounded quickstart was validated offline, not live-executed. No outcome or availability guarantee."
+}

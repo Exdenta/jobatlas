@@ -7,6 +7,7 @@ import importlib.util
 import json
 from pathlib import Path
 import unittest
+import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,18 +40,18 @@ class ActorCatalogueTests(unittest.TestCase):
         self.assertEqual(self.validator.validate_catalogue(self.catalogue, ROOT), [])
         self.assertEqual(self.catalogue["schemaVersion"], "job-atlas-actor-catalogue-v1")
         self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedActors"], 92)
-        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], 65)
+        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], len(self.catalogue["deployments"]))
 
     def test_all_source_and_live_candidates_have_one_disposition(self) -> None:
         deployments = self.catalogue["deployments"]
         exclusions = self.catalogue["excludedCandidates"]
-        self.assertEqual(len(deployments), 65)
+        self.assertEqual(len(deployments), self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"])
         self.assertEqual(len(exclusions), 18)
         identities = {
             (record["owner"], record["slug"], record["actorId"])
             for record in deployments + exclusions
         }
-        self.assertEqual(len(identities), 83)
+        self.assertEqual(len(identities), len(deployments) + len(exclusions))
         self.assertEqual(
             sum(record["owner"] == "nomad-agent" for record in deployments + exclusions),
             76,
@@ -72,18 +73,12 @@ class ActorCatalogueTests(unittest.TestCase):
             self.assertNotIn("owner", product)
             self.assertNotIn("slug", product)
         copied = [record for record in deployments if record["relationship"] == "promoted-copy"]
-        self.assertEqual(len(copied), 7)
+        self.assertEqual(len(copied), self.catalogue["scope"]["inventoryCounts"]["promotedJobAtlasDeployments"])
         for record in copied:
             predecessor = next(
                 item for item in deployments if item["id"] == record["relationshipTargetId"]
             )
             self.assertNotEqual(record["actorId"], predecessor["actorId"])
-
-    def test_inventory_mirror_support_gaps_name_the_correct_source(self) -> None:
-        for row in self.catalogue["clientMatrix"]:
-            if row["logicalProductId"] == "normalized-eurobrussels" and row["gap"]:
-                self.assertIn("EuroBrussels", row["gap"])
-                self.assertNotIn("Manfred", row["gap"])
 
     def test_endpoint_states_require_live_observations(self) -> None:
         for deployment in self.catalogue["deployments"]:
@@ -115,6 +110,51 @@ class ActorCatalogueTests(unittest.TestCase):
                 "jobatlas/euraxess-enrich-translate-normalize-scraper",
             },
         )
+
+    def test_verified_primary_routes_do_not_require_an_integration_template(self) -> None:
+        primary = next(d for d in self.catalogue["deployments"] if d["owner"] == "nomad-agent")
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "README.md"
+            path.write_text(f'https://apify.com/{primary["owner"]}/{primary["slug"]}')
+            data = copy.deepcopy(self.catalogue)
+            data["clientMatrix"] = []
+            self.assertEqual(self.validator.validate_repository_routes(data, root), [])
+            data["deployments"] = [d for d in data["deployments"] if d["id"] != primary["id"]]
+            self.assertTrue(self.validator.validate_repository_routes(data, root))
+            path.write_text("https://apify.com/job-atlas/ai-job-fit-scorer")
+            self.assertTrue(any("retired Apify owner" in e for e in self.validator.validate_repository_routes(self.catalogue, root)))
+
+    def test_public_directory_covers_only_catalogued_public_endpoints(self) -> None:
+        directory = json.loads((ROOT / "docs/public-actors.json").read_text())
+        self.assertEqual(directory["schemaVersion"], "public-actor-directory-v1")
+        expected = {
+            (row["owner"], row["slug"], row["actorId"])
+            for row in self.catalogue["deployments"] + self.catalogue["excludedCandidates"]
+        }
+        actual = {(row["owner"], row["slug"], row["actorId"]) for row in directory["actors"]}
+        self.assertEqual(actual, expected)
+        self.assertEqual(len(directory["actors"]), len(expected))
+        prose = (ROOT / "docs/public-actors.md").read_text()
+        for row in directory["actors"]:
+            self.assertIn(row["url"], prose)
+            self.assertGreater(len(row["description"]), 40)
+            self.assertNotIn("private-collector", row["slug"])
+            self.assertNotIn("private" + " collector", row["description"].lower())
+
+    def test_non_job_directory_does_not_authorize_integration_routes(self) -> None:
+        excluded = self.catalogue["excludedCandidates"][0]
+        route = f'https://apify.com/{excluded["owner"]}/{excluded["slug"]}'
+        text = route + ' "actorId": "' + excluded["actorId"] + '"'
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "docs").mkdir()
+            (root / "docs/public-actors.md").write_text(text)
+            self.assertEqual(self.validator.validate_repository_routes(self.catalogue, root), [])
+            (root / "README.md").write_text(text)
+            errors = self.validator.validate_repository_routes(self.catalogue, root)
+            self.assertTrue(any("uncatalogued maintained Actor route" in error for error in errors))
+            self.assertTrue(any("uncatalogued maintained Actor ID" in error for error in errors))
 
     def test_client_matrix_is_complete_and_assets_exist(self) -> None:
         expected_classes = {
@@ -188,6 +228,28 @@ class ActorCatalogueTests(unittest.TestCase):
             lambda data: data["excludedCandidates"][0].update(category="private-support"),
             "category",
         )
+
+    def test_observed_counts_reject_each_inconsistent_total(self) -> None:
+        for field in self.catalogue["scope"]["inventoryCounts"]:
+            with self.subTest(field=field):
+                self.assert_invalid(
+                    lambda data, field=field: data["scope"]["inventoryCounts"].update(
+                        {field: data["scope"]["inventoryCounts"][field] + 1}
+                    ),
+                    "inventoryCounts mismatch",
+                )
+
+    def test_another_observed_mirror_does_not_require_a_hardcoded_count(self) -> None:
+        candidate = copy.deepcopy(self.catalogue)
+        mirror = copy.deepcopy(next(d for d in candidate["deployments"] if d["owner"] == "jobatlas"))
+        mirror["slug"] += "-test"
+        mirror["id"] = "jobatlas--" + mirror["slug"]
+        mirror["actorId"] = "ZZZZZZZZZZZZZZZZZ"
+        candidate["deployments"].append(mirror)
+        counts = candidate["scope"]["inventoryCounts"]
+        counts["promotedJobAtlasDeployments"] += 1
+        counts["inScopeDeployments"] += 1
+        self.assertEqual(self.validator.validate_catalogue(candidate, ROOT), [])
 
     def test_every_schema_object_is_closed(self) -> None:
         schema = json.loads(

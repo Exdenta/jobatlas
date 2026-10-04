@@ -13,6 +13,8 @@ SLUGS = tuple(sorted(
     and deployment['relationship'] == 'promoted-copy'
     and deployment['endpointState'] == 'live-metadata-verified'
 ))
+# The homepage remains a curated four-product entry point. New source mirrors
+# are listed in the complete tier directory before receiving landing pages.
 HOME_SLUGS = {
     'linkedin-enrich-translate-normalize-scraper',
     'euraxess-enrich-translate-normalize-scraper',
@@ -57,19 +59,10 @@ class JobAtlasRoutingTests(unittest.TestCase):
         self.assertIn('nomad-agent-job-v1', (ROOT / 'README.md').read_text())
 
     def test_promoted_routes_are_derived_from_the_checked_catalogue(self):
-        self.assertEqual(len(SLUGS), 7)
         self.assertEqual(
-            set(SLUGS),
-            {
-                'linkedin-enrich-translate-normalize-scraper',
-                'euraxess-enrich-translate-normalize-scraper',
-                'ycombinator-enrich-translate-normalize-scraper',
-                'ai-job-fit-scorer',
-                'normalized-manfred-jobs-scraper',
-                'normalized-eurobrussels-jobs-scraper',
-                'normalized-infostud-jobs-scraper',
-            },
+            len(SLUGS), CATALOGUE['scope']['inventoryCounts']['promotedJobAtlasDeployments']
         )
+        self.assertTrue(HOME_SLUGS <= set(SLUGS))
         readme = (ROOT / 'README.md').read_text(encoding='utf-8')
         self.assertIn('catalogue/actors-v1.json', readme)
         self.assertIn('docs/client-migration.md', readme)

@@ -10,11 +10,11 @@
       "ownedInScopePublic": 58,
       "ownedPrivateSupportExcluded": 16,
       "ownedUnrelatedPublicExcluded": 18,
-      "promotedJobAtlasDeployments": 7,
-      "inScopeDeployments": 65
+      "promotedJobAtlasDeployments": 17,
+      "inScopeDeployments": 75
     },
     "inclusionRule": "Include every public nomad-agent Actor whose current title or slug identifies a job-search, job-enrichment, job-bundle, or candidate-fit product, plus every public jobatlas deployment maintained by this repository.",
-    "evidenceBoundary": "Owned identities and aggregate visibility counts were read from authenticated Actor detail endpoints. Each deployment retains its dated build observation and explicit execution boundary. Manfred, EuroBrussels and Impactpool observations name bounded owner functional tests; these are not normal buyer, scheduled consumer or destination integration evidence. Private support Actors are aggregate-only; implementation, bindings and private operational data are not published. UN Careers, Copenhagen, Ikerbasque and Infostud were subsequently read back on 22 September 2026 after their inventory releases; their bounded owner tests and the new Infostud mirror do not establish normal buyer traffic. The owned-account counts retain their original snapshot date."
+    "evidenceBoundary": "The owned-account totals retain their dated historical snapshot. Public endpoints and latest build metadata were rechecked on 4 October 2026. Build metadata does not prove a successful execution, complete descriptions, optional processing or destination delivery. The complete public directory also covers the non-job products excluded from this job integration catalogue. Input examples are documentation and do not guarantee matching results."
   },
   "contractProfiles": [
     {
@@ -72,7 +72,7 @@
     },
     {
       "id": "simple-inventory-job-v2",
-      "name": "simple inventory job v2",
+      "name": "Historical simple job row v2",
       "canonicalRoots": [
         "schemaVersion",
         "recordType",
@@ -104,7 +104,7 @@
     },
     {
       "id": "normalized-inventory-job-v1",
-      "name": "normalized inventory job v1",
+      "name": "normalized job v1",
       "canonicalRoots": [
         "schemaVersion",
         "identity",
@@ -125,6 +125,39 @@
       },
       "destinationKey": "jobKey",
       "emptyValueSemantics": "Unknown facts stay null and known-empty collections stay []. Complete raw text is always retained; source HTML may be unavailable."
+    },
+    {
+      "id": "simple-job-row-v3",
+      "name": "Simple source job row v3",
+      "canonicalRoots": [
+        "schemaVersion",
+        "source",
+        "id",
+        "url",
+        "title",
+        "company",
+        "locations",
+        "postedAt",
+        "deadline",
+        "description",
+        "descriptionHtml",
+        "workType",
+        "salary",
+        "employmentTypes",
+        "hiringContacts"
+      ],
+      "schemaPaths": [
+        "integrations/shared/nomad-agent-job-row-v3.schema.json",
+        "integrations/shared/inventory-run-summary-v1.schema.json"
+      ],
+      "currentRunSummary": "nomad-inventory-public-run-v1",
+      "legacyRunSummaries": [],
+      "postingKey": {
+        "primary": "{source}:{id}",
+        "fallback": "{source}:{url}"
+      },
+      "destinationKey": "jobKey",
+      "emptyValueSemantics": "Unknown scalar facts and employmentTypes stay null; locations are [] when no usable location is parsed, and hiringContacts are [] when no named people are supplied. Full description and HTML are mandatory. No recordType field."
     }
   ],
   "logicalProducts": [
@@ -137,10 +170,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "devex-scraper",
@@ -151,10 +186,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor reads completed Devex inventory records with complete description text and HTML; the existing public wire contract is retained."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "linkedin-enrich-translate-normalize-scraper",
@@ -165,7 +202,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository publishes its interoperability layer."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "normalized-job-v1",
       "maintainedExamples": [
@@ -187,7 +224,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository publishes its interoperability layer."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "job-fit-v1",
       "maintainedExamples": [
@@ -210,7 +247,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository publishes its interoperability layer."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "normalized-job-v1",
       "maintainedExamples": [
@@ -227,7 +264,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository publishes its interoperability layer."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "normalized-job-v1",
       "maintainedExamples": [
@@ -248,10 +285,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "ai-job-search-agent",
@@ -262,10 +301,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "all-jobs-scraper",
@@ -276,10 +317,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "europe-jobs-bundle",
@@ -290,10 +333,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "company-careers-bundle",
@@ -304,10 +349,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "workable-jobs-scraper",
@@ -318,10 +365,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "ashby-jobs-scraper",
@@ -332,10 +381,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "lever-jobs-scraper",
@@ -346,10 +397,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "greenhouse-jobs-scraper",
@@ -360,10 +413,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "academicpositions-scraper",
@@ -374,10 +429,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "researcher-bundle",
@@ -388,10 +445,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "web-dev-bundle",
@@ -402,10 +461,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "wttj-scraper",
@@ -416,10 +477,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "web-search-scraper",
@@ -430,10 +493,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "ub-doctoral-scraper",
@@ -444,10 +509,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "tecnoempleo-scraper",
@@ -458,10 +525,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "remote-boards-scraper",
@@ -472,10 +541,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "nofluffjobs-scraper",
@@ -486,10 +557,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "math-ku-phd-scraper",
@@ -500,9 +573,9 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "simple-inventory-job-v2",
+      "contractProfileId": "simple-job-row-v3",
       "maintainedExamples": [
         "docs/simple-inventory-sources.md"
       ]
@@ -516,10 +589,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "jobs-ac-uk-scraper",
@@ -530,10 +605,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "infojobs-scraper",
@@ -544,10 +621,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "impactpool-scraper",
@@ -558,9 +637,9 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "simple-inventory-job-v2",
+      "contractProfileId": "simple-job-row-v3",
       "maintainedExamples": [
         "docs/impactpool-simple.md"
       ]
@@ -574,9 +653,9 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "simple-inventory-job-v2",
+      "contractProfileId": "simple-job-row-v3",
       "maintainedExamples": [
         "docs/simple-inventory-sources.md"
       ]
@@ -590,10 +669,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "eures-scraper",
@@ -604,10 +685,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "builtin-scraper",
@@ -618,10 +701,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "ai-jobs-net-scraper",
@@ -632,10 +717,28 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
+    },
+    {
+      "id": "foorilla-ai-jobs-scraper",
+      "name": "Foorilla Data, AI, and Machine Learning jobs",
+      "kind": "source-scraper",
+      "lifecycle": "legacy-live",
+      "promotion": "not-planned",
+      "implementationSource": {
+        "state": "not-in-repository",
+        "location": null,
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
+      },
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "un-careers-scraper",
@@ -646,9 +749,9 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "simple-inventory-job-v2",
+      "contractProfileId": "simple-job-row-v3",
       "maintainedExamples": [
         "docs/simple-inventory-sources.md"
       ]
@@ -662,10 +765,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "ycombinator-was-scraper",
@@ -676,10 +781,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "ml-ai-dev-bundle",
@@ -690,10 +797,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "american-jobs-bundle",
@@ -704,10 +813,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "linkedin-scraper",
@@ -718,10 +829,12 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "unjobs-scraper",
@@ -732,24 +845,28 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "devex-jobs-scraper",
-      "name": "Devex jobs from inventory",
+      "name": "Devex international-development jobs",
       "kind": "source-scraper",
       "lifecycle": "legacy-live",
       "promotion": "not-planned",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor reads completed Devex inventory records with complete description text and HTML; the existing public wire contract is retained."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "euraxess-scraper",
@@ -760,66 +877,60 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": null,
-      "maintainedExamples": []
-    },
-    {
-      "id": "foorilla-ai-jobs-scraper",
-      "name": "Foorilla Data, AI, and Machine Learning jobs",
-      "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
-      "implementationSource": {
-        "state": "not-in-repository",
-        "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
-      },
-      "contractProfileId": null,
-      "maintainedExamples": []
+      "contractProfileId": "simple-job-row-v3",
+      "maintainedExamples": [
+        "docs/simple-inventory-sources.md"
+      ]
     },
     {
       "id": "normalized-ashby",
       "name": "Ashby normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-dynamitejobs",
       "name": "Dynamite Jobs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-euractiv",
       "name": "EURACTIV Jobs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-eurobrussels",
@@ -830,7 +941,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "normalized-inventory-job-v1",
       "maintainedExamples": [
@@ -841,15 +952,17 @@
       "id": "normalized-fashionjobs",
       "name": "FashionJobs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-greenhouse",
@@ -860,38 +973,44 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-helloworld",
       "name": "HelloWorld.rs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-himalayas",
       "name": "Himalayas normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-infostud",
@@ -902,7 +1021,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "normalized-inventory-job-v1",
       "maintainedExamples": [
@@ -913,29 +1032,33 @@
       "id": "normalized-jobgether",
       "name": "Jobgether normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-lever",
       "name": "Lever normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-manfred",
@@ -946,7 +1069,7 @@
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
       "contractProfileId": "normalized-inventory-job-v1",
       "maintainedExamples": [
@@ -957,29 +1080,33 @@
       "id": "normalized-mlops-community",
       "name": "MLOps Community normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-smartrecruiters",
       "name": "SmartRecruiters normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
-        "evidence": "Hosted Actor source; this repository contains no implementation path."
+        "evidence": "Hosted Actor; this repository documents its public contracts and client integrations."
       },
-      "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "contractProfileId": "normalized-inventory-job-v1",
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     }
   ],
   "deployments": [
@@ -994,11 +1121,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "FeaMgHDqIseg2q0sL",
-        "buildNumber": "0.1.29",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "djcPb2HhKvmQznq3B",
+        "buildNumber": "0.1.37",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1012,11 +1139,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-30T22:50:00Z",
-        "buildId": "qeTRUXPT4aerRwOZZ",
-        "buildNumber": "0.3.14",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "e6YwuJcEo0NZBsG2g",
+        "buildNumber": "0.3.16",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Inventory reader build succeeded; latest and default select the exact build. Existing input/output schemas are retained. Live reader execution remains unverified."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1030,11 +1157,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "KamNqaULMME6lwblw",
-        "buildNumber": "1.0.23",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "yfVioLAWXs6hxPaRY",
+        "buildNumber": "1.0.26",
+        "sourceType": "TARBALL",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1048,11 +1175,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "Gv7G10PzMzpWWAJDC",
-        "buildNumber": "0.1.28",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "J79PcbMY7bCTKyd4m",
+        "buildNumber": "0.1.37",
+        "sourceType": "TARBALL",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1066,11 +1193,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "yOktGUzDY0eV9MJ4A",
-        "buildNumber": "1.0.8",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "mHsFKndDwAehHdgWy",
+        "buildNumber": "1.0.14",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1084,11 +1211,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "LU6dggOcKqY1u19qm",
-        "buildNumber": "1.0.30",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "kOCrhmMRcmpO4r231",
+        "buildNumber": "1.0.36",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1102,11 +1229,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "aXTgkVqfnJU5jLdGU",
-        "buildNumber": "0.1.5",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "qzys8WLfZUBmHJFi5",
+        "buildNumber": "0.1.12",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1120,11 +1247,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "vJKPTK5ERrdouqYiy",
-        "buildNumber": "0.2.1",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "FJjbPhQbcyy6KipSa",
+        "buildNumber": "0.2.3",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1138,11 +1265,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "x6YOvHFtNvWOviBfz",
-        "buildNumber": "1.0.7",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "Llb2bAB2q135psAiR",
+        "buildNumber": "1.0.19",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1156,11 +1283,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "vkYQL4Efeio51BNDe",
-        "buildNumber": "1.0.7",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "V31PccjlSfA41aBUg",
+        "buildNumber": "1.0.21",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1174,11 +1301,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "XPunESqyIY1JQTPI3",
-        "buildNumber": "0.1.23",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "TuMvyZGWK9PTnrR7L",
+        "buildNumber": "0.1.35",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1192,11 +1319,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "pbasdZNEEDoRIt1qf",
-        "buildNumber": "0.1.22",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "NFywiOINtDydiOQuz",
+        "buildNumber": "0.1.30",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1210,11 +1337,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "Ks38ui4Aqa8Exe2QQ",
-        "buildNumber": "0.1.21",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "COFaCN7xJDA6yXe3c",
+        "buildNumber": "0.1.29",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1228,11 +1355,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "ma0KuEMWSQDfxYq4Z",
-        "buildNumber": "0.1.22",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "HqrAtqwbfMgN9Jgvm",
+        "buildNumber": "0.1.30",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1246,11 +1373,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "aayqyw2HZKjg51IsA",
-        "buildNumber": "0.1.21",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "3HUWLVcHOviUqU7N2",
+        "buildNumber": "0.1.29",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1264,11 +1391,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "iMD68ZAQHKBb7OU8Y",
-        "buildNumber": "0.1.42",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "QxPTLooRPAmBl5c17",
+        "buildNumber": "0.1.50",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1282,11 +1409,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "sRRsfHRtx9SlAx32V",
-        "buildNumber": "1.0.5",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "gBV9xPf58jZEhBIHI",
+        "buildNumber": "1.0.16",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1300,11 +1427,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "FNJCilZUxFYaetEvI",
-        "buildNumber": "0.1.37",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "Mk1eeyXNP1b2F2bBw",
+        "buildNumber": "0.1.49",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1318,11 +1445,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "fkHrFgr2JSDvg1qaD",
-        "buildNumber": "0.1.26",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "MPr0peBsDLFht6faI",
+        "buildNumber": "0.1.34",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1336,11 +1463,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "qYcf89gA4lva0k7Dg",
-        "buildNumber": "0.1.35",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "omCtRf0By6fgQPJVp",
+        "buildNumber": "0.1.48",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1354,11 +1481,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "3yVLjRCCCtEyg5ATl",
-        "buildNumber": "0.1.33",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "utjDqeLssLK3zq2ga",
+        "buildNumber": "0.1.48",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1372,11 +1499,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "9htNJyfKany5dqWgJ",
-        "buildNumber": "0.1.28",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "MI2zHkncDub0390GM",
+        "buildNumber": "0.1.35",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1390,11 +1517,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "392zh8FtVq6d4bAvg",
-        "buildNumber": "0.1.33",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "ESEYIC6peh73hedwQ",
+        "buildNumber": "0.1.42",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1408,11 +1535,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "a6e7AhcN7M2EQIaK6",
-        "buildNumber": "0.1.29",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "fruFAXfBDNQmO6hAa",
+        "buildNumber": "0.1.40",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1426,11 +1553,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-22T14:54:56.899789+00:00",
-        "buildId": "gIWRtG3Q0ePh0XDcz",
-        "buildNumber": "0.1.32",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "cMTlFGK2UKIGrdSQg",
+        "buildNumber": "0.1.36",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Promoted latest/default read back. Owner default test SeLyTmG0902OCfE6V returned a complete original description and HTML; repeat NFZhhGCO5OESrrgOE proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1444,11 +1571,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "u1BJWmUcjv1kFXvUg",
-        "buildNumber": "0.1.30",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "Mya2oy9krAdZyUAvp",
+        "buildNumber": "0.1.38",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1462,11 +1589,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "y87umeKlY1hzbgme5",
-        "buildNumber": "0.1.33",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "Hsl2arv9l4O1C5lxI",
+        "buildNumber": "0.1.42",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1480,11 +1607,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "PCmdNHzLCVfCpKFGw",
-        "buildNumber": "0.1.27",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "r4P8EsKbm1yuZ4dLe",
+        "buildNumber": "0.1.43",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1498,11 +1625,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-21T18:10:00+00:00",
-        "buildId": "lwGL7NMeNgzRXQr0x",
-        "buildNumber": "0.1.37",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "EyInmZR7RoF4kcbgc",
+        "buildNumber": "0.1.41",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Latest/default readback and independently inspected owner run SAkWDom84xRYsd6rH returned a full simple-v2 record, with startup and result charges. Repeat AiZYy0ncL2Yc9HXPi suppressed the duplicate with no result charge. No AI usage or source-site requests. No scheduled consumer or normal buyer execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1516,11 +1643,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-22T14:58:54.413082+00:00",
-        "buildId": "ez0l2SLc7ZyrKrHM1",
-        "buildNumber": "0.1.34",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "x1Ams4nV6SlwEz5SI",
+        "buildNumber": "0.1.39",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Promoted latest/default read back. Owner default test DiSkROVXzDblf67Iq returned a complete original description and HTML; repeat svekQ3gXFgFqsy1FS proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1534,11 +1661,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "VjdKaxEZs2xM88Apy",
-        "buildNumber": "0.1.34",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "g7qQKDBuEdNfCVGMo",
+        "buildNumber": "0.1.43",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1552,11 +1679,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "rbNbg7lifiT1rQ6HG",
-        "buildNumber": "0.1.33",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "n2AeQYl1tY9eyGxk4",
+        "buildNumber": "0.1.43",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1570,11 +1697,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "2phCSeuqz46JF87k9",
-        "buildNumber": "0.1.34",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "fJ1a0vk4FnMoLHVmk",
+        "buildNumber": "0.1.44",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1588,245 +1715,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "kH2Yal1RnL5X5Mav6",
-        "buildNumber": "0.1.32",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "d6nVZnTuTvULjSjvp",
+        "buildNumber": "0.1.42",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--un-careers-scraper",
-      "logicalProductId": "un-careers-scraper",
-      "owner": "nomad-agent",
-      "slug": "un-careers-scraper",
-      "actorId": "AtAcVhbH1KVGbL9Wh",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-22T14:50:01.086710+00:00",
-        "buildId": "KQoiBFmJw01ItSQiU",
-        "buildNumber": "0.1.38",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Promoted latest/default read back. Owner default test TP9AXuDjSYt6uCdg0 returned a complete original description and HTML; repeat fmm6v57tMcTOFAYBA proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
-      }
-    },
-    {
-      "id": "nomad-agent--reliefweb-scraper",
-      "logicalProductId": "reliefweb-scraper",
-      "owner": "nomad-agent",
-      "slug": "reliefweb-scraper",
-      "actorId": "ongoh9UyfgwIbvPfp",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "cgEOfB8GHVIOqotGG",
-        "buildNumber": "0.1.30",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--ycombinator-was-scraper",
-      "logicalProductId": "ycombinator-was-scraper",
-      "owner": "nomad-agent",
-      "slug": "ycombinator-was-scraper",
-      "actorId": "1JDUBKElJkIKoCkgG",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "7Zu8f42AcRUSwzD6g",
-        "buildNumber": "0.1.32",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--ml-ai-dev-bundle",
-      "logicalProductId": "ml-ai-dev-bundle",
-      "owner": "nomad-agent",
-      "slug": "ml-ai-dev-bundle",
-      "actorId": "3NcZZ1KxyIoXvvOzN",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "vsM015Al55d1bF6ls",
-        "buildNumber": "0.1.37",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--american-jobs-bundle",
-      "logicalProductId": "american-jobs-bundle",
-      "owner": "nomad-agent",
-      "slug": "american-jobs-bundle",
-      "actorId": "PcdkFDsalUjKy5cwo",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "gGjZLfP0t7UzUYhEE",
-        "buildNumber": "0.1.20",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--linkedin-scraper",
-      "logicalProductId": "linkedin-scraper",
-      "owner": "nomad-agent",
-      "slug": "linkedin-scraper",
-      "actorId": "GGGJOOdpf4hgT6FbH",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "NH66v3mv4rXoW63Cw",
-        "buildNumber": "0.1.28",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--unjobs-scraper",
-      "logicalProductId": "unjobs-scraper",
-      "owner": "nomad-agent",
-      "slug": "unjobs-scraper",
-      "actorId": "JMR4w8RUMZsRPloZR",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "UwCWAACLpBNUfKvII",
-        "buildNumber": "0.1.11",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "nomad-agent--devex-jobs-scraper",
-      "logicalProductId": "devex-jobs-scraper",
-      "owner": "nomad-agent",
-      "slug": "devex-jobs-scraper",
-      "actorId": "GVrnpaCKZs6ijvqTO",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-30T22:50:00Z",
-        "buildId": "3OXoBwPTUpaMdVMil",
-        "buildNumber": "0.1.14",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Inventory reader build succeeded; latest and default select the exact build. Existing input/output schemas are retained. Live reader execution remains unverified."
-      }
-    },
-    {
-      "id": "nomad-agent--euraxess-scraper",
-      "logicalProductId": "euraxess-scraper",
-      "owner": "nomad-agent",
-      "slug": "euraxess-scraper",
-      "actorId": "N3gbK5IYfJI62GZj3",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "legacy-primary",
-      "relationshipTargetId": null,
-      "latestObservation": {
-        "observedAt": "2026-09-08T01:30:00+02:00",
-        "buildId": "tsQxomLf5fmLYWBdN",
-        "buildNumber": "0.1.30",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "jobatlas--linkedin-enrich-translate-normalize-scraper",
-      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
-      "owner": "jobatlas",
-      "slug": "linkedin-enrich-translate-normalize-scraper",
-      "actorId": "KMflYVTHiIAXE6nKN",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "promoted-copy",
-      "relationshipTargetId": "nomad-agent--linkedin-enrich-translate-normalize-scraper",
-      "latestObservation": {
-        "observedAt": "2026-09-18T18:48:30+02:00",
-        "buildId": "8VxOuyqCqzPxFKGLh",
-        "buildNumber": "1.0.6",
-        "sourceType": "TARBALL",
-        "evidence": "Public Actor and default-build metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "jobatlas--euraxess-enrich-translate-normalize-scraper",
-      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
-      "owner": "jobatlas",
-      "slug": "euraxess-enrich-translate-normalize-scraper",
-      "actorId": "Slu3SAWULLRYnCN9Y",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "promoted-copy",
-      "relationshipTargetId": "nomad-agent--euraxess-enrich-translate-normalize-scraper",
-      "latestObservation": {
-        "observedAt": "2026-09-18T18:48:30+02:00",
-        "buildId": "x0bGueGFnm6eEGY3K",
-        "buildNumber": "1.0.4",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Public Actor and default-build metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "jobatlas--ycombinator-enrich-translate-normalize-scraper",
-      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
-      "owner": "jobatlas",
-      "slug": "ycombinator-enrich-translate-normalize-scraper",
-      "actorId": "pF4Lk4ifzb9tZXg7K",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "promoted-copy",
-      "relationshipTargetId": "nomad-agent--ycombinator-enrich-translate-normalize-scraper",
-      "latestObservation": {
-        "observedAt": "2026-09-18T18:48:30+02:00",
-        "buildId": "Rp95YPPe7OFyCdu4Q",
-        "buildNumber": "1.0.5",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Public Actor and default-build metadata read-back; no Actor run was started."
-      }
-    },
-    {
-      "id": "jobatlas--ai-job-fit-scorer",
-      "logicalProductId": "ai-job-fit-scorer",
-      "owner": "jobatlas",
-      "slug": "ai-job-fit-scorer",
-      "actorId": "OZ919PaAyAbifOdcL",
-      "endpointState": "live-metadata-verified",
-      "releaseSelector": "latest",
-      "relationship": "promoted-copy",
-      "relationshipTargetId": "nomad-agent--ai-job-fit-scorer",
-      "latestObservation": {
-        "observedAt": "2026-09-18T18:48:30+02:00",
-        "buildId": "gxzLgzyS6vc1djG9S",
-        "buildNumber": "0.1.5",
-        "sourceType": "SOURCE_FILES",
-        "evidence": "Public Actor and default-build metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1840,11 +1733,245 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-21T09:26:34.033130+00:00",
-        "buildId": "RslZO54tvOxtMeKqt",
-        "buildNumber": "0.1.4",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "cE0nUfrUiBoxiGnYH",
+        "buildNumber": "0.1.10",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated post-release latest/default/source-file read-back; build succeeded; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--un-careers-scraper",
+      "logicalProductId": "un-careers-scraper",
+      "owner": "nomad-agent",
+      "slug": "un-careers-scraper",
+      "actorId": "AtAcVhbH1KVGbL9Wh",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "P21sqkfRXf2GFJ55i",
+        "buildNumber": "0.1.42",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--reliefweb-scraper",
+      "logicalProductId": "reliefweb-scraper",
+      "owner": "nomad-agent",
+      "slug": "reliefweb-scraper",
+      "actorId": "ongoh9UyfgwIbvPfp",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "nIl4EGGqe1Ip4Ysop",
+        "buildNumber": "0.1.38",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--ycombinator-was-scraper",
+      "logicalProductId": "ycombinator-was-scraper",
+      "owner": "nomad-agent",
+      "slug": "ycombinator-was-scraper",
+      "actorId": "1JDUBKElJkIKoCkgG",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "SoREk9WVQbdqsxZ1K",
+        "buildNumber": "0.1.41",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--ml-ai-dev-bundle",
+      "logicalProductId": "ml-ai-dev-bundle",
+      "owner": "nomad-agent",
+      "slug": "ml-ai-dev-bundle",
+      "actorId": "3NcZZ1KxyIoXvvOzN",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "mZLMTeeYxJ5Z0jqEq",
+        "buildNumber": "0.1.45",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--american-jobs-bundle",
+      "logicalProductId": "american-jobs-bundle",
+      "owner": "nomad-agent",
+      "slug": "american-jobs-bundle",
+      "actorId": "PcdkFDsalUjKy5cwo",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "IWEsYLqJwTbVQsCzi",
+        "buildNumber": "0.1.29",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--linkedin-scraper",
+      "logicalProductId": "linkedin-scraper",
+      "owner": "nomad-agent",
+      "slug": "linkedin-scraper",
+      "actorId": "GGGJOOdpf4hgT6FbH",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "a4m7ec7WMn5WAYQfr",
+        "buildNumber": "0.1.36",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--unjobs-scraper",
+      "logicalProductId": "unjobs-scraper",
+      "owner": "nomad-agent",
+      "slug": "unjobs-scraper",
+      "actorId": "JMR4w8RUMZsRPloZR",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "EHT1td8XKUfZOk7pp",
+        "buildNumber": "0.1.20",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--devex-jobs-scraper",
+      "logicalProductId": "devex-jobs-scraper",
+      "owner": "nomad-agent",
+      "slug": "devex-jobs-scraper",
+      "actorId": "GVrnpaCKZs6ijvqTO",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "3OXoBwPTUpaMdVMil",
+        "buildNumber": "0.1.14",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "nomad-agent--euraxess-scraper",
+      "logicalProductId": "euraxess-scraper",
+      "owner": "nomad-agent",
+      "slug": "euraxess-scraper",
+      "actorId": "N3gbK5IYfJI62GZj3",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "legacy-primary",
+      "relationshipTargetId": null,
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "ToHKHwLdHqVqf9iqW",
+        "buildNumber": "0.1.37",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--linkedin-enrich-translate-normalize-scraper",
+      "logicalProductId": "linkedin-enrich-translate-normalize-scraper",
+      "owner": "jobatlas",
+      "slug": "linkedin-enrich-translate-normalize-scraper",
+      "actorId": "KMflYVTHiIAXE6nKN",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--linkedin-enrich-translate-normalize-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "oeuGZRRy3bHXzfrt2",
+        "buildNumber": "1.0.7",
+        "sourceType": "TARBALL",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--euraxess-enrich-translate-normalize-scraper",
+      "logicalProductId": "euraxess-enrich-translate-normalize-scraper",
+      "owner": "jobatlas",
+      "slug": "euraxess-enrich-translate-normalize-scraper",
+      "actorId": "Slu3SAWULLRYnCN9Y",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--euraxess-enrich-translate-normalize-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "d6Yh9EptchM4bJ9dQ",
+        "buildNumber": "1.0.8",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--ycombinator-enrich-translate-normalize-scraper",
+      "logicalProductId": "ycombinator-enrich-translate-normalize-scraper",
+      "owner": "jobatlas",
+      "slug": "ycombinator-enrich-translate-normalize-scraper",
+      "actorId": "pF4Lk4ifzb9tZXg7K",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--ycombinator-enrich-translate-normalize-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "Gi8AoEhHiAmVF4qAm",
+        "buildNumber": "1.0.8",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--ai-job-fit-scorer",
+      "logicalProductId": "ai-job-fit-scorer",
+      "owner": "jobatlas",
+      "slug": "ai-job-fit-scorer",
+      "actorId": "OZ919PaAyAbifOdcL",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--ai-job-fit-scorer",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "T34Qdzh7YYB03EHCO",
+        "buildNumber": "0.1.11",
+        "sourceType": "TARBALL",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1858,11 +1985,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "lxgQMPmRA15H5XFdP",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "yKYMCGqCvn9i1B99A",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1876,11 +2003,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "ypYNbz3ZuXbmDTqZU",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "iGrs0f73ZN3owuaKa",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1894,11 +2021,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "ipOUyILbrJPGTSksA",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "4eFR0Wzr3cPezM25E",
+        "buildNumber": "1.0.8",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1912,11 +2039,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-21T17:39:18+00:00",
-        "buildId": "sWQz78eHql7HjuXKY",
-        "buildNumber": "1.0.3",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "h7ZcIxaVlgahkmmiz",
+        "buildNumber": "1.0.7",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Promoted latest/default read back. Owner functional tests q2wD1AHlrqovANafv (processing enabled) and GcmH1miNVhSNXfdQU (options omitted) inspected complete original descriptions and independent processing defaults. No normal buyer or downstream destination execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1930,11 +2057,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "QvfVy93MsnXtwngiT",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "Rb6b8ppfAYBKPC0tL",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1948,11 +2075,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "S9NtIDg25BXYOMQ5d",
-        "buildNumber": "1.0.3",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "0RGdd5Jd6C8SU6wTD",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1966,11 +2093,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "rSBqdF3m16U5NAdGH",
-        "buildNumber": "1.0.1",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "q64YpG4nKn4ZjL7xg",
+        "buildNumber": "1.0.8",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -1984,11 +2111,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "kONi22ouVhn139wRG",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "HWyr4dW2z0gwa7UHq",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2002,11 +2129,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-22T15:01:33.318213+00:00",
-        "buildId": "KNNRRuUWV6DOVvc1q",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "NFq9YeHR6JDtG2rPW",
+        "buildNumber": "1.0.6",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Promoted latest/default read back. Owner default test Qq3Jaqzi8NQt1CIGT returned a complete original description and HTML; repeat 6O8rN4YxNDFwFCok2 proved duplicate suppression with no result charge. No normal buyer or destination execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2020,11 +2147,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "DmhICyDygGaqxbAF9",
-        "buildNumber": "1.0.8",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "XckoTpBmHLshak9Jz",
+        "buildNumber": "1.0.14",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2038,11 +2165,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "fi5TkvDkAYcwmeEjU",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "9FkQ1C4TXpjOeHouy",
+        "buildNumber": "1.0.8",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2056,11 +2183,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-21T14:10:37.425108+00:00",
-        "buildId": "u9Ll44d5MNqvBoQ7L",
-        "buildNumber": "1.0.5",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "lWh4uVGVxhI8e0cJU",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Public metadata and latest/default selectors read back. Explicit opt-in test hZJn0AKdh1TxCropb returned complete enriched output. Authorized default-selector test dt9Xkd07mO6Num3zE omitted both options, exercised persistent deduplication, and returned complete source-only output with llm.not_requested and no owner usage record. No normal buyer or external destination execution is claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2074,11 +2201,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "214nNhfM0AQPZde7e",
-        "buildNumber": "1.0.1",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "c2FmfJJVmolh7FhA2",
+        "buildNumber": "1.0.7",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2092,11 +2219,11 @@
       "relationship": "legacy-primary",
       "relationshipTargetId": null,
       "latestObservation": {
-        "observedAt": "2026-09-18T12:39:10+02:00",
-        "buildId": "c7zjPq4tKC7Stlagc",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:09.768743+00:00",
+        "buildId": "1Kn0l9mzZhcasQlWt",
+        "buildNumber": "1.0.9",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Authenticated metadata read-back; no Actor run was started."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2110,11 +2237,11 @@
       "relationship": "promoted-copy",
       "relationshipTargetId": "nomad-agent--normalized-manfred-jobs-scraper",
       "latestObservation": {
-        "observedAt": "2026-09-21T14:10:37.425108+00:00",
-        "buildId": "nJhLUC2HvrDJdnFRu",
-        "buildNumber": "1.0.2",
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "PtIqbb6UsxEu3SpHv",
+        "buildNumber": "1.0.4",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Public metadata and latest/default selectors read back. Explicit opt-in test E4CsE2s72ifl0nxaR returned complete enriched output. Authorized default-selector test Tab1L7Zzpb8C3utZT omitted both options, exercised persistent deduplication, and returned complete source-only output with llm.not_requested and no owner usage record. No normal buyer or external destination execution is claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2128,11 +2255,11 @@
       "relationship": "promoted-copy",
       "relationshipTargetId": "nomad-agent--normalized-eurobrussels-jobs-scraper",
       "latestObservation": {
-        "observedAt": "2026-09-21T18:03:00+00:00",
-        "buildId": "LY8XyXNvkf9IckZSc",
-        "buildNumber": "1.0.1",
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "gfOs7oT77b9QCRrtr",
+        "buildNumber": "1.0.3",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Independent hosted release verification: latest/default selectors exact. Owner tests YmQRgKjYFK32XUBYT (processing enabled) and nYmQNga9b2CrNHxe1 (options omitted) returned complete descriptions; default-off had no owner provider usage. No normal buyer or downstream destination execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     },
     {
@@ -2146,11 +2273,191 @@
       "relationship": "promoted-copy",
       "relationshipTargetId": "nomad-agent--normalized-infostud-jobs-scraper",
       "latestObservation": {
-        "observedAt": "2026-09-22T15:41:03.951454+00:00",
-        "buildId": "3XW7pPeVyjsqArqy2",
-        "buildNumber": "1.0.1",
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "IGXxqlzvY08wbFxzk",
+        "buildNumber": "1.0.3",
         "sourceType": "SOURCE_FILES",
-        "evidence": "Public latest/default read back; independently checked against the primary package. Owner tests LGXoR4HeIqJKvYccY and IDZu6Qx4XwtUuUHp1 returned two complete descriptions with processing enabled. Default-off CWrlIID5xM2Ld2uSl retained original Serbian text and title with no owner provider usage. No normal buyer or destination execution claimed."
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-ashby-jobs-scraper",
+      "logicalProductId": "normalized-ashby",
+      "owner": "jobatlas",
+      "slug": "normalized-ashby-jobs-scraper",
+      "actorId": "OevYsTbGinfu6UPQd",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-ashby-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "If9UpX49yS9jOhxWI",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "logicalProductId": "normalized-dynamitejobs",
+      "owner": "jobatlas",
+      "slug": "normalized-dynamitejobs-jobs-scraper",
+      "actorId": "IpwQZHpkkNSwKaMM3",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-dynamitejobs-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "r9KBC2LRh2MM4rsYG",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-euractiv-jobs-scraper",
+      "logicalProductId": "normalized-euractiv",
+      "owner": "jobatlas",
+      "slug": "normalized-euractiv-jobs-scraper",
+      "actorId": "sAmkfZKybTW9cHb37",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-euractiv-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "AdB85EJ7oDv0KeVsC",
+        "buildNumber": "1.0.6",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "logicalProductId": "normalized-fashionjobs",
+      "owner": "jobatlas",
+      "slug": "normalized-fashionjobs-jobs-scraper",
+      "actorId": "RMfnnrTz467ZcPQFP",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-fashionjobs-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "I6IeoyiOd3lhJOSst",
+        "buildNumber": "1.0.5",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-helloworld-jobs-scraper",
+      "logicalProductId": "normalized-helloworld",
+      "owner": "jobatlas",
+      "slug": "normalized-helloworld-jobs-scraper",
+      "actorId": "qePFRkmFju2UBYvlm",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-helloworld-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "ifzHeAd8HG4m3NKKM",
+        "buildNumber": "1.0.5",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-himalayas-jobs-scraper",
+      "logicalProductId": "normalized-himalayas",
+      "owner": "jobatlas",
+      "slug": "normalized-himalayas-jobs-scraper",
+      "actorId": "MQPgX54hf69Gt8vkg",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-himalayas-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "Y9MasuQy9qdhcnoGx",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-jobgether-jobs-scraper",
+      "logicalProductId": "normalized-jobgether",
+      "owner": "jobatlas",
+      "slug": "normalized-jobgether-jobs-scraper",
+      "actorId": "e3L8nyjTnjbJ5ZiV4",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-jobgether-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "YID7LeXYwJMyGZ3g1",
+        "buildNumber": "1.0.3",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-lever-jobs-scraper",
+      "logicalProductId": "normalized-lever",
+      "owner": "jobatlas",
+      "slug": "normalized-lever-jobs-scraper",
+      "actorId": "XkRY12lbdved0Gbqq",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-lever-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "NKTAUIxzkLjziPmkQ",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "logicalProductId": "normalized-mlops-community",
+      "owner": "jobatlas",
+      "slug": "normalized-mlops-community-jobs-scraper",
+      "actorId": "gbr9thwZuAsInMHJz",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-mlops-community-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "2SK5sN1pQ8qoag1Ob",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "logicalProductId": "normalized-smartrecruiters",
+      "owner": "jobatlas",
+      "slug": "normalized-smartrecruiters-jobs-scraper",
+      "actorId": "8AajXDZh2eVT3h1Vr",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-smartrecruiters-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T12:35:24.703006+00:00",
+        "buildId": "kcaKwAaHW5uCPb2cS",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Read-only public Actor metadata GET: latest tag and public endpoint identity. No execution was performed by this documentation audit."
       }
     }
   ],
@@ -3093,6 +3400,886 @@
       "assets": [],
       "externalStateClasses": [],
       "gap": "No maintained Infostud python integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this python integration has not been validated."
     }
   ],
   "externalStateMatrix": [
@@ -3132,7 +4319,7 @@
     {
       "class": "schedules",
       "evidenceState": "read-only-inventory-bounded",
-      "action": "Leave internal collection and maintenance schedules unchanged; migrate a schedule only with its exact Task or Actor dependency.",
+      "action": "Keep existing schedules unchanged; migrate a schedule only with its exact Task or Actor dependency.",
       "verification": "Read back enabled state, timezone, cron expression, target ID, selector, and charge cap before and after an approved change.",
       "rollback": "Restore the prior target and enabled state from the pre-change read-back.",
       "gaps": [

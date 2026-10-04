@@ -19,6 +19,7 @@ SKILL_NAMES = (
     "ycombinator-enrich-translate-normalize-scraper",
 
     "ai-job-fit-scorer",
+    "public-apify-actors",
 )
 
 

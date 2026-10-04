@@ -1,6 +1,6 @@
 {
   "title": "Greenhouse normalized inventory search",
-  "description": "Search stored jobs from selected supported Greenhouse boards. Complete original descriptions, advanced filters and independent optional owner-funded AI enrichment and English translation. Both options default off; no source website is requested.",
+  "description": "Local board-selection proposal, not the current published Actor input. The hosted endpoint uses nomad-agent-inventory-search-v1 without boards. This proposal describes supported boards, full descriptions, advanced filters and independent optional AI enrichment and translation.",
   "type": "object",
   "schemaVersion": 1,
   "additionalProperties": false,
@@ -18,7 +18,7 @@
       "default": "nomad-agent-board-inventory-search-v1",
       "editor": "select",
       "prefill": "nomad-agent-board-inventory-search-v1",
-      "description": "Version marker for database-only normalized job search."
+      "description": "Version marker for normalized board job search."
     },
     "maxItems": {
       "title": "Maximum jobs",
@@ -32,7 +32,7 @@
     "postedWithin": {
       "title": "Posted within",
       "type": "string",
-      "description": "Filter by the stored posting date, or first inventory admission date when no source date was available. Refreshes do not reset it. Use any or a positive h/d/w/m duration of at most 36500 days.",
+      "description": "Filter by the source posting date, or first observation date when no source date is available. Later observations do not reset it. Use any or a positive h/d/w/m duration of at most 36500 days.",
       "editor": "textfield",
       "pattern": "^(?:any|(?:[1-9][0-9]{0,4}|[1-7][0-9]{5}|8[0-6][0-9]{4}|87[0-5][0-9]{3}|876000)h|(?:[1-9][0-9]{0,3}|[12][0-9]{4}|3[0-5][0-9]{3}|36[0-4][0-9]{2}|36500)d|(?:[1-9][0-9]{0,2}|[1-4][0-9]{3}|5[01][0-9]{2}|520[0-9]|521[0-4])w|(?:[1-9][0-9]{0,2}|1[01][0-9]{2}|120[0-9]|121[0-6])m)(?![\\s\\S])",
       "default": "any",

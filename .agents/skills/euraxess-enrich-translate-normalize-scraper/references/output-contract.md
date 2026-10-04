@@ -49,6 +49,7 @@ explicit education row belongs in `data.requirements.education`.
 {
   "schemaId": "https://raw.githubusercontent.com/Exdenta/nomad-agent-job-scrapers/main/integrations/shared/euraxess-v1.schema.json",
   "data": {
+    "postedAtProvenance": "listing_card",
     "academicLevelRaw": ["PhD Positions"],
     "researchInfrastructureStaffPosition": null,
     "unmappedJobInformation": null,
@@ -57,6 +58,9 @@ explicit education row belongs in `data.requirements.education`.
 }
 ```
 
+- `postedAtProvenance` is `listing_card` for a source date or
+  `inventory_admission` for a provisional first-observation UTC date. Later observations
+  preserve that original timestamp.
 - `academicLevelRaw` preserves EURAXESS `Positions` / `Academic Level`
   taxonomy. It is not an applicant education requirement.
 - `researchInfrastructureStaffPosition` preserves the source-specific label.

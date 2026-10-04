@@ -1,6 +1,6 @@
 # jobatlas
 
-[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/jobatlas) · [Actor catalogue](catalogue/actors-v1.json) · [Simple and normalized tiers](docs/job-actor-tiers.md) · [Release evidence](docs/job-atlas.md)
+[Website](https://jobatlas.dev/) · [Repository](https://github.com/Exdenta/jobatlas) · [Job Atlas on Apify](https://apify.com/jobatlas) · [Public Actor directory](docs/public-actors.md) · [Job integration catalogue](catalogue/actors-v1.json) · [Simple and normalized tiers](docs/job-actor-tiers.md) · [Release evidence](docs/job-atlas.md)
 
 Open schemas, integration recipes, and agent skills for Job Atlas job-search
 Actors. The Actor implementations may be hosted services; this repository
@@ -42,7 +42,7 @@ model key.
 
 ## Promoted Actor catalog
 
-The [complete public deployment catalogue, with aggregate private exclusions](catalogue/actors-v1.json)
+The [job integration catalogue](catalogue/actors-v1.json)
 accounts for the current Job Atlas copies, their live legacy counterparts,
 explicit out-of-scope candidates, contracts, and client support. See the
 [client migration guide](docs/client-migration.md) before changing an existing
@@ -252,3 +252,8 @@ repository.
 This normalized profile is separate from the legacy flat-export YC Actor.
 It starts at $0.90 per 1,000 delivered jobs in Actor result events, checked
 2026-09-05. Destination templates for other sources are not YC-validated.
+
+
+## Quick setup for any public Actor
+
+Install the [generic Agent Skill](.agents/skills/public-apify-actors/SKILL.md) to configure an Actor from its current schema and inspect its output. The [setup guide](docs/public-actors-setup.md) explains bounded runs and result inspection. Use the [job input examples](docs/job-actor-input-examples.md) and [simple job recipes](docs/job-reader-recipes.md) for schema-checked inputs.

@@ -59,7 +59,8 @@ class GreenhousePreparationTests(unittest.TestCase):
 
     def test_guide_keeps_preparation_and_release_boundaries(self):
         guide=(ROOT/'docs/normalized-greenhouse.md').read_text()
-        self.assertIn('prepared locally',guide);self.assertIn('deployment and board activation are pending',guide)
+        self.assertIn('Nomad Agent endpoint is public',guide);self.assertIn('No public Job Atlas endpoint was verified',guide)
+        self.assertIn('documentation check did not execute the Actor',guide)
         self.assertIn('`latest`',guide);self.assertIn('immutable build ID',guide)
         self.assertNotIn('api.oinkjobsearch.com',guide)
         self.assertNotIn('APIFY_SOURCE_TOKEN',guide)

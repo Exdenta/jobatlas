@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "nomad-agent-simple-inventory-search-v2",
+  "queries": [
+    "data scientist",
+    "machine learning"
+  ],
+  "locations": [],
+  "locationTypes": [
+    "remote"
+  ],
+  "employmentTypes": [],
+  "postedWithin": "7d",
+  "maxItems": 50,
+  "maxItemsPerSource": 10,
+  "dedupe": {
+    "enabled": true,
+    "key": "ml-global-remote-shortlist-v1"
+  }
+}

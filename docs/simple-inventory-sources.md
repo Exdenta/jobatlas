@@ -1,40 +1,66 @@
-# UN Careers, Copenhagen and Ikerbasque jobs: simple inventory output
+# Simple job Actors: source facts and complete descriptions
 
-These Actors return stored jobs in `nomad-agent-job-row-v2`. Each posting includes its source identity, title, URL, complete original description, HTML and a `locations` array. Unknown optional source facts remain `null`; an unavailable location is `[]`.
+Simple job Actors return source-linked postings with original descriptions, HTML and locations. Current readers use the 15-field `nomad-agent-job-row-v3`; older row-v2 output includes `recordType`. Check the exact endpoint's current schema. Unknown optional values are `null`; `locations: []` means no usable location was parsed.
 
-| Source | Actor |
-| --- | --- |
-| UN Careers | [UN Careers jobs](https://apify.com/nomad-agent/un-careers-scraper) |
-| University of Copenhagen mathematics PhDs | [Copenhagen PhD jobs](https://apify.com/nomad-agent/math-ku-phd-scraper) |
-| Ikerbasque | [Ikerbasque jobs](https://apify.com/nomad-agent/ikerbasque-scraper) |
+| Actor |
+| --- |
+| [AcademicPositions academic jobs](https://apify.com/nomad-agent/academicpositions-scraper) |
+| [American jobs bundle](https://apify.com/nomad-agent/american-jobs-bundle) |
+| [Ashby jobs](https://apify.com/nomad-agent/ashby-jobs-scraper) |
+| [Built In jobs](https://apify.com/nomad-agent/builtin-scraper) |
+| [Company careers bundle](https://apify.com/nomad-agent/company-careers-bundle) |
+| [EURAXESS legacy jobs](https://apify.com/nomad-agent/euraxess-scraper) |
+| [EURES jobs](https://apify.com/nomad-agent/eures-scraper) |
+| [Foorilla Data, AI, and Machine Learning jobs](https://apify.com/nomad-agent/foorilla-ai-jobs-scraper) |
+| [Greenhouse jobs](https://apify.com/nomad-agent/greenhouse-jobs-scraper) |
+| [Hacker News jobs and search](https://apify.com/nomad-agent/hackernews-scraper) |
+| [Ikerbasque jobs](https://apify.com/nomad-agent/ikerbasque-scraper) |
+| [Impactpool jobs](https://apify.com/nomad-agent/impactpool-scraper) |
+| [InfoJobs Spain jobs](https://apify.com/nomad-agent/infojobs-scraper) |
+| [JustJoin.it jobs](https://apify.com/nomad-agent/justjoinit-scraper) |
+| [Lever jobs](https://apify.com/nomad-agent/lever-jobs-scraper) |
+| [LinkedIn full-information jobs](https://apify.com/nomad-agent/linkedin-full-info-scraper) |
+| [LinkedIn short-output jobs](https://apify.com/nomad-agent/linkedin-scraper) |
+| [NoFluffJobs](https://apify.com/nomad-agent/nofluffjobs-scraper) |
+| [Remote job boards: RemoteOK, Remotive, We Work Remotely and Himalayas](https://apify.com/nomad-agent/remote-boards-scraper) |
+| [UN Careers jobs](https://apify.com/nomad-agent/un-careers-scraper) |
+| [Universitat de Barcelona doctoral jobs](https://apify.com/nomad-agent/ub-doctoral-scraper) |
+| [University of Copenhagen mathematics PhD jobs](https://apify.com/nomad-agent/math-ku-phd-scraper) |
+| [Web developer jobs bundle](https://apify.com/nomad-agent/web-dev-bundle) |
+| [Welcome to the Jungle jobs](https://apify.com/nomad-agent/wttj-scraper) |
+| [Wellfound startup jobs](https://apify.com/nomad-agent/wellfound-scraper) |
+| [Workable jobs](https://apify.com/nomad-agent/workable-jobs-scraper) |
+| [Y Combinator Work at a Startup legacy jobs](https://apify.com/nomad-agent/ycombinator-was-scraper) |
+| [aijobs.net jobs](https://apify.com/nomad-agent/ai-jobs-net-scraper) |
+| [jobs.ac.uk jobs](https://apify.com/nomad-agent/jobs-ac-uk-scraper) |
 
-Select `latest` and record the immutable build ID returned by the run. Simple Actors are not mirrored to Job Atlas.
+Select `latest` and record the immutable build returned by the run. Simple Actors are available in the Nomad Agent namespace; Job Atlas publishes separate normalized products.
 
 ## First run
 
+Most current simple Actors accept the input below. Confirm it against the exact Actor's Input tab; Tecnoempleo and Devex have their own inputs. See the [schema-checked examples](job-actor-input-examples.md).
+
 ```json
 {
-  "schemaVersion": "nomad-agent-simple-inventory-search-v1",
+  "schemaVersion": "nomad-agent-simple-inventory-search-v2",
   "maxItems": 5,
   "postedWithin": "any",
   "dedupe": {"enabled": true, "key": ""}
 }
 ```
 
-`postedWithin` is the only job filter. It accepts `any` or a positive duration such as `7d`; supported suffixes are hours (`h`), days (`d`), weeks (`w`) and 30-day months (`m`), with a maximum of 36500 days. When a source does not publish a reliable original posting date, the stored date is its first inventory admission; later refreshes do not make the posting new. `maxItems` is bounded to 200, and zero means 200.
+The [filter guide](simple-filters-v2.md) documents queries, locations, work arrangement and employment type. `postedWithin` accepts `any` or a positive duration such as `7d`. Where a reliable source date is unavailable, the date is the first observation; later observations do not make the posting new. Filtering and source availability can produce fewer results or an empty dataset.
 
-Full descriptions are always included. There is no AI enrichment, translation, custom extension or source-site request during a public run. Unproven descriptions are withheld. If inventory is unavailable or stale, the run fails without a website fallback. Coverage may be smaller than the source website.
+Repeat suppression is enabled by default where supported. Disable it for a stateless inspection. Inspect `RUN-SUMMARY` separately from job rows for partial status, unavailable sources and notes about older inputs. Check the current Pricing tab and set a cost cap before running.
 
-Repeat suppression is enabled by default for the same user and search. Disable it for a stateless run. Existing startup and result charges remain unchanged; suppressing a repeat result does not charge for that result. Inspect `RUN-SUMMARY` separately from the jobs dataset.
+## Compatibility
 
-## Migration and verification
+Row v3 uses `employmentTypes` and `hiringContacts`, and omits `recordType`. Earlier fields such as `snippet`, singular `location`, split salary fields and `hiringContact*` are not part of the current closed row. Use `locations`, `workType`, `salary`, `employmentTypes` and `hiringContacts`. Preserve `(source, id)` as the posting key; Foorilla-backed postings use `source: "foorilla"`, and remote-board IDs include their board identity.
 
-Use the versioned inventory input above in place of the old source-search controls. Simple v2 removes `custom`, `warnings` and `docs` from posting rows, retains complete text and HTML, and exposes source salary when available. V1 scoring uses description plus title, employer, location, salary and stable source/ID/URL context.
+`linkedin-full-info-scraper` is deprecated in favour of `linkedin-scraper`; check the listing notice before changing an existing integration. Company Careers supports its documented coverage; older `companies`, `presetLists` and `atsProviders` controls are ignored with a summary note and do not add an employer to the search.
 
-On 1 October 2026, `company-careers-bundle` and `american-jobs-bundle` were updated. Their rows are now `nomad-agent-job-row-v3`, which no longer carries `recordType`; every dataset row is a posting, and diagnostics stay in `RUN-SUMMARY`. `company-careers-bundle` serves only the company career sites collected continuously and Workable's public job index: a company, board or preset you name is not fetched, and `companies`, `presetLists` and `atsProviders` are ignored with a note in `RUN-SUMMARY`. `american-jobs-bundle` now fetches LinkedIn postings live from LinkedIn's public job pages on every run, with no login, and sends your filters to LinkedIn's own search; the other boards still come from stored postings. A posting is returned only with its full description. LinkedIn may limit or block a run: then its rows can be fewer than requested or missing, `RUN-SUMMARY.unavailableSources` names LinkedIn, and the run is marked `partial`. Both Actors passed bounded owner tests through their promoted default selectors and returned complete proven postings in the 15-field row, and a repeat never delivered a posting twice. These tests do not establish normal buyer traffic or downstream scoring and delivery.
+ML/AI searches AI and machine-learning phrases by default. Your `queries` replace the defaults; `[]` removes the query filter. Results from its supported boards are ordered by date and capped by `maxItemsPerSource` and `maxItems`. Source limits can make the summary partial. This simple bundle does not rank suitability with AI.
 
-On 2 October 2026, `all-jobs-scraper`, `europe-jobs-bundle`, `researcher-bundle` and `web-dev-bundle` were updated in the same way. Their rows are now `nomad-agent-job-row-v3` without `recordType`, and each fetches LinkedIn postings live from LinkedIn's public job pages on every run, with no login, sending your filters to LinkedIn's own search; the other boards still come from stored postings. A posting is returned only with its full description. LinkedIn may limit or block a run: then its rows can be fewer than requested or missing, `RUN-SUMMARY.unavailableSources` names LinkedIn, and the run is marked `partial`. Each Actor passed bounded owner tests through its promoted default selector and through `latest`, including a LinkedIn search that returned complete postings in the 15-field row, and a repeat never delivered a posting twice. These tests do not establish normal buyer traffic or downstream scoring and delivery.
+The [ML hiring workflow](ml-ai-dev-bundle-workflow.md) includes bounded inputs, a dated observed row and an API quickstart. Remote eligibility requires reading the original description; the example has U.S. restrictions. Offline example validation does not establish a destination integration or normal buyer traffic.
 
-On 2 October 2026, `ml-ai-dev-bundle` was updated. This breaks its earlier output: rows are now `nomad-agent-job-row-v3`, a 15-field row without `recordType`, and the earlier row's `custom`, `warnings`, `docs`, `snippet`, `seniority`, `isRemote`, `remoteType`, `location`, the split salary fields (the source's salary text stays in `salary`), `employmentType` and the three `hiringContact*` fields are gone: use `locations`, `workType`, `employmentTypes` and `hiringContacts`. Postings from aijobs.net now carry `source: "foorilla"`, and remote-board ids start with the board name. It reads Foorilla, Hacker News, Y Combinator, Built In, RemoteOK/Remotive/We Work Remotely, Welcome to the Jungle and JustJoin.it from stored postings and fetches LinkedIn postings live from LinkedIn's public job pages on every run, with no login, sending your filters to LinkedIn's own search. A run without `queries` searches 14 AI and machine-learning phrases across the stored boards, and LinkedIn for a curated six of them (computer vision, artificial intelligence, ml engineer, deep learning, machine learning, generative ai). Your own `queries` replace the defaults, and `[]` means no query filter; the older `keyword` field replaces the defaults, and `sources`, `cacheTtlSeconds`, `concurrency`, `runTimeoutSecs` and `apifyToken` are ignored with a note in `RUN-SUMMARY`. Rows from all boards are merged newest first and `maxItems` keeps the newest, so with a small `maxItems` the stored postings can fill the limit before any LinkedIn posting appears; use `maxItemsPerSource` and a larger `maxItems` to see LinkedIn rows. A posting is returned only with its full description. LinkedIn may limit or block a run: then its rows can be fewer than requested or missing, `RUN-SUMMARY.unavailableSources` names LinkedIn, and the run is marked `partial`; a run is also marked `partial` when a board has more matching postings than its per-source limit. Bounded owner tests passed through `latest` and the default selector, including a LinkedIn search that returned complete postings in the 15-field row, and a repeat never delivered a posting twice. These tests do not establish normal buyer traffic or downstream scoring and delivery. Pricing is unchanged.
-
-On 22 September 2026, all three Actors passed bounded owner tests through their promoted default selectors. Each returned a complete proven posting; each repeat suppressed the same posting without a result charge. These tests do not establish normal buyer traffic or downstream scoring and delivery.
+See the [public directory](public-actors.md) for all sources, bundles and separate normalized products.

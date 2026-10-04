@@ -1,6 +1,6 @@
 # Search filters for simple job Actors
 
-The Actors below accept `nomad-agent-simple-inventory-search-v2` and return `nomad-agent-job-row-v3`. They search stored postings and include complete original descriptions. They do not use AI or require an AI API key.
+The Actors below accept `nomad-agent-simple-inventory-search-v2` and return `nomad-agent-job-row-v3`. They return source-linked postings with complete original descriptions. They do not use AI or require an AI API key.
 
 ## Search inputs
 
@@ -19,7 +19,7 @@ The Actors below accept `nomad-agent-simple-inventory-search-v2` and return `nom
 
 Each filter is optional. Empty lists leave that filter off. Queries match whole words in the title and description: all words in one query must appear, and any query can match. Locations match source city, region, country names or ISO country codes. `EU` and `Europe` expand to their countries; Europe excludes Russia, Belarus and Turkey.
 
-`locationTypes` accepts `remote`, `hybrid` and `onsite`. `employmentTypes` accepts `Full-time`, `Part-time`, `Contract` and `Internship`. A posting with unknown arrangement or employment type is excluded when the corresponding filter is active. Some boards do not supply these facts, so filtered coverage can be smaller than the unfiltered inventory.
+`locationTypes` accepts `remote`, `hybrid` and `onsite`. `employmentTypes` accepts `Full-time`, `Part-time`, `Contract` and `Internship`. A posting with unknown arrangement or employment type is excluded when the corresponding filter is active. Some boards do not supply these facts, so filtered coverage can be smaller than the unfiltered search.
 
 Bundles accept `maxItemsPerSource`, default 50. It caps each source before `maxItems` selects the newest postings across sources. `maxItems` is limited to 200; zero means 200. Larger legacy limits are clamped with a note.
 
@@ -67,6 +67,6 @@ Select `latest` or the default selector and record the immutable build ID the ru
 - [ikerbasque-scraper](https://apify.com/nomad-agent/ikerbasque-scraper)
 - [impactpool-scraper](https://apify.com/nomad-agent/impactpool-scraper)
 
-`web-search-scraper` now searches 38 stored boards with the same filters and rows. Its earlier AI provider and key fields are accepted and ignored. The separate `ai-job-search-agent` has not changed.
+`web-search-scraper` searches its supported public sources with the same filters and rows. Its earlier AI provider and key fields are accepted and ignored. The separate `ai-job-search-agent` has not changed.
 
-Web search includes MLOps Community, EURACTIV and DynamiteJobs alongside the other stored boards. Coverage depends on the facts each source publishes; missing employment and arrangement facts remain unknown.
+Web search includes MLOps Community, EURACTIV and DynamiteJobs alongside the other supported boards. Coverage depends on the facts each source publishes; missing employment and arrangement facts remain unknown.

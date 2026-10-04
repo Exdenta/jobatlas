@@ -29,7 +29,7 @@ separate; this guide covers only the normalized service.
 ```
 
 The base event price is $0.0009 per result ($0.90 per 1,000), checked
-2026-09-05. Five base results cost $0.0045 in Actor events. Optional Silver
+2026-10-04. Five base results cost $0.0045 in Actor events. Optional Silver
 adds $0.006 per qualifying job, Gold $0.010, and translation $0.006.
 100 base results plus Silver on all 100 cost $0.69 in Actor events.
 Confirm current Store pricing and your plan before a run. `firstRunMode: true`
@@ -37,12 +37,10 @@ selects paid Silver enrichment and translation; the recipe above leaves it off.
 
 ## Search and source limits
 
-The Actor filters a regularly refreshed inventory of complete public postings;
-it does not scrape YC pages on demand. Unavailable or stale inventory fails
-closed. Availability evidence is a dated observation, not proof that a job is
+The Actor returns complete public startup postings. Coverage can be limited, and unavailable or stale source data is reported as a failure. Availability evidence is a dated observation, not proof that a job is
 still accepting applicants. This service is unaffiliated with Y Combinator.
 
-- `keyword` searches cached content; `location` matches the published label.
+- `keyword` matches job content; `location` matches the published label.
 - `postedWithin` defaults to `any`; `1h`, `24h`, `7d`, and `30d` use the first
   observation hour, not the employer's posting date. `orderBy` accepts
   `newest` or `oldest` using that timestamp.
@@ -75,7 +73,7 @@ Use multiple terms and source taxonomy filters like this:
 }
 ```
 
-Queries are OR terms over one inventory; order does not change behavior. Do not
+Queries are OR terms over the same search; order does not change behavior. Do not
 combine a non-empty `keyword` with non-empty `ycSearch.queries`. Batches are YC
 cohorts. Role types match source category substrings; job types use source labels
 and supported full-time, part-time, contract, and internship aliases.

@@ -3,7 +3,7 @@
   "packId": "ycombinator",
   "product": {
     "name": "Y Combinator Jobs Scraper",
-    "outcome": "Inspect up to five founding-engineer roles from the refreshed YC jobs inventory.",
+    "outcome": "Inspect up to five founding-engineer roles from the YC startup postings.",
     "websiteUrl": "https://jobatlas.dev/actors/ycombinator"
   },
   "actor": {
@@ -37,7 +37,7 @@
           "unitPriceUsd": 0.006
         }
       ],
-      "proofBoundary": "Public metadata and build state only; this read did not execute the Actor or prove inventory freshness, output, billing, or delivery."
+      "proofBoundary": "Public metadata and build state only; this read did not execute the Actor or prove source freshness, output, billing, or delivery."
     }
   },
   "starter": {
@@ -71,7 +71,7 @@
     "notProofOf": [
       "a live startup or vacancy",
       "an Actor run",
-      "current YC inventory",
+      "available YC postings",
       "a destination write"
     ]
   },
@@ -102,11 +102,11 @@
   "guidance": {
     "expectedOutput": "Zero to five canonical startup-job rows with stable source identity, complete descriptions and YC-specific company facts when published.",
     "unknownFields": "null means unknown or unavailable; [] means the source established an empty collection. Founders are company context, not hiring contacts.",
-    "empty": "Accept zero rows only with a valid same-run summary. It means no rows were delivered for this bounded query and observed inventory state, not that no YC job matches in general.",
+    "empty": "Accept zero rows only with a valid same-run summary. It means no rows were delivered for this bounded query and observed source state, not that no YC job matches in general.",
     "partial": "A partial result can be useful. resultsLimited=true with no retry recommendation can simply reflect the five-row cap.",
-    "failure": "Reject non-SUCCEEDED terminal runs, stale or unavailable inventory failures, missing immutable build or storage identities, invalid summaries, source/custom-schema drift, or count mismatches.",
+    "failure": "Reject non-SUCCEEDED terminal runs, stale or unavailable source-data failures, missing immutable build or storage identities, invalid summaries, source/custom-schema drift, or count mismatches.",
     "limitations": [
-      "The Actor filters a regularly refreshed inventory and does not scrape YC pages on demand.",
+      "Results cover available complete public postings; source coverage is bounded.",
       "Availability and first-seen timestamps are not employer guarantees or source posting dates.",
       "This service is independently developed and is not affiliated with Y Combinator."
     ],

@@ -1,14 +1,12 @@
 # Poslovi Infostud Jobs | Normalized
 
-Search stored Poslovi Infostud jobs with complete original descriptions, optional owner-funded AI enrichment, optional English display text, and advanced filters. This independent Actor is not affiliated with Poslovi Infostud.
+Search Poslovi Infostud jobs with complete original descriptions, optional owner-funded AI enrichment, optional English display text, and advanced filters. This independent Actor is not affiliated with Poslovi Infostud.
 
 ## How it works
 
-Background collection reads public source data and stores reliably parsed facts and complete descriptions. This public Actor queries that shared inventory. It never searches or requests the Poslovi Infostud website during your run.
+Results include complete original descriptions; snippets and incomplete records are withheld. Source coverage can be smaller than the website listing. An unavailable service is reported as an error, while a valid search with no matches can return an empty dataset.
 
-A job is available only when the collector has verified its full description. Snippets, truncated bodies, and unverified historical records are withheld. If the inventory is unavailable or stale, the run fails instead of falling back to website scraping. Coverage can therefore be smaller than the current website listing.
-
-When requested, AI enrichment fills supported unknown fields and records provenance in `llm`. It cannot overwrite known source facts. Jobs whose requested enrichment fails are withheld. Optional translation converts selected human-readable fields into English, while `raw.description` and `raw.descriptionHtml` preserve the original source content. Without enrichment, `llm.status` is `not_requested`. Visible description markup is preserved in `raw.descriptionHtml`; hidden tracking text and reference markers are removed by the collector. Image-only adverts without a complete readable description are withheld.
+When requested, AI enrichment fills supported unknown fields and records provenance in `llm`. It cannot overwrite known source facts. Jobs whose requested enrichment fails are withheld. Optional translation converts selected human-readable fields into English, while `raw.description` and `raw.descriptionHtml` preserve the original source content. Without enrichment, `llm.status` is `not_requested`. Visible description markup is preserved in `raw.descriptionHtml`; hidden tracking text and reference markers are removed from the returned content. Image-only adverts without a complete readable description are withheld.
 
 ## First run
 
@@ -24,9 +22,9 @@ When requested, AI enrichment fills supported unknown fields and records provena
 }
 ```
 
-`maxItems` is an upper bound of 200; zero also means 200. Filtering, repeat suppression, and failed enrichment can produce fewer results. A keyword is a case-insensitive phrase matched against the stored title, employer, and complete original description. It is never sent to the source website.
+`maxItems` is an upper bound of 200; zero also means 200. Filtering, repeat suppression, and failed enrichment can produce fewer results. A keyword is a case-insensitive phrase matched against the title, employer, and complete original description.
 
-`postedWithin` accepts `any` or a positive duration such as `7d`. When Poslovi Infostud has no reliable original posting date, the stored date is the job's first admission to the inventory. Later refreshes do not make the posting appear new.
+`postedWithin` accepts `any` or a positive duration such as `7d`. When Poslovi Infostud has no reliable original posting date, the date is the job's first observation. Later refreshes do not make the posting appear new.
 
 ## Advanced filters
 
@@ -49,9 +47,9 @@ Place that object under the input's `filters` field. With AI disabled, filters e
 
 Every dataset item follows `nomad-agent-job-v1`, with six roots: `schemaVersion`, `identity`, `data`, `llm`, `raw`, and `custom`. Missing facts remain `null`; a known empty collection is `[]`. Original identity and complete description evidence remain stable across enrichment and translation. The rich format is intended for v3 scoring and advanced filtering.
 
-The default key-value store contains `RUN-SUMMARY`, including inventory freshness, candidates, withheld enrichment failures, delivery counts, and terminal status. `OWNER-USAGE` separates actual provider costs from unpriced token counts when enrichment runs. Diagnostic receipts are not inserted into the jobs dataset.
+The default key-value store contains `RUN-SUMMARY`, including source freshness, candidates, withheld enrichment failures, delivery counts, and terminal status. `OWNER-USAGE` separates actual provider costs from unpriced token counts when enrichment runs. Diagnostic receipts are not inserted into the jobs dataset.
 
-Repeat suppression is enabled by default. It uses a persistent ledger scoped to the Apify user, Actor, and search. Set `dedupe.enabled` to `false` for a stateless run. A nonempty `dedupe.key` deliberately shares delivery history within that user's scope. Ambiguous delivery or ledger failures fail the run rather than claiming successful delivery.
+Repeat suppression is enabled by default. It uses repeat history scoped to the Apify user, Actor, and search. Set `dedupe.enabled` to `false` for a stateless run. A nonempty `dedupe.key` deliberately shares delivery history within that user's scope. Ambiguous delivery or repeat-history failures fail the run rather than claiming successful delivery.
 
 ## Owner-funded processing
 
@@ -59,7 +57,7 @@ AI enrichment and translation are independent opt-ins, both off by default. Enab
 
 The existing Apify pricing configuration is preserved by this migration. This Actor is unmonetized; platform compute or storage charges can still apply. No new per-result, enrichment, or translation price is introduced.
 
-Use `nomad-agent-inventory-search-v1` for this database-only release. The previous source-fetch input required `infostud.startUrls`; those source URLs are not accepted by the inventory search and are never silently discarded. Migrate the request to `keyword` or supported normalized `filters`. Original descriptions are always included.
+Use `nomad-agent-inventory-search-v1` for the current search input. The previous source-fetch input required `infostud.startUrls`; those source URLs are not accepted by this search input and are never silently discarded. Migrate the request to `keyword` or supported normalized `filters`. Original descriptions are always included.
 
 The top-level `accuracy` field remains a compatibility override for `aiEnrichment.accuracy`; it never enables enrichment by itself.
 

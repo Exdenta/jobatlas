@@ -1,110 +1,39 @@
 # Job Actors: simple and normalized
 
-The job-producing catalogue has two target tiers. Migration is in progress;
-a tier label describes the intended contract, not a claim that every hosted
-Actor already implements it. Existing paid contracts stay unchanged.
+Choose by the data you need. Simple Actors return source facts and descriptions in flat rows. Normalized Actors return the nested `nomad-agent-job-v1` format, with source-specific facts and optional processing where supported. AI job search and fit scoring are separate products.
 
-Both tiers are moving to stored jobs collected privately from public sources.
-Private collection keeps reliable source facts and complete descriptions;
-it performs no AI enrichment or translation. Public Actors will query that
-inventory and will not search or parse source websites during a buyer's run.
+The current simple row is `nomad-agent-job-row-v3`: 15 fields, including `employmentTypes` and `hiringContacts`, without `recordType`. Older v2 rows include `recordType`; some source-specific Actors keep separate inputs and outputs. Read the exact Actor's published schema instead of assuming every endpoint is interchangeable.
 
-## Simple Actors — v1 scoring
+Simple rows perform no AI enrichment or translation. Query, location, work arrangement, employment type, posting-age and repeat controls depend on the Actor. See the [simple filter guide](simple-filters-v2.md) and [bounded input examples](job-actor-input-examples.md). `tecnoempleo-scraper` and both Devex products have their own input controls.
 
-The target is the closed `nomad-agent-job-row-v2` contract: source, ID, URL,
-title, company, locations, posting date, deadline, full description, HTML,
-work arrangement, and source salary text, plus schema and record type.
-There is no custom extension, AI enrichment, or translation. Posting age is
-the only job filter; result limits are execution controls. V1 uses title,
-company, location, source, URL, ID, and salary when available alongside the
-full description. HTML and locations are always present; text-only source
-descriptions receive a lossless escaped HTML representation.
+All Jobs, Europe, American, Researcher, Web Developer, Company Careers and ML/AI bundles currently return simple rows. The separate `ai-job-search-agent` ranks jobs against a resume, and `ai-job-fit-scorer` returns candidate evaluations; neither is a simple source feed.
 
-Release status is shown per Actor below. Existing v1 and paid output
-contracts keep their current meaning until their own migration.
+## Public normalized endpoints
 
-| Actor | Migration status |
-| --- | --- |
-| [academicpositions-scraper](https://apify.com/nomad-agent/academicpositions-scraper) | Paid contract retained; migration skipped |
-| [ai-job-search-agent](https://apify.com/nomad-agent/ai-job-search-agent) | Paid contract retained; migration skipped |
-| [ai-jobs-net-scraper](https://apify.com/nomad-agent/ai-jobs-net-scraper) | Inventory and simple-contract migration pending |
-| [all-jobs-scraper](https://apify.com/nomad-agent/all-jobs-scraper) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [american-jobs-bundle](https://apify.com/nomad-agent/american-jobs-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [ashby-jobs-scraper](https://apify.com/nomad-agent/ashby-jobs-scraper) | Inventory and simple-contract migration pending |
-| [builtin-scraper](https://apify.com/nomad-agent/builtin-scraper) | Inventory and simple-contract migration pending |
-| [company-careers-bundle](https://apify.com/nomad-agent/company-careers-bundle) | Released inventory/simple v3 (rows without `recordType`); serves only the collected company career sites; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [devex-jobs-scraper](https://apify.com/nomad-agent/devex-jobs-scraper) | Inventory reader deployed; complete source text and HTML; live reader verification pending |
-| [devex-scraper](https://apify.com/nomad-agent/devex-scraper) | Inventory reader deployed; complete source text and HTML; live reader verification pending |
-| [euraxess-scraper](https://apify.com/nomad-agent/euraxess-scraper) | Paid contract retained; migration skipped |
-| [eures-scraper](https://apify.com/nomad-agent/eures-scraper) | Paid contract retained; migration skipped |
-| [europe-jobs-bundle](https://apify.com/nomad-agent/europe-jobs-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [foorilla-ai-jobs-scraper](https://apify.com/nomad-agent/foorilla-ai-jobs-scraper) | Inventory and simple-contract migration pending |
-| [greenhouse-jobs-scraper](https://apify.com/nomad-agent/greenhouse-jobs-scraper) | Inventory and simple-contract migration pending |
-| [hackernews-scraper](https://apify.com/nomad-agent/hackernews-scraper) | Paid contract retained; migration skipped |
-| [ikerbasque-scraper](https://apify.com/nomad-agent/ikerbasque-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [impactpool-scraper](https://apify.com/nomad-agent/impactpool-scraper) | Database-only simple v2 and complete descriptions verified |
-| [infojobs-scraper](https://apify.com/nomad-agent/infojobs-scraper) | Inventory and simple-contract migration pending |
-| [jobs-ac-uk-scraper](https://apify.com/nomad-agent/jobs-ac-uk-scraper) | Paid contract retained; migration skipped |
-| [justjoinit-scraper](https://apify.com/nomad-agent/justjoinit-scraper) | Paid contract retained; migration skipped |
-| [lever-jobs-scraper](https://apify.com/nomad-agent/lever-jobs-scraper) | Inventory and simple-contract migration pending |
-| [linkedin-full-info-scraper](https://apify.com/nomad-agent/linkedin-full-info-scraper) | Inventory and simple-contract migration pending |
-| [linkedin-scraper](https://apify.com/nomad-agent/linkedin-scraper) | Paid contract retained; migration skipped |
-| [math-ku-phd-scraper](https://apify.com/nomad-agent/math-ku-phd-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [ml-ai-dev-bundle](https://apify.com/nomad-agent/ml-ai-dev-bundle) | Released simple v3 (15 fields, no `recordType`); build 0.1.42 verified on 2 October 2026 through `latest` and the default selector. Bounded default, repeat, legacy-input, filter and LinkedIn runs passed. Normal buyer traffic and the next platform daily QA are unverified |
-| [nofluffjobs-scraper](https://apify.com/nomad-agent/nofluffjobs-scraper) | Inventory and simple-contract migration pending |
-| [reliefweb-scraper](https://apify.com/nomad-agent/reliefweb-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
-| [remote-boards-scraper](https://apify.com/nomad-agent/remote-boards-scraper) | Paid contract retained; migration skipped |
-| [researcher-bundle](https://apify.com/nomad-agent/researcher-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [tecnoempleo-scraper](https://apify.com/nomad-agent/tecnoempleo-scraper) | Paid contract retained; migration skipped |
-| [ub-doctoral-scraper](https://apify.com/nomad-agent/ub-doctoral-scraper) | Inventory and simple-contract migration pending |
-| [un-careers-scraper](https://apify.com/nomad-agent/un-careers-scraper) | Released inventory/simple v2; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [unjobs-scraper](https://apify.com/nomad-agent/unjobs-scraper) | Simple v2 inventory package prepared locally; hosted migration pending |
-| [web-dev-bundle](https://apify.com/nomad-agent/web-dev-bundle) | Released inventory/simple v3 (rows without `recordType`); LinkedIn postings are fetched live on every run; latest/default read back; owner default and repeat tests passed. Normal buyer traffic unverified |
-| [web-search-scraper](https://apify.com/nomad-agent/web-search-scraper) | Retired in local code; hosted retirement not verified |
-| [wellfound-scraper](https://apify.com/nomad-agent/wellfound-scraper) | Inventory and simple-contract migration pending |
-| [workable-jobs-scraper](https://apify.com/nomad-agent/workable-jobs-scraper) | Inventory and simple-contract migration pending |
-| [wttj-scraper](https://apify.com/nomad-agent/wttj-scraper) | Inventory and simple-contract migration pending |
-| [ycombinator-was-scraper](https://apify.com/nomad-agent/ycombinator-was-scraper) | Paid contract retained; migration skipped |
+Public endpoint identities were checked on 4 October 2026. Links establish public availability; this documentation check did not execute any endpoint or test optional AI, translation or destination delivery. Each copy has its own input defaults, pricing, builds and execution evidence.
 
-## Normalized Actors — v3 scoring and advanced filtering
-
-The target is the rich six-root `nomad-agent-job-v1` contract, full original
-description and HTML, optional owner-funded AI enrichment, optional English
-display translation, and advanced filters. New processing options default off;
-existing Actor defaults are preserved. Raw source text remains unchanged.
-No customer model key is required. Every normalized source and bundle is
-intended to have a Job Atlas mirror; links below appear only for existing
-metadata-verified mirrors. A mirror link does not prove a specific live run.
-
-The status below separates verified inventory releases from pending work.
-A six-root output alone does not establish working enrichment, translation,
-or complete descriptions. Verification uses bounded functional tests and
-does not imply an observed customer run.
-
-| Primary Actor | Job Atlas | Migration status |
+| Source | Nomad Agent | Job Atlas |
 | --- | --- | --- |
-| [all-jobs-scraper](https://apify.com/nomad-agent/all-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [euraxess-enrich-translate-normalize-scraper](https://apify.com/nomad-agent/euraxess-enrich-translate-normalize-scraper) | [Job Atlas](https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper) | Full-description proof migration pending |
-| [europe-jobs-bundle](https://apify.com/nomad-agent/europe-jobs-bundle) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [linkedin-enrich-translate-normalize-scraper](https://apify.com/nomad-agent/linkedin-enrich-translate-normalize-scraper) | [Job Atlas](https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper) | Inventory migration pending |
-| [normalized-ashby-jobs-scraper](https://apify.com/nomad-agent/normalized-ashby-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-dynamitejobs-jobs-scraper](https://apify.com/nomad-agent/normalized-dynamitejobs-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-euractiv-jobs-scraper](https://apify.com/nomad-agent/normalized-euractiv-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-eurobrussels-jobs-scraper](https://apify.com/nomad-agent/normalized-eurobrussels-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-eurobrussels-jobs-scraper) | Inventory and complete descriptions verified; optional processing tested |
-| [normalized-fashionjobs-jobs-scraper](https://apify.com/nomad-agent/normalized-fashionjobs-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-greenhouse-jobs-scraper](https://apify.com/nomad-agent/normalized-greenhouse-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-helloworld-jobs-scraper](https://apify.com/nomad-agent/normalized-helloworld-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-himalayas-jobs-scraper](https://apify.com/nomad-agent/normalized-himalayas-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-infostud-jobs-scraper](https://apify.com/nomad-agent/normalized-infostud-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-infostud-jobs-scraper) | Released inventory with independent optional processing, both off by default; owner tests passed in both accounts. Normal buyer traffic unverified |
-| [normalized-jobgether-jobs-scraper](https://apify.com/nomad-agent/normalized-jobgether-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-lever-jobs-scraper](https://apify.com/nomad-agent/normalized-lever-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-manfred-jobs-scraper](https://apify.com/nomad-agent/normalized-manfred-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-manfred-jobs-scraper) | Inventory and complete descriptions verified; optional processing tested |
-| [normalized-mlops-community-jobs-scraper](https://apify.com/nomad-agent/normalized-mlops-community-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-smartrecruiters-jobs-scraper](https://apify.com/nomad-agent/normalized-smartrecruiters-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [researcher-bundle](https://apify.com/nomad-agent/researcher-bundle) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [ycombinator-enrich-translate-normalize-scraper](https://apify.com/nomad-agent/ycombinator-enrich-translate-normalize-scraper) | [Job Atlas](https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper) | Full-description proof migration pending |
+| EURAXESS Jobs Scraper \| Full Details & AI Enrichment | [Actor](https://apify.com/nomad-agent/euraxess-enrich-translate-normalize-scraper) | [Actor](https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper) |
+| LinkedIn Jobs Scraper \| AI Enrichment | [Actor](https://apify.com/nomad-agent/linkedin-enrich-translate-normalize-scraper) | [Actor](https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper) |
+| Ashby Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-ashby-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-ashby-jobs-scraper) |
+| Dynamite Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-dynamitejobs-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-dynamitejobs-jobs-scraper) |
+| EURACTIV Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-euractiv-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-euractiv-jobs-scraper) |
+| EuroBrussels Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-eurobrussels-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-eurobrussels-jobs-scraper) |
+| FashionJobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-fashionjobs-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-fashionjobs-jobs-scraper) |
+| Greenhouse Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-greenhouse-jobs-scraper) | No public endpoint verified |
+| HelloWorld.rs Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-helloworld-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-helloworld-jobs-scraper) |
+| Himalayas Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-himalayas-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-himalayas-jobs-scraper) |
+| Poslovi Infostud Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-infostud-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-infostud-jobs-scraper) |
+| Jobgether Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-jobgether-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-jobgether-jobs-scraper) |
+| Lever Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-lever-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-lever-jobs-scraper) |
+| Manfred Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-manfred-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-manfred-jobs-scraper) |
+| MLOps Community Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-mlops-community-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-mlops-community-jobs-scraper) |
+| SmartRecruiters Jobs \| Normalized | [Actor](https://apify.com/nomad-agent/normalized-smartrecruiters-jobs-scraper) | [Actor](https://apify.com/jobatlas/normalized-smartrecruiters-jobs-scraper) |
+| Y Combinator Jobs Scraper \| Pipelines & Alerts | [Actor](https://apify.com/nomad-agent/ycombinator-enrich-translate-normalize-scraper) | [Actor](https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper) |
 
-The [AI job-fit scorer](https://apify.com/jobatlas/ai-job-fit-scorer) is a
-downstream matching product with its own result contract, not a third job
-Actor tier. Table exports and integration projections are also consumer
-formats rather than additional public job tiers.
+Normalized records preserve original source evidence. Unknown facts are `null`; empty arrays follow the documented field semantics. Enrichment may fill supported missing facts, and translation changes selected display fields while preserving original descriptions. Check each Actor's defaults and pricing before enabling either option.
+
+Filters and repeat suppression can reduce output or produce a valid empty result. Complete source coverage and current availability are separate from the format of a row. Inspect `RUN-SUMMARY` and the dataset, and check original application requirements before acting on a job.
+
+See the [complete public Actor directory](public-actors.md) for every simple source, bundle, normalized endpoint, scorer and non-job product.

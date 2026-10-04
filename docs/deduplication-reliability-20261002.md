@@ -2,7 +2,7 @@
 
 Release date: 2 October 2026.
 
-A retained job could be selected even when it was absent from the current inventory response, causing a run to fail while mapping its identifier. The updated runtimes select delivery candidates from the current response. Retained jobs stay available for a later response, and jobs already delivered remain suppressed.
+A recurring job search could fail while preparing results after the set of available postings changed. The update prevents that failure while preserving repeat suppression: jobs already delivered remain suppressed, and eligible jobs can be returned in a later search.
 
 The public deployments below use the repaired build through `latest` and the default selector. Existing input/output contracts, prices and visibility were preserved. Release checks used bounded API runs with at most two results. Normalized Job Atlas checks also enabled optional AI enrichment and translation. These checks establish Actor execution; customer workflows and destination integrations were not exercised.
 

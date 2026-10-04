@@ -1,23 +1,24 @@
-# Impactpool Jobs - Simple
+# Impactpool jobs: simple source facts
 
-Read jobs from the stored Impactpool inventory with complete original descriptions. Each job includes title, employer, source URL, locations, posting date, application deadline when available, original text and HTML, and source-published work arrangement and salary. Unknown optional facts are null; unavailable locations are an empty array.
+[Impactpool](https://apify.com/nomad-agent/impactpool-scraper) returns UN, NGO and international-development jobs with original descriptions, HTML, source links and locations. The current row is `nomad-agent-job-row-v3`, with 15 fields and no `recordType`. It performs no AI enrichment or translation.
 
-This Actor returns the flat `nomad-agent-job-row-v2` contract. It has no AI enrichment, translation, custom fields, or source-site requests. Jobs without collector evidence of a complete description are withheld. Diagnostics are in `RUN-SUMMARY`, outside the job dataset.
+## First run
 
-## Input
+Select `latest`, check the current Input and Pricing tabs, and record the immutable build returned by the run.
 
 ```json
-{"schemaVersion":"nomad-agent-simple-inventory-search-v1","maxItems":40,"postedWithin":"any","dedupe":{"enabled":true,"key":""}}
+{
+  "schemaVersion": "nomad-agent-simple-inventory-search-v2",
+  "maxItems": 5,
+  "postedWithin": "any",
+  "dedupe": {"enabled": true, "key": ""}
+}
 ```
 
-`postedWithin` is the only job filter: use a positive number of hours (`h`), days (`d`), weeks (`w`), or 30-day months (`m`), up to 36500 days. `any` disables it. Impactpool publishes no posting date on the supported pages, so the stored date is the first inventory admission date; refreshes do not reset it. `maxItems` is bounded to 200 and zero means 200. Dedupe suppresses confirmed previous deliveries for the same user and search.
+Optional query, location, work-arrangement and employment-type filters follow the [simple filter guide](simple-filters-v2.md). A source fact that is unknown does not satisfy a corresponding active filter. `maxItems` is at most 200; zero means 200. Filters, source limitations and repeat suppression can produce fewer results or a valid empty dataset.
 
-The existing startup charge and per-result prices are unchanged. Full descriptions are included in each result. An unavailable or stale inventory fails the run; there is no website fallback.
+`postedWithin` accepts `any` or a positive duration such as `7d`, up to 36500 days. A date recorded without a reliable source publication date means first observation; later observations do not reset it. It is not proof of the employer's publication date.
 
-## Migration
+Unknown optional facts remain `null`; `locations: []` means no usable location was parsed and `hiringContacts: []` means no named contacts. Keep `(source, id)` as the posting key. Read the original description for eligibility and application requirements.
 
-The versioned simple input replaces source search controls and `includeDetails`. Full descriptions are always required. The v2 row removes `custom`, `warnings`, and `docs` from posting output and adds the optional source salary field. Existing v1 scoring can use description, title, company, locations, salary, and stable source/ID/URL fields.
-
-## Endpoint and verification
-
-Use [Impactpool Jobs - Simple](https://apify.com/nomad-agent/impactpool-scraper) with `latest`. Simple Actors are not mirrored to Job Atlas. On 21 September 2026, an owner test through the default selector returned a complete simple-v2 record with the existing startup and result charges. A repeat suppressed the duplicate and charged no result fee. This does not claim normal buyer or scheduled consumer execution.
+Inspect `RUN-SUMMARY` separately from dataset rows for delivery counts, limits and source availability. Dated earlier owner tests are not proof that your search or destination works today. See the [complete public directory](public-actors.md) for other products.

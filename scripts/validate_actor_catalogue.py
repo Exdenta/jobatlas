@@ -53,6 +53,8 @@ IGNORED_ROUTE_PREFIXES = (
     "tests/",
     "integrations/evidence/",
     "docs/seo-baselines/",
+    "website-variations/evidence/",
+    "website-variations/review-assets/",
 )
 IGNORED_ROUTE_FILES = {
     "docs/CEO_REPORT_2026-08-27.md",
@@ -436,23 +438,21 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
             errors.append(f"excluded public candidate {exclusion.get('slug')} has invalid actorId")
 
     counts = scope.get("inventoryCounts", {})
+    primaries = [item for item in deployments if item.get("owner") == "nomad-agent"]
+    mirrors = [item for item in deployments if item.get("owner") == "jobatlas"]
     expected_counts = {
-        "ownedActors": 92,
-        "ownedInScopePublic": 58,
-        "ownedPrivateSupportExcluded": 16,
-        "ownedUnrelatedPublicExcluded": 18,
-        "promotedJobAtlasDeployments": 7,
-        "inScopeDeployments": 65,
+        "ownedActors": len(primaries) + len(exclusions) + counts["ownedPrivateSupportExcluded"],
+        "ownedInScopePublic": len(primaries),
+        "ownedPrivateSupportExcluded": counts["ownedPrivateSupportExcluded"],
+        "ownedUnrelatedPublicExcluded": len(exclusions),
+        "promotedJobAtlasDeployments": len(mirrors),
+        "inScopeDeployments": len(deployments),
     }
     if counts != expected_counts:
         errors.append(f"inventoryCounts mismatch: expected {expected_counts}")
-    if len(products) != 58 or len(deployments) != 65 or len(exclusions) != 18:
-        errors.append("catalogue cardinality must be 58 products, 65 deployments, and 18 public exclusions")
-    public_nomad_candidates = sum(
-        item.get("owner") == "nomad-agent" for item in deployments + exclusions
-    )
-    if public_nomad_candidates != 76 or public_nomad_candidates + counts.get("ownedPrivateSupportExcluded", 0) != 92:
-        errors.append("catalogue and aggregate private count do not account for all 92 owned candidates")
+    primary_products = [item.get("logicalProductId") for item in primaries]
+    if len(primary_products) != len(products) or set(primary_products) != product_id_set:
+        errors.append("each logical product must have exactly one Nomad primary deployment")
 
     promoted_products = {
         item.get("logicalProductId")
@@ -533,7 +533,8 @@ def validate_catalogue(data: dict[str, Any], root: Path) -> list[str]:
 
 def validate_repository_routes(data: dict[str, Any], root: Path) -> list[str]:
     """Reconcile maintained route and contextual immutable-ID references."""
-    # Integration support is separate from a metadata-verified endpoint.
+    # Integration coverage is tracked by clientMatrix; endpoint validity is
+    # established by the deployment catalogue, including legacy primaries.
     current_deployments = [
         item for item in data.get("deployments", [])
         if item.get("endpointState") == "live-metadata-verified"
@@ -559,9 +560,22 @@ def validate_repository_routes(data: dict[str, Any], root: Path) -> list[str]:
             continue
         if RETIRED_JOB_ATLAS_ROUTE_PATTERN.search(text):
             errors.append(f"retired Apify owner route in {relative}")
-        for route in sorted(extract_actor_routes(text) - current_routes):
+        allowed_routes = current_routes
+        allowed_ids = current_ids
+        if relative in {"docs/public-actors.md", "docs/public-actors.json"}:
+            allowed_routes = current_routes | {
+                f'{item["owner"]}/{item["slug"]}'.lower()
+                for item in data.get("excludedCandidates", [])
+                if item.get("category") == "unrelated-public"
+            }
+            allowed_ids = current_ids | {
+                item["actorId"]
+                for item in data.get("excludedCandidates", [])
+                if item.get("category") == "unrelated-public"
+            }
+        for route in sorted(extract_actor_routes(text) - allowed_routes):
             errors.append(f"uncatalogued maintained Actor route {route} in {relative}")
-        for actor_id in sorted(set(ACTOR_ID_PATTERN.findall(text)) - current_ids):
+        for actor_id in sorted(set(ACTOR_ID_PATTERN.findall(text)) - allowed_ids):
             errors.append(f"uncatalogued maintained Actor ID {actor_id} in {relative}")
     return errors
 
