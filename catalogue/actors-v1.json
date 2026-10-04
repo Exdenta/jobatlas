@@ -140,7 +140,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "devex-scraper",
@@ -253,7 +255,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "ai-job-search-agent",
@@ -315,7 +319,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "workable-jobs-scraper",
@@ -329,7 +335,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "ashby-jobs-scraper",
@@ -343,7 +351,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "lever-jobs-scraper",
@@ -357,7 +367,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "greenhouse-jobs-scraper",
@@ -371,7 +383,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "academicpositions-scraper",
@@ -433,7 +447,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "web-search-scraper",
@@ -463,7 +479,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "tecnoempleo-scraper",
@@ -509,7 +527,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "math-ku-phd-scraper",
@@ -539,7 +559,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "jobs-ac-uk-scraper",
@@ -553,7 +575,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "infojobs-scraper",
@@ -567,7 +591,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "impactpool-scraper",
@@ -613,7 +639,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "eures-scraper",
@@ -627,7 +655,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "builtin-scraper",
@@ -641,7 +671,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "ai-jobs-net-scraper",
@@ -655,7 +687,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "un-careers-scraper",
@@ -701,7 +735,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "ml-ai-dev-bundle",
@@ -747,7 +783,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "unjobs-scraper",
@@ -793,7 +831,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "foorilla-ai-jobs-scraper",
@@ -807,7 +847,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-reader-recipes.md"
+      ]
     },
     {
       "id": "normalized-ashby",
