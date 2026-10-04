@@ -257,3 +257,8 @@ It starts at $0.90 per 1,000 delivered jobs in Actor result events, checked
 ## Quick setup for any public Actor
 
 Install the [generic Agent Skill](.agents/skills/public-apify-actors/SKILL.md) to configure an Actor from its current schema and inspect its output. The [setup guide](docs/public-actors-setup.md) explains bounded runs and result inspection. Use the [job input examples](docs/job-actor-input-examples.md) and [simple job recipes](docs/job-reader-recipes.md) for schema-checked inputs.
+
+
+### SPAC filings on SEC EDGAR
+
+[SPAC Redemptions Scraper](https://apify.com/nomad-agent/spac-redemptions-scraper) follows SPAC IPO, merger, vote and shareholder-redemption filings. The [full guide](docs/actors/spac-redemptions-scraper.md) includes date filters, output examples and a setup skill. Financial values stay unavailable when the filing does not establish them.
