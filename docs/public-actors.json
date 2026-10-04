@@ -808,7 +808,7 @@
       "slug": "reliefweb-scraper",
       "actorId": "ongoh9UyfgwIbvPfp",
       "url": "https://apify.com/nomad-agent/reliefweb-scraper",
-      "title": "ReliefWeb Humanitarian & NGO Jobs | Full Descriptions, $3/1k",
+      "title": "ReliefWeb Humanitarian & NGO Jobs | Full Descriptions",
       "family": "Simple and source-specific jobs",
       "description": "Recent ReliefWeb humanitarian and NGO jobs with complete original descriptions (text and HTML), locations, posting dates and source links. Filter by keywords, location, remote, job type and posting age. Only verified postings; repeats are suppressed. No login or API key.",
       "deprecated": false
