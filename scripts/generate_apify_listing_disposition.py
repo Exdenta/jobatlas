@@ -116,7 +116,10 @@ def build_manifest(catalogue: dict[str, Any]) -> dict[str, Any]:
             "privateSupportExcluded": counts["ownedPrivateSupportExcluded"],
             "unrelatedPublicExcluded": counts["ownedUnrelatedPublicExcluded"],
             "knownPostBaselineDelta": known_delta,
-            "evidenceBoundary": "Four jobatlas Store listings have local copy drafts. All other jobatlas listings and every nomad-agent deployment have no listing change. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write.",
+            "evidenceBoundary": "Four jobatlas Store listings have local copy drafts. All other jobatlas listings and every nomad-agent deployment have no listing change. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write. "
+                "The scope date and source revision identify the historical owned-account snapshot. Baseline counts "
+                "describe the catalogue supplied to this generator, including later dated deployment observations. "
+                + catalogue["scope"]["evidenceBoundary"],
         },
         "logicalProducts": products,
         "deployments": deployments,

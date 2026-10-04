@@ -10,11 +10,11 @@
       "ownedInScopePublic": 58,
       "ownedPrivateSupportExcluded": 16,
       "ownedUnrelatedPublicExcluded": 18,
-      "promotedJobAtlasDeployments": 7,
-      "inScopeDeployments": 65
+      "promotedJobAtlasDeployments": 17,
+      "inScopeDeployments": 75
     },
     "inclusionRule": "Include every public nomad-agent Actor whose current title or slug identifies a job-search, job-enrichment, job-bundle, or candidate-fit product, plus every public jobatlas deployment maintained by this repository.",
-    "evidenceBoundary": "Owned identities and aggregate visibility counts were read from authenticated Actor detail endpoints. Each deployment retains its dated build observation and explicit execution boundary. Manfred, EuroBrussels and Impactpool observations name bounded owner functional tests; these are not normal buyer, scheduled consumer or destination integration evidence. Private support Actors are aggregate-only; implementation, bindings and private operational data are not published. UN Careers, Copenhagen, Ikerbasque and Infostud were subsequently read back on 22 September 2026 after their inventory releases; their bounded owner tests and the new Infostud mirror do not establish normal buyer traffic. The owned-account counts retain their original snapshot date."
+    "evidenceBoundary": "Owned identities and aggregate visibility counts were read from authenticated Actor detail endpoints. Each deployment retains its dated build observation and explicit execution boundary. Manfred, EuroBrussels and Impactpool observations name bounded owner functional tests; these are not normal buyer, scheduled consumer or destination integration evidence. Private support Actors are aggregate-only; implementation, bindings and private operational data are not published. UN Careers, Copenhagen, Ikerbasque and Infostud were subsequently read back on 22 September 2026 after their inventory releases; their bounded owner tests and the new Infostud mirror do not establish normal buyer traffic. The owned-account counts retain their original snapshot date. Ten additional public Job Atlas mirrors were observed by authenticated metadata GETs on 4 October 2026; the promoted-copy and deployment totals now include those endpoints. The owned-account totals and scope observation date retain the 21 September snapshot. New mirror observations prove public endpoint identity and latest build metadata only; integration and normal execution remain unverified. The input guide is schema-checked documentation and does not guarantee matching results."
   },
   "contractProfiles": [
     {
@@ -154,7 +154,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "linkedin-enrich-translate-normalize-scraper",
@@ -265,7 +267,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "all-jobs-scraper",
@@ -279,7 +283,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "europe-jobs-bundle",
@@ -293,7 +299,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "company-careers-bundle",
@@ -377,7 +385,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "researcher-bundle",
@@ -391,7 +401,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "web-dev-bundle",
@@ -405,7 +417,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "wttj-scraper",
@@ -433,7 +447,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "ub-doctoral-scraper",
@@ -461,7 +477,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "remote-boards-scraper",
@@ -475,7 +493,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "nofluffjobs-scraper",
@@ -665,7 +685,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "ycombinator-was-scraper",
@@ -693,7 +715,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "american-jobs-bundle",
@@ -707,7 +731,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "linkedin-scraper",
@@ -735,7 +761,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "devex-jobs-scraper",
@@ -749,7 +777,9 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": null,
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "euraxess-scraper",
@@ -783,43 +813,49 @@
       "id": "normalized-ashby",
       "name": "Ashby normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-dynamitejobs",
       "name": "Dynamite Jobs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-euractiv",
       "name": "EURACTIV Jobs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-eurobrussels",
@@ -841,15 +877,17 @@
       "id": "normalized-fashionjobs",
       "name": "FashionJobs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-greenhouse",
@@ -863,35 +901,41 @@
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-helloworld",
       "name": "HelloWorld.rs normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-himalayas",
       "name": "Himalayas normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-infostud",
@@ -913,29 +957,33 @@
       "id": "normalized-jobgether",
       "name": "Jobgether normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-lever",
       "name": "Lever normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-manfred",
@@ -957,29 +1005,33 @@
       "id": "normalized-mlops-community",
       "name": "MLOps Community normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     },
     {
       "id": "normalized-smartrecruiters",
       "name": "SmartRecruiters normalized jobs",
       "kind": "source-scraper",
-      "lifecycle": "legacy-live",
-      "promotion": "not-planned",
+      "lifecycle": "promoted",
+      "promotion": "job-atlas",
       "implementationSource": {
         "state": "not-in-repository",
         "location": null,
         "evidence": "Hosted Actor source; this repository contains no implementation path."
       },
       "contractProfileId": "normalized-job-v1",
-      "maintainedExamples": []
+      "maintainedExamples": [
+        "docs/job-actor-input-examples.md"
+      ]
     }
   ],
   "deployments": [
@@ -2152,6 +2204,186 @@
         "sourceType": "SOURCE_FILES",
         "evidence": "Public latest/default read back; independently checked against the primary package. Owner tests LGXoR4HeIqJKvYccY and IDZu6Qx4XwtUuUHp1 returned two complete descriptions with processing enabled. Default-off CWrlIID5xM2Ld2uSl retained original Serbian text and title with no owner provider usage. No normal buyer or destination execution claimed."
       }
+    },
+    {
+      "id": "jobatlas--normalized-ashby-jobs-scraper",
+      "logicalProductId": "normalized-ashby",
+      "owner": "jobatlas",
+      "slug": "normalized-ashby-jobs-scraper",
+      "actorId": "OevYsTbGinfu6UPQd",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-ashby-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:24.196821+00:00",
+        "buildId": "kgqD7fC6JpmyfOApp",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "logicalProductId": "normalized-dynamitejobs",
+      "owner": "jobatlas",
+      "slug": "normalized-dynamitejobs-jobs-scraper",
+      "actorId": "IpwQZHpkkNSwKaMM3",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-dynamitejobs-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:24.194631+00:00",
+        "buildId": "3GfLjb000fk8CxDXi",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-euractiv-jobs-scraper",
+      "logicalProductId": "normalized-euractiv",
+      "owner": "jobatlas",
+      "slug": "normalized-euractiv-jobs-scraper",
+      "actorId": "sAmkfZKybTW9cHb37",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-euractiv-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:24.197876+00:00",
+        "buildId": "t7ZRiqOuABp1C9cn6",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "logicalProductId": "normalized-fashionjobs",
+      "owner": "jobatlas",
+      "slug": "normalized-fashionjobs-jobs-scraper",
+      "actorId": "RMfnnrTz467ZcPQFP",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-fashionjobs-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:24.951704+00:00",
+        "buildId": "FNJ9lQTP17s5V8dSY",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-helloworld-jobs-scraper",
+      "logicalProductId": "normalized-helloworld",
+      "owner": "jobatlas",
+      "slug": "normalized-helloworld-jobs-scraper",
+      "actorId": "qePFRkmFju2UBYvlm",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-helloworld-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:24.945971+00:00",
+        "buildId": "V9PuXwlK4BXDf9xba",
+        "buildNumber": "1.0.4",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-himalayas-jobs-scraper",
+      "logicalProductId": "normalized-himalayas",
+      "owner": "jobatlas",
+      "slug": "normalized-himalayas-jobs-scraper",
+      "actorId": "MQPgX54hf69Gt8vkg",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-himalayas-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:24.984797+00:00",
+        "buildId": "PxVcOCoasOBeN5J5L",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-jobgether-jobs-scraper",
+      "logicalProductId": "normalized-jobgether",
+      "owner": "jobatlas",
+      "slug": "normalized-jobgether-jobs-scraper",
+      "actorId": "e3L8nyjTnjbJ5ZiV4",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-jobgether-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:25.699247+00:00",
+        "buildId": "Pv4Vlpx1fW2XvFhAX",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-lever-jobs-scraper",
+      "logicalProductId": "normalized-lever",
+      "owner": "jobatlas",
+      "slug": "normalized-lever-jobs-scraper",
+      "actorId": "XkRY12lbdved0Gbqq",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-lever-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:25.718081+00:00",
+        "buildId": "M0dmxM064wSoOG6Ue",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "logicalProductId": "normalized-mlops-community",
+      "owner": "jobatlas",
+      "slug": "normalized-mlops-community-jobs-scraper",
+      "actorId": "gbr9thwZuAsInMHJz",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-mlops-community-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:25.733307+00:00",
+        "buildId": "Ns3S2w96jWI5IMA0c",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
+    },
+    {
+      "id": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "logicalProductId": "normalized-smartrecruiters",
+      "owner": "jobatlas",
+      "slug": "normalized-smartrecruiters-jobs-scraper",
+      "actorId": "8AajXDZh2eVT3h1Vr",
+      "endpointState": "live-metadata-verified",
+      "releaseSelector": "latest",
+      "relationship": "promoted-copy",
+      "relationshipTargetId": "nomad-agent--normalized-smartrecruiters-jobs-scraper",
+      "latestObservation": {
+        "observedAt": "2026-10-04T02:07:26.627195+00:00",
+        "buildId": "Ie0tPMdRL4rDE3DtF",
+        "buildNumber": "1.0.2",
+        "sourceType": "SOURCE_FILES",
+        "evidence": "Authenticated GET of public Actor identity and latest immutable build only. This catalogue observation does not establish default-selector parity, source/package parity, paid execution, normal customer output or destination delivery."
+      }
     }
   ],
   "excludedCandidates": [
@@ -3093,6 +3325,886 @@
       "assets": [],
       "externalStateClasses": [],
       "gap": "No maintained Infostud python integration is claimed."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Ashby normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Dynamite Jobs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public EURACTIV Jobs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public FashionJobs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public HelloWorld.rs normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Himalayas normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Jobgether normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public Lever normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public MLOps Community normalized jobs endpoint metadata is verified; this python integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "api-sdk",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this api-sdk integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "mcp",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this mcp integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "n8n",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this n8n integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "make",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this make integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "zapier",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this zapier integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "airtable",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this airtable integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "agent-skill",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this agent-skill integration has not been validated."
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "python",
+      "support": "not-claimed",
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "routeMode": "not-applicable",
+      "releaseSelector": null,
+      "assets": [],
+      "externalStateClasses": [],
+      "gap": "Public SmartRecruiters normalized jobs endpoint metadata is verified; this python integration has not been validated."
     }
   ],
   "externalStateMatrix": [

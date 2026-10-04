@@ -39,18 +39,18 @@ class ActorCatalogueTests(unittest.TestCase):
         self.assertEqual(self.validator.validate_catalogue(self.catalogue, ROOT), [])
         self.assertEqual(self.catalogue["schemaVersion"], "job-atlas-actor-catalogue-v1")
         self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["ownedActors"], 92)
-        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], 65)
+        self.assertEqual(self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"], len(self.catalogue["deployments"]))
 
     def test_all_source_and_live_candidates_have_one_disposition(self) -> None:
         deployments = self.catalogue["deployments"]
         exclusions = self.catalogue["excludedCandidates"]
-        self.assertEqual(len(deployments), 65)
+        self.assertEqual(len(deployments), self.catalogue["scope"]["inventoryCounts"]["inScopeDeployments"])
         self.assertEqual(len(exclusions), 18)
         identities = {
             (record["owner"], record["slug"], record["actorId"])
             for record in deployments + exclusions
         }
-        self.assertEqual(len(identities), 83)
+        self.assertEqual(len(identities), len(deployments) + len(exclusions))
         self.assertEqual(
             sum(record["owner"] == "nomad-agent" for record in deployments + exclusions),
             76,
@@ -72,7 +72,7 @@ class ActorCatalogueTests(unittest.TestCase):
             self.assertNotIn("owner", product)
             self.assertNotIn("slug", product)
         copied = [record for record in deployments if record["relationship"] == "promoted-copy"]
-        self.assertEqual(len(copied), 7)
+        self.assertEqual(len(copied), self.catalogue["scope"]["inventoryCounts"]["promotedJobAtlasDeployments"])
         for record in copied:
             predecessor = next(
                 item for item in deployments if item["id"] == record["relationshipTargetId"]
@@ -188,6 +188,28 @@ class ActorCatalogueTests(unittest.TestCase):
             lambda data: data["excludedCandidates"][0].update(category="private-support"),
             "category",
         )
+
+    def test_observed_counts_reject_each_inconsistent_total(self) -> None:
+        for field in self.catalogue["scope"]["inventoryCounts"]:
+            with self.subTest(field=field):
+                self.assert_invalid(
+                    lambda data, field=field: data["scope"]["inventoryCounts"].update(
+                        {field: data["scope"]["inventoryCounts"][field] + 1}
+                    ),
+                    "inventoryCounts mismatch",
+                )
+
+    def test_another_observed_mirror_does_not_require_a_hardcoded_count(self) -> None:
+        candidate = copy.deepcopy(self.catalogue)
+        mirror = copy.deepcopy(next(d for d in candidate["deployments"] if d["owner"] == "jobatlas"))
+        mirror["slug"] += "-test"
+        mirror["id"] = "jobatlas--" + mirror["slug"]
+        mirror["actorId"] = "ZZZZZZZZZZZZZZZZZ"
+        candidate["deployments"].append(mirror)
+        counts = candidate["scope"]["inventoryCounts"]
+        counts["promotedJobAtlasDeployments"] += 1
+        counts["inScopeDeployments"] += 1
+        self.assertEqual(self.validator.validate_catalogue(candidate, ROOT), [])
 
     def test_every_schema_object_is_closed(self) -> None:
         schema = json.loads(

@@ -5,14 +5,14 @@
     "sourceRevision": "6742f11452d79ae20b7c01d478acb2cb25ee725a",
     "sourceCatalogue": "catalogue/actors-v1.json",
     "baselineLogicalProducts": 58,
-    "baselineDeployments": 65,
+    "baselineDeployments": 75,
     "accountedLogicalProducts": 58,
-    "accountedDeployments": 65,
+    "accountedDeployments": 75,
     "ownedActorsAccounted": 92,
     "privateSupportExcluded": 16,
     "unrelatedPublicExcluded": 18,
     "knownPostBaselineDelta": [],
-    "evidenceBoundary": "Four jobatlas Store listings have local copy drafts. All other jobatlas listings and every nomad-agent deployment have no listing change. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write."
+    "evidenceBoundary": "Four jobatlas Store listings have local copy drafts. All other jobatlas listings and every nomad-agent deployment have no listing change. Private support identities stay aggregate-only. This manifest authorizes no publication, migration, Actor run, billing change, schedule change, or destination write. The scope date and source revision identify the historical owned-account snapshot. Baseline counts describe the catalogue supplied to this generator, including later dated deployment observations. Owned identities and aggregate visibility counts were read from authenticated Actor detail endpoints. Each deployment retains its dated build observation and explicit execution boundary. Manfred, EuroBrussels and Impactpool observations name bounded owner functional tests; these are not normal buyer, scheduled consumer or destination integration evidence. Private support Actors are aggregate-only; implementation, bindings and private operational data are not published. UN Careers, Copenhagen, Ikerbasque and Infostud were subsequently read back on 22 September 2026 after their inventory releases; their bounded owner tests and the new Infostud mirror do not establish normal buyer traffic. The owned-account counts retain their original snapshot date. Ten additional public Job Atlas mirrors were observed by authenticated metadata GETs on 4 October 2026; the promoted-copy and deployment totals now include those endpoints. The owned-account totals and scope observation date retain the 21 September snapshot. New mirror observations prove public endpoint identity and latest build metadata only; integration and normal execution remain unverified. The input guide is schema-checked documentation and does not guarantee matching results."
   },
   "logicalProducts": [
     {
@@ -459,30 +459,30 @@
       "logicalProductId": "normalized-ashby",
       "name": "Ashby normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
       "logicalProductId": "normalized-dynamitejobs",
       "name": "Dynamite Jobs normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
       "logicalProductId": "normalized-euractiv",
       "name": "EURACTIV Jobs normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
@@ -499,10 +499,10 @@
       "logicalProductId": "normalized-fashionjobs",
       "name": "FashionJobs normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
@@ -519,20 +519,20 @@
       "logicalProductId": "normalized-helloworld",
       "name": "HelloWorld.rs normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
       "logicalProductId": "normalized-himalayas",
       "name": "Himalayas normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
@@ -549,20 +549,20 @@
       "logicalProductId": "normalized-jobgether",
       "name": "Jobgether normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
       "logicalProductId": "normalized-lever",
       "name": "Lever normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
@@ -579,20 +579,20 @@
       "logicalProductId": "normalized-mlops-community",
       "name": "MLOps Community normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     },
     {
       "logicalProductId": "normalized-smartrecruiters",
       "name": "SmartRecruiters normalized jobs",
       "catalogueState": "catalogued",
-      "promotion": "not-planned",
+      "promotion": "job-atlas",
       "action": "no-listing-change",
       "migrationProposed": false,
-      "supportClaim": "none",
+      "supportClaim": "catalogue-client-matrix",
       "listingDraft": null
     }
   ],
@@ -1246,6 +1246,106 @@
       "action": "no-listing-change",
       "migrationProposed": false,
       "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-ashby-jobs-scraper",
+      "logicalProductId": "normalized-ashby",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-dynamitejobs-jobs-scraper",
+      "logicalProductId": "normalized-dynamitejobs",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-euractiv-jobs-scraper",
+      "logicalProductId": "normalized-euractiv",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-fashionjobs-jobs-scraper",
+      "logicalProductId": "normalized-fashionjobs",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-helloworld-jobs-scraper",
+      "logicalProductId": "normalized-helloworld",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-himalayas-jobs-scraper",
+      "logicalProductId": "normalized-himalayas",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-jobgether-jobs-scraper",
+      "logicalProductId": "normalized-jobgether",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-lever-jobs-scraper",
+      "logicalProductId": "normalized-lever",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-mlops-community-jobs-scraper",
+      "logicalProductId": "normalized-mlops-community",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
+    },
+    {
+      "deploymentId": "jobatlas--normalized-smartrecruiters-jobs-scraper",
+      "logicalProductId": "normalized-smartrecruiters",
+      "catalogueState": "catalogued",
+      "owner": "jobatlas",
+      "relationship": "promoted-copy",
+      "action": "no-listing-change",
+      "migrationProposed": false,
+      "listingDraft": null
     }
   ],
   "clientSupport": [
@@ -1526,6 +1626,406 @@
     },
     {
       "logicalProductId": "normalized-infostud",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-ashby",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-dynamitejobs",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-euractiv",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-fashionjobs",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-helloworld",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-himalayas",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-jobgether",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-lever",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-mlops-community",
+      "clientClass": "python",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "api-sdk",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "mcp",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "n8n",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "make",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "zapier",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "airtable",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
+      "clientClass": "agent-skill",
+      "support": "not-claimed"
+    },
+    {
+      "logicalProductId": "normalized-smartrecruiters",
       "clientClass": "python",
       "support": "not-claimed"
     }

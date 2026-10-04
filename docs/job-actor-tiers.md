@@ -84,20 +84,20 @@ does not imply an observed customer run.
 | [euraxess-enrich-translate-normalize-scraper](https://apify.com/nomad-agent/euraxess-enrich-translate-normalize-scraper) | [Job Atlas](https://apify.com/jobatlas/euraxess-enrich-translate-normalize-scraper) | Full-description proof migration pending |
 | [europe-jobs-bundle](https://apify.com/nomad-agent/europe-jobs-bundle) | Planned; not published | Inventory, enrichment, and translation migration pending |
 | [linkedin-enrich-translate-normalize-scraper](https://apify.com/nomad-agent/linkedin-enrich-translate-normalize-scraper) | [Job Atlas](https://apify.com/jobatlas/linkedin-enrich-translate-normalize-scraper) | Inventory migration pending |
-| [normalized-ashby-jobs-scraper](https://apify.com/nomad-agent/normalized-ashby-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-dynamitejobs-jobs-scraper](https://apify.com/nomad-agent/normalized-dynamitejobs-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-euractiv-jobs-scraper](https://apify.com/nomad-agent/normalized-euractiv-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
+| [normalized-ashby-jobs-scraper](https://apify.com/nomad-agent/normalized-ashby-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-ashby-jobs-scraper) | Inventory, enrichment, and translation migration pending |
+| [normalized-dynamitejobs-jobs-scraper](https://apify.com/nomad-agent/normalized-dynamitejobs-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-dynamitejobs-jobs-scraper) | Inventory, enrichment, and translation migration pending |
+| [normalized-euractiv-jobs-scraper](https://apify.com/nomad-agent/normalized-euractiv-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-euractiv-jobs-scraper) | Inventory, enrichment, and translation migration pending |
 | [normalized-eurobrussels-jobs-scraper](https://apify.com/nomad-agent/normalized-eurobrussels-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-eurobrussels-jobs-scraper) | Inventory and complete descriptions verified; optional processing tested |
-| [normalized-fashionjobs-jobs-scraper](https://apify.com/nomad-agent/normalized-fashionjobs-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
+| [normalized-fashionjobs-jobs-scraper](https://apify.com/nomad-agent/normalized-fashionjobs-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-fashionjobs-jobs-scraper) | Inventory, enrichment, and translation migration pending |
 | [normalized-greenhouse-jobs-scraper](https://apify.com/nomad-agent/normalized-greenhouse-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-helloworld-jobs-scraper](https://apify.com/nomad-agent/normalized-helloworld-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-himalayas-jobs-scraper](https://apify.com/nomad-agent/normalized-himalayas-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
+| [normalized-helloworld-jobs-scraper](https://apify.com/nomad-agent/normalized-helloworld-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-helloworld-jobs-scraper) | Inventory, enrichment, and translation migration pending |
+| [normalized-himalayas-jobs-scraper](https://apify.com/nomad-agent/normalized-himalayas-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-himalayas-jobs-scraper) | Inventory, enrichment, and translation migration pending |
 | [normalized-infostud-jobs-scraper](https://apify.com/nomad-agent/normalized-infostud-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-infostud-jobs-scraper) | Released inventory with independent optional processing, both off by default; owner tests passed in both accounts. Normal buyer traffic unverified |
-| [normalized-jobgether-jobs-scraper](https://apify.com/nomad-agent/normalized-jobgether-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-lever-jobs-scraper](https://apify.com/nomad-agent/normalized-lever-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
+| [normalized-jobgether-jobs-scraper](https://apify.com/nomad-agent/normalized-jobgether-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-jobgether-jobs-scraper) | Inventory, enrichment, and translation migration pending |
+| [normalized-lever-jobs-scraper](https://apify.com/nomad-agent/normalized-lever-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-lever-jobs-scraper) | Inventory, enrichment, and translation migration pending |
 | [normalized-manfred-jobs-scraper](https://apify.com/nomad-agent/normalized-manfred-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-manfred-jobs-scraper) | Inventory and complete descriptions verified; optional processing tested |
-| [normalized-mlops-community-jobs-scraper](https://apify.com/nomad-agent/normalized-mlops-community-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
-| [normalized-smartrecruiters-jobs-scraper](https://apify.com/nomad-agent/normalized-smartrecruiters-jobs-scraper) | Planned; not published | Inventory, enrichment, and translation migration pending |
+| [normalized-mlops-community-jobs-scraper](https://apify.com/nomad-agent/normalized-mlops-community-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-mlops-community-jobs-scraper) | Inventory, enrichment, and translation migration pending |
+| [normalized-smartrecruiters-jobs-scraper](https://apify.com/nomad-agent/normalized-smartrecruiters-jobs-scraper) | [Job Atlas](https://apify.com/jobatlas/normalized-smartrecruiters-jobs-scraper) | Inventory, enrichment, and translation migration pending |
 | [researcher-bundle](https://apify.com/nomad-agent/researcher-bundle) | Planned; not published | Inventory, enrichment, and translation migration pending |
 | [ycombinator-enrich-translate-normalize-scraper](https://apify.com/nomad-agent/ycombinator-enrich-translate-normalize-scraper) | [Job Atlas](https://apify.com/jobatlas/ycombinator-enrich-translate-normalize-scraper) | Full-description proof migration pending |
 
@@ -105,3 +105,5 @@ The [AI job-fit scorer](https://apify.com/jobatlas/ai-job-fit-scorer) is a
 downstream matching product with its own result contract, not a third job
 Actor tier. Table exports and integration projections are also consumer
 formats rather than additional public job tiers.
+
+Mirror endpoint identities above were checked on 4 October 2026. These links establish public availability and metadata, while the migration column retains its separate execution boundary. See the [schema-checked input examples](job-actor-input-examples.md) for bounded setup inputs.
